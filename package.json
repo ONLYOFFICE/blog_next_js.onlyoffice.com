@@ -1,0 +1,26 @@
+{
+  "name": "new-blog.onlyoffice.com",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "i18next": "^22.4.9",
+    "moment": "^2.29.4",
+    "next": "13.1.6",
+    "next-i18next": "^13.0.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-html-parser": "^2.0.2",
+    "react-i18next": "^12.1.4",
+    "react-svg": "^14.1.17",
+    "styled-components": "^5.3.6"
+  }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "key": "en-US",
+    "shortKey": "en",
+    "iconName": "en.svg"
+  },
+  {
+    "key": "fr-FR",
+    "shortKey": "fr",
+    "iconName": "fr.svg"
+  },
+  {
+    "key": "de-DE",
+    "shortKey": "de",
+    "iconName": "de.svg"
+  },
+  {
+    "key": "es-ES",
+    "shortKey": "es",
+    "iconName": "es.svg"
+  },
+  {
+    "key": "pt-BR",
+    "shortKey": "pt",
+    "iconName": "pt.svg"
+  },
+  {
+    "key": "it-IT",
+    "shortKey": "it",
+    "iconName": "it.svg"
+  },
+  {
+    "key": "cs-CZ",
+    "shortKey": "cs",
+    "iconName": "cs.svg"
+  },
+  {
+    "key": "ja-Jp",
+    "shortKey": "ja",
+    "iconName": "ja.svg"
+  },
+  {
+    "key": "zh-CN",
+    "shortKey": "zh",
+    "iconName": "zh.svg"
+  }
+]
