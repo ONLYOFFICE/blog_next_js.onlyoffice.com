@@ -3,23 +3,12 @@ import languages from "@config/languages.json";
 
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 
-export default function LangsList({ isOpen }) {
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
-
+export default function LangsList({ isOpen, onCloseSelector }) {
   const renderItemList = () => {
     return languages.map((language) => {
       return (
-        <StyledItem key={language.key}>
-          <Link className="language-item-link" href="/" locale={language.shortKey} onClick={handleClick}>
-            <img
-              src={`https://static-oforms.teamlab.info/images/flags/${language.iconName}`}
-              alt={language.key}
-              width="18px"
-              className="language-item-image"
-            />
-          </Link>
+        <StyledItem className="language-item" key={language.key}>
+          <Link className={`language-item-link ${language.shortKey}`} href="/" locale={language.shortKey} onClick={onCloseSelector}></Link>
         </StyledItem>
       );
     });

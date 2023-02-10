@@ -1,47 +1,38 @@
 [
   {
     "key": "en-US",
-    "shortKey": "en",
-    "iconName": "en.svg"
+    "shortKey": "en"
   },
   {
     "key": "fr-FR",
-    "shortKey": "fr",
-    "iconName": "fr.svg"
+    "shortKey": "fr"
   },
   {
     "key": "de-DE",
-    "shortKey": "de",
-    "iconName": "de.svg"
+    "shortKey": "de"
   },
   {
     "key": "es-ES",
-    "shortKey": "es",
-    "iconName": "es.svg"
+    "shortKey": "es"
   },
   {
     "key": "pt-BR",
-    "shortKey": "pt",
-    "iconName": "pt.svg"
+    "shortKey": "pt-br"
   },
   {
     "key": "it-IT",
-    "shortKey": "it",
-    "iconName": "it.svg"
+    "shortKey": "it"
   },
   {
     "key": "cs-CZ",
-    "shortKey": "cs",
-    "iconName": "cs.svg"
+    "shortKey": "cs"
   },
   {
     "key": "ja-Jp",
-    "shortKey": "ja",
-    "iconName": "ja.svg"
+    "shortKey": "ja"
   },
   {
     "key": "zh-CN",
-    "shortKey": "zh",
-    "iconName": "zh.svg"
+    "shortKey": "zh-hans"
   }
 ]

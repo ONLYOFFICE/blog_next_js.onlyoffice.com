@@ -64,7 +64,7 @@ const LanguageSelector = (props) => {
         height="18px"
       />
       {/*eslint-disable*/}
-      <div className="arrow-image">
+      <div className={`arrow-image ${isOpen ? "is-open" : ""}`}>
         <ReactSVG src={arrowDown.src} alt={srcAlt} />
       </div>
       {/*eslint-enable*/}

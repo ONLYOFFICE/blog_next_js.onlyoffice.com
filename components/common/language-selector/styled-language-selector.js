@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import flags from "@public/images/icons/flags.png";
 
 export default styled.div`
   display: flex;
@@ -14,11 +15,18 @@ export default styled.div`
     -webkit-tap-highlight-color: transparent;
   }
 
+  .flag-image {
+    padding-right: 8px;
+  }
+
   .arrow-image {
-    padding-left: 8px;
     margin-bottom: 4px;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+
+    &.is-open {
+      transform: translateY(6px) rotate(180deg);
+    }
   }
 
   .title-lng {
@@ -42,9 +50,9 @@ const StyledPanelView = styled.div`
   border: 1px solid #ccc;
   border-radius: 3px;
   z-index: 100;
-  padding: 6px 6px 6px 12px;
-  top: 35px;
-  left: -11px;
+  padding: 6px;
+  top: 30px;
+  left: -2px;
 `;
 
 const StyledItem = styled.div`
@@ -55,10 +63,43 @@ const StyledItem = styled.div`
   }
   .language-item-link {
     display: block;
-    margin: 2px 0 8px;
-    padding: 1px 8px 1px 1px;
-    width: 100%;
+    width: 24px;
+    height: 24px;
     text-decoration: none;
+    background-image: url(${flags.src});
+    background-repeat: no-repeat;
+
+    &.fr {
+      background-position-y: -48px;
+    }
+
+    &.de {
+      background-position-y: -72px;
+    }
+
+    &.es {
+      background-position-y: -96px;
+    }
+
+    &.pt-br {
+      background-position-y: -120px;
+    }
+
+    &.it {
+      background-position-y: -144px;
+    }
+
+    &.cs {
+      background-position-y: -168px;
+    }
+
+    &.ja {
+      background-position-y: -216px;
+    }
+
+    &.zh-hans {
+      background-position-y: -240px;
+    }
   }
   .title-lng:hover {
     color: #ff865c;
