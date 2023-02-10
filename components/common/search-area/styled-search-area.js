@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const StyledSearchArea = styled.div`
-  margin-bottom: 40px;
-
   .search_container {
     position: relative;
   }
@@ -28,6 +26,10 @@ const StyledSearchArea = styled.div`
     height: 24px;
     transform: translateY(-50%);
     z-index: 1;
+  }
+
+  .close-icon {
+    cursor: pointer;
   }
 `;
 export default StyledSearchArea;

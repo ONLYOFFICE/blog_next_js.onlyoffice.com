@@ -8,7 +8,7 @@ import StyledSearchArea from "./styled-search-area";
 import SearchIcon from "@public/images/icons/search-icon.react.svg";
 import CloseIcon from "@public/images/icons/close-icon.react.svg";
 
-const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
+const SearchArea = ({ valueSearch, t, label }) => {
   const [searchItem, setSearchItem] = useState("");
 
   const onSearch = (e) => {
@@ -16,8 +16,12 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
     setSearchItem(e.target.value);
   };
 
+  const clearValueSearch = () => {
+    setSearchItem("");
+  };
+
   /*eslint-disable*/
-  const imgSearch = !valueSearch ? (
+  const imgSearch = !searchItem ? (
     <img className="search_img"
       src={SearchIcon.src}
       style={{ cursor: "default" }}
@@ -29,6 +33,7 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
     <img
       src={CloseIcon.src}
       onClick={clearValueSearch}
+      className="close-icon"
       alt="close"
       width="24px"
       height="24px"
@@ -36,11 +41,12 @@ const SearchArea = ({ clearValueSearch, valueSearch, callback, t, label }) => {
   );
   /*eslint-enable*/
   return (
-    <StyledSearchArea>
+    <StyledSearchArea className="search_area">
       <Box className="search_container" alignItems="center">
         <TextInput
           onChange={onSearch}
           value={searchItem}
+          searchItem={searchItem}
           label={label}
           type="text"
           className="search_input"
