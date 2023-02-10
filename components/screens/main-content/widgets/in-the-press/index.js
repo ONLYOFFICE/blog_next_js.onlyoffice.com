@@ -12,7 +12,7 @@ const InThePress = ({ t, inThePressPosts }) => {
       <ul className="in-the-press-list">
         {inThePressPosts?.edges.slice(0, 2).map(({ node }) => {
           return <li key={node.id}>
-            <InternalLink href={node.link}>
+            <InternalLink href={node.link} target="_blank">
               {node.title}
             </InternalLink>
             <div className="in-the-press-date">{Moment(node.date).format('d MMM y')}</div>
