@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAllPosts, getProductReleasesPosts, getForDevelopersPosts, getForBusinessPosts, getForEducationPosts } from '../lib/api';
+import { getAllPosts, getProductReleasesPosts, getForDevelopersPosts, getForBusinessPosts, getForEducationPosts, getInThePressPosts } from '../lib/api';
 
 import Layout from "@components/layout";
 import HeadSEO from "@components/screens/head-content";
@@ -9,7 +9,7 @@ import AdventAnnounce from "@components/screens/heading-content/advent-announce"
 import Footer from "@components/screens/footer-content";
 import MainContent from "@components/screens/main-content";
 
-const Index = ({ locale, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts }) => {
+const Index = ({ locale, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
 
   return (
@@ -35,6 +35,7 @@ const Index = ({ locale, allPosts, productReleasesPosts, forDevelopersPosts, for
           forDevelopersPosts={forDevelopersPosts} 
           forBusinessPosts={forBusinessPosts} 
           forEducationPosts={forEducationPosts}
+          inThePressPosts={inThePressPosts}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
@@ -44,14 +45,13 @@ const Index = ({ locale, allPosts, productReleasesPosts, forDevelopersPosts, for
   )
 }
 
-export default Index;
-
 export const getStaticProps = async ({ locale }) => {
 	const allPosts = await getAllPosts(locale);
   const productReleasesPosts = await getProductReleasesPosts(locale);
   const forDevelopersPosts = await getForDevelopersPosts(locale);
   const forBusinessPosts = await getForBusinessPosts(locale);
   const forEducationPosts = await getForEducationPosts(locale);
+  const inThePressPosts = await getInThePressPosts(locale);
 
 	return {
 		props: {
@@ -61,8 +61,11 @@ export const getStaticProps = async ({ locale }) => {
       productReleasesPosts,
       forDevelopersPosts,
       forBusinessPosts,
-      forEducationPosts
+      forEducationPosts,
+      inThePressPosts
     },
 		revalidate: 10,
 	}
 }
+
+export default Index;
