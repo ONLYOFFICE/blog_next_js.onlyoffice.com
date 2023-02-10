@@ -3,7 +3,7 @@ import StyledCategoryTopics from "./styled-category-topics";
 
 const CategoryTopics = ({ t }) => {
   return (
-    <StyledCategoryTopics>
+    <StyledCategoryTopics className="category-topics">
       <h4 className="category-topics-title">{t("Category Topics")}</h4>
       <ul className="category-topics-list">
         <li><InternalLink className="product-releases" href="#">{t("Product releases")}</InternalLink></li>
