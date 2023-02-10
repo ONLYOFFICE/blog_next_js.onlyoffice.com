@@ -5,7 +5,7 @@ const StyledInThePress = styled.div`
   border: 1px solid #EFEFEF;
   border-radius: 5px;
   padding: 24px;
-  max-width: 352px;
+  height: 100%;
   background-color: #F9F9F9;
 
   .in-the-press-title {
