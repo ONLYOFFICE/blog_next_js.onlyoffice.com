@@ -8,6 +8,10 @@ export default styled.div`
   outline: none;
   -webkit-tap-highlight-color: transparent;
 
+  .flag-image {
+    padding-right: 5px;
+  }
+
   .arrow-image,
   .flag-image {
     cursor: pointer;
@@ -15,8 +19,46 @@ export default styled.div`
     -webkit-tap-highlight-color: transparent;
   }
 
-  .flag-image {
-    padding-right: 8px;
+  .flag-image,
+  .language-item-link {
+    display: block;
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+    background-image: url(${flags.src});
+    background-repeat: no-repeat;
+
+    &.fr {
+      background-position-y: -48px;
+    }
+
+    &.de {
+      background-position-y: -72px;
+    }
+
+    &.es {
+      background-position-y: -96px;
+    }
+
+    &.pt-br {
+      background-position-y: -120px;
+    }
+
+    &.it {
+      background-position-y: -144px;
+    }
+
+    &.cs {
+      background-position-y: -168px;
+    }
+
+    &.ja {
+      background-position-y: -216px;
+    }
+
+    &.zh-hans {
+      background-position-y: -240px;
+    }
   }
 
   .arrow-image {
@@ -61,46 +103,7 @@ const StyledItem = styled.div`
   .language-item-image {
     margin-top: -1px;
   }
-  .language-item-link {
-    display: block;
-    width: 24px;
-    height: 24px;
-    text-decoration: none;
-    background-image: url(${flags.src});
-    background-repeat: no-repeat;
 
-    &.fr {
-      background-position-y: -48px;
-    }
-
-    &.de {
-      background-position-y: -72px;
-    }
-
-    &.es {
-      background-position-y: -96px;
-    }
-
-    &.pt-br {
-      background-position-y: -120px;
-    }
-
-    &.it {
-      background-position-y: -144px;
-    }
-
-    &.cs {
-      background-position-y: -168px;
-    }
-
-    &.ja {
-      background-position-y: -216px;
-    }
-
-    &.zh-hans {
-      background-position-y: -240px;
-    }
-  }
   .title-lng:hover {
     color: #ff865c;
     cursor: pointer;

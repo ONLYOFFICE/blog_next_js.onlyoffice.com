@@ -56,13 +56,7 @@ const LanguageSelector = (props) => {
       onClick={onClickHandler}
       className="language-selector"
     >
-      <img
-        className="flag-image"
-        alt="flag"
-        src={`https://static-oforms.teamlab.info/images/flags/${currentLanguage}.svg`}
-        width="18px"
-        height="18px"
-      />
+      <span className={`flag-image ${currentLanguage}`}></span>
       {/*eslint-disable*/}
       <div className={`arrow-image ${isOpen ? "is-open" : ""}`}>
         <ReactSVG src={arrowDown.src} alt={srcAlt} />
