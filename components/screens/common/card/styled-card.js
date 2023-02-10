@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 import calendarIcon from "@public/images/icons/calendar.svg";
 import authorIcon from "@public/images/icons/author.svg";
 
@@ -9,9 +10,10 @@ const StyledCard = styled.div`
 
   &.main-post {
     box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
+    border: none;
 
     .card-img {
-      padding-bottom: 50.382%;
+      padding-bottom: 50.273%;
     }
 
     .card-title {
@@ -27,6 +29,19 @@ const StyledCard = styled.div`
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+      }
+    }
+
+    .card-description {
+      font-size: 16px;
+      line-height: 26px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+  
+      p {
+        margin: 0;
       }
     }
   }
@@ -54,7 +69,7 @@ const StyledCard = styled.div`
 
   .card-title {
     display: inline-flex;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
@@ -76,14 +91,14 @@ const StyledCard = styled.div`
     flex-wrap: wrap;
     
     &:not(:last-child) {
-      margin-bottom: 16px;
+      margin-bottom: 13px;
     }
   }
 
   .card-info-item {
     padding-left: 20px;
     font-size: 13px;
-    line-height: 16px;
+    line-height: 21px;
     color: #919192;
     background-repeat: no-repeat;
     background-size: 12px 12px;
@@ -103,12 +118,71 @@ const StyledCard = styled.div`
     }
   }
 
-  .card-description {
-    font-size: 16px;
-    line-height: 26px;
+  @media ${device.tablet} {
+    &.main-post {
+      .card-title {
+        margin-bottom: 10px;
 
-    p {
-      margin: 0;
+        a {
+          -webkit-line-clamp: 3;
+        }
+      }
+
+      .card-info {
+        &:not(:last-child) {
+          margin-bottom: 9px;
+        }
+      }
+
+      .card-description {
+        -webkit-line-clamp: 3;
+      }
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-title {
+      margin-bottom: 16px;
+      min-height: initial;
+    }
+  }
+
+  @media (max-width: 592px) {
+    &.main-post {
+      .card-img {
+        padding-bottom: 50%;
+      }
+
+      .card-title {
+        a {
+          font-size: 16px;
+          line-height: 21px;
+        }
+      }
+
+      .card-description {
+        font-size: 14px;
+        line-height: 26px;
+      }
+    }
+
+    .card-img {
+      padding-bottom: 50.28%;
+    }
+
+    .card-info-item {
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+
+    .card-title {
+      a {
+        font-size: 16px;
+        line-height: 21px;
+      }
     }
   }
 `;
