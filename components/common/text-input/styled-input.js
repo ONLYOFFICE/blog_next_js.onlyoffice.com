@@ -8,7 +8,8 @@ const StyledInput = styled.div`
   padding: 0;
   margin: 0;
   z-index: 1;
-  input:focus + label {
+  input:focus + label,
+  input.focus + label {
     top: ${(props) => props.theme.textInput.label.top};
     font-size: ${(props) => props.theme.textInput.label.fontSize};
     left: ${(props) => props.theme.textInput.label.left};

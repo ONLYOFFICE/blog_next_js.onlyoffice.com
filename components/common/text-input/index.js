@@ -36,6 +36,7 @@ const TextInput = ({
   autoComplete,
   tabIndexProp,
   errorText,
+  searchItem,
   ...rest
 }) => {
   const inputTextRef = useRef(null);
@@ -55,7 +56,7 @@ const TextInput = ({
       <StyledInput labelColor={labelColor} colorHover={colorHover} {...rest}>
         <StyledTextInput
           type={type}
-          className={className}
+          className={`${className} ${searchItem ? "focus" : ""}`}
           placeholder={placeholder}
           disabled={isDisabled}
           isAutoFocussed={isAutoFocussed}
