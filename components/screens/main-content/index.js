@@ -10,8 +10,8 @@ import SearchArea from "@components/common/search-area";
 import Newsletter from "../common/newsletter";
 import Button from "@components/common/button";
 
-const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts }) => {
-  const lastPost = allPosts.edges[0].node;
+const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
+  const lastPost = allPosts.edges[0]?.node;
   const mainPost = true;
 
   const posts = allPosts.edges;
@@ -47,7 +47,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
 
         <div className="main-sidebar">
           <CategoryTopics t={t} />
-          <InThePress t={t} />
+          <InThePress t={t} inThePressPosts={inThePressPosts} />
         </div>
       </div>
 
@@ -62,6 +62,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
               return <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
             })}
           </div>
+          <div className="category-more-posts">
+            <InternalLink className="more-posts-btn" href="#">{t("View all posts Product releases")}</InternalLink>
+          </div>
         </div>
 
         <div className="category-wrapper">
@@ -73,6 +76,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
             {forDevelopersPosts.edges.map(({ node }) => {
               return <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
             })}
+          </div>
+          <div className="category-more-posts">
+            <InternalLink className="more-posts-btn" href="#">{t("View all posts For developers")}</InternalLink>
           </div>
         </div>
 
@@ -88,6 +94,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
               return <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
             })}
           </div>
+          <div className="category-more-posts">
+            <InternalLink className="more-posts-btn" href="#">{t("View all posts For business")}</InternalLink>
+          </div>
         </div>
 
         <div className="category-wrapper">
@@ -100,6 +109,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
               return <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
             })}
           </div>
+          <div className="category-more-posts">
+            <InternalLink className="more-posts-btn" href="#">{t("View all posts For education")}</InternalLink>
+          </div>
         </div>
 
         <Newsletter t={t} />
@@ -110,7 +122,10 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
           })}
 
           {hasMore &&
-            <Button className="category-posts-btn" typeButton="transparent" onClick={handleLoadMore} label={t("Load more")} />
+            <>
+              <Button className="category-posts-btn" typeButton="transparent" onClick={handleLoadMore} label={t("Load more")} />
+              <Button className="category-posts-mobile-btn" typeButton="transparent" onClick={handleLoadMore} label={t("View all posts")} />
+            </>
           }
         </div>
       </div>
