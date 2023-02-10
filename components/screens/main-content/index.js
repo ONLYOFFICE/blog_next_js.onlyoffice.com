@@ -52,6 +52,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
       </div>
 
       <div className="wrapper-posts">
+        {productReleasesPosts.edges.length > 0 &&
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("Product releases")}</Heading>
@@ -65,8 +66,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
           <div className="category-more-posts">
             <InternalLink className="more-posts-btn" href="#">{t("View all posts Product releases")}</InternalLink>
           </div>
-        </div>
+        </div>}
 
+        {forDevelopersPosts.edges.length > 0 && 
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("For Developers")}</Heading>
@@ -80,10 +82,11 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
           <div className="category-more-posts">
             <InternalLink className="more-posts-btn" href="#">{t("View all posts For developers")}</InternalLink>
           </div>
-        </div>
+        </div>}
 
         <DownloadBlock t={t} />
 
+        {forBusinessPosts.edges.length > 0 &&
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("For business")}</Heading>
@@ -97,8 +100,9 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
           <div className="category-more-posts">
             <InternalLink className="more-posts-btn" href="#">{t("View all posts For business")}</InternalLink>
           </div>
-        </div>
+        </div>}
 
+        {forEducationPosts.edges.length > 0 &&
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("For education")}</Heading>
@@ -112,7 +116,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
           <div className="category-more-posts">
             <InternalLink className="more-posts-btn" href="#">{t("View all posts For education")}</InternalLink>
           </div>
-        </div>
+        </div>}
 
         <Newsletter t={t} />
 
