@@ -46,7 +46,6 @@ const Menu = ({ t, currentLanguage }) => {
       className="navbar"
       onMouseLeave={onCloseMenu}
     >
-      <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
       <img
         src={mobMenu.src}
         className="nav-items-mobile"
@@ -57,6 +56,7 @@ const Menu = ({ t, currentLanguage }) => {
           <ReactSVG src={logo.src} alt="logo"/>
         </InternalLink>
       </span>
+      <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
       <Nav
         currentLanguage={currentLanguage}
         className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
