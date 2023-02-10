@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 import download from "@public/images/icons/download.svg";
 
 const StyledDownLoadBlock = styled.div`
   border-radius: 5px;
-  padding: 48px 32px 56px;
+  padding: 48px 32px 34px;
   text-align: center;
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
   background-color: #FFFFFF;
@@ -21,18 +22,17 @@ const StyledDownLoadBlock = styled.div`
   }
 
   .download-block-btns {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    margin: 0 auto;
-    max-width: 914px;
-
-    a {
-      display: inline-flex;
-    }
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto 0 16px;
   }
 
   .download-block-btn {
+    margin: 0 16px 22px 0;
+    width: 100%;
+    max-width: 170px;
+    min-height: 56px;
     position: relative;
     box-sizing: border-box;
     display: inline-flex;
@@ -42,13 +42,13 @@ const StyledDownLoadBlock = styled.div`
     border: 1px solid #AAAAAA;
     border-radius: 3px;
     padding: 11px 6px;
-    font-size: 16px;
-    line-height: 24px;
-    width: 100%;
-    max-width: 170px;
-    min-height: 56px;
-    color: #444444;
-    text-decoration: none;
+
+    span {
+      font-size: 16px;
+      line-height: 24px;
+      color: #444444;
+      text-decoration: none;
+    }
 
     &:before {
       content: "";
@@ -101,6 +101,83 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         filter: grayscale(0);
       }
+    }
+  }
+
+  @media ${device.tablet} {
+    padding: 48px 18px 42px;
+
+    .download-block-btn {
+      padding: 9px 6px;
+      max-width: 122px;
+      min-height: 40px;
+      max-height: 40px;
+
+      span {
+        font-size: 11px;
+        line-height: 17px;
+      }
+
+      &.windows {
+        &:before {
+          margin-right: 6px;
+          width: 23px;
+          height: 23px;
+          background-size: 357px 23px;
+          background-position: -8px 0;
+        }
+      }
+
+      &.linux {
+        &:before {
+          margin-right: 6px;
+          width: 23px;
+          height: 23px;
+          background-size: 366px 23px;
+          background-position: -34px 0;
+        }
+      }
+
+      &.mac-os {
+        &:before {
+          margin-right: 6px;
+          width: 23px;
+          height: 23px;
+          background-size: 391px 23px;
+          background-position: -69px 0;
+        }
+      }
+
+      &.google-play {
+        &:before {
+          width: 92px;
+          height: 23px;
+          background-position: -230px 50%;
+          background-size: 494px 23px;
+        }
+      }
+
+      &.app-store {
+        &:before {
+          width: 87px;
+          height: 23px;
+          background-position: -111px 50%;
+          background-size: 428px 23px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 592px) {
+    margin: 0 -16px;
+    padding: 48px 13px 42px;
+    box-shadow: initial;
+
+    .download-block-title {
+      margin-bottom: 24px;
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: -0.01em;
     }
   }
 `;
