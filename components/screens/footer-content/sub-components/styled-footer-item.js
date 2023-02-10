@@ -4,11 +4,10 @@ import { device } from "@components/utils/devices";
 const StyledFooterTablet = css`
   display: block;
   padding: 0;
-  margin: 0 16px;
   border-bottom: 1px solid #e5e5e5;
 
   .footer-item-heading {
-    padding: 18px 0;
+    padding: 20px 0 19px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.4s linear 0s;
@@ -22,7 +21,7 @@ const StyledFooterTablet = css`
   .footer-item-heading-arrow {
     display: block;
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 14px;
     z-index: -1;
     transition: 0.3s linear;

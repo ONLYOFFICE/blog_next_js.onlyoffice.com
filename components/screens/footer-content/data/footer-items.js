@@ -198,14 +198,14 @@ const Items = [
       },
       {
         localize: true,
-        label: "Partner Inquiries",
+        label: "Partner inquiries",
         mail: "partners@onlyoffice.com",
         href: "mailto:partners@onlyoffice.com",
         isContact: true,
       },
       {
         localize: true,
-        label: "Press Inquiries",
+        label: "Press inquiries",
         mail: "press@onlyoffice.com",
         href: "mailto:press@onlyoffice.com",
         isContact: true,
