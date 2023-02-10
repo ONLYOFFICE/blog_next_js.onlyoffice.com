@@ -11,7 +11,9 @@ const StyledSection = styled.section`
   background: ${(props) => props.background || "transparent"};
 
   .section-page {
-    max-width: 1120px;
+    box-sizing: border-box;
+    padding: 0 32px;
+    max-width: 1184px;
     margin: 0px auto;
   }
 
@@ -20,7 +22,8 @@ const StyledSection = styled.section`
     padding: ${(props) => props.padding || "0px"};
 
     .section-page {
-      max-width: ${(props) => props.maxWidth || "928px"};
+      width: 100%;
+      max-width: ${(props) => props.maxWidth};
     }
   }
 
@@ -29,18 +32,16 @@ const StyledSection = styled.section`
     padding: ${(props) => props.tabletPadding || "25px 0px"};
 
     .section-page {
-      max-width: none;
-      width: ${(props) => props.maxWidthLaptop || "calc(100% - 80px)"};
+      max-width: ${(props) => props.maxWidthLaptop || "800px"};
     }
   }
 
-  @media ${device.mobile} {
+  @media (max-width: 592px) {
     margin: ${(props) => props.mobileLMargin || "0px"};
     padding: ${(props) => props.mobileLPadding || "50px 0px"};
 
     .section-page {
-      max-width: none;
-      width: ${(props) => props.maxWidthMobile || "calc(100% - 32px)"};
+      padding: 0 16px;
     }
   }
 `;
