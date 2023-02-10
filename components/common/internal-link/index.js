@@ -19,10 +19,11 @@ const InternalLink = ({
     <Link
       href={href}
       style={{ ...style, outline: "none", textDecoration: "none" }}
+      className={linkClassName}
       tabIndex={tabIndex}
       {...rest}
     >
-      <ExternalLink as="span" className={linkClassName} tabIndex={tabIndex} {...rest}>
+      <ExternalLink as="span" tabIndex={tabIndex} {...rest}>
         {children || label}
       </ExternalLink>
     </Link>
