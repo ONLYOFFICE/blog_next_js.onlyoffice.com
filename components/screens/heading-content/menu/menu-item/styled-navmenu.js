@@ -91,11 +91,6 @@ const StyledNavMenu = styled.div`
         }
     }
 }
-  @media (max-width: 1255px) {
-    .heading-nav-item {
-      padding: 20px 10px;
-    }
-  }
   .latest_news_date {
     color: #808080;
     font-size: 13px;
@@ -396,8 +391,10 @@ const StyledNavMenu = styled.div`
     &:before {
       display: none;
     }
-    @media (max-width: 1150px) {
-      padding: 7px 36px;
+    @media (max-width: 1024px) {
+      padding: 0 36px;
+      line-height: 24px;
+      margin: 0 0 12px !important;
     }
   }
   .menu_pic_div {
@@ -473,7 +470,7 @@ const StyledNavMenu = styled.div`
     font-feature-settings: 'tnum' on, 'lnum' on;
     &:not(:last-child) {
       margin-bottom: 12px;
-      @media (max-width: 1150px) {
+      @media (max-width: 1024px) {
         margin-bottom: 0;
       }
     }
@@ -500,12 +497,12 @@ const StyledNavMenu = styled.div`
     &:last-child {
       background-color: #f9f9f9;
       border-bottom-right-radius: 9px;
-      @media (min-width: 1150px) {
+      @media (min-width: 1024px) {
         width: min-content;
         max-width: 330px;
       }
     }
-    @media (min-width: 1150px) {
+    @media (min-width: 1024px) {
       min-width: 312px;
       max-width: 385px;
       &.with_border {
@@ -527,7 +524,7 @@ const StyledNavMenu = styled.div`
       align-items: initial;
       &:not(:last-child) {
         margin-bottom: 24px;
-        @media (max-width: 1150px) {
+        @media (max-width: 1024px) {
           margin-bottom: 0;
           padding: 2px 0 11px;
         }
@@ -536,9 +533,6 @@ const StyledNavMenu = styled.div`
         flex-direction: row;
         &:not(:last-child) {
           margin-bottom: 12px;
-          @media (max-width: 1150px) {
-            margin-bottom: 0;
-          }
         }
         .slash_text {
           color: #333333;
@@ -575,7 +569,7 @@ const StyledNavMenu = styled.div`
   #education_img {
     background-image: url('https://static-oforms.onlyoffice.com/images/menu-pics/menu_for_developers.png');
   }
-  @media (min-width: 1150px) {
+  @media (min-width: 1024px) {
     #navitem_fd_docs_dev, 
     #navitem_fd_doc_builder, 
     #navitem_fd_api_doc {
@@ -599,7 +593,7 @@ const StyledNavMenu = styled.div`
       line-height: 1.625em;
     }
   }
-  @media (max-width: 1150px) {
+  @media (max-width: 1024px) {
     .dropdown-item {
       line-height: 1.5em;
       margin: 0 0 16px;
@@ -681,11 +675,14 @@ const StyledNavMenu = styled.div`
       font-size: 13px;
       line-height: 32px;
       padding-left: 8px !important;
-      margin: 0 16px 16px !important;
+      margin: 0 16px 24px !important;
     }
-    #navitem_download_docs,
-    #navitem_download_workspace {
+    #navitem_download_docs {
       margin-bottom: 0;
+    }
+
+    #navitem_download_workspace {
+      margin-bottom: 24px;
     }
   }
   @media (max-width: 600px) {
@@ -708,7 +705,7 @@ const StyledNavMenu = styled.div`
       }
     }
   }
-  @media (max-width: 1150px) {
+  @media (max-width: 1024px) {
     .download-last-area .download-inner-list {
       display: block !important;
     }
@@ -719,7 +716,10 @@ const StyledNavMenu = styled.div`
     display: none;
   }
   #navitem_features_education {
-    display: none;
+    padding: 0 36px;
+    white-space: nowrap;
+    margin-bottom: 0;
+    text-overflow: initial;
   }
 
   #navitem_features_see_it, #navitem_features_oforms {
@@ -728,6 +728,18 @@ const StyledNavMenu = styled.div`
 
   .dropdown-item {
     margin-bottom: 24px;
+  }
+
+  #navitem_hosting_third_level_menu {
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  #navitem_download_onpremises {
+    @media (max-width: 1024px) {
+      padding: 6px 48px 0;
+    }
   }
 }
 `;
@@ -743,9 +755,9 @@ const StyledMenuItemsWrapper = styled.div`
   position: absolute;
   display: flex;
   box-shadow: 0 20px 50px rgba(85, 85, 85, 0.15);
-  @media (max-width: 1150px) {
+  @media (max-width: 1024px) {
     padding: 0;
-    max-height: calc(100% - 54px);
+    max-height: 100%;
     margin: 0;
     position: absolute;
     left: ${(props) => (props.isOpen ? "0" : "-120vw")};

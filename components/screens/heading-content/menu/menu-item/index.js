@@ -72,13 +72,6 @@ const MenuItem = ({ children, heading, ...rest }) => {
             )}
             {children}
           </StyledMenuItemsWrapper>
-          {windowCheck && (
-            <Box className="phone_wrapper">
-              <Link className="nav-item-mobile-tel" href="tel:+371 660 164 25">
-                +371 660 164 25
-              </Link>
-            </Box>
-          )}
         </>
       )}
     </StyledNavMenu>

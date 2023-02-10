@@ -3,13 +3,13 @@ import Box from "./sub-components/box";
 import MenuItem from "../menu-item";
 import StyledNav from "./styled-nav";
 
-const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
+const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
   const hrefLang = `https://onlyoffice.com${
     currentLanguage === "en" ? "" : `/${currentLanguage}`
   }`;
 
   return (
-    <StyledNav stateMobile={stateMobilePND} {...rest}>
+    <StyledNav {...rest}>
       <MenuItem heading={t("Features")} id="navitem_features">
         <Box className="menu_wrapper">
           <Box className="outer-box with_border">
@@ -18,7 +18,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/office-suite.aspx`}
               className="dropdown-item"
             >
-              {t("Docs Overview")}
+              {t("Docs overview")}
             </Link>
             <Link
               id="navitem_features_document_editor"
@@ -68,7 +68,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               id="navitem_features_desktop_mob_apps"
               className="dropdown-item mobile_no_link"
             >
-              {t("Desktop&mobile apps")}
+              {t("Desktop & mobile apps")}
             </Link>
             <Link
               id="navitem_features_clients_apps"
@@ -242,7 +242,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/document-builder.aspx`}
               className="dropdown-item"
             >
-              {t("Document builder")}
+              {t("Document Builder")}
             </Link>
             <Link
               id="navitem_fd_api_doc"
@@ -256,7 +256,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-developer`}
               className="dropdown-item"
             >
-              {t("Get It Now")}
+              {t("Get it now")}
             </Link>
           </Box>
         </Box>
@@ -330,7 +330,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               id="navitem_download_desktop_mob"
               href={`${hrefLang}/download-desktop.aspx`}
             >
-              {t("Desktop&mobile apps")}
+              {t("Desktop & mobile apps")}
             </Link>
           </Box>
           <div className="download-last-area">
@@ -354,7 +354,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               className="dropdown-item"
               href={`${hrefLang}/download-builder.aspx`}
             >
-              {t("Document builder")}
+              {t("Document Builder")}
             </Link>
           </Box>
           <Box className="outer-box no-color-box">
@@ -419,7 +419,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/docs-enterprise-prices.aspx`}
               className="dropdown-item"
             >
-              {t("Docs Enterprise")}
+              {t("Docs")}
             </Link>
             <Link
               id="navitem_prices_workspace"
@@ -449,7 +449,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/events.aspx`}
               className="dropdown-item"
             >
-              {t("Buy from an ONLYOFFICE partner")}
+              {t("Buy from an ONLYOFFICE reseller")}
             </Link>
             <Box id="reseller_div" className="menu_pic_div">
               <div id="reseller_img" className="menu_pic_img"></div>
@@ -483,7 +483,7 @@ const Nav = ({ onClick, t, stateMobilePND, currentLanguage, ...rest }) => {
               href={`${hrefLang}/technology-partners.aspx`}
               className="dropdown-item"
             >
-              {t("Technology Partners")}
+              {t("Technology partners")}
             </Link>
             <Link
               id="navitem_find_partners"

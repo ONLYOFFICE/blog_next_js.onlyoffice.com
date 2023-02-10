@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledNav = styled.nav`
   display: flex;
@@ -23,7 +24,7 @@ const StyledNav = styled.nav`
     flex-wrap: unset;
     align-items: unset;
 
-    @media (min-width: 1150px) {
+    @media (min-width: 1024px) {
       &:before {
         display: block;
         position: absolute;
@@ -50,7 +51,7 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media (min-width: 1150px) {
+  @media (min-width: 1024px) {
     #navitem_features .menu-items-wrapper {
       left: calc(50% - 465px);
     }
@@ -74,7 +75,7 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media (max-width: 1150px) {
+  @media ${device.laptop} {
     padding: 0;
     background-color: #fff;
     min-height: 100px;
@@ -96,7 +97,7 @@ const StyledNav = styled.nav`
 
     .menu_wrapper {
       display: block;
-      padding-top: 8px;
+      padding: 8px 0;
       min-height: 300px;
     }
 

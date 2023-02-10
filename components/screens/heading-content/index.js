@@ -6,6 +6,7 @@ import Nav from './menu/nav/nav'
 import StyledHeading from "./styled-heading";
 
 import logo from "@public/images/logo/logo.svg"
+import mobMenu from "@public/images/icons/mob-menu.svg"
 import { ReactSVG } from "react-svg";
 
 const Menu = ({ t, currentLanguage }) => {
@@ -35,7 +36,7 @@ const Menu = ({ t, currentLanguage }) => {
   };
 
   const handleClickOutside = (e) => {
-    if (windowCheck && stateMobile && !e.target.closest(".navbar")) {
+    if (windowCheck && stateMobile && !e.target.closest(".nav-item-links")) {
       onCloseMenu();
     }
   };
@@ -45,20 +46,20 @@ const Menu = ({ t, currentLanguage }) => {
       className="navbar"
       onMouseLeave={onCloseMenu}
     >
+      <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
+      <img
+        src={mobMenu.src}
+        className="nav-items-mobile"
+        onClick={toggleMobile}
+      />
       <span className="nav-item-logo">
         <InternalLink href={curLang}>
           <ReactSVG src={logo.src} alt="logo"/>
         </InternalLink>
       </span>
-      <img
-        src="https://static-oforms.onlyoffice.com/icons/mob_menu.svg"
-        className="nav-items-mobile"
-        onClick={toggleMobile}
-      />
       <Nav
         currentLanguage={currentLanguage}
-        className="nav-item-links"
-        stateMobilePND={stateMobile}
+        className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
         t={t}
       />
       <LanguageSelector t={t} currentLanguage={currentLanguage} />
