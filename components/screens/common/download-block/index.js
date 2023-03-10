@@ -1,7 +1,7 @@
+import StyledDownLoadBlock from "./styled-download-block";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
-import StyledDownLoadBlock from "./styled-download-block";
 
 const DownloadBlock = ({ t, ...rest }) => {
   return (
