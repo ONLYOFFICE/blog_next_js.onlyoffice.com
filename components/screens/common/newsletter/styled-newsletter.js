@@ -10,6 +10,7 @@ const StyledNewsletter = styled.div`
   .newsletter-wrapper {
     box-sizing: border-box;
     display: flex;
+    justify-content: center;
     padding: 54px 97px 37px;
     margin: 0 auto;
     width: 100%;
@@ -18,6 +19,9 @@ const StyledNewsletter = styled.div`
   .newsletter-title {
     margin-top: 7px;
     margin-right: 56px;
+    width: 100%;
+    max-width: 180px;
+    text-align: center;
   }
 
   .newsletter-body {
@@ -76,7 +80,7 @@ const StyledNewsletter = styled.div`
       margin: 0 0 32px;
       font-size: 20px;
       line-height: 27px;
-      letter-spacing: -.01em;
+      letter-spacing: -0.01em;
     }
 
     .newsletter-body {
