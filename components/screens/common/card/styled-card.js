@@ -4,9 +4,19 @@ import calendarIcon from "@public/images/icons/calendar.svg";
 import authorIcon from "@public/images/icons/author.svg";
 
 const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 1px solid #EFEFEF;
   border-radius: 5px;
+  overflow: hidden;
   background-color: #FFFFFF;
+  transition: box-shadow 0.3s;
+
+  &:not(.main-post) {
+    &:hover {
+      box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
+    }
+  }
 
   &.main-post {
     box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
@@ -19,7 +29,7 @@ const StyledCard = styled.div`
     .card-title {
       min-height: initial;
 
-      a {
+      .external-link {
         font-weight: 700;
         color: #333;
         font-size: 24px;
@@ -30,6 +40,10 @@ const StyledCard = styled.div`
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
+    }
+
+    .card-info {
+      margin-top: initial;
     }
 
     .card-description {
@@ -65,6 +79,7 @@ const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
     padding: 24px 24px 32px;
+    height: 100%;
   }
 
   .card-title {
@@ -73,15 +88,18 @@ const StyledCard = styled.div`
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
-    min-height: 72px;
     
-    a {
+    .external-link {
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
       letter-spacing: -0.01em;
       color: #333333;
       text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -89,13 +107,15 @@ const StyledCard = styled.div`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    
+    margin-top: auto;
+
     &:not(:last-child) {
       margin-bottom: 13px;
     }
   }
 
   .card-info-item {
+    display: inline-flex;
     padding-left: 20px;
     font-size: 13px;
     line-height: 21px;
@@ -103,7 +123,13 @@ const StyledCard = styled.div`
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 50%;
-    text-decoration: none;
+
+    .external-link {
+      font-size: 13px;
+      line-height: 21px;
+      color: #919192;
+      text-decoration: none;
+    }
 
     &:not(:last-child) {
       margin-right: 20px;
@@ -115,6 +141,14 @@ const StyledCard = styled.div`
 
     &.card-author {
       background-image: url(${authorIcon.src});
+
+      &:hover {
+        .external-link {
+          span {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 
@@ -156,7 +190,7 @@ const StyledCard = styled.div`
       }
 
       .card-title {
-        a {
+        .external-link {
           font-size: 16px;
           line-height: 21px;
         }
@@ -179,10 +213,14 @@ const StyledCard = styled.div`
     }
 
     .card-title {
-      a {
+      .external-link {
         font-size: 16px;
         line-height: 21px;
       }
+    }
+
+    .card-body {
+      padding: 21px 22px 21px;
     }
   }
 `;

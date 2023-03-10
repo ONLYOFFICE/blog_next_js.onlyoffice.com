@@ -1,28 +1,31 @@
-import Moment from 'moment';
-import ReactHTmlParser from "react-html-parser";
-import Text from "../../../common/text"
-import Heading from "../../../common/heading";
-import Link from "../../../common/external-link";
 import StyledCard from "./styled-card";
+import Moment from "moment";
+import parse from "html-react-parser";
+import Text from "@components/common/text"
+import Heading from "@components/common/heading";
+import InternalLink from "@components/common/internal-link";
 
 const Card = ({ t, currentLanguage, data, mainPost, ...rest }) => {
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
-      <Link className="card-img" href={data?.link}>
-        <img src={data?.featuredImage?.node.sourceUrl} alt={data?.title} />
-      </Link>
+      <InternalLink className="card-img" href={data?.uri}>
+        {
+          data.featuredImage?.node.sourceUrl ?
+            <img src={data.featuredImage?.node?.sourceUrl} alt={data?.title} />
+          :
+            <img src={data?.firstImgPost} alt={data?.title} />
+        }
+      </InternalLink>
       <div className="card-body">
         <Heading className="card-title" level={2}>
-          <Link href={data?.link}>
-            {data?.title}
-          </Link>
+          <InternalLink href={data?.uri}>{data?.title}</InternalLink>
         </Heading>
         <div className="card-info">
-          <Text className="card-info-item card-date" as="span">{Moment(data?.date).format('d MMMM y')}</Text>
-          <Link className="card-info-item card-author" href={data?.author.node.uri}>By {data?.author.node.name}</Link>
+          <Text className="card-info-item card-date" as="span">{Moment(data?.date).format("D MMMM y")}</Text>
+          <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>By <span>{data?.author?.node.name}</span></InternalLink>
         </div>
         {mainPost && 
-          <div className="card-description">{ReactHTmlParser(data?.excerpt)}</div>
+          <div className="card-description">{parse(data?.excerpt)}</div>
         }
       </div>
     </StyledCard>
