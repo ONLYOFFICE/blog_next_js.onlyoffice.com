@@ -4,7 +4,7 @@ import Section from "@components/common/section";
 import arrowRightIcon from "@public/images/icons/arrow-right.svg";
 
 const StyledMainContent = styled(Section)`
-  padding: 32px 0 82px;
+  padding: 40px 0 82px;
   background-color: #F5F5F5;
 
   .search_area {
@@ -52,10 +52,10 @@ const StyledMainContent = styled(Section)`
   }
 
   .view-all {
-    padding-right: 15px;
+    padding-right: 10px;
     background-image: url(${arrowRightIcon.src});
     background-repeat: no-repeat;
-    background-position: right 50%;
+    background-position: right 6px;
 
     span {
       font-size: 14px;
@@ -69,21 +69,6 @@ const StyledMainContent = styled(Section)`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-  }
-
-  .category-posts-btn {
-    margin-top: -8px;
-    justify-self: center;
-    grid-column: span 3;
-    padding: 17px 22px;
-    font-family: "Open Sans", sans-serif;
-    font-size: 13px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-  }
-
-  .category-posts-mobile-btn {
-    display: none;
   }
 
   .more-posts-btn {
@@ -137,16 +122,6 @@ const StyledMainContent = styled(Section)`
       margin-right: 0;
     }
 
-    .category-posts-btn {
-      display: none;
-    }
-
-    .category-posts-mobile-btn {
-      display: block;
-      grid-column: span 2;
-      justify-self: center;
-    }
-
     .category-more-posts {
       display: flex;
       justify-content: center;
@@ -169,6 +144,15 @@ const StyledMainContent = styled(Section)`
       margin-bottom: 32px;
     }
 
+    .group-input,
+    .search_input {
+      height: 56px;
+    }
+
+    .input-label {
+      top: 30%;
+    }
+
     .category-posts-title {
       font-size: 18px;
       line-height: 24px;
@@ -177,15 +161,6 @@ const StyledMainContent = styled(Section)`
 
     .category-posts {
       grid-template-columns: initial;
-    }
-
-    .category-posts-btn {
-      grid-column: initial;
-    }
-
-    .category-posts-mobile-btn {
-      width: 100%;
-      grid-column: initial;
     }
 
     .category-more-posts {
@@ -197,14 +172,6 @@ const StyledMainContent = styled(Section)`
     .more-posts-btn {
       display: flex;
       justify-content: center;
-    }
-
-    .category-posts-btn {
-      width: 100%;
-    }
-
-    .category-posts-btn {
-      margin-top: -16px;
     }
   }
 `;
