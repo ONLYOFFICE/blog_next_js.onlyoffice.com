@@ -84,6 +84,14 @@ const StyledHeadingTablet = css`
       display: none;
     }
   }
+
+  .search_area {
+    right: 70px;
+
+    &.active {
+      width: calc(100% - 120px);
+    }
+  }
 `;
 
 const StyledHeading = styled.div`
@@ -94,7 +102,7 @@ const StyledHeading = styled.div`
   margin: 0 auto;
   padding: 0 28px 0 24px;
   height: 70px;
-  background: #F5F5F5;
+  background-color: #ffffff;
   border-bottom: 1px solid #d9d9d9;
 
   .nav-item-logo {
@@ -118,11 +126,84 @@ const StyledHeading = styled.div`
     display: none;
   }
 
+  .search_area {
+    margin: 0 24px 0 auto;
+    width: 221px;
+
+    .group-input {
+      height: 40px;
+    }
+
+    .search_input {
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 9px 40px 9px 16px;
+      font-size: 14px;
+      line-height: 160%;
+      font-family: "Open Sans", sans-serif;
+      font-weight: 400;
+      color: #666;
+      height: 40px;
+      background-color: #ffffff;
+
+      &::placeholder {
+        color: #919192;
+      }
+
+      &:not(focus) {
+        border-color: #e0e0e0;
+      }
+    }
+
+    .search_icon {
+      right: 13px;
+    }
+  }
+
   @media (max-width: 1530px) {
     .nav-item-logo {
       overflow: hidden;
       min-width: 32px;
       width: 32px;
+    }
+
+    .search_area {
+      position: absolute;
+      right: 70px;
+      width: 0;
+      margin: 0;
+      transition: width 0.1s ease;
+
+      .group-input {
+        height: 32px;
+
+        .search_input {
+          border: none;
+          padding: 0;
+          height: 32px;
+          transition: border 0.1s ease, padding 0.1s ease;
+        }
+      }
+
+      .search_icon {
+        width: 18px;
+        height: 18px;
+        pointer-events: initial;
+
+        img {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      &.active {
+        width: calc(100% - 140px);
+
+        .search_input {
+          border: 1px solid #e0e0e0;
+          padding: 0px 40px 0 16px;
+        }
+      }
     }
   }
 
@@ -141,6 +222,14 @@ const StyledHeading = styled.div`
 
     .nav-item-links {
       width: 267px;
+    }
+
+    .search_area {
+      right: 60px;
+
+      &.active {
+        width: calc(100% - 106px);
+      }
     }
   }
 `;
