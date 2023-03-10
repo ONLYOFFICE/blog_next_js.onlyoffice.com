@@ -1,12 +1,13 @@
-import { useState } from "react";
-
 import StyledFooter from "./styled-footer";
+import { useState } from "react";
 import Social from "./data/social-items";
 import Items from "./data/footer-items";
 import FooterItem from "./sub-components/footer-item";
 import ExternalLink from "@components/common/external-link";
 import IconButton from "@components/common/icon-button";
 import Text from "@components/common/text";
+import Popup from "@components/screens/common/popup";
+import Newsletter from "@components/screens/common/newsletter";
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -14,9 +15,9 @@ const currentYear = date.getFullYear();
 const Footer = ({ t, language }) => {
   const POSITION_ELEMENTS_ITEM = [1, 2, 3, 4];
 
-  const [modalActive, setModalActive] = useState(false);
-  const handlerSetModal = (active) => {
-    setModalActive(active);
+  const [popupActive, setPopupActive] = useState(false);
+  const handlerSetModal = () => {
+    setPopupActive(true);
   };
 
   const onlyoffice = `https://www.onlyoffice.com${
@@ -81,7 +82,7 @@ const Footer = ({ t, language }) => {
                 as={item.title === "OnlyOffice" ? "div" : "a"}
                 onClick={
                   item.title === "OnlyOffice"
-                    ? () => handlerSetModal(true)
+                    ? () => handlerSetModal()
                     : null
                 }
               >
@@ -101,6 +102,9 @@ const Footer = ({ t, language }) => {
           <span>{t("All rights reserved")}</span>
         </div>
       </div>
+      <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
+        <Newsletter t={t} />
+      </Popup>
     </StyledFooter>
   );
 };
