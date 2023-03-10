@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSearchArea = styled.div`
+const StyledSearchArea = styled.form`
   .search_container {
     position: relative;
   }
@@ -9,7 +9,7 @@ const StyledSearchArea = styled.div`
     border: 1px solid #AAAAAA;
     border-radius: 3px;
     padding: 16px 48px 16px 16px;
-    background-color: #F9F9F9;
+    background-color: transparent;
   }
 
   .input-label {
@@ -22,10 +22,15 @@ const StyledSearchArea = styled.div`
     position: absolute;
     top: 50%;
     right: 16px;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     transform: translateY(-50%);
     z-index: 1;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   .close-icon {

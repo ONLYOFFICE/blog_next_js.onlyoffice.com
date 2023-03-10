@@ -1,30 +1,19 @@
-import { useState } from "react";
+import StyledSearchArea from "./styled-search-area";
 import Box from "@components/common/box";
 import TextInput from "@components/common/text-input/";
-import Heading from "@components/common/heading";
-
-import StyledSearchArea from "./styled-search-area";
-
 import SearchIcon from "@public/images/icons/search-icon.react.svg";
 import CloseIcon from "@public/images/icons/close-icon.react.svg";
 
-const SearchArea = ({ valueSearch, t, label }) => {
-  const [searchItem, setSearchItem] = useState("");
-
+const SearchArea = ({ valueSearch, label, placeholder, searchQuery, setSearchQuery, handleSearchFormSubmit, searchActive, onClick }) => {
   const onSearch = (e) => {
     e.preventDefault();
-    setSearchItem(e.target.value);
-  };
-
-  const clearValueSearch = () => {
-    setSearchItem("");
+    setSearchQuery(e.target.value);
   };
 
   /*eslint-disable*/
-  const imgSearch = !searchItem ? (
+  const imgSearch = !searchQuery ? (
     <img className="search_img"
       src={SearchIcon.src}
-      style={{ cursor: "default" }}
       alt="search"
       width="24px"
       height="24px"
@@ -32,7 +21,7 @@ const SearchArea = ({ valueSearch, t, label }) => {
   ) : (
     <img
       src={CloseIcon.src}
-      onClick={clearValueSearch}
+      onClick={() => setSearchQuery("")}
       className="close-icon"
       alt="close"
       width="24px"
@@ -40,23 +29,25 @@ const SearchArea = ({ valueSearch, t, label }) => {
     />
   );
   /*eslint-enable*/
+
   return (
-    <StyledSearchArea className="search_area">
+    <StyledSearchArea onSubmit={handleSearchFormSubmit} className={`search_area ${searchActive ? "active" : ""}`}>
       <Box className="search_container" alignItems="center">
         <TextInput
           onChange={onSearch}
-          value={searchItem}
-          searchItem={searchItem}
+          value={searchQuery}
+          searchQuery={searchQuery}
           label={label}
+          placeholder={placeholder}
           type="text"
           className="search_input"
           backgroundColor="#fffff"
           color="#333333"
           fontSize="16px"
           colorHover="#CCCCCC"
-          labelColor={!valueSearch ? "#808080" : "#CCCCCC"}
+          labelColor={!valueSearch ? "#808080" : "#AAAAAA"}
         />
-        <div className="search_icon">{imgSearch}</div>
+        <div onClick={onClick} className="search_icon">{imgSearch}</div>
       </Box>
     </StyledSearchArea>
   );
