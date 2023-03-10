@@ -113,9 +113,9 @@ const Base = {
 
     label: {
       color: "#AAAAAA",
-      colorHover: gray,
+      colorHover: "#AAAAAA",
       padding: "0 15px",
-      left: "2px",
+      left: "0px",
       top: "0px",
       fontSize: "12px",
     },
