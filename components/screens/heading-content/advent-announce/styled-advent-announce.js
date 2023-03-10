@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import left from "@public/images/banners/docs-release-left.svg";
+import right from "@public/images/banners/docs-7-3-right.svg";
+import icon from "@public/images/banners/docs-release-icon.svg";
+import union from "@public/images/banners/docs-release-union.svg";
+import mobile from "@public/images/banners/docs-release-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -42,14 +47,14 @@ const StyledAdventAnnounce = styled.div`
         display: block;
         height: 55px;
         z-index: -1;
-        background-image: url(../images/banners/docs-release-left.svg),url(../images/banners/docs-release-icon.svg);
+        background-image: url(${left.src}),url(${icon.src});
         background-position-x: 40%, 100%;
         background-position-y: 11px, -7px;
         left: -472px;
         width: 462px;
         @media (max-width: 1024px) {
           height: 48px;
-          background-image: url(../images/banners/docs-release-icon.svg);
+          background-image: url(${icon.src});
           background-position-y: -11px;
           left: -70px;
           width: 50px;
@@ -64,14 +69,14 @@ const StyledAdventAnnounce = styled.div`
         height: 55px;
         z-index: -1;
         background-repeat: no-repeat;
-        background-image: url(../images/banners/docs-7-3-right.svg);
+        background-image: url(${right.src});
         background-position-x: 0;
         background-position-y: 7px;
         right: -438px;
         width: 431px;
         @media (max-width: 1024px) {
           height: 48px;
-          background-image: url(../images/banners/docs-release-union.svg),url(../images/banners/docs-release-mobile.svg);
+          background-image: url(${union.src}),url(${mobile.src});
           background-position-y: center, 23px;
           background-position-x: 0%, 30px;
         }
