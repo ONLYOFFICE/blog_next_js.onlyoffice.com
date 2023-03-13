@@ -4,7 +4,6 @@ import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
 const RecentPosts = ({ t, data }) => {
-  console.log(data)
   return (
     <StyledRecentPosts>
       <Heading level={4}>{t("Recent Posts")}</Heading>

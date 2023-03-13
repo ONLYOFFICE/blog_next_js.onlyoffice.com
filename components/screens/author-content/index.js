@@ -3,7 +3,7 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const AuthorContent = ({ t, currentLanguage, posts, authorContent }) => {
+const AuthorContent = ({ t, currentLanguage, posts, authorContent, authorName }) => {
   const isAuthorContent = true;
 
   return (
@@ -12,7 +12,7 @@ const AuthorContent = ({ t, currentLanguage, posts, authorContent }) => {
 
       <Heading className="author-title" level={2}>
         {`${t("Author Archives")}: `}
-        <span className="author-name">{posts.edges[0]?.node.author?.node?.name}</span>
+        <span className="author-name">{authorName}</span>
       </Heading>
 
       <div className="author-posts">

@@ -12,7 +12,7 @@ import CategoryContent from "@components/screens/category-content";
 const Category = ({ locale, posts }) => {
   const { t } = useTranslation("common");
 
-  const categoryName = posts.edges[0]?.node.categories?.nodes[0]?.name;
+  const categoryName = posts.edges[0]?.node.categories?.nodes[0]?.name || "";
 
   return (
     <Layout>
@@ -30,7 +30,7 @@ const Category = ({ locale, posts }) => {
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CategoryContent t={t} currentLanguage={locale} posts={posts} />
+        <CategoryContent t={t} currentLanguage={locale} posts={posts} categoryName={categoryName} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -40,12 +40,12 @@ const Category = ({ locale, posts }) => {
 }
 
 export const getStaticPaths = async ({ locales }) => {
-  const posts = await getCategoryPostsSlug();
+  const categories = await getCategoryPostsSlug();
 
   const paths = locales.map((locale) => (
-    posts.edges.map(({node}) => ({
+    categories.edges.map(({node}) => ({
       params: {
-        slug: node.categories.nodes[0].slug
+        slug: node.slug
       }, 
       locale
     }))
@@ -60,13 +60,19 @@ export const getStaticPaths = async ({ locales }) => {
 export const getStaticProps = async ({ locale, params }) => {
   const posts = await getCategoryPosts(locale, 15, null, params?.slug);
 
+  if (posts.edges.length === 0) {
+    return {
+      notFound: true
+    };
+  };
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       posts
     },
-    revalidate: 10,
+    revalidate: 1,
   }
 }
 

@@ -16,8 +16,8 @@ const Post = ({locale, post, posts}) => {
     <Layout>
       <Layout.PageHead>
         <HeadSEO
-          title={`${post.title} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={`${post.title} | ${t("ONLYOFFICE Blog")}`}
+          title={`${post?.title || ""} | ${t("ONLYOFFICE Blog")}`}
+          metaSiteNameOg={`${post?.title || ""} | ${t("ONLYOFFICE Blog")}`}
           metaDescription={t("titleIndexPage")}
           metaDescriptionOg={t("metaDescriptionOgIndexPage")}
           metaKeywords={t("metaKeywordsIndexPage")}
@@ -39,22 +39,20 @@ const Post = ({locale, post, posts}) => {
 
 export const getStaticPaths = async ({ locales }) => {
   const posts = await getAllPostsWithUri("all");
-  const postsEnLocale = await getAllPostsWithUri();
+  const postsEnLocale = await getAllPostsWithUri("en");
 
   const languages = ["/fr/", "/de/", "/es/", "/pt-br/", "/it/", "/cs/", "/ja/", "/zh-hans/"]
 
   const postsWihoutEnLocale = posts.edges.filter(({node}) => languages.some(el => node.uri.includes(el)));
 
-  const uriWithoutEnLocale = locales.map((locale) => {
-    return postsWihoutEnLocale.map(({node}) => {
-      return {
-        params: {
-          post: node.uri.split(/[/]/).splice(2, 3)
-        }, 
-        locale
-      }
-    });
-  }).flat();
+  const uriWithoutEnLocale = locales.map((locale) => (
+    postsWihoutEnLocale.map(({node}) => ({
+      params: {
+        post: node.uri.split(/[/]/).splice(2, 3)
+      }, 
+      locale
+    }))
+  )).flat();
 
   const uriEnLocale = postsEnLocale.edges.map(({node}) => ({
     params: {
@@ -72,6 +70,12 @@ export const getStaticPaths = async ({ locales }) => {
 export const getStaticProps = async ({ locale, params }) => {
   const data = await getPostAndMorePosts(locale, params?.post.join("/"));
 
+  if (!data.post) {
+    return {
+      notFound: true
+    };
+  };
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
@@ -79,7 +83,7 @@ export const getStaticProps = async ({ locale, params }) => {
       post: data.post,
       posts: data.posts
     },
-    revalidate: 10,
+    revalidate: 1,
   }
 }
 

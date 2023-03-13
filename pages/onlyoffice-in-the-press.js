@@ -48,7 +48,7 @@ export const getStaticProps = async ({ locale }) => {
       inThePressPosts,
       recentPosts
     },
-		revalidate: 10,
+		revalidate: 1,
 	}
 }
 

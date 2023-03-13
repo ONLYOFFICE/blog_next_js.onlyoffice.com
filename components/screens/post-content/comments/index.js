@@ -14,7 +14,7 @@ const Comments = ({ t, currentLanguage, post, ...rest }) => {
 
   return (
     <StyledComments {...rest}>
-      {post.commentCount > 0 &&
+      {post?.commentCount > 0 &&
       <>
         <Heading className="comments-title" level={3}>{`${t("Comments")} (${post.commentCount})`}</Heading>
         <ul className="comments-wrapper">

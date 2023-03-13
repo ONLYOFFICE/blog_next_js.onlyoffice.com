@@ -12,7 +12,7 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
         isPostContent ?
           <>
             <li>
-              {data.map(({node}) => {
+              {data?.map(({node}) => {
                 return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink>&ensp;/&ensp;</span>
               })}
             </li>
@@ -21,11 +21,11 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
             </li>
           </> 
         :
-          isAuthorContent ? <li>{data.edges[0]?.node.author?.node?.name}</li> 
+          isAuthorContent ? <li>{data?.edges[0]?.node.author?.node?.name}</li> 
         :
           isInThePressContent ? <li>{t("ONLYOFFICE IN THE PRESS")}</li> 
         :
-          isCategoryContent ? <li>{data.edges[0]?.node.categories?.nodes[0]?.name}</li>
+          isCategoryContent ? <li>{data?.edges[0]?.node.categories?.nodes[0]?.name}</li>
         :
           isSearchContent ? <li>{`${t("Search results for")} '${searchQuery === undefined ? "" : searchQuery}'`}</li> 
         : 

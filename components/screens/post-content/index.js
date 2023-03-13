@@ -16,25 +16,25 @@ const PostContent = ({ t, currentLanguage, post, posts }) => {
 
   return (
     <StyledPostContent>
-      <Breadcrumbs t={t} data={post.categories.edges} isPostContent={isPostContent} />
+      <Breadcrumbs t={t} data={post?.categories.edges} isPostContent={isPostContent} />
 
       <div className="content">
         <article>
-          <Heading className="title" level={1}>{post.title}</Heading>
+          <Heading className="title" level={1}>{post?.title}</Heading>
           <div className="info-content">
-            <span className="date">{Moment(post.date).format("D MMMM y")}</span>
-            <span className="author">By <InternalLink href={`/author/${post.author.node.slug}`}>{post.author.node.name}</InternalLink></span>
-            <span className="comments">{post.commentCount === null ? 0 : post.commentCount}</span>
-            <span className="views">{post.viewCount === null ? 0 : post.viewCount}</span>
+            <span className="date">{Moment(post?.date).format("D MMMM y")}</span>
+            <span className="author">By <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink></span>
+            <span className="comments">{post?.commentCount === null ? 0 : post?.commentCount}</span>
+            <span className="views">{post?.viewCount === null ? 0 : post?.viewCount}</span>
 
             <ShareButtons />
           </div>
-          <div className="entry-content">{parse(post.content)}</div>
+          <div className="entry-content">{post?.content ? parse(post?.content) : ""}</div>
         </article>
 
         <div className="tag-list">
           <div className="tag-items">
-            {post.tags.edges.map(({node}) => (
+            {post?.tags.edges.map(({node}) => (
               <Tag href={node.link} key={node.id}>{node.name}</Tag>
             ))}
           </div>
@@ -45,7 +45,7 @@ const PostContent = ({ t, currentLanguage, post, posts }) => {
 
         <CloudBlock t={t} currentLanguage={currentLanguage} />
 
-        {post.discoursePermalink ? (
+        {post?.discoursePermalink ? (
           <div className="join-discussion">
             <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
           </div>
