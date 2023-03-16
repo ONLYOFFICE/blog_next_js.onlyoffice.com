@@ -47,11 +47,11 @@ pipeline
           echo "Deploy from ${BRANCH_NAME} is starting."
         '''
         
-        sshPublisher(publishers: [sshPublisherDesc(configName: "blog.teamlab.info", 
+        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@info", 
           transfers: [sshTransfer(cleanRemote: false, 
             excludes: '', 
             execCommand: '''
-              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/deploy.log
+              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/blog_deploy.log
             ''', 
             execTimeout: 600000, 
             flatten: false, 

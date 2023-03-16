@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#sudo systemctl stop blog
-pm2 stop blog
+sudo systemctl stop blog
 
 datestamp=$(date +"%Y%m%d_%H%M%S")
 
@@ -16,6 +15,5 @@ cd /app/blog.teamlab.info/
 yarn
 yarn build
 
-#sudo systemctl start blog
-pm2 start blog
+sudo systemctl start blog
 sudo sleep 10
