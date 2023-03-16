@@ -1,0 +1,79 @@
+pipeline
+{
+  agent { label 'ubuntu' }
+  options
+  {
+  disableConcurrentBuilds()
+  buildDiscarder (logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
+  }
+  environment
+  {
+    MONITOR_ID = '8888888888888888'
+  }
+  parameters
+  {
+    gitParameter (name: 'BRANCH',
+     type: 'PT_BRANCH',
+     branchFilter:'*',
+     listSize:'5',
+     defaultValue:'main',
+     selectedValue:'DEFAULT',
+     sortMode: 'ASCENDING_SMART',
+     description: 'Select branch name to build')
+    choice(name: 'EXECUTE', choices: ['True','False'],description: 'Choice "True" to run it or "False" to update job')
+  }
+  stages
+  {
+    stage('stop_monitor') {
+      when { expression { return env.EXECUTE == "True" } }
+      steps {
+        build job: 'monitor.24x7.start.stop', 
+          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
+          string(name: 'action', value: 'suspend')]
+      }    
+    }
+    stage('deploy')
+    {
+    when { expression { return env.EXECUTE == "True" } }
+    steps 
+      {
+        sh '''
+          tar -czpf .jenkins/blog.tar.gz \
+            --exclude ".git" \
+            --exclude ".gitignore" \
+            --exclude ".jenkins" \
+            --exclude "README.md" .
+          
+          echo "Deploy from ${BRANCH_NAME} is starting."
+        '''
+        
+        sshPublisher(publishers: [sshPublisherDesc(configName: "blog.teamlab.info", 
+          transfers: [sshTransfer(cleanRemote: false, 
+            excludes: '', 
+            execCommand: '''
+              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/deploy.log
+            ''', 
+            execTimeout: 600000, 
+            flatten: false, 
+            makeEmptyDirs: false, 
+            noDefaultExcludes: false, 
+            patternSeparator: '[, ]+', 
+            remoteDirectory: '', 
+            remoteDirectorySDF: false, 
+            removePrefix: '', 
+            sourceFiles: '.jenkins/blog.tar.gz,.jenkins/build.sh')], 
+          usePromotionTimestamp: false, 
+          useWorkspaceInPromotion: false, 
+          verbose: false)])
+      }
+    }
+    stage('start_monitor') {
+      when { expression { return env.EXECUTE == "True" } }
+      steps {
+        build job: 'monitor.24x7.start.stop', 
+          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
+          string(name: 'action', value: 'activate')]
+      }    
+    }
+  }
+}
