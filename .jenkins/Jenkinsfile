@@ -47,7 +47,7 @@ pipeline
           echo "Deploy from ${BRANCH_NAME} is starting."
         '''
         
-        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@info", 
+        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@info-timeout-off", 
           transfers: [sshTransfer(cleanRemote: false, 
             excludes: '', 
             execCommand: '''
