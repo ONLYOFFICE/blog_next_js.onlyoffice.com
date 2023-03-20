@@ -3,9 +3,7 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const AuthorContent = ({ t, currentLanguage, posts, authorContent, authorName }) => {
-  const isAuthorContent = true;
-
+const AuthorContent = ({ t, currentLanguage, posts, isAuthorContent, authorName }) => {
   return (
     <StyledAuthorContent>
       <Breadcrumbs className="breadcrumbs" t={t} data={posts} isAuthorContent={isAuthorContent} />
@@ -16,7 +14,7 @@ const AuthorContent = ({ t, currentLanguage, posts, authorContent, authorName })
       </Heading>
 
       <div className="author-posts">
-        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} authorContent={authorContent} />
+        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isAuthorContent={isAuthorContent} />
       </div>
     </StyledAuthorContent>
   );

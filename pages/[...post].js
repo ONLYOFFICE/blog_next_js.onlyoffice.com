@@ -1,26 +1,38 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAllPostsWithUri, getPostAndMorePosts } from '../lib/api';
+import { getPostsUri, getPostAndMorePosts, getPostPagelink } from "@lib/api";
+import parse from "html-react-parser";
 
 import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
+import PostHeadSEO from "@components/screens/head-content/post";
 import HeadingContent from "@components/screens/heading-content";
 import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
-const Post = ({locale, post, posts}) => {
+const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink}) => {
   const { t } = useTranslation("common");
+  const isPostContent = true;
+  const postMetaDescription = post?.excerpt ? parse(post?.excerpt) : "";
 
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
-          title={`${post?.title || ""} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={`${post?.title || ""} | ${t("ONLYOFFICE Blog")}`}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
+        <PostHeadSEO
+          title={`${post?.title} | ${t("ONLYOFFICE Blog")}`}
+          metaSiteName={t("SiteName")}
+          metaDescription={post?.excerpt ? postMetaDescription?.[0].props.children : ""}
+          currentLanguage={locale}
+          post={post}
+          enPostLink={enPostLink}
+          csPostLink={csPostLink}
+          dePostLink={dePostLink}
+          esPostLink={esPostLink}
+          frPostLink={frPostLink}
+          itPostLink={itPostLink}
+          jaPostLink={jaPostLink}
+          ptPostLink={ptPostLink}
+          zhPostLink={zhPostLink}
         />
       </Layout.PageHead>
       <AdventAnnounce t={t} currentLanguage={locale} />
@@ -28,7 +40,7 @@ const Post = ({locale, post, posts}) => {
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <PostContent t={t} currentLanguage={locale} post={post} posts={posts} />
+        <PostContent t={t} currentLanguage={locale} post={post} posts={posts} isPostContent={isPostContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -37,38 +49,79 @@ const Post = ({locale, post, posts}) => {
   )
 }
 
-export const getStaticPaths = async ({ locales }) => {
-  const posts = await getAllPostsWithUri("all");
-  const postsEnLocale = await getAllPostsWithUri("en");
+export const getStaticPaths = async () => {
+  const enPostsSlug = await getPostsUri();
+  const frPostsSlug = await getPostsUri("fr");
+  const dePostsSlug = await getPostsUri("de");
+  const esPostsSlug = await getPostsUri("es");
+  const ptPostsSlug = await getPostsUri("pt-br");
+  const itPostsSlug = await getPostsUri("it");
+  const csPostsSlug = await getPostsUri("cs");
+  const jaPostsSlug = await getPostsUri("ja");
+  const zhPostsSlug = await getPostsUri("zh-hans");
 
-  const languages = ["/fr/", "/de/", "/es/", "/pt-br/", "/it/", "/cs/", "/ja/", "/zh-hans/"]
-
-  const postsWihoutEnLocale = posts.edges.filter(({node}) => languages.some(el => node.uri.includes(el)));
-
-  const uriWithoutEnLocale = locales.map((locale) => (
-    postsWihoutEnLocale.map(({node}) => ({
-      params: {
-        post: node.uri.split(/[/]/).splice(2, 3)
-      }, 
-      locale
-    }))
-  )).flat();
-
-  const uriEnLocale = postsEnLocale.edges.map(({node}) => ({
-    params: {
-      post: node.uri.split(/[/]/).splice(1, 3)
-    },
+  const enPosts = enPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(1, 3) },
     locale: "en"
   }));
 
+  const frPosts = frPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "fr"
+  }));
+
+  const dePosts = dePostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "de"
+  }));
+
+  const postsEs = esPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "es"
+  }));
+
+  const ptPosts = ptPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "pt-br"
+  }));
+
+  const itPosts = itPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "it"
+  }));
+
+  const csPosts = csPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "cs"
+  }));
+
+  const jaPosts = jaPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "ja"
+  }));
+
+  const zhPosts = zhPostsSlug?.edges?.map(({node}) => ({
+    params: { post: node.uri.split(/[/]/).splice(2, 3) },
+    locale: "zh-hans"
+  }));
+
   return {
-    paths: [...uriWithoutEnLocale, ...uriEnLocale],
-    fallback: false,
+    paths: [...enPosts, ...frPosts, ...dePosts, ...postsEs, ...ptPosts, ...itPosts, ...csPosts, ...jaPosts, ...zhPosts],
+    fallback: "blocking",
   }
 }
 
 export const getStaticProps = async ({ locale, params }) => {
   const data = await getPostAndMorePosts(locale, params?.post.join("/"));
+  const enPostLink = await getPostPagelink("", data.post?.databaseId);
+  const csPostLink = await getPostPagelink("cs", data.post?.databaseId);
+  const dePostLink = await getPostPagelink("de", data.post?.databaseId);
+  const esPostLink = await getPostPagelink("es", data.post?.databaseId);
+  const frPostLink = await getPostPagelink("fr", data.post?.databaseId);
+  const itPostLink = await getPostPagelink("it", data.post?.databaseId);
+  const jaPostLink = await getPostPagelink("ja", data.post?.databaseId);
+  const ptPostLink = await getPostPagelink("pt-br", data.post?.databaseId);
+  const zhPostLink = await getPostPagelink("zh-hans", data.post?.databaseId);
 
   if (!data.post) {
     return {
@@ -81,7 +134,16 @@ export const getStaticProps = async ({ locale, params }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       post: data.post,
-      posts: data.posts
+      posts: data.posts,
+      enPostLink,
+      csPostLink,
+      dePostLink,
+      esPostLink,
+      frPostLink,
+      itPostLink,
+      jaPostLink,
+      ptPostLink,
+      zhPostLink
     },
     revalidate: 1,
   }

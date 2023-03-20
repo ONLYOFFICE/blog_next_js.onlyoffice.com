@@ -7,9 +7,7 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import Newsletter from "@components/screens/common/newsletter";
 import InThePressPost from "./in-the-press-post";
 
-const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts }) => {
-  const isInThePressContent = true;
-
+const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, isInThePressContent }) => {
   return (
     <StyledInThePressContent>
       <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />

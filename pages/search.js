@@ -1,10 +1,10 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getRecentPosts } from '../lib/api';
+import { getRecentPosts } from "@lib/api";
 import { useRouter } from "next/router";
 
 import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
+import SearchHeadSEO from "@components/screens/head-content/search";
 import HeadingContent from "@components/screens/heading-content";
 import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
@@ -19,13 +19,7 @@ const Search = ({ locale, recentPosts }) => {
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
-          title={`${routerQuery} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={`${routerQuery} | ${t("ONLYOFFICE Blog")}`}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
-        />
+        <SearchHeadSEO title={`${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
       <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
@@ -50,7 +44,7 @@ export const getStaticProps = async ({ locale }) => {
       locale,
       recentPosts
     },
-		revalidate: 10,
+		revalidate: 1,
 	}
 }
 

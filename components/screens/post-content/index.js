@@ -11,12 +11,10 @@ import RecentPosts from "./recent-posts";
 import Comments from "./comments";
 import ShareButtons from "./share-buttons";
 
-const PostContent = ({ t, currentLanguage, post, posts }) => {
-  const isPostContent = true;
-
+const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   return (
     <StyledPostContent>
-      <Breadcrumbs t={t} data={post?.categories.edges} isPostContent={isPostContent} />
+      <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
 
       <div className="content">
         <article>
@@ -34,8 +32,8 @@ const PostContent = ({ t, currentLanguage, post, posts }) => {
 
         <div className="tag-list">
           <div className="tag-items">
-            {post?.tags.edges.map(({node}) => (
-              <Tag href={node.link} key={node.id}>{node.name}</Tag>
+            {post?.tags?.edges.map(({node}) => (
+              <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
             ))}
           </div>
           <div className="tag-share">

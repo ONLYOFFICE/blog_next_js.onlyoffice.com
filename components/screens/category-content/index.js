@@ -6,18 +6,16 @@ import Newsletter from "@components/screens/common/newsletter";
 import DownloadBlock from "@components/screens/common/download-block";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const CategoryContent = ({ t, currentLanguage, posts, categoryName }) => {
-  const isCategoryContent = true;
+const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categoryName }) => {
   const firstPosts = posts?.edges.length > 6 ? posts?.edges.slice(0, 6) : posts?.edges
 
   return (
     <StyledCategoryContent>
       <Breadcrumbs className="breadcrumbs" t={t} data={posts} isCategoryContent={isCategoryContent} />
-
       <Heading className="category-title" level={1}>{categoryName}</Heading>
 
       <div className="category-posts">
-        {firstPosts.map(({node}) => (
+        {firstPosts?.map(({node}) => (
           <Card data={node} key={node.id} />
         ))}
 
