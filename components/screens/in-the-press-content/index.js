@@ -18,13 +18,13 @@ const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, i
 
           <div className="posts">
             {inThePressPosts.edges.slice(0, 3).map(({node}) => (
-              <InThePressPost data={node} key={node.id} />
+              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
             ))}
 
             <Newsletter t={t} />
 
             {inThePressPosts.edges.slice(3, 5).map(({node}) => (
-              <InThePressPost data={node} key={node.id} />
+              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
             ))}
 
             <LoadMorePosts className="in-the-press-load-more" t={t} currentLanguage={currentLanguage} data={inThePressPosts} isInThePressContent={isInThePressContent} />
@@ -32,7 +32,7 @@ const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, i
         </div>
 
         <div className="sidebar">
-          <RecentPosts t={t} data={recentPosts} />
+          <RecentPosts t={t} currentLanguage={currentLanguage} data={recentPosts} />
           <FollowUs t={t} currentLanguage={currentLanguage} />
         </div>
       </div>
