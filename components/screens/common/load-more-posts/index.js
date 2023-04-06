@@ -57,7 +57,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
       :
       isSearchContent ?
         postsData?.map(({node}) => (
-          <SearchPost key={node.id} t={t} data={node} searchQuery={searchQuery} />
+          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQuery={searchQuery} />
         ))
       :
         postsData?.map(({node}) => (
