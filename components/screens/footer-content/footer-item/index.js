@@ -1,6 +1,6 @@
+import StyledFooterItem from "./styled-footer-item";
 import { useState, useRef } from "react";
 
-import StyledFooterItem from "./styled-footer-item";
 import Heading from "@components/common/heading";
 
 const FooterItem = ({ dis, children, className, heading }) => {
