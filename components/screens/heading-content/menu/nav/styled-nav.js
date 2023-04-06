@@ -52,26 +52,79 @@ const StyledNav = styled.nav`
   }
 
   @media (min-width: 1024px) {
+    #navitem_partners,
+    #navitem_about,
+    #navitem_fordevelopers,
+    #navitem_prices {
+      position: relative;
+    }
+    #navitem_features {
+      .outer-box {
+        max-width: 100%;
+      }
+    }
+    #navitem_download {
+      .menu_wrapper {
+        > .outer-box.with_border {
+          width: min-content;
+        }
+      }
+
+      .outer-box.with_border {
+        &:after {
+          top: 32px;
+          height: 179px;
+          transform: initial;
+        }
+      }
+    }
+    #navitem_prices {
+      .outer-box {
+        &:first-child {
+          min-width: 236px;
+        }
+
+        &:last-child {
+          min-width: 236px;
+        }
+      }
+    }
+    #navitem_partners {
+      .outer-box {
+        &:last-child {
+          min-width: 236px;
+        }
+      }
+    }
+    #navitem_about {
+      .outer-box {
+        &:last-child {
+          max-width: 100%;
+        }
+      }
+    }
     #navitem_features .menu-items-wrapper {
-      left: calc(50% - 465px);
+      left: 50%;
+      transform: translateX(-50%);
     }
     #navitem_forbusiness .menu-items-wrapper {
-      left: calc(50% - 318px);
-    }
-    #navitem_fordevelopers .menu-items-wrapper {
-      left: calc(50% - 186px);
-    }
-    #navitem_download .menu-items-wrapper {
       left: calc(50% - 440px);
     }
+    #navitem_fordevelopers .menu-items-wrapper {
+      left: calc(50% - 130px);
+    }
+    #navitem_download .menu-items-wrapper {
+      left: 50%;
+      transform: translateX(-50%);
+    }
     #navitem_prices .menu-items-wrapper {
-      left: calc(50% - 80px);
+      left: calc(50% - 180px);
     }
     #navitem_partners .menu-items-wrapper {
-      left: calc(50% - 60px);
+      left: calc(50% - 210px);
     }
     #navitem_about .menu-items-wrapper {
-      left: calc(50% - 75px);
+      left: calc(50% - 395px);
     }
   }
 

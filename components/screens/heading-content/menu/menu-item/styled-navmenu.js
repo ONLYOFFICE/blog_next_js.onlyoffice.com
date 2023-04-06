@@ -32,6 +32,15 @@ const StyledNavMenu = styled.div`
     font-weight: 400 !important;
     margin: 0 0 12px !important;
   }
+  #navitem_download_docs_ee,
+  #navitem_download_workspace {
+    margin-bottom: 12px;
+    line-height: 34px;
+
+    &:before {
+      top: 5px;
+    }
+  }
   #navitem_features_workspace {
     margin-bottom: 0px;
   }
@@ -50,8 +59,11 @@ const StyledNavMenu = styled.div`
     text-transform: uppercase;
   }
   .download-last-area {
+    display: flex;
+    flex-direction: column;
     .download-inner-list {
         display: flex;
+        margin-bottom: auto;
         > li {
             min-width: 312px;
             padding: 0 0 28px;
@@ -87,7 +99,7 @@ const StyledNavMenu = styled.div`
         }
         .menu_pic_div {
             margin: 0;
-            padding: 0 32px 0 32px;
+            padding: 0;
         }
     }
 }
@@ -99,9 +111,6 @@ const StyledNavMenu = styled.div`
   }
   #navitem_features_docs_overview:before {
     background-position-y: -936px;
-  }
-  #navitem_fb_docs_cloud:before, #navitem_download_docs_cloud:before {
-    background-position-y: -1092px;
   }
   #navitem_fd_conversion_api:before {
     background-position-y: -1118px;
@@ -224,7 +233,7 @@ const StyledNavMenu = styled.div`
   }
   #navitem_download_workspace {
     &:before {
-      background-position-y: -25px;
+      background-position-y: -26px;
     }
   }
   #navitem_download_connectors {
@@ -477,6 +486,7 @@ const StyledNavMenu = styled.div`
   }
   .nav_item_nowrap_link {
     display: inline-flex;
+    white-space: nowrap;
     &:first-child {
       padding: 0 8px 0 72px;
     }
@@ -526,7 +536,7 @@ const StyledNavMenu = styled.div`
         margin-bottom: 24px;
         @media (max-width: 1024px) {
           margin-bottom: 0;
-          padding: 2px 0 11px;
+          padding: 12px 0 24px;
         }
       }
       .nowrap {
@@ -594,6 +604,11 @@ const StyledNavMenu = styled.div`
     }
   }
   @media (max-width: 1024px) {
+    #navitem_features_spreadsheet_editor,
+    #navitem_features_pdf_reader {
+      white-space: nowrap;
+      overflow: initial;
+    }
     .dropdown-item {
       line-height: 1.5em;
       margin: 0 0 16px;
@@ -608,7 +623,7 @@ const StyledNavMenu = styled.div`
     .nav_2nd_menu_link {
       font-size: 16px;
       line-height: 1.6em;
-      padding: 6px 48px;
+      padding: 6px 8px 6px 48px;
     }
     .nav_item_nowrap_link {
       font-size: 16px;
@@ -625,7 +640,6 @@ const StyledNavMenu = styled.div`
       border-radius: unset !important;
       padding: 0;
       .inner-box {
-        padding: 2px 0 11px;
         .nowrap .slash_text {
           line-height: 1.6em;
           padding: 6px 0;
@@ -671,7 +685,16 @@ const StyledNavMenu = styled.div`
     #hosting_div {
       display: none;
     }
-    #navitem_features_workspace_editions, #navitem_prices_docs, #navitem_download_docs, #navitem_features_desktop_mob_apps, #navitem_fb_other_integrations, #navitem_download_for_dev, #navitem_download_for_community, #navitem_prices_for_business, #navitem_prices_for_dev, #navitem_call_ascensio {
+    #navitem_features_workspace_editions, 
+    #navitem_prices_docs, #navitem_download_docs, 
+    #navitem_features_desktop_mob_apps,
+    #navitem_fb_other_integrations, 
+    #navitem_download_for_dev, 
+    #navitem_download_for_community, 
+    #navitem_prices_for_business, 
+    #navitem_prices_for_dev, 
+    #navitem_call_ascensio,
+    #navitem_download_for_dev_fc {
       font-size: 13px;
       line-height: 32px;
       padding-left: 8px !important;
@@ -683,6 +706,83 @@ const StyledNavMenu = styled.div`
 
     #navitem_download_workspace {
       margin-bottom: 24px;
+    }
+
+    .download-last-area .download-inner-list {
+      display: block !important;
+    }
+    #hosting_div, #latest_release_div, #reseller_div, #oforms_div, #education_div, #latest_events_div, #see_it_div {
+      display: none;
+    }
+    #navitem_features_education {
+      padding: 0 36px;
+      white-space: nowrap;
+      margin-bottom: 0;
+      text-overflow: initial;
+    }
+
+    #navitem_features_see_it, #navitem_features_oforms {
+      padding: 0 36px;
+      margin-bottom: 24px!important;
+    }
+
+    #navitem_download_docs,
+    #navitem_download_for_dev {
+      line-height: 34px;
+    }
+
+    #navitem_download_docs_ee {
+      line-height: 24px;
+      margin: 0;
+    }
+
+    #navitem_download_workspace {
+      margin: 0;
+    }
+
+    .dropdown-item {
+      margin-bottom: 24px;
+    }
+
+    #navitem_hosting_third_level_menu {
+      display: none;
+    }
+
+    #navitem_download_onpremises {
+      padding: 6px 48px 0;
+    }
+
+    #navitem_docs_enterprise_signup {
+      margin-bottom: 12px;
+    }
+
+    #navitem_docs_enterprise_onpremises {
+      padding: 6px 48px 0;
+    }
+
+    .download-last-area {
+      .download-third-level {
+        background: none;
+        height: initial;
+        border-radius: initial;
+
+        .menu_pic_div {
+          padding: 0 36px;
+        }
+
+        #hosting_div {
+          display: block;
+        }
+
+        #navitem_download_hosting {
+          padding: 0 !important;
+          margin: 0 0 24px !important;
+        }
+
+        #hosting_header {
+          display: none;
+        }
+      }
     }
   }
   @media (max-width: 600px) {
@@ -705,43 +805,6 @@ const StyledNavMenu = styled.div`
       }
     }
   }
-  @media (max-width: 1024px) {
-    .download-last-area .download-inner-list {
-      display: block !important;
-    }
-  #hosting_div, #latest_release_div, #reseller_div, #oforms_div, #education_div, #latest_events_div, #see_it_div {
-    display: none;
-  }
-  .download-third-level {
-    display: none;
-  }
-  #navitem_features_education {
-    padding: 0 36px;
-    white-space: nowrap;
-    margin-bottom: 0;
-    text-overflow: initial;
-  }
-
-  #navitem_features_see_it, #navitem_features_oforms {
-    padding: 0 36px;
-  }
-
-  .dropdown-item {
-    margin-bottom: 24px;
-  }
-
-  #navitem_hosting_third_level_menu {
-    @media (max-width: 1024px) {
-      display: none;
-    }
-  }
-
-  #navitem_download_onpremises {
-    @media (max-width: 1024px) {
-      padding: 6px 48px 0;
-    }
-  }
-}
 `;
 
 const StyledMenuItemsWrapper = styled.div`

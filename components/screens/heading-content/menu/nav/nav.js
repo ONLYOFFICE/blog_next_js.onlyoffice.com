@@ -136,13 +136,6 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
               {t("Docs Enterprise")}
             </Link>
             <Link
-              id="navitem_fb_docs_cloud"
-              href={`${hrefLang}/docs-cloud.aspx`}
-              className="dropdown-item"
-            >
-              {t("Docs Cloud")}
-            </Link>
-            <Link
               id="navitem_fb_workspace"
               href={`${hrefLang}/workspace.aspx`}
               className="dropdown-item"
@@ -162,6 +155,13 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
                 className="dropdown-item no-bold"
               >
                 {t("Nextcloud")}
+              </Link>
+              <Link
+                id="navitem_integrations_nextcloud"
+                href={`${hrefLang}/office-for-mattermost.aspx`}
+                className="dropdown-item no-bold"
+              >
+                {t("Mattermost")}
               </Link>
               <Link
                 id="navitem_integrations_owncloud"
@@ -220,7 +220,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
         </Box>
       </MenuItem>
 
-      <MenuItem heading={t("For Developers")} id="navitem_fordevelopers">
+      <MenuItem heading={t("For developers")} id="navitem_fordevelopers">
         <Box className="menu_wrapper">
           <Box className="outer-box no-color-box">
             <Link
@@ -278,13 +278,22 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             >
               {t("Docs Enterprise")}
             </Link>
-            <Link
-              id="navitem_download_docs_cloud"
-              className="dropdown-item"
-              href={`${hrefLang}/docs-registration.aspx`}
-            >
-              {t("Docs Cloud")}
-            </Link>
+            <Box className="inner-box">
+              <Link
+                className="nav_2nd_menu_link"
+                id="navitem_docs_enterprise_signup"
+                href={`${hrefLang}/docs-registration.aspx`}
+              >
+                {t("Sign up for cloud")}
+              </Link>
+              <Link
+                id="navitem_docs_enterprise_onpremises"
+                href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-enterprise`}
+                className="nav_2nd_menu_link"
+              >
+                {t("Install on-premises")}
+              </Link>
+            </Box>
             <Link
               id="navitem_download_workspace"
               href={`${hrefLang}/workspace.aspx`}
@@ -360,7 +369,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
           <Box className="outer-box no-color-box">
           <Link
               className="dropdown-item mobile_no_link"
-              id="navitem_download_for_dev"
+              id="navitem_download_for_dev_fc"
             >
               {t("For community")}
             </Link>
@@ -397,7 +406,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
               {t("Web hosting")}
             </Link>
             <p id="hosting_header" className="menu_pic_header">
-                {t("Get web hosting from some of the best providers")}
+              {t("Get web hosting from some of the best providers")}
             </p>
             </Box>
           </Box>
@@ -628,13 +637,16 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             >
               {t("Training courses")}
             </Link>
-            <Link
-              id="navitem_about_compare"
-              href={`${hrefLang}/training-courses.aspx`}
-              className="dropdown-item"
-            >
-              {t("Compare to other suites")}
-            </Link>
+            {
+              currentLanguage !== "zh-hans" &&
+              <Link
+                id="navitem_about_compare"
+                href={`${hrefLang}/training-courses.aspx`}
+                className="dropdown-item"
+              >
+                {t("Compare to other suites")}
+              </Link>
+            }
           </Box>
         </Box>
       </MenuItem>

@@ -115,7 +115,6 @@ const StyledHeading = styled.div`
     left: 50%;
     margin: 0;
     padding: 0;
-    text-align: center;
     width: 100%;
     max-width: 936px;
     height: 70px;
@@ -127,7 +126,7 @@ const StyledHeading = styled.div`
   }
 
   .search_area {
-    margin: 0 24px 0 auto;
+    margin: 0 16px 0 auto;
     width: 221px;
 
     .group-input {
