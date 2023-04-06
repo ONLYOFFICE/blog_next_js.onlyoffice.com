@@ -1,6 +1,6 @@
 import StyledPostContent from "./styled-post-content";
 import parse from "html-react-parser";
-import Moment from "moment";
+import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
 import InternalLink from "@components/common/internal-link";
@@ -20,10 +20,15 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         <article>
           <Heading className="title" level={1}>{post?.title}</Heading>
           <div className="info-content">
-            <span className="date">{Moment(post?.date).format("D MMMM y")}</span>
-            <span className="author">By <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink></span>
-            <span className="comments">{post?.commentCount === null ? 0 : post?.commentCount}</span>
-            <span className="views">{post?.viewCount === null ? 0 : post?.viewCount}</span>
+            <span className="date">
+              <DateFormat currentLanguage={currentLanguage} data={post?.date} format="D MMMM y" />
+            </span>
+            <span className="author">
+              {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
+              <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
+            </span>
+            {/* <span className="comments">{post?.commentCount === null ? 0 : post?.commentCount}</span> */}
+            {/* <span className="views">{post?.viewCount === null ? 0 : post?.viewCount}</span> */}
 
             <ShareButtons />
           </div>
@@ -43,13 +48,13 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
         <CloudBlock t={t} currentLanguage={currentLanguage} />
 
-        {post?.discoursePermalink ? (
+        {
+          post?.discoursePermalink && 
           <div className="join-discussion">
             <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
           </div>
-        ) : (
-          <Comments t={t} currentLanguage={currentLanguage} post={post} />
-        )}
+        }
+        {/* <Comments t={t} currentLanguage={currentLanguage} post={post} /> */}
       </div>
 
       <RecentPosts t={t} data={posts} />
