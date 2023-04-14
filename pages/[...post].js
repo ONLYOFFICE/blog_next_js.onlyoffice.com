@@ -6,7 +6,6 @@ import parse from "html-react-parser";
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
@@ -35,7 +34,6 @@ const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLi
           zhPostLink={zhPostLink}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>

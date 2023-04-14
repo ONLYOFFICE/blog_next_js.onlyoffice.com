@@ -4,7 +4,6 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@components/layout";
 import ErrornHeadSEO from "@components/screens/head-content/error";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import ErrorContent from "@components/screens/404-content";
 
@@ -17,7 +16,6 @@ const Error = ({ locale }) => {
       <Layout.PageHead>
         <ErrornHeadSEO title={`${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>

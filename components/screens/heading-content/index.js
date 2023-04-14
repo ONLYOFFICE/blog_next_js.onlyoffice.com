@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Router from 'next/router';
+import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
@@ -78,37 +79,38 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent }) => {
   };
 
   return (
-    <StyledHeading
-      className="navbar"
-      onMouseLeave={onCloseMenu}
-    >
-      <img
-        src={mobMenu.src}
-        className="nav-items-mobile"
-        onClick={toggleMobile}
-      />
-      <span className="nav-item-logo">
-        <InternalLink href={curLang}>
-          <ReactSVG src={logo.src} alt="logo"/>
-        </InternalLink>
-      </span>
-      <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
-      <Nav
-        currentLanguage={currentLanguage}
-        className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
-        t={t}
-      />
-      {isMainContent || isSearchContent !== true && 
-      <SearchArea 
-        onClick={onClickSearch} 
-        searchQuery={searchQuery} 
-        setSearchQuery={setSearchQuery} 
-        handleSearchFormSubmit={handleSearchFormSubmit}
-        searchActive={searchActive} 
-        t={t} 
-        placeholder={t("Search blog")}
-      />}
-      <LanguageSelector t={t} currentLanguage={currentLanguage} />
+    <StyledHeading className={stateMobile ? "is-open" : ""}>
+      <AdventAnnounce t={t} currentLanguage={currentLanguage} />
+
+      <div className="navbar" onMouseLeave={onCloseMenu}>
+        <img
+          src={mobMenu.src}
+          className="nav-items-mobile"
+          onClick={toggleMobile}
+        />
+        <span className="nav-item-logo">
+          <InternalLink href={curLang}>
+            <ReactSVG src={logo.src} alt="logo"/>
+          </InternalLink>
+        </span>
+        <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
+        <Nav
+          currentLanguage={currentLanguage}
+          className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
+          t={t}
+        />
+        {isMainContent || isSearchContent !== true && 
+        <SearchArea 
+          onClick={onClickSearch} 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery} 
+          handleSearchFormSubmit={handleSearchFormSubmit}
+          searchActive={searchActive} 
+          t={t} 
+          placeholder={t("Search blog")}
+        />}
+        <LanguageSelector t={t} currentLanguage={currentLanguage} />
+      </div>
     </StyledHeading>
   );
 };

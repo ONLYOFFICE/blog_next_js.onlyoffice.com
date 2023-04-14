@@ -5,7 +5,6 @@ import { getCategorySlug, getCategoryPosts } from "@lib/api";
 import Layout from "@components/layout";
 import CategoryHeadSEO from "@components/screens/head-content/category";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import CategoryContent from "@components/screens/category-content";
 
@@ -24,7 +23,6 @@ const Category = ({ locale, posts }) => {
           categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>
