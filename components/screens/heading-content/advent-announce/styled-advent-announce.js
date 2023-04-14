@@ -93,6 +93,10 @@ const StyledAdventAnnounce = styled.div`
         }
       }
     }
+
+    @media (max-width: 1024px) {
+      transition: transform .2s cubic-bezier(.16,.68,.43,.99);
+    }
   }
 
   .advent-desktop-hide {
