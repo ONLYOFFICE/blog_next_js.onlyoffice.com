@@ -123,6 +123,7 @@ const StyledPostContent = styled(Section)`
 
     img {
       object-fit: contain;
+      height: auto;
       max-width: 100%;
     }
 

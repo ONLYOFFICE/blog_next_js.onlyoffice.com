@@ -64,7 +64,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         {forDevelopersPosts.edges.length > 0 && 
         <div className="category-wrapper">
           <div className="category-posts-top">
-            <Heading className="category-posts-title" level={2}>{t("For Developers")}</Heading>
+            <Heading className="category-posts-title" level={2}>{t("For developers")}</Heading>
             <InternalLink className="view-all" href="/category/for-developers">{t("View all posts")}</InternalLink>
           </div>
           <div className="category-posts">
