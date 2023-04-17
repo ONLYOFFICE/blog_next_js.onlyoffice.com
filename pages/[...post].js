@@ -12,7 +12,7 @@ import PostContent from "@components/screens/post-content";
 const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink}) => {
   const { t } = useTranslation("common");
   const isPostContent = true;
-  const postMetaDescription = post?.excerpt ? parse(post?.excerpt) : "";
+  const postMetaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
 
   return (
     <Layout>
