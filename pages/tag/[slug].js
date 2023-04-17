@@ -5,7 +5,6 @@ import { getTagSlug, getTagPosts } from "@lib/api";
 import Layout from "@components/layout";
 import TagHeadSEO from "@components/screens/head-content/tag";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import TagContent from "@components/screens/tag-content";
 
@@ -24,7 +23,6 @@ const Tag = ({ locale, posts }) => {
           tagSlug={tagSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>

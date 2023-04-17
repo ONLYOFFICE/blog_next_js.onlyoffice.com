@@ -5,7 +5,6 @@ import { getAuthorSlug, getAuthorPosts } from "@lib/api";
 import Layout from "@components/layout";
 import AuthorHeadSEO from "@components/screens/head-content/author";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import AuthorContent from "@components/screens/author-content";
 
@@ -24,7 +23,6 @@ const Author = ({ locale, posts }) => {
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>
