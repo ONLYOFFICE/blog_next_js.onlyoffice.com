@@ -50,7 +50,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
           <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} />
 
           <SearchArea 
-            label={`${"Search"}`}
+            label={t("Search")}
             searchQuery={searchQuery} 
             setSearchQuery={setSearchQuery} 
             handleSearchFormSubmit={handleSearchFormSubmit}

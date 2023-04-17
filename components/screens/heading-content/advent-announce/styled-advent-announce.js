@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import left from "@public/images/banners/docs-release-left.svg";
-import right from "@public/images/banners/docs-7-3-right.svg";
-import icon from "@public/images/banners/docs-release-icon.svg";
-import union from "@public/images/banners/docs-release-union.svg";
-import mobile from "@public/images/banners/docs-release-mobile.svg";
+import left from "@public/images/banners/workspace-12-5-left.svg";
+import right from "@public/images/banners/workspace-12-5-right.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -15,13 +12,16 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background: #27ABA3;
+    background: #183e6b;
+
     a {
       position: absolute;
       display: block;
       width: 100%;
+      height: 100%;
       text-decoration: none;
     }
+
     .advent-announce-text {
       position: relative;
       display: inline-block;
@@ -29,71 +29,79 @@ const StyledAdventAnnounce = styled.div`
       justify-content: center;
       text-align: center;
       margin: 0 auto;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
       line-height: 20px;
       letter-spacing: 0.01em;
-      height: 55px;
+      height: 56px;
       color: #fff;
       text-decoration: none;
-      z-index: 0;
-      max-width: 605px;
-      padding: 7px 0px 8px;
+      z-index: 10;
+      max-width: 578px;
+      padding: ${(props) => (props.currentLanguage =='zh' || props.currentLanguage == 'ja' ? "8px 0" : "7px 0")};
+
       &:before {
         content: "";
         position: absolute;
+        top: 0;
+        left: -380px;
+        width: 372px;
+        height: 56px;
+        background-image: url(${left.src});
+        background-position-y: -3px;
         background-repeat: no-repeat;
-        top: 0px;
-        display: block;
-        height: 55px;
-        z-index: -1;
-        background-image: url(${left.src}),url(${icon.src});
-        background-position-x: 40%, 100%;
-        background-position-y: 11px, -7px;
-        left: -472px;
-        width: 462px;
-        @media (max-width: 1024px) {
+
+        @media (max-width: 1024px) {          
+          left: -79px;
+          top: -9px;
+          width: 48px;
           height: 48px;
-          background-image: url(${icon.src});
-          background-position-y: -11px;
-          left: -70px;
-          width: 50px;
+          background-position: right -1px;
+          background-size: auto 65px;
         }
       }
+
       &:after {
         content: "";
         position: absolute;
-        top: 0px;
-        background-repeat: no-repeat;
-        display: block;
-        height: 55px;
-        z-index: -1;
-        background-repeat: no-repeat;
+        top: 0;
+        right: -366px;
+        width: 356px;
+        height: 56px;
         background-image: url(${right.src});
-        background-position-x: 0;
-        background-position-y: 7px;
-        right: -438px;
-        width: 431px;
+        background-repeat: no-repeat;
+        background-position-y: -2px;
+
         @media (max-width: 1024px) {
+          right: -366px;
+          width: 356px;
           height: 48px;
-          background-image: url(${union.src}),url(${mobile.src});
-          background-position-y: center, 23px;
-          background-position-x: 0%, 30px;
+          background-position-y: -6px;
         }
       }
+
       @media (max-width: 1024px) {
-        display: inline-block;
         font-size: 12px;
         height: auto;
         line-height: 16px;
-        padding: 16px 0px;
+        padding: 8px 0px;
         white-space: normal;
         width: auto !important;
+
+        b {
+          display: block;
+        }
       }
     }
+
+    @media (max-width: 1024px) {
+      transition: transform .2s cubic-bezier(.16,.68,.43,.99);
+    }
   }
+
   .advent-desktop-hide {
     display: none;
+
     @media (max-width: 1024px) {
       display: flex;
       align-items: center;
@@ -101,9 +109,33 @@ const StyledAdventAnnounce = styled.div`
       height: 48px;
     }
   }
+
   .advent-mobile-hide {
     @media (max-width: 1024px) {
       display: none;
+    }
+  }
+  
+  &.ja {
+    .advent-announce-text {
+      height: 20px;
+      max-width: 586px;
+      padding: 18px 0;
+
+      @media (max-width: 1024px) {
+        padding: 8px 0;
+      }
+    }
+  }
+
+  &.zh-hans {
+    .advent-announce-text {
+      height: 20px;
+      padding: 18px 0;
+
+      @media (max-width: 1024px) {
+        padding: 8px 0;
+      }
     }
   }
 `;

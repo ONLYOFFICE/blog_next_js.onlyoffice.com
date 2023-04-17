@@ -1,16 +1,18 @@
 import StyledInThePressPost from "./styled-in-the-press-post";
-import Moment from "moment";
+import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ExternalLink from "@components/common/external-link";
 
-const InThePressPost = ({ data }) => {
+const InThePressPost = ({ currentLanguage, data }) => {
   return (
     <StyledInThePressPost>
       <article>
         <div className="meta">
           <ExternalLink className="press-url" href={data?.url}>{data?.shortUrl}</ExternalLink>
-          <span className="date">{Moment(data?.dateNews, 'YYYY-MM-DD').format("MMMM D, y")}</span>
+          <span className="date">
+            <DateFormat currentLanguage={currentLanguage} data={data?.dateNews} format="MMMM D, y" />
+          </span>
         </div>
 
         <ExternalLink className="post-title" href={data?.url}>

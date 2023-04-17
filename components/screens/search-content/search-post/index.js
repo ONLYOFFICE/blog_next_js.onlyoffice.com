@@ -1,15 +1,17 @@
 import StyledSearchPost from "./styled-search-post";
-import Moment from "moment";
+import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ExternalLink from "@components/common/external-link";
 
-const SearchPost = ({ data }) => {
+const SearchPost = ({ currentLanguage, data }) => {
   return (
     <StyledSearchPost>
       <article>
         <div className="meta">
-          <span className="date">{Moment(data?.dateNews).format("D MMMM y")}</span>
+          <span className="date">
+            <DateFormat currentLanguage={currentLanguage} data={data?.dateNews} format="D MMMM y" />
+          </span>
           <ExternalLink className="author" href={`/author/${data.author?.node.slug}`}>{data.author?.node.name}</ExternalLink>
         </div>
 

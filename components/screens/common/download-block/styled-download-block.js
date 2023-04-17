@@ -18,6 +18,7 @@ const StyledDownLoadBlock = styled.div`
 
     span {
       color: #FF6F3D;
+      font-weight: 600;
     }
   }
 

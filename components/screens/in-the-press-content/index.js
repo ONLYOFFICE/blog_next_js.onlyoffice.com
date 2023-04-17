@@ -7,9 +7,7 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import Newsletter from "@components/screens/common/newsletter";
 import InThePressPost from "./in-the-press-post";
 
-const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts }) => {
-  const isInThePressContent = true;
-
+const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, isInThePressContent }) => {
   return (
     <StyledInThePressContent>
       <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />
@@ -20,13 +18,13 @@ const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts })
 
           <div className="posts">
             {inThePressPosts.edges.slice(0, 3).map(({node}) => (
-              <InThePressPost data={node} key={node.id} />
+              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
             ))}
 
             <Newsletter t={t} />
 
             {inThePressPosts.edges.slice(3, 5).map(({node}) => (
-              <InThePressPost data={node} key={node.id} />
+              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
             ))}
 
             <LoadMorePosts className="in-the-press-load-more" t={t} currentLanguage={currentLanguage} data={inThePressPosts} isInThePressContent={isInThePressContent} />
@@ -34,7 +32,7 @@ const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts })
         </div>
 
         <div className="sidebar">
-          <RecentPosts t={t} data={recentPosts} />
+          <RecentPosts t={t} currentLanguage={currentLanguage} data={recentPosts} />
           <FollowUs t={t} currentLanguage={currentLanguage} />
         </div>
       </div>

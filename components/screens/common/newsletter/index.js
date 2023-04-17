@@ -23,13 +23,13 @@ const Newsletter = ({ t }) => {
           <div className="newsletter-body">
             <TextInput 
               type="text" 
-              placeholder={t("Your e-mail*")} 
+              placeholder={`${t("Your e-mail")}*`} 
               labelButton={t("Subscribe")} 
               withButton={true} 
               onChange={onSearch}
               value={searchItem}
             />
-            <Text className="newsletter-text">{t('By clicking "Subscribe", you agree to the')} <ExternalLink href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t("rules for using the service and processing personal data.")}</ExternalLink></Text>
+            <Text className="newsletter-text">{t('NewsletterSubscribeText')} <ExternalLink href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t("NewsletterSubscribeLink")}</ExternalLink></Text>
           </div>
         </div>
       </StyledNewsletter>

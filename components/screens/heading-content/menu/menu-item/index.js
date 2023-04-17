@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Heading from "@components/common/heading";
-import Link from "@components/common/external-link";
-import Box from "../nav/sub-components/box";
 import { StyledNavMenu, StyledMenuItemsWrapper } from "./styled-navmenu";
 
 const MenuItem = ({ children, heading, ...rest }) => {
@@ -22,10 +20,10 @@ const MenuItem = ({ children, heading, ...rest }) => {
   };
 
   const windowCheck =
-    typeof window !== "undefined" && window.innerWidth <= 1050;
+    typeof window !== "undefined" && window.innerWidth <= 1024;
 
   useEffect(() => {
-    if (window.innerWidth <= 1050) {
+    if (window.innerWidth <= 1024) {
       setShowMenu(false);
     }
   }, []);
@@ -50,7 +48,7 @@ const MenuItem = ({ children, heading, ...rest }) => {
       onMouseLeave={handleLeaveMenu}
     >
       <Heading
-        className="heading-nav-item"
+        className={`heading-nav-item ${showMenu ? "active": ""}`}
         label={heading}
         as="span"
         level={2}

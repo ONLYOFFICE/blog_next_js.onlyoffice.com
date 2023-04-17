@@ -11,6 +11,14 @@ const StyledMainContent = styled(Section)`
     margin-bottom: 40px;
   }
 
+  .search_input {
+    background-color: #f9f9f9;
+
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
   .main-block {
     display: grid;
     grid-template-columns: auto 31.429%;

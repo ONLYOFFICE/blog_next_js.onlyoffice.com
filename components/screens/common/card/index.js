@@ -1,5 +1,5 @@
 import StyledCard from "./styled-card";
-import Moment from "moment";
+import DateFormat from "@components/screens/common/date-format";
 import parse from "html-react-parser";
 import Text from "@components/common/text"
 import Heading from "@components/common/heading";
@@ -9,20 +9,20 @@ const Card = ({ t, currentLanguage, data, mainPost, ...rest }) => {
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
       <InternalLink className="card-img" href={data?.uri}>
-        {
-          data.featuredImage?.node.sourceUrl ?
-            <img src={data.featuredImage?.node?.sourceUrl} alt={data?.title} />
-          :
-            <img src={data?.firstImgPost} alt={data?.title} />
-        }
+        <img src={data.featuredImage?.node.sourceUrl ? data.featuredImage?.node?.sourceUrl : data?.firstImgPost} alt={data?.title} />
       </InternalLink>
       <div className="card-body">
         <Heading className="card-title" level={2}>
           <InternalLink href={data?.uri}>{data?.title}</InternalLink>
         </Heading>
         <div className="card-info">
-          <Text className="card-info-item card-date" as="span">{Moment(data?.date).format("D MMMM y")}</Text>
-          <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>By <span>{data?.author?.node.name}</span></InternalLink>
+          <Text className="card-info-item card-date" as="span">
+            <DateFormat currentLanguage={currentLanguage} data={data?.date} format="D MMMM y" />
+          </Text>
+          <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>
+            {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
+            <span>{data?.author?.node.name}</span>
+          </InternalLink>
         </div>
         {mainPost && 
           <div className="card-description">{parse(data?.excerpt)}</div>

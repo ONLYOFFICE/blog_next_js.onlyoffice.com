@@ -6,7 +6,7 @@ import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
 import SearchPost from "@components/screens/search-content/search-post";
 
-const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, searchQuery, isSearchContent, isMainContent, ...rest }) => {
+const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQuery, isSearchContent, isMainContent, ...rest }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [postsData, setPostsData] = useState(data?.edges ?? []);
   const [pageInfo, setPageInfo] = useState(data?.pageInfo);
@@ -57,7 +57,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
       :
       isSearchContent ?
         postsData?.map(({node}) => (
-          <SearchPost key={node.id} t={t} data={node} searchQuery={searchQuery} />
+          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQuery={searchQuery} />
         ))
       :
         postsData?.map(({node}) => (
@@ -74,7 +74,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
               <Button onClick={() => loadMoreItems(endCursor)} className={`load-more-btn ${isSearchContent || isInThePressContent ? "show" : ""}`} typeButton="transparent" label={t("Load more")} />
 
               {
-                isMainContent || isCategoryContent || isAuthorContent ?
+                isMainContent || isCategoryContent || isAuthorContent || isTagContent ?
                   <Button onClick={() => loadMoreItems(endCursor)} className="load-more-mobile-btn" typeButton="transparent" label={t("View all posts")} />
                 : null
               }

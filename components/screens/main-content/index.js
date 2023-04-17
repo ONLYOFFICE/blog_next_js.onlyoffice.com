@@ -36,8 +36,11 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <Card t={t} currentLanguage={currentLanguage} data={allPosts.edges[0]?.node} mainPost={mainPost} />
 
         <div className="main-sidebar">
-          <CategoryTopics t={t} />
-          <InThePress t={t} inThePressPosts={inThePressPosts} />
+          <CategoryTopics t={t} currentLanguage={currentLanguage} />
+          {
+            inThePressPosts.edges.length > 0 && 
+            <InThePress t={t} inThePressPosts={inThePressPosts} currentLanguage={currentLanguage} />
+          }
         </div>
       </div>
 

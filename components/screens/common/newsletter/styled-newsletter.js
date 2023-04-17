@@ -21,7 +21,6 @@ const StyledNewsletter = styled.div`
     margin-right: 56px;
     width: 100%;
     max-width: 180px;
-    text-align: center;
   }
 
   .newsletter-body {
@@ -33,10 +32,12 @@ const StyledNewsletter = styled.div`
     .group-input {
       input {
         padding: 16px;
+        font-size: 14px;
+        line-height: 280%;
 
         &:placeholder {
-          font-size: 16px;
-          line-height: 24px;
+          font-size: 14px;
+          line-height: 280%;
           color: #AAAAAA;
         }
       }
@@ -72,7 +73,6 @@ const StyledNewsletter = styled.div`
     .newsletter-wrapper {
       flex-direction: column;
       align-items: center;
-      text-align: center;
       padding: 32px 16px;
     }
 
@@ -81,6 +81,7 @@ const StyledNewsletter = styled.div`
       font-size: 20px;
       line-height: 27px;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .newsletter-body {
@@ -93,6 +94,10 @@ const StyledNewsletter = styled.div`
           background-repeat: no-repeat;
         }
       }
+    }
+
+    .newsletter-text {
+      text-align: center;
     }
   }
 

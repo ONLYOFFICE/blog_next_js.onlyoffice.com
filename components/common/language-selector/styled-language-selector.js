@@ -7,6 +7,7 @@ export default styled.div`
   position: relative;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  transition: transform .2s cubic-bezier(.16,.68,.43,.99);
 
   .flag-image {
     padding-right: 5px;

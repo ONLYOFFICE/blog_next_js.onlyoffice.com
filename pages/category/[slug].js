@@ -1,36 +1,33 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getCategoryPostsSlug, getCategoryPosts } from '../../lib/api';
+import { getCategorySlug, getCategoryPosts } from "@lib/api";
 
 import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
+import CategoryHeadSEO from "@components/screens/head-content/category";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import CategoryContent from "@components/screens/category-content";
 
 const Category = ({ locale, posts }) => {
   const { t } = useTranslation("common");
-
-  const categoryName = posts.edges[0]?.node.categories?.nodes[0]?.name || "";
+  const isCategoryContent = true;
+  const categoryName = posts?.edges[0]?.node.categories?.nodes[0]?.name;
+  const categorySlug = posts?.edges[0]?.node.categories?.nodes[0]?.slug;
 
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
+        <CategoryHeadSEO
+          currentLanguage={locale}
           title={`${categoryName} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={`${categoryName} | ${t("ONLYOFFICE Blog")}`}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
+          categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
       <Layout.PageHeader>
         <HeadingContent t={t} currentLanguage={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CategoryContent t={t} currentLanguage={locale} posts={posts} categoryName={categoryName} />
+        <CategoryContent t={t} currentLanguage={locale} posts={posts} isCategoryContent={isCategoryContent} categoryName={categoryName} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -40,10 +37,10 @@ const Category = ({ locale, posts }) => {
 }
 
 export const getStaticPaths = async ({ locales }) => {
-  const categories = await getCategoryPostsSlug();
+  const categories = await getCategorySlug();
 
   const paths = locales.map((locale) => (
-    categories.edges.map(({node}) => ({
+    categories?.edges?.map(({node}) => ({
       params: {
         slug: node.slug
       }, 
@@ -53,7 +50,7 @@ export const getStaticPaths = async ({ locales }) => {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
