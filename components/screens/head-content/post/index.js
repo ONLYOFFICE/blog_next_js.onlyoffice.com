@@ -26,8 +26,14 @@ const PostHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, po
       <meta property="og:url" content={post?.link} />
       <meta property="og:image" content={image} />
       <meta property="og:image:secure_url" content={image} />
-      <meta property="og:image:width" content={post?.featuredImage?.node.mediaDetails.width} />
-      <meta property="og:image:height" content={post?.featuredImage?.node.mediaDetails.height} />
+      {
+        post?.featuredImage?.node.mediaDetails?.width &&
+        <meta property="og:image:width" content={post?.featuredImage?.node.mediaDetails?.width} />
+      }
+      {
+        post?.featuredImage?.node.mediaDetails?.height &&
+        <meta property="og:image:height" content={post?.featuredImage?.node.mediaDetails?.height} />
+      }
       <meta property="article:published_time" content={`${post?.date}+00:00`} />
       <meta property="article:modified_time" content={`${post?.modifiedGmt}+00:00`} />
       <meta name="twitter:card" content="summary" />
