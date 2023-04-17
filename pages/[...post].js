@@ -12,7 +12,6 @@ import PostContent from "@components/screens/post-content";
 const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink}) => {
   const { t } = useTranslation("common");
   const isPostContent = true;
-  const postMetaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
 
   return (
     <Layout>
@@ -20,7 +19,7 @@ const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLi
         <PostHeadSEO
           title={`${post?.title} | ${t("ONLYOFFICE Blog")}`}
           metaSiteName={t("SiteName")}
-          metaDescription={post?.excerpt ? postMetaDescription?.[0].props.children : ""}
+          metaDescription={post?.aioseoDescription ? post?.aioseoDescription : ""}
           currentLanguage={locale}
           post={post}
           enPostLink={enPostLink}
