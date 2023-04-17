@@ -9,14 +9,14 @@ const CategoryTopics = ({ t, currentLanguage }) => {
         {
           currentLanguage !== "cs" &&
           <>
-            <li><InternalLink className="product-releases" href="/category/product-releases">{t("Product releases")}</InternalLink></li>
-            <li><InternalLink className="for-developers" href="/category/for-developers">{t("For developers")}</InternalLink></li>
+            <li><InternalLink className="product-releases" href={`/category/${t("productReleasesLink")}`}>{t("Product releases")}</InternalLink></li>
+            <li><InternalLink className="for-developers" href={`/category/${t("forDevelopersLink")}`}>{t("For developers")}</InternalLink></li>
           </>
         }
-        <li><InternalLink className="for-business" href="/category/for-business">{t("For business")}</InternalLink></li>
+        <li><InternalLink className="for-business" href={`/category/${t("forBusinessLink")}`}>{t("For business")}</InternalLink></li>
         {
           currentLanguage !== "cs" && 
-          <li><InternalLink className="for-education" href="/category/for-education">{t("For education")}</InternalLink></li>
+          <li><InternalLink className="for-education" href={`/category/${t("forEducationLink")}`}>{t("For education")}</InternalLink></li>
         }
       </ul>
     </StyledCategoryTopics>
