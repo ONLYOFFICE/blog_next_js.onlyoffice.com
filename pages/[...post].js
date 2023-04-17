@@ -19,7 +19,6 @@ const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLi
         <PostHeadSEO
           title={`${post?.title} | ${t("ONLYOFFICE Blog")}`}
           metaSiteName={t("SiteName")}
-          metaDescription={post?.aioseoDescription ? post?.aioseoDescription : ""}
           currentLanguage={locale}
           post={post}
           enPostLink={enPostLink}
