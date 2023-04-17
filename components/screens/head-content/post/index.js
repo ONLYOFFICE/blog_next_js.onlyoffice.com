@@ -1,7 +1,8 @@
 import Head from "next/head";
 
-const PostHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
+const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
+  const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
   
   const languagesKey = 
     currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
