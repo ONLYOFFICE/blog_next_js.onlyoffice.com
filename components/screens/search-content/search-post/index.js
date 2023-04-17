@@ -10,7 +10,7 @@ const SearchPost = ({ currentLanguage, data }) => {
       <article>
         <div className="meta">
           <span className="date">
-            <DateFormat currentLanguage={currentLanguage} data={data?.dateNews} format="D MMMM y" />
+            <DateFormat currentLanguage={currentLanguage} data={data?.date} format="D MMMM y" />
           </span>
           <ExternalLink className="author" href={`/author/${data.author?.node.slug}`}>{data.author?.node.name}</ExternalLink>
         </div>
