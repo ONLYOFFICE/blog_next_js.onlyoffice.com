@@ -32,7 +32,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
 
     const loadPosts = 
     isInThePressContent ? 
-      await getInThePressPosts(currentLanguage, 3, `"${endCursor}"`) : 
+      await getInThePressPosts(currentLanguage, 5, `"${endCursor}"`) : 
     isSearchContent ? 
       await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQuery)
     :
@@ -52,7 +52,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
       :
       isInThePressContent ?
         postsData.slice(5)?.map(({node}) => (
-          <InThePressPost data={node} key={node.id} />
+          <InThePressPost key={node.id} currentLanguage={currentLanguage} data={node} />
         ))
       :
       isSearchContent ?
