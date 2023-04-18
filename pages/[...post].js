@@ -1,16 +1,18 @@
+import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getPostsUri, getPostAndMorePosts, getPostPagelink } from "@lib/api";
-import parse from "html-react-parser";
 
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";
 import HeadingContent from "@components/screens/heading-content";
+import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
 const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink}) => {
   const { t } = useTranslation("common");
+  const [stateMobile, setStateMobile] = useState(false);
   const isPostContent = true;
 
   return (
@@ -32,8 +34,9 @@ const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLi
           zhPostLink={zhPostLink}
         />
       </Layout.PageHead>
+      <AdventAnnounce t={t} currentLanguage={locale}  stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} />
+        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <PostContent t={t} currentLanguage={locale} post={post} posts={posts} isPostContent={isPostContent} />

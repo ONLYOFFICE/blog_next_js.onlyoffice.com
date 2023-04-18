@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getAllPosts, getInThePressPosts, getMainPageDate } from "@lib/api";
@@ -5,11 +6,13 @@ import { getAllPosts, getInThePressPosts, getMainPageDate } from "@lib/api";
 import Layout from "@components/layout";
 import MainHeadSEO from "@components/screens/head-content/main";
 import HeadingContent from "@components/screens/heading-content";
+import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
 import MainContent from "@components/screens/main-content";
 
 const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
+  const [stateMobile, setStateMobile] = useState(false);
   const isMainContent = true;
 
   return (
@@ -24,8 +27,9 @@ const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelo
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
+      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} isMainContent={isMainContent} />
+        <HeadingContent t={t} currentLanguage={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent
