@@ -96,6 +96,22 @@ const StyledAdventAnnounce = styled.div`
 
     @media (max-width: 1024px) {
       transition: transform .2s cubic-bezier(.16,.68,.43,.99);
+
+      &.is-open {
+        transform: translate3d(429px, 0, 0);
+      }
+    }
+
+    @media (max-width: 592px) {
+      &.is-open {
+        transform: translate3d(380px, 0, 0);
+      }
+    }
+
+    @media (max-width: 430px) {
+      &.is-open {
+        transform: translate3d(288px, 0, 0);
+      }
     }
   }
 
@@ -137,6 +153,10 @@ const StyledAdventAnnounce = styled.div`
         padding: 8px 0;
       }
     }
+  }
+
+  @media (max-width: 1024px) {
+    overflow-x: hidden;
   }
 `;
 

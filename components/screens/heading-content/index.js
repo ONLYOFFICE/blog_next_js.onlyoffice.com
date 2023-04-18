@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Router from 'next/router';
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
@@ -11,9 +10,8 @@ import logo from "@public/images/logo/logo.svg"
 import mobMenu from "@public/images/icons/mob-menu.svg"
 import { ReactSVG } from "react-svg";
 
-const Menu = ({ t, currentLanguage, isMainContent, isSearchContent }) => {
+const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
-  const [stateMobile, setStateMobile] = useState(false);
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -79,38 +77,34 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent }) => {
   };
 
   return (
-    <StyledHeading className={stateMobile ? "is-open" : ""}>
-      <AdventAnnounce t={t} currentLanguage={currentLanguage} />
-
-      <div className="navbar" onMouseLeave={onCloseMenu}>
-        <img
-          src={mobMenu.src}
-          className="nav-items-mobile"
-          onClick={toggleMobile}
-        />
-        <span className="nav-item-logo">
-          <InternalLink href={curLang}>
-            <ReactSVG src={logo.src} alt="logo"/>
-          </InternalLink>
-        </span>
-        <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
-        <Nav
-          currentLanguage={currentLanguage}
-          className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
-          t={t}
-        />
-        {isMainContent || isSearchContent !== true && 
-        <SearchArea 
-          onClick={onClickSearch} 
-          searchQuery={searchQuery} 
-          setSearchQuery={setSearchQuery} 
-          handleSearchFormSubmit={handleSearchFormSubmit}
-          searchActive={searchActive} 
-          t={t} 
-          placeholder={t("Search blog")}
-        />}
-        <LanguageSelector t={t} currentLanguage={currentLanguage} />
-      </div>
+    <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
+      <img
+        src={mobMenu.src}
+        className="nav-items-mobile"
+        onClick={toggleMobile}
+      />
+      <span className="nav-item-logo">
+        <InternalLink href={curLang}>
+          <ReactSVG src={logo.src} alt="logo"/>
+        </InternalLink>
+      </span>
+      <div className="overlay"></div>
+      <Nav
+        currentLanguage={currentLanguage}
+        className="nav-item-links"
+        t={t}
+      />
+      {isMainContent || isSearchContent !== true && 
+      <SearchArea 
+        onClick={onClickSearch} 
+        searchQuery={searchQuery} 
+        setSearchQuery={setSearchQuery} 
+        handleSearchFormSubmit={handleSearchFormSubmit}
+        searchActive={searchActive} 
+        t={t} 
+        placeholder={t("Search blog")}
+      />}
+      <LanguageSelector t={t} currentLanguage={currentLanguage} />
     </StyledHeading>
   );
 };

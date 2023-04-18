@@ -1,7 +1,7 @@
 import Link from "next/link";
 import StyledAdventAnnounce from "./styled-advent-announce";
 
-const AdventAnnounce = ({t, currentLanguage}) => {
+const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
   const href = 
     currentLanguage === "fr" ? "https://www.onlyoffice.com/blog/fr/2023/03/onlyoffice-workspace-12-5/" :
     currentLanguage === "de" ? "https://www.onlyoffice.com/blog/de/2023/03/onlyoffice-workspace-12-5-verbesserte-sicherheit-optimierte-dokumentenverwaltung-dunkelmodus-und-mehr/" :
@@ -18,7 +18,7 @@ const AdventAnnounce = ({t, currentLanguage}) => {
           </div>
         </Link>
       </div>
-      <div className="advent-announce advent-desktop-hide">
+      <div className={`advent-announce advent-desktop-hide ${stateMobile ? "is-open": ""}`}>
         <Link href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">
             {t("AdventAnnounceMobileText1")} <b>{t("AdventAnnounceMobileText2")}</b> {t("AdventAnnounceMobileText3")}
