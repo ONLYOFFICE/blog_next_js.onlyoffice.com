@@ -19,7 +19,7 @@ const SearchPost = ({ currentLanguage, data }) => {
           <Heading level={2}>{data?.title}</Heading>
         </ExternalLink>
 
-        <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.excerpt}}></Text>
+        <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.aioseoDescription ? data?.aioseoDescription : data?.excerpt}}></Text>
       </article>
     </StyledSearchPost>
   );

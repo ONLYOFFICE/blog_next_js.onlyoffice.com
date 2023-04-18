@@ -48,7 +48,7 @@ const StyledSearchPost = styled.div`
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       cursor: pointer;
     }
@@ -59,16 +59,12 @@ const StyledSearchPost = styled.div`
   }
 
   .post-text {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     margin: 0;
+    font-size: 16px;
+    line-height: 26px;
 
     p {
       margin: 0;
-      font-size: 16px;
-      line-height: 26px;
     }
   }
 
@@ -93,10 +89,8 @@ const StyledSearchPost = styled.div`
     }
 
     .post-text {
-      p {
-        font-size: 14px;
-        line-height: 26px;
-      }
+      font-size: 14px;
+      line-height: 26px;
     }
   }
 `;
