@@ -26,7 +26,7 @@ const StyledInThePressContent = styled(Section)`
 
   .posts {
     display: grid;
-    gap: 40px;
+    gap: 64px;
   }
 
   .sidebar {
