@@ -32,7 +32,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
 
     const loadPosts = 
     isInThePressContent ? 
-      await getInThePressPosts(currentLanguage, 5, `"${endCursor}"`) : 
+      await getInThePressPosts(currentLanguage, 3, `"${endCursor}"`) : 
     isSearchContent ? 
       await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQuery)
     :
