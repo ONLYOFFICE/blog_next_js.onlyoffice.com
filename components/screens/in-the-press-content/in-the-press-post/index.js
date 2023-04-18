@@ -19,7 +19,10 @@ const InThePressPost = ({ currentLanguage, data }) => {
           <Heading level={2}>{data?.title}</Heading>
         </ExternalLink>
 
-        <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.excerpt}}></Text>
+        {
+          data?.excerpt &&
+          <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.excerpt}}></Text>
+        }
       </article>
     </StyledInThePressPost>
   );

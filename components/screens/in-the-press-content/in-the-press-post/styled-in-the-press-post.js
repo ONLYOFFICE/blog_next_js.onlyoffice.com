@@ -39,7 +39,6 @@ const StyledInThePressPost = styled.div`
 
   .post-title {
     display: block;
-    margin-bottom: 24px;
     color: #333333;
     text-decoration: none;
 
@@ -52,6 +51,10 @@ const StyledInThePressPost = styled.div`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       cursor: pointer;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
     }
 
     &:hover {
