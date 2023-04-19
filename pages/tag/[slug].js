@@ -31,7 +31,7 @@ const Tag = ({ locale, posts }) => {
         <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <TagContent t={t} currentLanguage={locale} posts={posts} isTagContent={isTagContent} tagName={tagName} />
+        <TagContent t={t} currentLanguage={locale} posts={posts} isTagContent={isTagContent} tagName={tagName} tagSlug={tagSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -73,7 +73,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }
 

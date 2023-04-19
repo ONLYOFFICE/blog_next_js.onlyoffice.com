@@ -31,7 +31,7 @@ const Author = ({ locale, posts }) => {
         <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} />
+        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -117,7 +117,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }
 
