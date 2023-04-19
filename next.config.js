@@ -35,6 +35,7 @@ const nextConfig = {
     styledComponents: true
   },
   productionBrowserSourceMaps: true,
+  staticPageGenerationTimeout: 1000
 }
 
 module.exports = nextConfig
