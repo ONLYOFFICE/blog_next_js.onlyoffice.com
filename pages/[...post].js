@@ -74,7 +74,7 @@ export const getStaticPaths = async () => {
     locale: "de"
   }));
 
-  const postsEs = esPostsSlug?.edges?.map(({node}) => ({
+  const esPosts = esPostsSlug?.edges?.map(({node}) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "es"
   }));
@@ -105,7 +105,7 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: [...enPosts, ...frPosts, ...dePosts, ...postsEs, ...ptPosts, ...itPosts, ...csPosts, ...jaPosts, ...zhPosts],
+    paths: [...enPosts, ...frPosts, ...dePosts, ...esPosts, ...ptPosts, ...itPosts, ...csPosts, ...jaPosts, ...zhPosts],
     fallback: "blocking",
   }
 }
@@ -144,7 +144,7 @@ export const getStaticProps = async ({ locale, params }) => {
       ptPostLink,
       zhPostLink
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }
 
