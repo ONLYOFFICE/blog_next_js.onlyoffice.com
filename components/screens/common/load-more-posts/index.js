@@ -1,12 +1,12 @@
 import StyledLoadMorePosts from "./styled-load-more-posts";
 import { useState, useEffect } from "react";
-import { getAllPosts, getInThePressPosts, getSearchResults } from "@lib/api";
+import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
 import Card from "@components/screens/common/card";
 import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
 import SearchPost from "@components/screens/search-content/search-post";
 
-const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQuery, isSearchContent, isMainContent, ...rest }) => {
+const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQuery, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [postsData, setPostsData] = useState(data?.edges ?? []);
   const [pageInfo, setPageInfo] = useState(data?.pageInfo);
@@ -35,6 +35,15 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
       await getInThePressPosts(currentLanguage, 3, `"${endCursor}"`) : 
     isSearchContent ? 
       await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQuery)
+    :
+    isAuthorContent ?
+      await getAuthorPosts(currentLanguage, 6, `"${endCursor}"`, authorSlug)
+    :
+    isTagContent ?
+      await getTagPosts(currentLanguage, 6, `"${endCursor}"`, tagSlug)
+    :
+    isCategoryContent ?
+      await getCategoryPosts(currentLanguage, 6, `"${endCursor}"`, categorySlug)
     :
       await getAllPosts(currentLanguage, 6, `"${endCursor}"`, "");
 
