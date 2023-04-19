@@ -6,7 +6,7 @@ import Newsletter from "@components/screens/common/newsletter";
 import DownloadBlock from "@components/screens/common/download-block";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categoryName }) => {
+const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categoryName, categorySlug }) => {
   const firstPosts = posts?.edges.length > 6 ? posts?.edges.slice(0, 6) : posts?.edges
 
   return (
@@ -33,7 +33,7 @@ const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categor
           <Card data={node} key={node.id} />
         ))}
 
-        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isCategoryContent={isCategoryContent} />
+        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isCategoryContent={isCategoryContent} categorySlug={categorySlug} />
       </div>
     </StyledCategoryContent>
   );

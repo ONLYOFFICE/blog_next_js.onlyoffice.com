@@ -3,7 +3,7 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import Heading from "@components/common/heading";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const TagContent = ({ t, currentLanguage, posts, isTagContent, tagName }) => {
+const TagContent = ({ t, currentLanguage, posts, isTagContent, tagName, tagSlug }) => {
   return (
     <StyledTagContent>
       <Breadcrumbs className="breadcrumbs" t={t} data={posts} isTagContent={isTagContent} />
@@ -14,7 +14,7 @@ const TagContent = ({ t, currentLanguage, posts, isTagContent, tagName }) => {
       </Heading>
 
       <div className="tag-posts">
-        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isTagContent={isTagContent} />
+        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isTagContent={isTagContent} tagSlug={tagSlug}/>
       </div>
     </StyledTagContent>
   );
