@@ -15,6 +15,8 @@ const StyledSocialLinks = styled.div`
     align-items: center;
     justify-content: center;
     vertical-align: middle;
+    width: 40px;
+    height: 40px;
     background-color: #f9f9f9;
     border-radius: 50%;
     cursor: pointer;
@@ -45,6 +47,7 @@ const StyledSocialLinks = styled.div`
   .wdgt-line {
     display: block;
     border-radius: 50%;
+    width: 40px;
     height: 40px;
     min-width: 40px;
     background-position: center;
