@@ -112,17 +112,17 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ locale, params }) => {
   const data = await getPostAndMorePosts(locale, params?.post.join("/"));
-  const enPostLink = await getPostPagelink("", data.post?.databaseId);
-  const csPostLink = await getPostPagelink("cs", data.post?.databaseId);
-  const dePostLink = await getPostPagelink("de", data.post?.databaseId);
-  const esPostLink = await getPostPagelink("es", data.post?.databaseId);
-  const frPostLink = await getPostPagelink("fr", data.post?.databaseId);
-  const itPostLink = await getPostPagelink("it", data.post?.databaseId);
-  const jaPostLink = await getPostPagelink("ja", data.post?.databaseId);
-  const ptPostLink = await getPostPagelink("pt-br", data.post?.databaseId);
-  const zhPostLink = await getPostPagelink("zh-hans", data.post?.databaseId);
+  const enPostLink = await getPostPagelink("", data?.post?.databaseId);
+  const csPostLink = await getPostPagelink("cs", data?.post?.databaseId);
+  const dePostLink = await getPostPagelink("de", data?.post?.databaseId);
+  const esPostLink = await getPostPagelink("es", data?.post?.databaseId);
+  const frPostLink = await getPostPagelink("fr", data?.post?.databaseId);
+  const itPostLink = await getPostPagelink("it", data?.post?.databaseId);
+  const jaPostLink = await getPostPagelink("ja", data?.post?.databaseId);
+  const ptPostLink = await getPostPagelink("pt-br", data?.post?.databaseId);
+  const zhPostLink = await getPostPagelink("zh-hans", data?.post?.databaseId);
 
-  if (!data.post) {
+  if (!data?.post) {
     return {
       notFound: true
     };
@@ -132,8 +132,8 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      post: data.post,
-      posts: data.posts,
+      post: data?.post,
+      posts: data?.posts,
       enPostLink,
       csPostLink,
       dePostLink,
