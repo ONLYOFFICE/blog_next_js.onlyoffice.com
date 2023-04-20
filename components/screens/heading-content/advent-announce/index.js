@@ -10,7 +10,7 @@ const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
     currentLanguage === "zh-hans" ? "https://www.onlyoffice.com/blog/zh-hans/2023/03/onlyoffice-workspace-12-5-released/" : "https://www.onlyoffice.com/blog/2023/03/onlyoffice-workspace-12-5-released/";
 
   return (
-    <StyledAdventAnnounce className={currentLanguage}>
+    <StyledAdventAnnounce className={`${currentLanguage} ${stateMobile ? "active": ""}`}>
       <div className="advent-announce advent-mobile-hide">
         <Link href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">

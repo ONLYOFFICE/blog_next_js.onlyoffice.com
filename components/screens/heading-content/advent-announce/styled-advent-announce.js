@@ -157,6 +157,12 @@ const StyledAdventAnnounce = styled.div`
 
   @media (max-width: 1024px) {
     overflow-x: hidden;
+
+    &.active {
+      ~ header {
+        overflow-x: hidden;
+      }
+    }
   }
 `;
 
