@@ -38,7 +38,6 @@ const StyledSearchPost = styled.div`
 
   .post-title {
     display: block;
-    margin-bottom: 24px;
     color: #333333;
     text-decoration: none;
 
@@ -51,6 +50,10 @@ const StyledSearchPost = styled.div`
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       cursor: pointer;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
     }
 
     &:hover {
