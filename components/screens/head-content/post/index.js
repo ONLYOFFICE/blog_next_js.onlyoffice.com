@@ -42,15 +42,15 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
     
-      {enPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="en-US" href={enPostLink?.edges[0]?.node?.link} />}
-      {csPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="cs-CZ" href={csPostLink?.edges[0]?.node?.link} />}
-      {dePostLink?.edges.length > 0 && <link rel="alternate" hrefLang="de-DE" href={dePostLink?.edges[0]?.node?.link} />}
-      {esPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="es-ES" href={esPostLink?.edges[0]?.node?.link} />}
-      {frPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="fr-FR" href={frPostLink?.edges[0]?.node?.link} />}
-      {itPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="it-IT" href={itPostLink?.edges[0]?.node?.link} />}
-      {jaPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="ja-Jp" href={jaPostLink?.edges[0]?.node?.link} />}
-      {ptPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="pt-BR" href={ptPostLink?.edges[0]?.node?.link} />}
-      {zhPostLink?.edges.length > 0 && <link rel="alternate" hrefLang="zh-CN" href={zhPostLink?.edges[0]?.node?.link} />}
+      {enPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="en-US" href={enPostLink?.edges?.[0]?.node?.link} />}
+      {csPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="cs-CZ" href={csPostLink?.edges?.[0]?.node?.link} />}
+      {dePostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="de-DE" href={dePostLink?.edges?.[0]?.node?.link} />}
+      {esPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="es-ES" href={esPostLink?.edges?.[0]?.node?.link} />}
+      {frPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="fr-FR" href={frPostLink?.edges?.[0]?.node?.link} />}
+      {itPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="it-IT" href={itPostLink?.edges?.[0]?.node?.link} />}
+      {jaPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="ja-Jp" href={jaPostLink?.edges?.[0]?.node?.link} />}
+      {ptPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="pt-BR" href={ptPostLink?.edges?.[0]?.node?.link} />}
+      {zhPostLink?.edges?.length > 0 && <link rel="alternate" hrefLang="zh-CN" href={zhPostLink?.edges?.[0]?.node?.link} />}
 
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://www.onlyoffice.com/blog/wp-content/uploads/2021/05/favicon.ico" sizes="192x192" />
