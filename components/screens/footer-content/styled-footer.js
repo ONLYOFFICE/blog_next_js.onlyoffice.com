@@ -73,10 +73,6 @@ const StyledFooter = styled.div`
 
   .footer-item-follow {
     padding-bottom: 0;
-
-    > .footer-items-group {
-      overflow: initial;
-    }
   }
 
   @media ${device.laptopM} {
