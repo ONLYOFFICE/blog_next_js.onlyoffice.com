@@ -63,13 +63,15 @@ const StyledHeadingTablet = css`
   }
 
   .nav-item-links {
+    box-sizing: border-box;
     position: fixed;
     top: 0;
     left: 0;
     padding-top: 8px;
     width: 429px;
-    max-width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100px;
+    overflow: hidden auto;
     transform: translate3d(-100%,0,0);
     border-right: 1px solid #e5e5e5;
     z-index: 1002;
