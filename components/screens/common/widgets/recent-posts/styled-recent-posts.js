@@ -122,6 +122,10 @@ const StyledRecentPosts = styled.div`
       }
     }
 
+    .post-img {
+      display: block;
+    }
+
     .post-title {
       span {
         font-weight: 600;
