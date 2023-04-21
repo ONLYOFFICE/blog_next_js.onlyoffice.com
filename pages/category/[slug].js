@@ -40,20 +40,64 @@ const Category = ({ locale, posts }) => {
   )
 }
 
-export const getStaticPaths = async ({ locales }) => {
-  const categories = await getCategorySlug();
+export const getStaticPaths = async () => {
+  const enCategorySlug = await getCategorySlug();
+  const frCategorySlug = await getCategorySlug("fr");
+  const deCategorySlug = await getCategorySlug("de");
+  const esCategorySlug = await getCategorySlug("es");
+  const ptCategorySlug = await getCategorySlug("pt-br");
+  const itCategorySlug = await getCategorySlug("it");
+  const csCategorySlug = await getCategorySlug("cs");
+  const jaCategorySlug = await getCategorySlug("ja");
+  const zhCategorySlug = await getCategorySlug("zh-hans");
 
-  const paths = locales.map((locale) => (
-    categories?.edges?.map(({node}) => ({
-      params: {
-        slug: node.slug
-      }, 
-      locale
-    }))
-  )).flat();
+  const enPosts = enCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "en"
+  }));
+
+  const frPosts = frCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "fr"
+  }));
+
+  const dePosts = deCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "de"
+  }));
+
+  const esPosts = esCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "es"
+  }));
+
+  const ptPosts = ptCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "pt-br"
+  }));
+
+  const itPosts = itCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "it"
+  }));
+
+  const csPosts = csCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "cs"
+  }));
+
+  const jaPosts = jaCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "ja"
+  }));
+
+  const zhPosts = zhCategorySlug?.edges?.map(({node}) => ({
+    params: { slug: node.slug },
+    locale: "zh-hans"
+  }));
 
   return {
-    paths,
+    paths: [...enPosts, ...frPosts, ...dePosts, ...esPosts, ...ptPosts, ...itPosts, ...csPosts, ...jaPosts, ...zhPosts],
     fallback: "blocking",
   }
 }
@@ -71,7 +115,7 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      posts
+      posts: posts ? posts : null
     },
     revalidate: 86400,
   }

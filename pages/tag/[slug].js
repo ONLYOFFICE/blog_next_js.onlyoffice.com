@@ -71,7 +71,7 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      posts
+      posts: posts ? posts : null
     },
     revalidate: 86400,
   }
