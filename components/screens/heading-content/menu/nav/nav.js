@@ -14,13 +14,13 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
         <div className="menu-wrapper">
           <div className="outer-box with-border">
             <div className="dropdown-item-group">
-              <Link id="navitem-products-docs" className="dropdown-item" href={`${hrefLang}/`}>
+              <Link id="navitem-products-docs" className="dropdown-item" href={`${hrefLang}/office-suite.aspx`}>
                 {t("Docs")}
               </Link>
               <Text className="dropdown-item-text">{t("Editors to integrate into your business platform")}</Text>
             </div>
             <div className="dropdown-item-group">
-              <Link id="navitem-products-docspace" className="dropdown-item" href={`${hrefLang}/office-suite.aspx`}>
+              <Link id="navitem-products-docspace" className="dropdown-item" href={`${hrefLang}/docspace.aspx`}>
                 {t("DocSpace")}
               </Link>
               <Text className="dropdown-item-text">{t("Platform to collaborate with your partners and clients")}</Text>
@@ -32,7 +32,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
               <Text className="dropdown-item-text">{t("Platform to collaborate with your team")}</Text>
             </div>
             <div className="dropdown-item-group">
-              <Link id="navitem-products-connectors" className="dropdown-item" href={`${hrefLang}/download-connectors.aspx`}>
+              <Link id="navitem-products-connectors" className="dropdown-item" href={`${hrefLang}/all-connectors.aspx`}>
                 {t("Connectors")}
               </Link>
               <Text className="dropdown-item-text">{t("Ready-to-use apps to integrate Docs with your platform")}</Text>
@@ -56,7 +56,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <div className="dropdown-item-label">
               {t("Perform your tasks online")}
             </div>
-            <Link id="navitem-products-oforms" className="dropdown-item" href={`${hrefLang}/`}>
+            <Link id="navitem-products-oforms" className="dropdown-item" href="https://oforms.onlyoffice.com/">
               {t("Find and fill out oforms")}
             </Link>
             <Link id="navitem-products-convert-text" className="dropdown-item" href={`${hrefLang}/text-file-converter.aspx`}>
@@ -75,57 +75,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
         </div>
       </MenuItem>
 
-      <MenuItem heading={t("Enterprise")} id="navitem-enterprise">
-        <div className="menu-wrapper">
-          <div className="outer-box">
-            <Link id="navitem-enterprise-docs-enterprise" className="dropdown-item" href={`${hrefLang}/docs-enterprise.aspx`}>
-              {t("Docs Enterprise")}
-            </Link>
-            <Link id="navitem-enterprise-workspace" className="dropdown-item" href={`${hrefLang}/workspace.aspx`}>
-              {t("Workspace")}
-            </Link>
-            <div id="navitem-enterprise-other-integrations" className="dropdown-item-label">
-              {t("Other Integrations")}
-            </div>
-            <div className="inner-box">
-              <Link id="navitem-enterprise-nextcloud" className="dropdown-item no-bold" href={`${hrefLang}/office-for-nextcloud.aspx`}>
-                {t("Nextcloud")}
-              </Link>
-              <Link id="navitem-enterprise-mattermost" className="dropdown-item no-bold" href={`${hrefLang}/office-for-mattermost.aspx`}>
-                {t("Mattermost")}
-              </Link>
-              <Link id="navitem-enterprise-owncloud" className="dropdown-item no-bold" href={`${hrefLang}/office-for-owncloud.aspx`}>
-                {t("ownCloud")}
-              </Link>
-              <Link id="navitem-enterprise-confluence" className="dropdown-item no-bold" href={`${hrefLang}/office-for-confluence.aspx`}>
-                {t("Confluence")}
-              </Link>
-              <Link id="navitem-enterprise-alfresco" className="dropdown-item no-bold" href={`${hrefLang}/office-for-alfresco.aspx`}>
-                {t("Alfresco")}
-              </Link>
-              <Link id="navitem-enterprise-moodle" className="dropdown-item no-bold" href={`${hrefLang}/office-for-moodle.aspx`}>
-                {t("Moodle")}
-              </Link>
-              <Link id="navitem-enterprise-all" className="dropdown-item no-bold" href={`${hrefLang}/all-connectors.aspx`}>
-                {t("All")}
-              </Link>
-            </div>
-          </div>
-          <div className="outer-box bg-grey">
-            <Link className="dropdown-item-box" href={`${hrefLang}/education.aspx`}>
-              <div id="navitem-enterprise-education" className="dropdown-item-title">
-                {t("ONLYOFFICE for education")}
-              </div>
-              <div id="education-div" className="menu-pic-div">
-                <div id="education-img" className="menu-pic-img"></div>
-                <p id="education-header" className="menu-pic-header">
-                  {t("Edit and collaborate on docs within your eLearning platform")}
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </MenuItem>
+      <Link id="navitem-enterprise" href={`${hrefLang}/for-enterprises.aspx`}>{t("Enterprise")}</Link>
 
       <MenuItem heading={t("Developers")} id="navitem-developers">
         <div className="menu-wrapper">
@@ -139,10 +89,10 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <Link id="navitem-developers-doc-builder" className="dropdown-item" href={`${hrefLang}/document-builder.aspx`}>
               {t("Document Builder")}
             </Link>
-            <Link id="navitem-developers-api-doc" className="dropdown-item" href={`https://api.onlyoffice.com/`}>
+            <Link id="navitem-developers-api-doc" className="dropdown-item" href="https://api.onlyoffice.com/">
               {t("API Documentation")}
             </Link>
-            <Link id="navitem-developers-pricing" className="dropdown-item" href={`${hrefLang}/`}>
+            <Link id="navitem-developers-pricing" className="dropdown-item" href={`${hrefLang}/developer-edition-prices.aspx`}>
               {t("Pricing")}
             </Link>
             <Link id="navitem-developers-get" className="dropdown-item" href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-developer`}>
@@ -171,9 +121,17 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <div id="navitem-download-for-business" className="dropdown-item-label">
               {t("For business")}
             </div>
-            <Link id="navitem-download-docs-enterprise" className="dropdown-item" href={`${hrefLang}/docs-enterprise.aspx`}>
+            <div id="navitem-download-docspace" className="dropdown-item">
+              {t("DocSpace")}
+            </div>
+            <div className="inner-box">
+              <Link id="navitem-download-enterprise-signup" className="nav-2nd-menu-link" href={`${hrefLang}/docspace-registration.aspx`}>
+                {t("Sign up for cloud")}
+              </Link>
+            </div>
+            <div id="navitem-download-docs-enterprise" className="dropdown-item">
               {t("Docs Enterprise")}
-            </Link>
+            </div>
             <div className="inner-box">
               <Link id="navitem-download-enterprise-signup" className="nav-2nd-menu-link" href={`${hrefLang}/docs-registration.aspx`}>
                 {t("Sign up for cloud")}
@@ -182,17 +140,9 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
                 {t("Install on-premises")}
               </Link>
             </div>
-            <Link id="navitem-download-docspace" className="dropdown-item" href={`${hrefLang}/docs-enterprise.aspx`}>
-              {t("DocSpace")}
-            </Link>
-            <div className="inner-box">
-              <Link id="navitem-download-enterprise-signup" className="nav-2nd-menu-link" href={`${hrefLang}/`}>
-                {t("Sign up for cloud")}
-              </Link>
-            </div>
-            <Link id="navitem-download-workspace" className="dropdown-item" href={`${hrefLang}/workspace.aspx`}>
+            <div id="navitem-download-workspace" className="dropdown-item">
               {t("Workspace")}
-            </Link>
+            </div>
             <div className="inner-box">
               <div className="nowrap">
                 <Link id="navitem-download-signin" className="nav-item-nowrap-link" href={`${hrefLang}/signin.aspx`}>
@@ -218,19 +168,19 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <div id="navitem-download-for-dev" className="dropdown-item-label">
               {t("For developers")}
             </div>
-            <Link id="navitem-download-docs-dev" className="dropdown-item" href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-developer`}>
+            <div id="navitem-download-docs-dev" className="dropdown-item">
               {t("Docs Developer")}
-            </Link>
+            </div>
             <div className="inner-box">
-              <Link id="navitem-download-enterprise-signup" className="nav-2nd-menu-link" href={`${hrefLang}/docs-registration.aspx`}>
+              {/* <Link id="navitem-download-enterprise-signup" className="nav-2nd-menu-link" href={`${hrefLang}/docs-registration.aspx`}>
                 {t("Sign up for cloud")}
-              </Link>
-              <Link id="navitem-download-enterprise-onpremises" className="nav-2nd-menu-link" href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-enterprise`}>
+              </Link> */}
+              <Link id="navitem-download-enterprise-onpremises" className="nav-2nd-menu-link" href={`${hrefLang}/download-docs.aspx?from=downloadintegrationmenu#docs-developer`}>
                 {t("Install on-premises")}
               </Link>
             </div>
-            <Link id="navitem-download-docs-builder" className="dropdown-item" href={`${hrefLang}/`}>
-              {t("Docs Builder")}
+            <Link id="navitem-download-docs-builder" className="dropdown-item" href={`${hrefLang}/download-builder.aspx`}>
+              {t("Document Builder")}
             </Link>
             <div className="outer-box-line"></div>
             <div id="navitem-download-for-community" className="dropdown-item-label">
@@ -239,7 +189,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <Link id="navitem-download-docs-community" className="dropdown-item" href={`${hrefLang}/download-docs.aspx#docs-community`}>
               {t("Docs Community")}
             </Link>
-            <Link id="navitem-download-code-git" className="dropdown-item" href={`https://github.com/ONLYOFFICE/`}>
+            <Link id="navitem-download-code-git" className="dropdown-item" href="https://github.com/ONLYOFFICE/">
               {t("Code on GitHub")}
             </Link>
           </div>
@@ -252,13 +202,13 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <div id="navitem-pricing-for-business" className="dropdown-item-label">
               {t("For business")}
             </div>
+            <Link id="navitem-pricing-docs-docspace" className="dropdown-item" href={`${hrefLang}/docspace-prices.aspx`}>
+              {t("DocSpace")}
+            </Link>
             <Link id="navitem-pricing-docs-enterprice" className="dropdown-item" href={`${hrefLang}/docs-enterprise-prices.aspx`}>
               {t("Docs Enterprise")}
             </Link>
-            <Link id="navitem-pricing-docs-docspace" className="dropdown-item" href={`${hrefLang}/`}>
-              {t("DocSpace")}
-            </Link>
-            <Link id="navitem-prices-workspace" className="dropdown-item" href={`${hrefLang}/workspace.aspx`}>
+            <Link id="navitem-prices-workspace" className="dropdown-item" href={`${hrefLang}/workspace-prices.aspx`}>
               {t("Workspace")}
             </Link>
             <div id="navitem-pricing-for-dev" className="dropdown-item-label">
@@ -271,7 +221,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
           <div className="outer-box bg-grey">
             <Link className="dropdown-item-box" href={`${hrefLang}/find-partners.aspx`}>
               <div id="navitem-pricing-partner" className="dropdown-item-title">
-                {t("Buy from an ONLYOFFICE partner")}
+                {t("Buy from an ONLYOFFICE reseller")}
               </div>
               <div id="reseller-div" className="menu-pic-div">
                 <div id="reseller-img" className="menu-pic-img"></div>
@@ -287,11 +237,14 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
       <MenuItem heading={t("Partners")} id="navitem-partners">
         <div className="menu-wrapper">
           <div className="outer-box">
+            <Link id="navitem-partners-resellers" className="dropdown-item" href={`${hrefLang}/resellers.aspx`}>
+              {t("Resellers")}
+            </Link>
             <Link id="navitem-partners-affiliates" className="dropdown-item" href={`${hrefLang}/affiliates.aspx`}>
               {t("Affiliates")}
             </Link>
-            <Link id="navitem-partners-resellers" className="dropdown-item" href={`${hrefLang}/resellers.aspx`}>
-              {t("Resellers")}
+            <Link id="navitem-partners-hosting-providers" className="dropdown-item" href={`${hrefLang}/hosting-providers.aspx`}>
+              {t("Hosting providers")}
             </Link>
             <Link id="navitem-partners-technology-partners" className="dropdown-item" href={`${hrefLang}/technology-partners.aspx`}>
               {t("Technology partners")}
@@ -325,11 +278,11 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <Link id="navitem-resources-about" className="dropdown-item" href={`${hrefLang}/about.aspx`}>
               {t("About ONLYOFFICE")}
             </Link>
-            <Link id="navitem-resources-contribute" className="dropdown-item" href={`${hrefLang}/contribute.aspx`}>
-              {t("Contribute")}
-            </Link>
             <Link id="navitem-resources-customers" className="dropdown-item" href={`${hrefLang}/customers.aspx`}>
               {t("Customers")}
+            </Link>
+            <Link id="navitem-resources-contribute" className="dropdown-item" href={`${hrefLang}/contribute.aspx`}>
+              {t("Contribute")}
             </Link>
             <Link id="navitem-resources-vacancies" className="dropdown-item" href={`${hrefLang}/vacancies.aspx`}>
               {t("Jobs")}
@@ -366,7 +319,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <Link id="navitem-resources-webinars" className="dropdown-item" href={`${hrefLang}/webinars.aspx`}>
               {t("Webinars")}
             </Link>
-            <Link id="navitem-resources-training-courses" href={`${hrefLang}/training-courses.aspx`} className="dropdown-item">
+            <Link id="navitem-resources-training-courses" className="dropdown-item" href={`${hrefLang}/training-courses.aspx`}>
               {t("Training courses")}
             </Link>
             {

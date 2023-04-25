@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import menuIcons from "@public/images/menu-pics/menu_icons.svg";
+import menuHostingProviders from "@public/images/menu-pics/menu_hosting_providers.svg";
 
 const StyledNavMenu = styled.div`
   .heading-nav-item {
@@ -233,6 +234,17 @@ const StyledNavMenu = styled.div`
     background-image: url("https://static-oforms.onlyoffice.com/images/menu-pics/menu_for_developers.png");
   }
 
+  #navitem-download-docspace,
+  #navitem-download-docs-enterprise,
+  #navitem-download-workspace,
+  #navitem-download-docs-dev {
+    cursor: default;
+
+    &:hover {
+      color: #444444;
+    }
+  }
+
   #navitem-pricing-for-business,
   #navitem-pricing-docs-enterprice,
   #navitem-pricing-docs-docspace,
@@ -253,12 +265,17 @@ const StyledNavMenu = styled.div`
   }
 
   #navitem-products-workspace,
-  #navitem-developers-doc-builder,
   #navitem-download-workspace,
   #navitem-prices-workspace,
   #navitem-enterprise-workspace {
     &:before {
       background-position-y: -26px;
+    }
+  }
+
+  #navitem-developers-doc-builder {
+    &:before {
+      background-position-y: -834px;
     }
   }
 
@@ -312,7 +329,7 @@ const StyledNavMenu = styled.div`
 
   #navitem-products-convert-pdfs {
     &:before {
-      background-position-y: -1300px;
+      background-position-y: -1326px;
     }
   }
 
@@ -330,10 +347,15 @@ const StyledNavMenu = styled.div`
     }
   }
 
-  #navitem-developers-api-doc,
+  #navitem-developers-api-doc {
+    &:before {
+      background-position-y: -885px;
+    }
+  }
+
   #navitem-developers-pricing {
     &:before {
-      background-position-y: -884px;
+      background-position-y: -1300px;
     }
   }
 
@@ -353,13 +375,19 @@ const StyledNavMenu = styled.div`
 
   #navitem-partners-resellers {
     &:before {
-      background-position-y: -182px;
+      background-position-y: -208px;
     }
   }
 
   #navitem-partners-affiliates {
     &:before {
-      background-position-y: -208px;
+      background-position-y: -182px;
+    }
+  }
+
+  #navitem-partners-hosting-providers {
+    &:before {
+      background-image: url(${menuHostingProviders.src});
     }
   }
 
@@ -479,7 +507,7 @@ const StyledNavMenu = styled.div`
 
   #navitem-download-connectors {
     &:before {
-      background-position-y: -156px;
+      background-position-y: -1352px;
     }
   }
 
@@ -504,12 +532,6 @@ const StyledNavMenu = styled.div`
   #navitem-download-code-git {
     &:before {
       background-position-y: -936px;
-    }
-  }
-
-  #navitem-download-connectors {
-    &:before {
-      background-position-y: -1196px;
     }
   }
 
