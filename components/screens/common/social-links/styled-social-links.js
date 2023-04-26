@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import socialLinks from "@public/images/social-icons/color_social_icons.svg";
+import tiktok from "@public/images/social-icons/tiktok.react.svg";
 import socialWechat from "@public/images/icons/social-wechat.png";
 import qrcodeForWechat from "@public/images/qrcode_for_wechat.jpg";
 import socialLine from "@public/images/icons/line.svg";
@@ -9,6 +11,25 @@ const StyledSocialLinks = styled.div`
   flex-wrap: wrap;
   gap: 16px;
 
+  &.zh-hans {
+    gap: 12px;
+
+    @media (max-width: 1199px) {
+      gap: 16px;
+    }
+  }
+
+  &.ja,
+  &.zh-hans {
+    @media (max-width: 600px) {
+      column-gap: 20px;
+    }
+
+    @media (max-width: 539px) {
+      column-gap: 24px;
+    }
+  }
+
   .social-link {
     list-style-type: none;
     display: flex;
@@ -17,17 +38,77 @@ const StyledSocialLinks = styled.div`
     vertical-align: middle;
     width: 40px;
     height: 40px;
+    background-image: url(${socialLinks.src});
     background-color: #f9f9f9;
+    background-repeat: no-repeat;
+    background-position: 0;
     border-radius: 50%;
     cursor: pointer;
+    filter: grayscale(1);
 
-    > div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
+    &:hover {
+      filter: grayscale(0);
+    }
+
+    &.subscribe-mail {
+      background-position-x: -426px;
+    }
+
+    &.facebook {
+      background-position-x: 8px;
+    }
+
+    &.twitter {
+      background-position-x: -32px;
+    }
+
+    &.linkedin {
+      background-position-x: -72px;
+    }
+
+    &.youtube {
+      background-position-x: -112px;
+    }
+
+    &.blog {
+      background-position-x: -192px;
+    }
+
+    &.medium {
+      background-position-x: -232px;
+    }
+
+    &.instagram {
+      background-position-x: -272px;
+    }
+
+    &.github {
+      background-position-x: -312px;
+    }
+
+    &.fosstodon {
+      background-position-x: -389px;
+    }
+
+    &.tiktok {
+      background-image: url(${tiktok.src});
+      background-position: center;
+    }
+
+    &.kuaishou {
+      background-position-x: -546px;
+    }
+
+    &.xiaohongshu {
+      background-position-x: -586px;
+    }
+
+    &.csdn {
+      background-position-x: -666px;
+    }
+
+    &.toutiao {
+      background-position-x: -626px;
     }
   }
 
