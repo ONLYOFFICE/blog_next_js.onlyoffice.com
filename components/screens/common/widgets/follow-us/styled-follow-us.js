@@ -19,12 +19,75 @@ const StyledFollowUs = styled.div`
     grid-template-columns: repeat(auto-fit, 30px);
     gap: 24px;
 
+    &.zh-hans {
+      gap: 24px;
+    }
+
+    &.ja,
+    &.zh-hans {
+      @media (max-width: 600px) {
+        column-gap: 24px;
+      }
+    }
+
     .social-link {
       width: 24px;
       height: 24px;
 
-      > div {
-        filter: grayscale(0);
+      &.subscribe-mail {
+        background-position-x: -434px;
+      }
+  
+      &.facebook {
+        background-position-x: 0;
+      }
+  
+      &.twitter {
+        background-position-x: -40px;
+      }
+  
+      &.linkedin {
+        background-position-x: -80px;
+      }
+  
+      &.youtube {
+        background-position-x: -120px;
+      }
+  
+      &.blog {
+        background-position-x: -200px;
+      }
+  
+      &.medium {
+        background-position-x: -240px;
+      }
+  
+      &.instagram {
+        background-position-x: -280px;
+      }
+  
+      &.github {
+        background-position-x: -320px;
+      }
+  
+      &.fosstodon {
+        background-position-x: -397px;
+      }
+  
+      &.kuaishou {
+        background-position-x: -554px;
+      }
+  
+      &.xiaohongshu {
+        background-position-x: -594px;
+      }
+  
+      &.csdn {
+        background-position-x: -674px;
+      }
+  
+      &.toutiao {
+        background-position-x: -634px;
       }
     }
 
@@ -33,7 +96,6 @@ const StyledFollowUs = styled.div`
       width: 24px;
       height: 24px;
       min-width: 24px;
-      filter: grayscale(0);
     }
   }
 
