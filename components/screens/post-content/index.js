@@ -10,14 +10,14 @@ import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import Comments from "./comments";
 import ShareButtons from "./share-buttons";
-import SyntaxHighlighter, { github } from 'react-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   const options = {
     replace: domNode => {
       if (domNode.attribs && domNode.name === 'pre') {
         const props = attributesToProps(domNode.attribs);
-        return <SyntaxHighlighter {...props} language="javascript" style={github}>
+        return <SyntaxHighlighter {...props} language="javascript">
           {domToReact(domNode.children)}
         </SyntaxHighlighter>;
       }
