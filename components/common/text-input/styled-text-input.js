@@ -97,7 +97,6 @@ const StyledTextInput = styled.input`
       props.withButton
         ? "102%"
         : props.width || props.theme.textInput.media.width};
-    font-size: 14px;
   }
 `;
 
