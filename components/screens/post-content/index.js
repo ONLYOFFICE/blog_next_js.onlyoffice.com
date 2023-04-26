@@ -1,5 +1,5 @@
 import StyledPostContent from "./styled-post-content";
-import parse from "html-react-parser";
+import parse, { attributesToProps, domToReact } from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -10,8 +10,20 @@ import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import Comments from "./comments";
 import ShareButtons from "./share-buttons";
+import SyntaxHighlighter, { github } from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
+  const options = {
+    replace: domNode => {
+      if (domNode.attribs && domNode.name === 'pre') {
+        const props = attributesToProps(domNode.attribs);
+        return <SyntaxHighlighter {...props} language="javascript" style={github}>
+          {domToReact(domNode.children)}
+        </SyntaxHighlighter>;
+      }
+    }
+  };
+
   return (
     <StyledPostContent>
       <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
@@ -32,15 +44,18 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons />
           </div>
-          <div className="entry-content">{post?.content ? parse(post?.content) : ""}</div>
+          <div className="entry-content">{post?.content ? parse(post?.content, options) : ""}</div>
         </article>
 
         <div className="tag-list">
-          <div className="tag-items">
-            {post?.tags?.edges.map(({node}) => (
-              <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
-            ))}
-          </div>
+          {
+            post?.tags?.edges.length > 0 &&
+            <div className="tag-items">
+              {post?.tags?.edges.map(({node}) => (
+                <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
+              ))}
+            </div>
+          }
           <div className="tag-share">
             <ShareButtons />
           </div>

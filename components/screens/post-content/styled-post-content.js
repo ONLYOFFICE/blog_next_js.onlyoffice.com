@@ -121,10 +121,54 @@ const StyledPostContent = styled(Section)`
       color: #333;
     }
 
+    .wp-caption {
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      max-width: 100%;
+      padding: 5px 3px 10px;
+      text-align: center;
+
+      img {
+        border: 0 none;
+        height: auto;
+        margin: 0;
+        max-width: 98.5%;
+        padding: 0;
+        width: auto;
+      }
+
+      &.alignnone {
+        margin: 5px 20px 20px 0;
+      }
+    }
+
+    .wp-caption-text {
+      font-size: 13px;
+      line-height: 13px;
+    }
+
     img {
       object-fit: contain;
       height: auto;
       max-width: 100%;
+    }
+
+    figure {
+      object-fit: contain;
+      max-width: 100%;
+
+      &.aligncenter {
+        margin: 16px auto;
+      }
+
+      &.wp-action {
+        max-width: 100%;
+      }
+    }
+
+    .aligncenter {
+      display: block;
+      margin: 5px auto 5px auto;
     }
 
     a {
@@ -171,6 +215,31 @@ const StyledPostContent = styled(Section)`
           width: 5.73px;
           height: 5.72px;
         }
+      }
+    }
+
+    blockquote {
+      border-left: 3px solid #ff6f3d;
+      margin: 1.5em 0;
+      padding: 0.5em 10px 0.5em 24px;
+      quotes: "“" "”";
+
+      &:before {
+        content: open-quote;
+        line-height: .1em;
+        margin-right: 0.4em;
+        vertical-align: 0.1em;
+      }
+
+      &:after {
+        content: close-quote;
+        line-height: .1em;
+        margin-left: 0.4em;
+        vertical-align: 0.1em;
+      }
+
+      p {
+        display: inline;
       }
     }
 
@@ -405,7 +474,7 @@ const StyledPostContent = styled(Section)`
   }
 
   .tag-share {
-    margin: 10px 0;
+    margin: 10px 0 10px auto;
     width: 30%;
 
     .share-buttons {
@@ -444,13 +513,19 @@ const StyledPostContent = styled(Section)`
     .content {
       margin: 70px auto 80px;
     }
+
+    article {
+      iframe {
+        width: 100%;
+      }
+    }
   }
 
   @media ${device.tablet} {
     padding: 24px 0 0;
 
     .content {
-      margin: 24px auto 80px;
+      margin: 24px auto;
     }
 
     .title {
@@ -471,6 +546,10 @@ const StyledPostContent = styled(Section)`
       h3 {
         font-size: 22px;
       }
+
+      .useful-links {
+        margin: 44px 0;
+      }
     }
 
     .info-content {
@@ -483,6 +562,7 @@ const StyledPostContent = styled(Section)`
 
     .tag-list {
       flex-direction: column;
+      margin: 44px 0;
     }
 
     .tag-items {
@@ -500,6 +580,16 @@ const StyledPostContent = styled(Section)`
 
       .share-buttons {
         justify-content: initial;
+      }
+    }
+
+    .join-discussion {
+      margin: 44px auto 0;
+
+      a {
+        font-size: 13px;
+        line-height: 133%;
+        letter-spacing: .04em;
       }
     }
   }
@@ -535,6 +625,10 @@ const StyledPostContent = styled(Section)`
       img {
         height: 100%;
         margin: 0;
+      }
+
+      iframe {
+        height: 235px;
       }
 
       h2 {
