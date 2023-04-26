@@ -9,11 +9,11 @@ import reddit from "@public/images/icons/reddit.svg"
 import telegram from "@public/images/icons/telegram.svg"
 import mastodon from "@public/images/icons/mastodon.svg"
 
-import { FacebookShareButton, LinkedinShareButton, RedditShareButton, TelegramShareButton, TwitterShareButton } from "react-share";
+import { FacebookShareButton, RedditShareButton, TelegramShareButton, TwitterShareButton } from "react-share";
 
 const ShareButtons = () => {
   const router = useRouter();
-  const routerUrl = `https://www.onlyoffice.com${router.asPath}`;
+  const routerUrl = `https://www.onlyoffice.com/blog${router.asPath}`;
 
   return (
     <StyledRecentPosts className="share-buttons">
@@ -23,16 +23,16 @@ const ShareButtons = () => {
       <TwitterShareButton className="share-button" url={routerUrl}>
         <ReactSVG src={twitter.src} alt="Twitter" />
       </TwitterShareButton>
-      <LinkedinShareButton className="share-button" url={routerUrl}>
+      <ExternalLink className="share-button" href={`https://www.linkedin.com/sharing/share-offsite/?url=${routerUrl}`}>
         <ReactSVG src={linkedin.src} alt="LinkedIn" />
-      </LinkedinShareButton>
+      </ExternalLink>
       <RedditShareButton className="share-button" url={routerUrl}>
         <ReactSVG src={reddit.src} alt="Reddit" />
       </RedditShareButton>
       <TelegramShareButton className="share-button" url={routerUrl}>
         <ReactSVG src={telegram.src} alt="Telegram" />
       </TelegramShareButton>
-      <ExternalLink className="share-button" href={`https://mastodonshare.com/?text=text&url=${routerUrl}`}>
+      <ExternalLink className="share-button" href={`https://www.addtoany.com/add_to/mastodon?linkurl=${routerUrl}`}>
         <ReactSVG src={mastodon.src} alt="Mastodon" />
       </ExternalLink>
     </StyledRecentPosts>
