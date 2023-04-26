@@ -7,11 +7,11 @@ const CloudBlock = ({ t, currentLanguage, ...rest }) => {
     currentLanguage === "zh-hans" ? "/zh" :
     currentLanguage === "pt-br" ? "/pt" : 
     `/${currentLanguage}`
-  }/registration.aspx`
+  }/docspace-registration.aspx`
 
   return (
     <StyledCloudBlock {...rest}>
-      <ExternalLink className="button" href={locale}>{t("Try ONLYOFFICE in the cloud")}</ExternalLink>
+      <ExternalLink className="button" href={locale}>{t("Use ONLYOFFICE for free")}</ExternalLink>
     </StyledCloudBlock>
   );
 };
