@@ -122,6 +122,7 @@ const StyledPostContent = styled(Section)`
     }
 
     .wp-caption {
+      margin: 0;
       background: #fff;
       border: 1px solid #f0f0f0;
       max-width: 100%;
@@ -135,10 +136,6 @@ const StyledPostContent = styled(Section)`
         max-width: 98.5%;
         padding: 0;
         width: auto;
-      }
-
-      &.alignnone {
-        margin: 5px 20px 20px 0;
       }
     }
 
@@ -154,6 +151,7 @@ const StyledPostContent = styled(Section)`
     }
 
     figure {
+      box-sizing: border-box;
       object-fit: contain;
       max-width: 100%;
 
@@ -168,7 +166,6 @@ const StyledPostContent = styled(Section)`
 
     .aligncenter {
       display: block;
-      margin: 5px auto 5px auto;
     }
 
     a {

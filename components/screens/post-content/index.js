@@ -18,7 +18,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       if (domNode.attribs && domNode.name === 'pre') {
         const props = attributesToProps(domNode.attribs);
         return <SyntaxHighlighter {...props} language="javascript">
-          {domToReact(domNode.children)}
+          {domToReact(domNode.children).toString()}
         </SyntaxHighlighter>;
       }
     }
