@@ -54,7 +54,7 @@ pipeline
             execCommand: '''
               sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/blog_deploy.log
             ''', 
-            execTimeout: 600000, 
+            execTimeout: 14000000, 
             flatten: false, 
             makeEmptyDirs: false, 
             noDefaultExcludes: false, 
