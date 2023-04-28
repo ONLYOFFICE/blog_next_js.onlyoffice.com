@@ -13,6 +13,9 @@ import ShareButtons from "./share-buttons";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
+  const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
+  const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
+
   const options = {
     replace: domNode => {
       if (domNode.attribs && domNode.name === 'pre') {
@@ -44,7 +47,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons />
           </div>
-          <div className="entry-content">{post?.content ? parse(post?.content, options) : ""}</div>
+          <div className="entry-content">{post?.content ? parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options) : ""}</div>
         </article>
 
         <div className="tag-list">

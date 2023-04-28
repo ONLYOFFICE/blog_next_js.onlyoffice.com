@@ -6,10 +6,13 @@ import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
 const Card = ({ t, currentLanguage, data, mainPost, ...rest }) => {
+  const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
+  const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
+
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
       <InternalLink className="card-img" href={data?.uri}>
-        <img src={data.featuredImage?.node.sourceUrl ? data.featuredImage?.node?.sourceUrl : data?.firstImgPost} alt={data?.title} />
+        <img src={data.featuredImage?.node.sourceUrl ? data.featuredImage?.node.sourceUrl.replace(currentImgUrl, cdnImgUrl) : data?.firstImgPost.replace(currentImgUrl, cdnImgUrl)} alt={data?.title} />
       </InternalLink>
       <div className="card-body">
         <Heading className="card-title" level={2}>
