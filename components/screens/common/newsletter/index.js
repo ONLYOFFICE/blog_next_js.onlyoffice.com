@@ -14,6 +14,15 @@ const Newsletter = ({ t }) => {
     setSearchItem(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("/api/users", {
+      method: 'POST',
+      body: searchItem
+    })
+  };
+
   return (
     <>
       <StyledNewsletter className="newsletter">
@@ -21,14 +30,16 @@ const Newsletter = ({ t }) => {
           <Heading className="newsletter-title" level={2}>{t("Newsletter")}</Heading>
 
           <div className="newsletter-body">
-            <TextInput 
-              type="text" 
-              placeholder={`${t("Your e-mail")}*`} 
-              labelButton={t("Subscribe")} 
-              withButton={true} 
-              onChange={onSearch}
-              value={searchItem}
-            />
+            <form onSubmit={onSubmit}>
+              <TextInput 
+                type="text" 
+                placeholder={`${t("Your e-mail")}*`} 
+                labelButton={t("Subscribe")} 
+                withButton={true} 
+                onChange={onSearch}
+                value={searchItem}
+              />
+            </form>
             <Text className="newsletter-text">{t('NewsletterSubscribeText')} <ExternalLink href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t("NewsletterSubscribeLink")}</ExternalLink></Text>
           </div>
         </div>

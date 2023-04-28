@@ -105,6 +105,10 @@ const StyledNewsletter = styled.div`
     box-shadow: initial;
     margin: 0 -16px;
 
+    .group-input {
+      height: 48px;
+    }
+
     .newsletter-body {
       .group-input {
         button {
