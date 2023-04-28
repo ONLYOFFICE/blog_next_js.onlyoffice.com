@@ -33,6 +33,7 @@ const StyledFollowUs = styled.div`
     .social-link {
       width: 24px;
       height: 24px;
+      filter: grayscale(0);
 
       &.subscribe-mail {
         background-position-x: -434px;
@@ -96,6 +97,7 @@ const StyledFollowUs = styled.div`
       width: 24px;
       height: 24px;
       min-width: 24px;
+      filter: grayscale(0);
     }
   }
 
