@@ -1,14 +1,10 @@
 import StyledRecentPosts from "./styled-recent-posts";
-import dynamic from "next/dynamic";
+import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
 const RecentPosts = ({ t, currentLanguage, data }) => {
   const isRecentPosts = true;
-
-  const DateFormat = dynamic(() => import("@components/screens/common/date-format"), {
-    ssr: false
-  });
 
   return (
     <StyledRecentPosts>
