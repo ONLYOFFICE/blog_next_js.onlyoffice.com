@@ -42,7 +42,6 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
     }
   }, [searchQueryString]);
 
-
   return (
     <StyledSearchContent>
       <div className="wrapper">
@@ -67,7 +66,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
                     t={t} 
                     currentLanguage={currentLanguage} 
                     data={queryResults} 
-                    searchQuery={searchQuery} 
+                    searchQueryString={searchQueryString} 
                     isSearchContent={isSearchContent}
                   />
                 :

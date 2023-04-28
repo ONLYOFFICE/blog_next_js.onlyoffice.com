@@ -6,7 +6,7 @@ import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
 import SearchPost from "@components/screens/search-content/search-post";
 
-const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQuery, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
+const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [postsData, setPostsData] = useState(data?.edges ?? []);
   const [pageInfo, setPageInfo] = useState(data?.pageInfo);
@@ -34,7 +34,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
     isInThePressContent ? 
       await getInThePressPosts(currentLanguage, 3, `"${endCursor}"`) : 
     isSearchContent ? 
-      await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQuery)
+      await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQueryString)
     :
     isAuthorContent ?
       await getAuthorPosts(currentLanguage, 6, `"${endCursor}"`, authorSlug)
@@ -66,7 +66,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
       :
       isSearchContent ?
         postsData?.map(({node}) => (
-          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQuery={searchQuery} />
+          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQueryString={searchQueryString} />
         ))
       :
         postsData?.map(({node}) => (
