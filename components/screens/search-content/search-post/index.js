@@ -1,10 +1,35 @@
 import StyledSearchPost from "./styled-search-post";
+import { useCallback } from "react";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
-import ExternalLink from "@components/common/external-link";
+import InternalLink from "@components/common/internal-link";
 
-const SearchPost = ({ currentLanguage, data }) => {
+const SearchPost = ({ currentLanguage, data, searchQueryString }) => {
+  const HightLight = (props) => {
+    const { searchQuery, text } = props;
+
+    if (!searchQuery) return string;
+
+    const regexp = new RegExp(searchQuery, 'ig');
+    const matchValue = text.match(regexp);
+
+    if (matchValue) {
+      return text.split(regexp).map((text, index, array) => {
+        if (index < array.length - 1) {
+          const searchExcerpt = matchValue.shift();
+          return <>{text}<span className="search-excerpt">{searchExcerpt}</span></>
+        }
+        return text;
+      })
+    }
+    return text;
+  }
+
+  const HightLightText = useCallback((text) => {
+    return <HightLight searchQuery={searchQueryString} text={text} />
+  }, [searchQueryString])
+
   return (
     <StyledSearchPost>
       <article>
@@ -12,16 +37,21 @@ const SearchPost = ({ currentLanguage, data }) => {
           <span className="date">
             <DateFormat currentLanguage={currentLanguage} data={data?.date} format="D MMMM y" />
           </span>
-          <ExternalLink className="author" href={`/author/${data.author?.node.slug}`}>{data.author?.node.name}</ExternalLink>
+          <InternalLink className="author" href={`/author/${data.author?.node.slug}`}>{data.author?.node.name}</InternalLink>
         </div>
 
-        <ExternalLink className="post-title" href={data?.uri}>
-          <Heading level={2}>{data?.title}</Heading>
-        </ExternalLink>
+        <InternalLink className="post-title" href={data?.uri}>
+          <Heading level={2}>{HightLightText(data?.title)}</Heading>
+        </InternalLink>
 
         {
-          data?.aioseoDescription || data?.excerpt &&
-          <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.aioseoDescription ? data?.aioseoDescription : data?.excerpt}}></Text>
+          data?.aioseoDescription ?
+            <Text className="post-text" as="p">{HightLightText(data?.aioseoDescription)}</Text>
+          :
+          data?.excerpt ?
+            <Text className="post-text" as="p">{HightLightText(data?.excerpt)}</Text>
+          :
+            null
         }
       </article>
     </StyledSearchPost>

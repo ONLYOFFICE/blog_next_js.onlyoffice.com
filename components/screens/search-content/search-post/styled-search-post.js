@@ -29,17 +29,31 @@ const StyledSearchPost = styled.div`
   }
 
   .author {
+    display: inline-flex;
     background-image: url(${authorIcon.src});
+    text-decoration: none;
+
+    .external-link {
+      color: #919192;
+      text-decoration: none;
+    }
 
     &:hover {
-      text-decoration: underline;
+      .external-link {
+        text-decoration: underline;
+      }
     }
   }
 
   .post-title {
-    display: block;
+    display: flex;
     color: #333333;
     text-decoration: none;
+
+    .external-link {
+      color: #333333;
+      text-decoration: none;
+    }
 
     h2 {
       font-size: 24px;
@@ -57,11 +71,14 @@ const StyledSearchPost = styled.div`
     }
 
     &:hover {
-      text-decoration: underline;
+      .external-link {
+        text-decoration: underline;
+      }
     }
   }
 
   .post-text {
+    display: block;
     margin: 0;
     font-size: 16px;
     line-height: 26px;
@@ -69,6 +86,10 @@ const StyledSearchPost = styled.div`
     p {
       margin: 0;
     }
+  }
+
+  .search-excerpt {
+    font-style: italic;
   }
 
   @media ${device.laptop} {
