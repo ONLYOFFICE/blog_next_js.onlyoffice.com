@@ -77,6 +77,11 @@ const StyledMainContent = styled(Section)`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+
+    .category-posts-btn {
+      grid-column: span 3;
+      justify-self: center;
+    }
   }
 
   .more-posts-btn {
@@ -124,6 +129,10 @@ const StyledMainContent = styled(Section)`
 
     .category-posts {
       grid-template-columns: repeat(2, 1fr);
+
+      .category-posts-btn {
+        grid-column: span 2;
+      }
     }
 
     .category-posts-title {
@@ -169,6 +178,11 @@ const StyledMainContent = styled(Section)`
 
     .category-posts {
       grid-template-columns: initial;
+
+      .category-posts-btn {
+        grid-column: initial;
+        justify-self: initial;
+      }
     }
 
     .category-more-posts {

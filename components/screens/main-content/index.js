@@ -1,5 +1,5 @@
 import StyledMainContent from "./styled-main-content";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Router from 'next/router';
 import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
@@ -9,11 +9,36 @@ import DownloadBlock from "@components/screens/common/download-block";
 import Newsletter from "@components/screens/common/newsletter";
 import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
+import Button from "@components/common/button";
 import LoadMorePosts from "../common/load-more-posts";
 
 const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainContent }) => {
   const mainPost = true;
   const [searchQuery, setSearchQuery] = useState("");
+
+  const posts = allPosts.edges;
+  const [postList, setPostList] = useState([...posts.slice(0, 3)]);
+  const [loadMore, setLoadMore] = useState(false);
+  const [hasMore, setHasMore] = useState(posts.length > 3);
+
+  const handleLoadMore = () => {
+    setLoadMore(true);
+  };
+
+  useEffect(() => {
+    if (loadMore && hasMore) {
+      const currentLength = postList.length;
+      const isMore = currentLength < posts.length;
+      const nextResults = isMore ? posts.slice(currentLength, currentLength + 6) : [];
+      setPostList([...postList, ...nextResults]);
+      setLoadMore(false);
+    }
+  }, [loadMore, hasMore]);
+
+  useEffect(() => {
+    const isMore = postList.length < posts.length;
+    setHasMore(isMore);
+  }, [postList]);
 
   const handleSearchFormSubmit = async (e) => {
     e.preventDefault();
@@ -114,7 +139,13 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <Newsletter t={t} />
 
         <div className="category-posts">
-          <LoadMorePosts t={t} currentLanguage={currentLanguage} data={allPosts} isMainContent={isMainContent} />
+          {postList?.map(({ node }) => {
+            return <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          })}
+
+          {hasMore &&
+            <Button className="category-posts-btn" typeButton="transparent" onClick={handleLoadMore} label={t("Load more")} />
+          }
         </div>
       </div>
     </StyledMainContent>
