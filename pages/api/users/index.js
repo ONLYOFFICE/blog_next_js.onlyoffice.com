@@ -1,16 +1,17 @@
 import excuteQuery from "@lib/db";
 import moment from "moment";
 
-export default async (req) => {
+export default async (req, res) => {
   const date = new Date();
+  const body = JSON.parse(req.body);
 
-  try {
-    const result = await excuteQuery({
-      query: `INSERT INTO users(id, email, date) VALUES(null, '${req.body.email}', '${moment(date).locale("en").format('YYYY-MM-DD HH:mm:ss')}')`,
-    });
+  const result = await excuteQuery({
+    query: `INSERT INTO users(id, email, date) VALUES(null, '${body.email}', '${moment(date).locale("en").format('YYYY-MM-DD HH:mm:ss')}')`,
+  });
 
-    console.log(result);
-  } catch (error) {
-    console.log(error);
+  if (result.error?.code === "ER_DUP_ENTRY") {
+    return res.status(500).end();
+  } else {
+    return res.status(200).end();
   }
 };
