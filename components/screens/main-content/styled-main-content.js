@@ -100,6 +100,7 @@ const StyledMainContent = styled(Section)`
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: #333;
+      text-align: center;
     }
 
     &:hover {
