@@ -29,29 +29,43 @@ const StyledNewsletter = styled.div`
     width: 100%;
     max-width: 586px;
 
-    .group-input {
+    form {
+      position: relative;
+      display: flex;
+
       input {
+        box-sizing: border-box;
+        height: 56px;
+        border: 1px solid #aaaaaa;
+        border-radius: 3px;
+        border-right: none;
+        border-bottom-right-radius: initial;
+        border-top-right-radius: initial;
         padding: 16px;
         font-size: 14px;
         line-height: 280%;
-
-        &:placeholder {
-          font-size: 14px;
-          line-height: 280%;
-          color: #AAAAAA;
-        }
+        color: #333;
       }
 
       button {
         padding: 19px 12px;
-        border-radius: 0 3px 3px 0;
+        border-radius: 0px 3px 3px 0px;
         min-width: 122px;
         font-family: "Open Sans", sans-serif;
         font-size: 13px;
         line-height: 17px;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: #ffffff;
+      }
+
+      .error-text {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        color: #ff0c3e;
+        font-size: 12px;
+        line-height: 19px;
       }
     }
   }
@@ -60,12 +74,14 @@ const StyledNewsletter = styled.div`
     margin-top: 14px;
     font-size: 13px;
     line-height: 21px;
+    color: #333333;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
 
-    a {
-      display: initial;
-      font-size: 13px;
-      line-height: 21px;
-      color: #333333;
+    u {
+      cursor: pointer;
+      pointer-events: initial;
     }
   }
 
@@ -85,7 +101,7 @@ const StyledNewsletter = styled.div`
     }
 
     .newsletter-body {
-      .group-input {
+      form {
         button {
           font-size: 0;
           min-width: 56px;
@@ -105,24 +121,21 @@ const StyledNewsletter = styled.div`
     box-shadow: initial;
     margin: 0 -16px;
 
-    .group-input {
-      height: 48px;
-    }
-
     .newsletter-body {
-      .group-input {
+      form {
+        input,
         button {
           height: 48px;
+        }
+
+        .error-text {
+          top: 48px;
+          font-size: 10px;
         }
       }
     }
 
     .newsletter-text {
-      text-align: center;
-    }
-
-    .newsletter-text,
-    .newsletter-text a {
       font-size: 12px;
       line-height: 16px;
     }

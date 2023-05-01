@@ -2,7 +2,6 @@ import styled from "styled-components";
 import newsletterConfirm from "@public/images/icons/newsletter-confirm.svg";
 
 const StyledNewsletterConfirm = styled.div`
-  display: none;
   position: relative;
   box-sizing: border-box;
   padding: 43px 26px 67px;
