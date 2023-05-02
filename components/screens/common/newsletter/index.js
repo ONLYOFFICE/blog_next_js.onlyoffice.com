@@ -17,13 +17,13 @@ const Newsletter = ({ t }) => {
     const response = await fetch("/api/users", {
       method: "POST",
       body: JSON.stringify(data)
-    })
+    });
 
     if (response.status === 200) {
       setIsSuccess(true);
     } else {
       setInputEmailUsed(true);
-    }
+    };
   };
 
   return (
@@ -52,7 +52,10 @@ const Newsletter = ({ t }) => {
                     render={({ field: { onChange, onBlur } }) => (
                       <Input 
                         className={errors.email && "error"}
-                        onChange={onChange} 
+                        onChange={(e) => {
+                          onChange(e);
+                          setInputEmailUsed(false);
+                        }}
                         onBlur={onBlur}
                         name="email"
                         placeholder={`${t("Your e-mail")}*`}
