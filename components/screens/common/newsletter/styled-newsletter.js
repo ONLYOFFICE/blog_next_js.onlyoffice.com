@@ -48,6 +48,7 @@ const StyledNewsletter = styled.div`
       }
 
       button {
+        position: relative;
         padding: 19px 12px;
         border-radius: 0px 3px 3px 0px;
         min-width: 122px;
@@ -57,6 +58,30 @@ const StyledNewsletter = styled.div`
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: #ffffff;
+        transition: background-color 0.3s, opacity 0.3s;
+
+        &.loading {
+          font-size: 0;
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            margin: 0 auto;
+            border: 2px solid #ffffff;
+            border-radius: 75%;
+            border-right-color: transparent;
+            transform: translate(-50%, -50%);
+            animation: cssload-spin 1025ms infinite linear;
+          }
+          
+          @keyframes cssload-spin {
+            100%{ transform: translate(-50%, -50%) rotate(360deg); }
+          }
+        }
       }
 
       .error-text {
@@ -108,6 +133,10 @@ const StyledNewsletter = styled.div`
           background-image: url(${unionIcon.src});
           background-position: 50% 50%;
           background-repeat: no-repeat;
+
+          &.loading {
+            background-image: none;
+          }
         }
       }
     }

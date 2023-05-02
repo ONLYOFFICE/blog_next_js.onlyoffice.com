@@ -11,9 +11,14 @@ import ExternalLink from "@components/common/external-link";
 const Newsletter = ({ t }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [inputEmailUsed, setInputEmailUsed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, formState: { errors }, control } = useForm();
 
   const onSubmit = async (data) => {
+    if (inputEmailUsed === false) {
+      setIsLoading(true);
+    }
+
     const response = await fetch("/api/users", {
       method: "POST",
       body: JSON.stringify(data)
@@ -23,6 +28,7 @@ const Newsletter = ({ t }) => {
       setIsSuccess(true);
     } else {
       setInputEmailUsed(true);
+      setIsLoading(false);
     };
   };
 
@@ -63,7 +69,7 @@ const Newsletter = ({ t }) => {
                       />
                     )}
                   />
-                  <Button label={t("Subscribe")} />
+                  <Button className={`${isLoading ? "loading" : ""}`} label={t("Subscribe")} />
                 </form>
                 <ExternalLink className="newsletter-text" href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t('NewsletterSubscribeText')} <u>{t("NewsletterSubscribeLink")}</u></ExternalLink>
               </div>
