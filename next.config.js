@@ -35,7 +35,10 @@ const nextConfig = {
     styledComponents: true
   },
   productionBrowserSourceMaps: true,
-  staticPageGenerationTimeout: 1000
+  staticPageGenerationTimeout: 1000,
+  experimental: {
+    largePageDataBytes: 128 * 1000000,
+  },
 }
 
 module.exports = nextConfig
