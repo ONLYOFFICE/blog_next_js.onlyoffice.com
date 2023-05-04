@@ -18,61 +18,84 @@ const Footer = ({ t, language }) => {
     setPopupActive(true);
   };
 
+  const hrefLang = `https://onlyoffice.com${
+    language === "en" ? "" : `/${language}`
+  }`;
+
   return (
     <StyledFooter className={language} language={language}>
       <div className="footer-item-group">
-        <FooterItem dis heading={t("Solutions")} className="bysize">
-          <ExternalLink href="/for-small-business.aspx" className="footer-link" label={t("SMBs")} />
-          <ExternalLink href="/for-enterprises.aspx" className="footer-link" label={t("Enterprises")} />
-          <ExternalLink href="/home-use.aspx" className="footer-link" label={t("Home use")} />
-          <ExternalLink href="/for-developers.aspx" className="footer-link" label={t("Developers")} />
-          <ExternalLink href="/for-hosting-providers.aspx" className="footer-link" label={t("Hosting providers")} />
-          <ExternalLink href="/for-government.aspx" className="footer-link" label={t("Government")} />
-          <ExternalLink href="/healthcare.aspx" className="footer-link" label={t("Healthcare")} />
-          <ExternalLink href="/for-research.aspx" className="footer-link" label={t("Research")} />
-          <ExternalLink href="/education.aspx" className="footer-link" label={t("Education")} />
-          <ExternalLink href="/nonprofit-organizations.aspx" className="footer-link" label={t("Nonprofits")} />
+        <FooterItem dis heading={t("Solutions")} className="bysize no_tablet_view">
+          <ExternalLink href={`${hrefLang}/for-small-business.aspx`} className="footer-link" label={t("SMBs")} />
+          <ExternalLink href={`${hrefLang}/for-enterprises.aspx`} className="footer-link" label={t("Enterprises")} />
+          <ExternalLink href={`${hrefLang}/home-use.aspx`} className="footer-link" label={t("Home use")} />
+          <ExternalLink href={`${hrefLang}/for-developers.aspx`} className="footer-link" label={t("Developers")} />
+          <ExternalLink href={`${hrefLang}/for-hosting-providers.aspx`} className="footer-link" label={t("Hosting providers")} />
+          <ExternalLink href={`${hrefLang}/for-government.aspx`} className="footer-link" label={t("Government")} />
+          <ExternalLink href={`${hrefLang}/healthcare.aspx`} className="footer-link" label={t("Healthcare")} />
+          <ExternalLink href={`${hrefLang}/for-research.aspx`} className="footer-link" label={t("Research")} />
+          <ExternalLink href={`${hrefLang}/education.aspx`} className="footer-link" label={t("Education")} />
+          <ExternalLink href={`${hrefLang}/nonprofit-organizations.aspx`} className="footer-link" label={t("Nonprofits")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
         <FooterItem dis heading={t("Features")} className="byindustry">
-          <ExternalLink href="/document-editor.aspx" className="footer-link" label={t("Document Editor")} />
-          <ExternalLink href="/spreadsheet-editor.aspx" className="footer-link" label={t("Spreadsheet Editor")} />
-          <ExternalLink href="/presentation-editor.aspx" className="footer-link" label={t("Presentation Editor")} />
-          <ExternalLink href="/form-creator.aspx" className="footer-link" label={t("Form creator")} />
-          <ExternalLink href="/pdf-reader.aspx" className="footer-link" label={t("PDF reader & converter")} />
-          <ExternalLink href="/security.aspx" className="footer-link" label={t("Security")} />
-          <ExternalLink href="/app-directory" className="footer-link" label={t("App Directory")} />
+          <ExternalLink href={`${hrefLang}/document-editor.aspx`} className="footer-link" label={t("Document Editor")} />
+          <ExternalLink href={`${hrefLang}/spreadsheet-editor.aspx`} className="footer-link" label={t("Spreadsheet Editor")} />
+          <ExternalLink href={`${hrefLang}/presentation-editor.aspx`} className="footer-link" label={t("Presentation Editor")} />
+          <ExternalLink href={`${hrefLang}/form-creator.aspx`} className="footer-link" label={t("Form creator")} />
+          <ExternalLink href={`${hrefLang}/pdf-reader.aspx`} className="footer-link" label={t("PDF reader & converter")} />
+          <ExternalLink href={`${hrefLang}/security.aspx`} className="footer-link" label={t("Security")} />
+          <ExternalLink href={`${hrefLang}/app-directory`} className="footer-link" label={t("App Directory")} />
+        </FooterItem>
+        <FooterItem dis heading={t("Support")} className="support tablet_view_only">
+          <ExternalLink href={`${hrefLang}/support-contact-form.aspx`} className="footer-link" label={t("Support contact form")} />
+          <ExternalLink href="https://forum.onlyoffice.com/" className="footer-link" label={t("Forum")} />
+          <ExternalLink href={`${hrefLang}/demo-order.aspx`} className="footer-link" label={t("Order demo")} />
+          <ExternalLink href={`${hrefLang}/webinars.aspx`} className="footer-link" label={t("Webinars")} />
+          <ExternalLink href={`${hrefLang}/training-courses.aspx`} className="footer-link" label={t("Training courses")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
-        <FooterItem dis heading={t("Support")} className="support">
-          <ExternalLink href="/support-contact-form.aspx" className="footer-link" label={t("Support contact form")} />
+        <FooterItem dis heading={t("Solutions")} className="bysize tablet_view_only">
+          <ExternalLink href={`${hrefLang}/for-small-business.aspx`} className="footer-link" label={t("SMBs")} />
+          <ExternalLink href={`${hrefLang}/for-enterprises.aspx`} className="footer-link" label={t("Enterprises")} />
+          <ExternalLink href={`${hrefLang}/home-use.aspx`} className="footer-link" label={t("Home use")} />
+          <ExternalLink href={`${hrefLang}/for-developers.aspx`} className="footer-link" label={t("Developers")} />
+          <ExternalLink href={`${hrefLang}/for-hosting-providers.aspx`} className="footer-link" label={t("Hosting providers")} />
+          <ExternalLink href={`${hrefLang}/for-government.aspx`} className="footer-link" label={t("Government")} />
+          <ExternalLink href={`${hrefLang}/healthcare.aspx`} className="footer-link" label={t("Healthcare")} />
+          <ExternalLink href={`${hrefLang}/for-research.aspx`} className="footer-link" label={t("Research")} />
+          <ExternalLink href={`${hrefLang}/education.aspx`} className="footer-link" label={t("Education")} />
+          <ExternalLink href={`${hrefLang}/nonprofit-organizations.aspx`} className="footer-link" label={t("Nonprofits")} />
+        </FooterItem>
+        <FooterItem dis heading={t("Support")} className="support no_tablet_view">
+          <ExternalLink href={`${hrefLang}/support-contact-form.aspx`} className="footer-link" label={t("Support contact form")} />
           <ExternalLink href="https://forum.onlyoffice.com/" className="footer-link" label={t("Forum")} />
-          <ExternalLink href="/demo-order.aspx" className="footer-link" label={t("Order demo")} />
-          <ExternalLink href="/webinars.aspx" className="footer-link" label={t("Webinars")} />
-          <ExternalLink href="/training-courses.aspx" className="footer-link" label={t("Training courses")} />
+          <ExternalLink href={`${hrefLang}/demo-order.aspx`} className="footer-link" label={t("Order demo")} />
+          <ExternalLink href={`${hrefLang}/webinars.aspx`} className="footer-link" label={t("Webinars")} />
+          <ExternalLink href={`${hrefLang}/training-courses.aspx`} className="footer-link" label={t("Training courses")} />
         </FooterItem>
         <FooterItem dis heading={t("Resources")} className="resources">
           <ExternalLink href="https://helpcenter.onlyoffice.com/index.aspx" className="footer-link" label={t("Help Center")} />
           {
             language !== "zh-hans" &&
-            <ExternalLink href="/document-editor-comparison.aspx" className="footer-link" label={t("Compare to other suites")} />
+            <ExternalLink href={`${hrefLang}/document-editor-comparison.aspx`} className="footer-link" label={t("Compare to other suites")} />
           }
-          <ExternalLink href="/contribute.aspx" className="footer-link" label={t("Contribute")} />
-          <ExternalLink href="/legalterms.aspx" className="footer-link" label={t("Legal notice")} />
+          <ExternalLink href={`${hrefLang}/contribute.aspx`} className="footer-link" label={t("Contribute")} />
+          <ExternalLink href={`${hrefLang}/legalterms.aspx`} className="footer-link" label={t("Legal notice")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
         {
           language !== "zh-hans" &&
           <FooterItem dis heading={t("Comparison")} className="comparison">
-            <ExternalLink href="/best-microsoft-office-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs MS Office Online")} />
-            <ExternalLink href="/best-google-docs-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs Google Docs")} />
-            <ExternalLink href="/best-zoho-docs-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs Zoho Docs")} />
-            <ExternalLink href="/best-libreoffice-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs LibreOffice")} />
-            <ExternalLink href="/best-wps-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs WPS")} />
-            <ExternalLink href="/best-adobe-alternative.aspx" className="footer-link" label={t("ONLYOFFICE Docs vs Adobe Acrobat")} />
+            <ExternalLink href={`${hrefLang}/best-microsoft-office-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs MS Office Online")} />
+            <ExternalLink href={`${hrefLang}/best-google-docs-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Google Docs")} />
+            <ExternalLink href={`${hrefLang}/best-zoho-docs-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Zoho Docs")} />
+            <ExternalLink href={`${hrefLang}/best-libreoffice-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs LibreOffice")} />
+            <ExternalLink href={`${hrefLang}/best-wps-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs WPS")} />
+            <ExternalLink href={`${hrefLang}/best-adobe-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Adobe Acrobat")} />
           </FooterItem>
         }
         <FooterItem dis heading={t("Contact us")} className="contacts">

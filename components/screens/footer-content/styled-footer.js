@@ -23,6 +23,10 @@ const StyledFooter = styled.div`
     grid-template-columns: 206px 248px 245px 1fr;
   }
 
+  .tablet_view_only {
+    display: none;
+  }
+
   .footer-item-group {
     position: relative;
   }
@@ -94,6 +98,14 @@ const StyledFooter = styled.div`
         "PerformConvert SupportResources ComparisonContactUs"
         "Solutions SupportResources ComparisonContactUs";
 
+    .tablet_view_only {
+      display: block;
+    }
+
+    .no_tablet_view {
+      display: none;
+    }
+
     .footer-item-group {
       &:first-child {
         grid-area: Solutions;
@@ -155,6 +167,14 @@ const StyledFooter = styled.div`
     padding: 8px 32px 64px;
     margin: 0px;
     grid-template-columns: 1fr;
+
+    .tablet_view_only {
+      display: none;
+    }
+
+    .no_tablet_view {
+      display: block;
+    }
   
     .footer-item-group-last {
       display: block;
@@ -245,6 +265,14 @@ const StyledFooter = styled.div`
 
   @media (max-width: 592px) {
     padding: 8px 16px 64px;
+
+    &.zh-hans {
+      .footer-item-group-last .footer-copyright-block {
+        span {
+          display: inline-block;
+        }
+      }
+    }
 
     .footer-item-group-last {
       padding: 0;
