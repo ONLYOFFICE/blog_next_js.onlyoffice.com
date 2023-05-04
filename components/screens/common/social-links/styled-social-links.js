@@ -15,6 +15,10 @@ const StyledSocialLinks = styled.div`
     gap: 12px;
 
     @media (max-width: 1199px) {
+      gap: 18px;
+    }
+
+    @media (max-width: 600px) {
       gap: 16px;
     }
   }
