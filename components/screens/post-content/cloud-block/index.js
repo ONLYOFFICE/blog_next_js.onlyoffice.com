@@ -7,7 +7,7 @@ const CloudBlock = ({ t, currentLanguage, ...rest }) => {
     currentLanguage === "zh-hans" ? "/zh" :
     currentLanguage === "pt-br" ? "/pt" : 
     `/${currentLanguage}`
-  }/docspace-registration.aspx`
+  }/docspace-registration.aspx?utm_source=blog&utm_medium=post_page&utm_campaign=registration_docspace&utm_content=try-onlyoffice-in-the-cloud`
 
   return (
     <StyledCloudBlock {...rest}>
