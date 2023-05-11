@@ -18,7 +18,7 @@ const SearchPost = ({ currentLanguage, data, searchQueryString }) => {
       return text.split(regexp).map((text, index, array) => {
         if (index < array.length - 1) {
           const searchExcerpt = matchValue.shift();
-          return <>{text}<span className="search-excerpt">{searchExcerpt}</span></>
+          return <span key={index}>{text}<span className="search-excerpt">{searchExcerpt}</span></span>
         }
         return text;
       })
