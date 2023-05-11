@@ -31,6 +31,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   i18n,
+  basePath: '/blog',
   compiler: {
     styledComponents: true
   },
