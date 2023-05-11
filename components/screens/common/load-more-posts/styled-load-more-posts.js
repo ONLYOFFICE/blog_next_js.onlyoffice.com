@@ -15,16 +15,8 @@ const StyledLoadMorePosts = styled.div`
     font-size: 13px;
     line-height: 17px;
     letter-spacing: 0.04em;
-  }
-
-  .load-more-loading-btn {
-    box-sizing: border-box;
-    position: relative;
-    padding: 18px 20px;
-    min-width: 124px;
-    min-height: 56px;
-    border: 1px solid #AAAAAA;
-    border-radius: 3px;
+    transition-duration: initial;
+    transition: color 0.3s, border-color 0.3s;
 
     &:after {
       content: "";
@@ -39,10 +31,27 @@ const StyledLoadMorePosts = styled.div`
       border-right-color: transparent;
       transform: translate(-50%, -50%);
       animation: cssload-spin 1025ms infinite linear;
+      transition: border 0.3s;
+      opacity: 0;
     }
     
     @keyframes cssload-spin {
       100%{ transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    &.loading {
+      font-size: 0;
+
+      &:after {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      &:after {
+        border-color: #ff6f3d;
+        border-right-color: transparent;
+      }
     }
   }
 
@@ -68,22 +77,11 @@ const StyledLoadMorePosts = styled.div`
     }
   }
 
-  @media (max-width: 600px) {
-    .load-more-loading-btn {
-      min-height: 56px;
-    }
-  }
-
   @media (max-width: 592px) {
     grid-column: initial;
     justify-self: initial;
 
-    .load-more-loading-btn {
-      min-width: 100%;
-    }
-
-    .load-more-mobile-btn,
-    .load-more-loading-btn {
+    .load-more-mobile-btn {
       width: 100%;
     }
   }
