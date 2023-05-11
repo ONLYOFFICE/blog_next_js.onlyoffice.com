@@ -52,7 +52,7 @@ const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelo
 }
 
 export const getStaticProps = async ({ locale }) => {
-  const allPosts = await getAllPosts(locale, 150, null, "");
+  const allPosts = await getAllPosts(locale, 10, null, "");
   const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans");
   const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans");
   const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans");
