@@ -41,7 +41,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
 }
 
 export const getStaticProps = async ({ locale }) => {
-  const inThePressPosts = await getInThePressPosts(locale, 5, null);
+  const inThePressPosts = await getInThePressPosts(locale, 60, null);
   const inThePressDate = await getInThePressDate(locale);
   const recentPosts = await getRecentPosts(locale);
 
@@ -53,7 +53,7 @@ export const getStaticProps = async ({ locale }) => {
       inThePressDate,
       recentPosts
     },
-		revalidate: 86400,
+		revalidate: 60,
 	}
 }
 

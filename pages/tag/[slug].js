@@ -59,7 +59,7 @@ export const getStaticPaths = async ({ locales }) => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const posts = await getTagPosts(locale, 6, null, params?.slug);
+  const posts = await getTagPosts(locale, 60, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
     return {
@@ -73,7 +73,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate: 86400,
+    revalidate: 60,
   }
 }
 
