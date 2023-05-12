@@ -19,7 +19,7 @@ const Newsletter = ({ t }) => {
       setIsLoading(true);
     }
 
-    const response = await fetch("/api/users", {
+    const response = await fetch("/blog/api/users", {
       method: "POST",
       body: JSON.stringify(data)
     });
