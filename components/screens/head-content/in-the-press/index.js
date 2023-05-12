@@ -38,8 +38,8 @@ const InThePressHeadSEO = ({ title, metaSiteName, currentLanguage, articlePublis
       })}
 
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://www.onlyoffice.com/blog/wp-content/uploads/2021/05/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://www.onlyoffice.com/blog/wp-content/uploads/2021/05/favicon.ico" />
+      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
+      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
     </Head>
   );
 };

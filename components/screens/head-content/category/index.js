@@ -13,8 +13,8 @@ const CategoryHeadSEO = ({ currentLanguage, title, categorySlug }) => {
       <link rel="canonical" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}category/${categorySlug}/`} />
       <link rel="next" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}category/${categorySlug}/page/2/`} />
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://www.onlyoffice.com/blog/wp-content/uploads/2021/05/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://www.onlyoffice.com/blog/wp-content/uploads/2021/05/favicon.ico" />
+      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
+      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
     </Head>
   );
 };
