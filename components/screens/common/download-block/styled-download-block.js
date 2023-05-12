@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import download from "@public/images/icons/download.svg";
 
 const StyledDownLoadBlock = styled.div`
   border-radius: 5px;
@@ -54,7 +53,7 @@ const StyledDownLoadBlock = styled.div`
     &:before {
       content: "";
       height: 32px;
-      background-image: url(${download.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/download.svg");
       background-repeat: no-repeat;
       background-size: 514px 34px;
       filter: grayscale(1);

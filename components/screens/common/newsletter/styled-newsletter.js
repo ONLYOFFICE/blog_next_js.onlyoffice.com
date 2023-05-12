@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import unionIcon from "@public/images/icons/union.svg";
 
 const StyledNewsletter = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
@@ -130,7 +129,7 @@ const StyledNewsletter = styled.div`
         button {
           font-size: 0;
           min-width: 56px;
-          background-image: url(${unionIcon.src});
+          background-image: url("https://static-blog.onlyoffice.com/images/icons/union.svg");
           background-position: 50% 50%;
           background-repeat: no-repeat;
 

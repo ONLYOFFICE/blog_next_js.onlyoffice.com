@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import left from "@public/images/banners/docspace-left.svg";
-import right from "@public/images/banners/docspace-right.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -47,7 +45,7 @@ const StyledAdventAnnounce = styled.div`
         left: -486px;
         width: 476px;
         height: 56px;
-        background-image: url(${left.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-left.svg");
         background-position-y: -5px;
         background-repeat: no-repeat;
 
@@ -64,7 +62,7 @@ const StyledAdventAnnounce = styled.div`
         right: -445px;
         width: 435px;
         height: 56px;
-        background-image: url(${right.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-right.svg");
         background-repeat: no-repeat;
         background-position-y: 6px;
 

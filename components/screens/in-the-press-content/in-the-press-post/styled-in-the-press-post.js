@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import calendarIcon from "@public/images/icons/calendar.svg";
 
 const StyledInThePressPost = styled.div`
   .meta {
@@ -31,7 +30,7 @@ const StyledInThePressPost = styled.div`
     font-size: 13px;
     line-height: 21px;
     color: #919192;
-    background-image: url(${calendarIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 5px;

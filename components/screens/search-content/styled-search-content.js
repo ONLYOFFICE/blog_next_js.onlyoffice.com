@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import errorImg from "@public/images/404_errors.svg";
 
 const StyledSearchContent = styled(Section)`
   padding: 40px 0 80px;
@@ -47,7 +46,7 @@ const StyledSearchContent = styled(Section)`
   }
 
   .no-results-bg {
-    background-image: url(${errorImg.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;

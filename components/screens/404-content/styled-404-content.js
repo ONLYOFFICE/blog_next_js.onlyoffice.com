@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import errorImg from "@public/images/404_errors.svg";
 
 const StyledErrorContent = styled(Section)`
   box-sizing: border-box;
@@ -20,7 +19,7 @@ const StyledErrorContent = styled(Section)`
     width: 100%;
     height: 424px;
     max-width: 775px;
-    background-image: url(${errorImg.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;

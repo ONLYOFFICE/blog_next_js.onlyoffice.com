@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import socialLinks from "@public/images/social-icons/color_social_icons.svg";
-import tiktok from "@public/images/social-icons/tiktok.react.svg";
-import socialWechat from "@public/images/icons/social-wechat.png";
-import qrcodeForWechat from "@public/images/qrcode_for_wechat.jpg";
-import socialLine from "@public/images/icons/line.svg";
-import qrcodeLine from "@public/images/qr-code-line.jpg";
 
 const StyledSocialLinks = styled.div`
   display: flex;
@@ -42,7 +36,7 @@ const StyledSocialLinks = styled.div`
     vertical-align: middle;
     width: 40px;
     height: 40px;
-    background-image: url(${socialLinks.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/social-icons/color_social_icons.svg");
     background-color: #f9f9f9;
     background-repeat: no-repeat;
     background-position: 0;
@@ -95,7 +89,7 @@ const StyledSocialLinks = styled.div`
     }
 
     &.tiktok {
-      background-image: url(${tiktok.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/social-icons/tiktok.react.svg");
       background-position: center;
     }
 
@@ -147,11 +141,11 @@ const StyledSocialLinks = styled.div`
   }
 
   .wdgt-wechat {
-    background-image: url(${socialWechat.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/social-wechat.png");
   }
 
   .wdgt-line {
-    background-image: url(${socialLine.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/line.svg");
   }
 
   .popup-qr-code {
@@ -181,13 +175,13 @@ const StyledSocialLinks = styled.div`
     &.wechat-qr-code {
       top: -270px;
       height: 218px;
-      background-image: url(${qrcodeForWechat.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/qrcode_for_wechat.jpg");
     }
 
     &.line-qr-code {
       top: -218px;
       height: 160px;
-      background-image: url(${qrcodeLine.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/qr-code-line.jpg");
     }
   }
 `;

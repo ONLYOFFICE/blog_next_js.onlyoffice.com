@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import arrowRightIcon from "@public/images/icons/arrow-right.svg";
 
 const StyledMainContent = styled(Section)`
   padding: 40px 0 82px;
@@ -61,7 +60,7 @@ const StyledMainContent = styled(Section)`
 
   .view-all {
     padding-right: 10px;
-    background-image: url(${arrowRightIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-right.svg");
     background-repeat: no-repeat;
     background-position: right 6px;
 
