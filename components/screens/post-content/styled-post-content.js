@@ -143,6 +143,10 @@ const StyledPostContent = styled(Section)`
       object-fit: contain;
       height: auto;
       max-width: 100%;
+
+      &.img-popup {
+        cursor: pointer;
+      }
     }
 
     figure {
@@ -501,6 +505,76 @@ const StyledPostContent = styled(Section)`
     }
   }
 
+  .modal {
+    position: fixed;
+    top: 50%;
+    max-height: 80%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0,0);
+    z-index: 10001;
+    transition: transform .1s ease;
+    opacity 0;
+
+    &.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1, 1); 
+    }
+
+    .modal-img {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 23px;
+      height: 23px;
+      cursor: pointer;
+      z-index: 1003;
+
+      &:before {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(-45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+
+      &:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+    }
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(119 119 119 / 50%);
+    z-index: 10000;
+
+    &.active {
+      display: block;
+    }
+  }
+
   @media ${device.laptop} {
     .content {
       margin: 70px auto 80px;
@@ -637,6 +711,24 @@ const StyledPostContent = styled(Section)`
 
       .button {
         padding: 16px 20px;
+      }
+    }
+
+    .modal {
+      .modal-img {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .modal-close-btn {
+        top: -30px;
+        right: 0;
+  
+        &:before,
+        &:after {
+          width: 20px;
+          left: 0;
+        }
       }
     }
   }
