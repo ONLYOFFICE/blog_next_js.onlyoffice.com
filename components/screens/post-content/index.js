@@ -1,5 +1,5 @@
 import StyledPostContent from "./styled-post-content";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
@@ -14,6 +14,7 @@ import ShareButtons from "./share-buttons";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
+  const [postContent, setPostContent] = useState("");
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const [imgAlt, setImgAlt] = useState("");
@@ -42,6 +43,10 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     }
   };
 
+  useEffect(() => {
+    setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
+  }, []);
+
   return (
     <StyledPostContent>
       <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
@@ -62,7 +67,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons />
           </div>
-          <div onClick={onClickHandler} className="entry-content">{post?.content ? parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options) : ""}</div>
+          <div onClick={onClickHandler} className="entry-content">{postContent}</div>
         </article>
 
         <div className="tag-list">
