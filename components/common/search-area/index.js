@@ -1,8 +1,6 @@
 import StyledSearchArea from "./styled-search-area";
 import Box from "@components/common/box";
 import TextInput from "@components/common/text-input/";
-import SearchIcon from "@public/images/icons/search-icon.react.svg";
-import CloseIcon from "@public/images/icons/close-icon.react.svg";
 
 const SearchArea = ({ valueSearch, label, placeholder, searchQuery, setSearchQuery, handleSearchFormSubmit, searchActive, onClick }) => {
   const onSearch = (e) => {
@@ -13,14 +11,14 @@ const SearchArea = ({ valueSearch, label, placeholder, searchQuery, setSearchQue
   /*eslint-disable*/
   const imgSearch = !searchQuery ? (
     <img className="search_img"
-      src={SearchIcon.src}
+      src="https://static-blog.onlyoffice.com/images/icons/search-icon.react.svg"
       alt="search"
       width="24px"
       height="24px"
     />
   ) : (
     <img
-      src={CloseIcon.src}
+      src="https://static-blog.onlyoffice.com/images/icons/close-icon.react.svg"
       onClick={() => setSearchQuery("")}
       className="close-icon"
       alt="close"

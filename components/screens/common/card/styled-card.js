@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import calendarIcon from "@public/images/icons/calendar.svg";
-import authorIcon from "@public/images/icons/author.svg";
 
 const StyledCard = styled.div`
   display: flex;
@@ -136,11 +134,11 @@ const StyledCard = styled.div`
     }
 
     &.card-date {
-      background-image: url(${calendarIcon.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
     }
 
     &.card-author {
-      background-image: url(${authorIcon.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
 
       &:hover {
         .external-link {

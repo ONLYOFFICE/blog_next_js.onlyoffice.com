@@ -1,4 +1,5 @@
 import StyledPostContent from "./styled-post-content";
+import { useEffect, useState } from "react";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
@@ -13,6 +14,11 @@ import ShareButtons from "./share-buttons";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
+  const [postContent, setPostContent] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+  const [imgAlt, setImgAlt] = useState("");
+
   const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
   const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
 
@@ -26,6 +32,20 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       }
     }
   };
+
+  const onClickHandler = (e) => {
+    const el = e.target.closest(".img-popup");
+
+    if (el && e.currentTarget.contains(el)) {
+      setOpenModal(true);
+      setImgUrl(e.target.currentSrc);
+      setImgAlt(e.target.alt);
+    }
+  };
+
+  useEffect(() => {
+    setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
+  }, []);
 
   return (
     <StyledPostContent>
@@ -47,7 +67,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons />
           </div>
-          <div className="entry-content">{post?.content ? parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options) : ""}</div>
+          <div onClick={onClickHandler} className="entry-content">{postContent}</div>
         </article>
 
         <div className="tag-list">
@@ -76,6 +96,16 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       </div>
 
       <RecentPosts t={t} data={posts} />
+
+      {
+        <>
+          <div onClick={() => setOpenModal(false)} className={`overlay ${openModal ? "active" : ""}`}></div>
+          <div className={`modal ${openModal ? "active" : ""}`}>
+            <img className="modal-img" src={imgUrl} alt={imgAlt} />
+            <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
+          </div>
+        </>
+      }
     </StyledPostContent>
   );
 };

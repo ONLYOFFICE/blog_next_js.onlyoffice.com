@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import calendarIcon from "@public/images/icons/calendar.svg";
-import authorIcon from "@public/images/icons/author.svg";
-import commentIcon from "@public/images/icons/comment.svg";
-import viewsIcon from "@public/images/icons/views.svg";
-import linkIcon from "@public/images/icons/link.svg";
 
 const StyledPostContent = styled(Section)`
   padding: 32px 0 0;
@@ -37,19 +32,19 @@ const StyledPostContent = styled(Section)`
       background-repeat: no-repeat;
 
       &.date {
-        background-image: url(${calendarIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
       }
 
       &.author {
-        background-image: url(${authorIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
       }
 
       &.comments {
-        background-image: url(${commentIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
       }
 
       &.views {
-        background-image: url(${viewsIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/views.svg");
         background-size: 14px 10px;
       }
     }
@@ -148,6 +143,10 @@ const StyledPostContent = styled(Section)`
       object-fit: contain;
       height: auto;
       max-width: 100%;
+
+      &.img-popup {
+        cursor: pointer;
+      }
     }
 
     figure {
@@ -292,7 +291,7 @@ const StyledPostContent = styled(Section)`
         line-height: 33px;
         color: #333;
         padding-left: 35px;
-        background-image: url(${linkIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/link.svg");
         background-size: 23px;
         background-position: 0 50%;
         background-repeat: no-repeat;
@@ -506,6 +505,76 @@ const StyledPostContent = styled(Section)`
     }
   }
 
+  .modal {
+    position: fixed;
+    top: 50%;
+    max-height: 80%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0,0);
+    z-index: 10001;
+    transition: transform .1s ease;
+    opacity 0;
+
+    &.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1, 1); 
+    }
+
+    .modal-img {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 23px;
+      height: 23px;
+      cursor: pointer;
+      z-index: 1003;
+
+      &:before {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(-45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+
+      &:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+    }
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(119 119 119 / 50%);
+    z-index: 10000;
+
+    &.active {
+      display: block;
+    }
+  }
+
   @media ${device.laptop} {
     .content {
       margin: 70px auto 80px;
@@ -642,6 +711,24 @@ const StyledPostContent = styled(Section)`
 
       .button {
         padding: 16px 20px;
+      }
+    }
+
+    .modal {
+      .modal-img {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .modal-close-btn {
+        top: -30px;
+        right: 0;
+  
+        &:before,
+        &:after {
+          width: 20px;
+          left: 0;
+        }
       }
     }
   }

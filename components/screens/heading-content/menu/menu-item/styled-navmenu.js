@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import menuIcons from "@public/images/menu-pics/menu_icons.svg";
-import menuHostingProviders from "@public/images/menu-pics/menu_hosting_providers.svg";
 
 const StyledNavMenu = styled.div`
   .heading-nav-item {
@@ -74,7 +72,7 @@ const StyledNavMenu = styled.div`
       display: block;
       width: 24px;
       height: 24px;
-      background-image: url(${menuIcons.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_icons.svg");
       background-repeat: no-repeat;
     }
 
@@ -387,7 +385,7 @@ const StyledNavMenu = styled.div`
 
   #navitem-partners-hosting-providers {
     &:before {
-      background-image: url(${menuHostingProviders.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_hosting_providers.svg");
     }
   }
 

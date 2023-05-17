@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import flags from "@public/images/icons/flags.png";
 
 export default styled.div`
   display: flex;
@@ -26,7 +25,7 @@ export default styled.div`
     width: 24px;
     height: 24px;
     text-decoration: none;
-    background-image: url(${flags.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/flags.png");
     background-repeat: no-repeat;
 
     &.fr {

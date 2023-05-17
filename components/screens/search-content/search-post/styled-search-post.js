@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import calendarIcon from "@public/images/icons/calendar.svg";
-import authorIcon from "@public/images/icons/author.svg";
 
 const StyledSearchPost = styled.div`
   .meta {
@@ -25,12 +23,12 @@ const StyledSearchPost = styled.div`
 
   .date {
     margin-right: 20px;
-    background-image: url(${calendarIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
   }
 
   .author {
     display: inline-flex;
-    background-image: url(${authorIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
     text-decoration: none;
 
     .external-link {

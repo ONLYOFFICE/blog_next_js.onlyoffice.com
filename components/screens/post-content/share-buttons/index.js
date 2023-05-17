@@ -1,13 +1,6 @@
 import StyledRecentPosts from "./styled-share-buttons";
 import ExternalLink from "@components/common/external-link";
 import { useRouter } from "next/router";
-import { ReactSVG } from "react-svg";
-import facebook from "@public/images/icons/facebook.svg"
-import twitter from "@public/images/icons/twitter.svg"
-import linkedin from "@public/images/icons/linkedin.svg"
-import reddit from "@public/images/icons/reddit.svg"
-import telegram from "@public/images/icons/telegram.svg"
-import mastodon from "@public/images/icons/mastodon.svg"
 
 import { FacebookShareButton, RedditShareButton, TelegramShareButton, TwitterShareButton } from "react-share";
 
@@ -18,22 +11,22 @@ const ShareButtons = () => {
   return (
     <StyledRecentPosts className="share-buttons">
       <FacebookShareButton className="share-button" url={routerUrl}>
-        <ReactSVG src={facebook.src} alt="Facebook" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/facebook.svg" alt="Facebook" />
       </FacebookShareButton>
       <TwitterShareButton className="share-button" url={routerUrl}>
-        <ReactSVG src={twitter.src} alt="Twitter" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/twitter.svg" alt="Twitter" />
       </TwitterShareButton>
       <ExternalLink className="share-button" href={`https://www.linkedin.com/sharing/share-offsite/?url=${routerUrl}`}>
-        <ReactSVG src={linkedin.src} alt="LinkedIn" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/linkedin.svg" alt="LinkedIn" />
       </ExternalLink>
       <RedditShareButton className="share-button" url={routerUrl}>
-        <ReactSVG src={reddit.src} alt="Reddit" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/reddit.svg" alt="Reddit" />
       </RedditShareButton>
       <TelegramShareButton className="share-button" url={routerUrl}>
-        <ReactSVG src={telegram.src} alt="Telegram" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/telegram.svg" alt="Telegram" />
       </TelegramShareButton>
       <ExternalLink className="share-button" href={`https://www.addtoany.com/add_to/mastodon?linkurl=${routerUrl}`}>
-        <ReactSVG src={mastodon.src} alt="Mastodon" />
+        <img src="https://static-blog.onlyoffice.com/images/icons/mastodon.svg" alt="Mastodon" />
       </ExternalLink>
     </StyledRecentPosts>
   );

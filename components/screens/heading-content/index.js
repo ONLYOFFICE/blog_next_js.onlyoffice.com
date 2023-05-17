@@ -6,10 +6,6 @@ import SearchArea from "@components/common/search-area";
 import Nav from './menu/nav/nav'
 import StyledHeading from "./styled-heading";
 
-import logo from "@public/images/logo/logo.svg"
-import mobMenu from "@public/images/icons/mob-menu.svg"
-import { ReactSVG } from "react-svg";
-
 const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
@@ -79,13 +75,13 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
   return (
     <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
       <img
-        src={mobMenu.src}
+        src="https://static-blog.onlyoffice.com/images/icons/mob-menu.svg"
         className="nav-items-mobile"
         onClick={toggleMobile}
       />
       <span className="nav-item-logo">
         <InternalLink href={curLang}>
-          <ReactSVG src={logo.src} alt="logo"/>
+          <img src="https://static-blog.onlyoffice.com/images/logo/logo.svg" alt="logo"/>
         </InternalLink>
       </span>
       <div className="overlay"></div>
