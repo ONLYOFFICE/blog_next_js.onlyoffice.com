@@ -45,7 +45,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
   useEffect(() => {
     setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
-  }, []);
+  }, [post]);
 
   return (
     <StyledPostContent>
