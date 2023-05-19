@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 30007",
-    "build": "next build",
+    "build": "cross-env --max-workers=8 next build",
     "start": "next start -p 30007",
     "lint": "next lint"
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@next/font": "13.1.6",
+    "cross-env": "^7.0.3",
+    "cross-var": "^1.1.0",
+    "eslint": "8.33.0",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "html-react-parser": "^3.0.9",
