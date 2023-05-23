@@ -73,7 +73,7 @@ const SocialLinks = ({ language, handlerSetModal, isFooterContent, isFollowUsCon
 
       <ExternalLink
         className="social-link blog"
-        href="https://www.onlyoffice.com/blog"
+        href={`https://www.onlyoffice.com/blog/${language === "en" ? "" : language}`}
         title="Blog"
         alt="Blog"
       >
