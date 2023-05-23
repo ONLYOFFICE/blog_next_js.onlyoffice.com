@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 
 import { FacebookShareButton, RedditShareButton, TelegramShareButton, TwitterShareButton } from "react-share";
 
-const ShareButtons = () => {
+const ShareButtons = ({ currentLanguage }) => {
   const router = useRouter();
-  const routerUrl = `https://www.onlyoffice.com/blog${router.asPath}`;
+  const routerUrl = `https://www.onlyoffice.com/blog${currentLanguage === "en" ? "" : `/${currentLanguage}`}${router.asPath}`;
 
   return (
     <StyledRecentPosts className="share-buttons">

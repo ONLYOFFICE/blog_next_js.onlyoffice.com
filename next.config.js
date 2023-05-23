@@ -39,6 +39,8 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   experimental: {
     largePageDataBytes: 128 * 1000000,
+    workerThreads: false,
+    cpus: 4
   },
 }
 
