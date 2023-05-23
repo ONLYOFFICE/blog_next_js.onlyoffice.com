@@ -144,7 +144,7 @@ export const getStaticProps = async ({ locale, params }) => {
       ptPostLink: ptPostLink?.edges?.length > 0 ? ptPostLink : null,
       zhPostLink: zhPostLink?.edges?.length > 0 ? zhPostLink : null
     },
-    revalidate: 86400,
+    revalidate: 900,
   }
 }
 
