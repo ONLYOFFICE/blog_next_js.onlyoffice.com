@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
+  const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
   
@@ -18,13 +19,13 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta content="text/html; charset=UTF-8" />
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
-      <link rel="canonical" href={post?.link} />
+      <link rel="canonical" href={`${baseUrl}${post?.uri}`} />
       <meta property="og:locale" content={languagesKey} />
       <meta property="og:site_name" content={metaSiteName} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:url" content={post?.link} />
+      <meta property="og:url" content={`${baseUrl}${post?.uri}`} />
       <meta property="og:image" content={image} />
       <meta property="og:image:secure_url" content={image} />
       {
@@ -42,15 +43,15 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
 
-      {enPostLink && <link rel="alternate" hrefLang="en-US" href={enPostLink.edges[0].node.link} />}
-      {csPostLink && <link rel="alternate" hrefLang="cs-CZ" href={csPostLink.edges[0].node.link} />}
-      {dePostLink && <link rel="alternate" hrefLang="de-DE" href={dePostLink.edges[0].node.link} />}
-      {esPostLink && <link rel="alternate" hrefLang="es-ES" href={esPostLink.edges[0].node.link} />}
-      {frPostLink && <link rel="alternate" hrefLang="fr-FR" href={frPostLink.edges[0].node.link} />}
-      {itPostLink && <link rel="alternate" hrefLang="it-IT" href={itPostLink.edges[0].node.link} />}
-      {jaPostLink && <link rel="alternate" hrefLang="ja-Jp" href={jaPostLink.edges[0].node.link} />}
-      {ptPostLink && <link rel="alternate" hrefLang="pt-BR" href={ptPostLink.edges[0].node.link} />}
-      {zhPostLink && <link rel="alternate" hrefLang="zh-CN" href={zhPostLink.edges[0].node.link} />}
+      {enPostLink && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${enPostLink.edges[0].node.uri}`} />}
+      {csPostLink && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${csPostLink.edges[0].node.uri}`} />}
+      {dePostLink && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${dePostLink.edges[0].node.uri}`} />}
+      {esPostLink && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${esPostLink.edges[0].node.uri}`} />}
+      {frPostLink && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${frPostLink.edges[0].node.uri}`} />}
+      {itPostLink && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${itPostLink.edges[0].node.uri}`} />}
+      {jaPostLink && <link rel="alternate" hrefLang="ja-Jp" href={`${baseUrl}${jaPostLink.edges[0].node.uri}`} />}
+      {ptPostLink && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${ptPostLink.edges[0].node.uri}`} />}
+      {zhPostLink && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${zhPostLink.edges[0].node.uri}`} />}
 
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
