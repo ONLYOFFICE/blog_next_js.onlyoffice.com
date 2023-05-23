@@ -5,7 +5,18 @@ import Text from "@components/common/text";
 
 const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
   const hrefLang = `https://onlyoffice.com${
-    currentLanguage === "en" ? "" : `/${currentLanguage}`
+    currentLanguage === "en" ? "" : 
+    currentLanguage === "zh-hans" ? "/zh" : 
+    currentLanguage === "pt-br" ? "/pt" : `/${currentLanguage}` 
+  }`;
+
+  const oformsHref = `https://oforms.onlyoffice.com/${
+    currentLanguage === "zh-hans" ? "zh" : 
+    currentLanguage === "it" ? "it" :
+    currentLanguage === "fr" ? "fr" :
+    currentLanguage === "es" ? "es" :
+    currentLanguage === "de" ? "de" :
+    currentLanguage === "ja" ? "ja" : ""
   }`;
 
   return (
@@ -56,7 +67,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             <div className="dropdown-item-label">
               {t("Perform your tasks online")}
             </div>
-            <Link id="navitem-products-oforms" className="dropdown-item" href="https://oforms.onlyoffice.com/">
+            <Link id="navitem-products-oforms" className="dropdown-item" href={oformsHref}>
               {t("Find and fill out oforms")}
             </Link>
             <Link id="navitem-products-convert-text" className="dropdown-item" href={`${hrefLang}/text-file-converter.aspx`}>
@@ -301,7 +312,7 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
             </Link>
           </div>
           <div className="outer-box">
-            <Link id="navitem-resources-blog" className="dropdown-item" href="https://www.onlyoffice.com/blog/">
+            <Link id="navitem-resources-blog" className="dropdown-item" href={`https://www.onlyoffice.com/blog/${currentLanguage === "en" ? "" : currentLanguage}`}>
               {t("Blog")}
             </Link>
             <Link id="navitem-resources-forum" className="dropdown-item" href="https://forum.onlyoffice.com/">
