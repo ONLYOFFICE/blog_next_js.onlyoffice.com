@@ -65,7 +65,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
             {/* <span className="comments">{post?.commentCount === null ? 0 : post?.commentCount}</span> */}
             {/* <span className="views">{post?.viewCount === null ? 0 : post?.viewCount}</span> */}
 
-            <ShareButtons />
+            <ShareButtons currentLanguage={currentLanguage} />
           </div>
           <div onClick={onClickHandler} className="entry-content">{postContent}</div>
         </article>
@@ -80,7 +80,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
             </div>
           }
           <div className="tag-share">
-            <ShareButtons />
+            <ShareButtons currentLanguage={currentLanguage} />
           </div>
         </div>
 
