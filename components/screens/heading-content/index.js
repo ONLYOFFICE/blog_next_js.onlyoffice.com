@@ -11,7 +11,11 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
+  const curLang = `https://www.onlyoffice.com${
+    currentLanguage === "en" ? "" : 
+    currentLanguage === "zh-hans" ? "/zh" : 
+    currentLanguage === "pt-br" ? "/pt" : `/${currentLanguage}` 
+  }`;
 
   const handleSearchFormSubmit = async (e) => {
     e.preventDefault();
