@@ -16,21 +16,21 @@ const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categor
 
       <div className="category-posts">
         {firstPosts?.map(({node}) => (
-          <Card data={node} key={node.id} />
+          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
         ))}
 
         <DownloadBlock className="download-block" t={t} />
 
         {posts?.edges.length > 6 &&
           posts?.edges.slice(6, 12).map(({node}) => (
-          <Card data={node} key={node.id} />
+          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
         ))}
 
         <Newsletter t={t} />
 
         {posts?.edges.length > 12 &&
         posts?.edges.slice(12, 15).map(({node}) => (
-          <Card data={node} key={node.id} />
+          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
         ))}
 
         <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isCategoryContent={isCategoryContent} categorySlug={categorySlug} />

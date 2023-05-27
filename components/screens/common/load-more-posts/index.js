@@ -24,6 +24,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
   }, [postList]);
 
   useEffect( () => {
+    setPostList(dataEdges.slice(0, dataSliceLength));
     setPostsData(data?.edges);
     setPageInfo(data?.pageInfo);
   }, [data?.edges]);

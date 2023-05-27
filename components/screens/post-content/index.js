@@ -95,7 +95,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         {/* <Comments t={t} currentLanguage={currentLanguage} post={post} /> */}
       </div>
 
-      <RecentPosts t={t} data={posts} />
+      <RecentPosts t={t} data={posts} currentLanguage={currentLanguage} />
 
       {
         <>
