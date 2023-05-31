@@ -1,4 +1,3 @@
-import Link from "next/link";
 import StyledAdventAnnounce from "./styled-advent-announce";
 
 const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
@@ -14,18 +13,18 @@ const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
   return (
     <StyledAdventAnnounce className={`${currentLanguage} ${stateMobile ? "active": ""}`}>
       <div className="advent-announce advent-mobile-hide">
-        <Link href={href} target="_blank" rel="noreferrer noopener">
+        <a href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">
             <b>{`${t("ONLYOFFICE DocSpace released")}${currentLanguage === "ja" || currentLanguage === "zh-hans" ? "" : ": "}`}</b>{t("improve document collaboration with offices, customers, and partners.")} <b>{t("Use it for free!")}</b>
           </div>
-        </Link>
+        </a>
       </div>
       <div className={`advent-announce advent-desktop-hide ${stateMobile ? "is-open": ""}`}>
-        <Link href={href} target="_blank" rel="noreferrer noopener">
+        <a href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">
             {t("AdventAnnounceMobileText1")} <b>{t("AdventAnnounceMobileText2")}</b> {t("AdventAnnounceMobileText3")}
           </div>
-        </Link>
+        </a>
       </div>
     </StyledAdventAnnounce>
   )
