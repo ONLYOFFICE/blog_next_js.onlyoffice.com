@@ -9,7 +9,6 @@ import ExternalLink from "@components/common/external-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
-import Comments from "./comments";
 import ShareButtons from "./share-buttons";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
@@ -62,8 +61,6 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
               {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
               <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
             </span>
-            {/* <span className="comments">{post?.commentCount === null ? 0 : post?.commentCount}</span> */}
-            {/* <span className="views">{post?.viewCount === null ? 0 : post?.viewCount}</span> */}
 
             <ShareButtons currentLanguage={currentLanguage} />
           </div>
@@ -92,7 +89,6 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
             <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
           </div>
         }
-        {/* <Comments t={t} currentLanguage={currentLanguage} post={post} /> */}
       </div>
 
       <RecentPosts t={t} data={posts} currentLanguage={currentLanguage} />
