@@ -172,6 +172,13 @@ const SocialLinks = ({ language, handlerSetModal, isFooterContent, isFollowUsCon
             alt="在Toutiao上关注我们"
           >
           </ExternalLink>
+          <ExternalLink
+            className="social-link bilibili"
+            href="https://space.bilibili.com/1870911731"
+            title="在Bilibili上关注我们"
+            alt="在Bilibili上关注我们"
+          >
+          </ExternalLink>
         </>
       }
     </StyledSocialLinks>
