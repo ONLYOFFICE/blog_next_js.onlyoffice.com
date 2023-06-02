@@ -50,6 +50,13 @@ const Footer = ({ t, language }) => {
           <ExternalLink href={`${hrefLang}/security.aspx`} className="footer-link" label={t("Security")} />
           <ExternalLink href={`${hrefLang}/app-directory`} className="footer-link" label={t("App Directory")} />
         </FooterItem>
+        <FooterItem dis heading={t("Connectors")} className="byindustry">
+          <ExternalLink href={`${hrefLang}/office-for-nextcloud.aspx`} className="footer-link" label={t("Nextcloud")} />
+          <ExternalLink href={`${hrefLang}/office-for-moodle.aspx`} className="footer-link" label={t("Moodle")} />
+          <ExternalLink href={`${hrefLang}/office-for-odoo.aspx`} className="footer-link" label={t("Odoo")} />
+          <ExternalLink href={`${hrefLang}/office-for-wordpress.aspx`} className="footer-link" label={t("Wordpress")} />
+          <ExternalLink href={`${hrefLang}/all-connectors.aspx`} className="footer-link" label={t("Others")} />
+        </FooterItem>
         <FooterItem dis heading={t("Support")} className="support tablet_view_only">
           <ExternalLink href={`${hrefLang}/support-contact-form.aspx`} className="footer-link" label={t("Support contact form")} />
           <ExternalLink href="https://forum.onlyoffice.com/" className="footer-link" label={t("Forum")} />
@@ -98,6 +105,7 @@ const Footer = ({ t, language }) => {
             <ExternalLink href={`${hrefLang}/best-libreoffice-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs LibreOffice")} />
             <ExternalLink href={`${hrefLang}/best-wps-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs WPS")} />
             <ExternalLink href={`${hrefLang}/best-adobe-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Adobe Acrobat")} />
+            <ExternalLink href={`${hrefLang}/best-hancom-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Hancom")} />
           </FooterItem>
         }
         <FooterItem dis heading={t("Contact us")} className="contacts">
