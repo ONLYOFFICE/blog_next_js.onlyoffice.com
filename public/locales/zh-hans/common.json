@@ -42,7 +42,7 @@
   "Document Editor": "文档编辑器",
   "Spreadsheet Editor": "电子表格编辑器",
   "Presentation Editor": "演示文稿编辑器",
-  "Form creator": "表单创建程序",
+  "Form creator": "表单创建器",
   "PDF reader & converter": "PDF查看器和转换器",
   "Security": "安全",
   "Desktop & mobile apps": "桌面和移动应用程序",
@@ -51,6 +51,7 @@
   "For Android": "适用于安卓系统",
   "Perform your tasks online": "在线处理任务",
   "Find and fill out oforms": "查找并填写oform表单",
+  "Overview": "概览",
   "See it in action!": "立即试一试",
   "Curious to know what the interface looks like and try the main functionality?": "想知道界面是什么样子的，并希望尝试主要功能？",
   "OFORMs": "OFORM表单",
@@ -150,6 +151,7 @@
   "Order demo": "申请演示",
 
   "App Directory": "应用目录",
+  "Others": "其他",
   "Legal notice": "法律公告",
 
   "Contact us": "联系",
