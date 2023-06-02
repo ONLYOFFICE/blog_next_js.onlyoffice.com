@@ -5,22 +5,6 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: center;
 
-  #navitem-enterprise {
-    padding: 28px 20px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
-    color: #444444;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-
-    &:hover {
-      color: #FF6F3D;
-    }
-  }
-
   .menu-wrapper {
     display: flex;
 
@@ -55,6 +39,10 @@ const StyledNav = styled.nav`
     .menu-items-wrapper {
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    #navitem-enterprise {
+      position: relative;
     }
 
     #navitem-pricing,
@@ -106,36 +94,6 @@ const StyledNav = styled.nav`
     padding-top: 8px;
     box-sizing: border-box;
     overflow-x: hidden;
-
-    #navitem-enterprise {
-      position: relative;
-      display: block;
-      padding: 16px 40px 16px 24px;
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 700;
-
-      &:before {
-        display: block;
-        content: "";
-        width: 10px;
-        height: 10px;
-        background-image: url('https://static-oforms.onlyoffice.com/icons/arrow-gray.svg');
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-        position: absolute;
-        right: 24px;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: 0.1s linear;
-      }
-
-      &:hover {
-        color: #444444;
-        background-color: #F9F9F9;
-      }
-    }
 
     .menu-items-wrapper {
       text-align: left;

@@ -243,6 +243,11 @@ const StyledNavMenu = styled.div`
     }
   }
 
+  #navitem-download-signin {
+    display: block;
+    width: 100%;
+  }
+
   #navitem-pricing-for-business,
   #navitem-pricing-docs-enterprice,
   #navitem-pricing-docs-docspace,
@@ -331,6 +336,12 @@ const StyledNavMenu = styled.div`
     }
   }
 
+  #navitem-enterprise-overview {
+    &:before {
+      background-position-y: -1352px;
+    }
+  }
+
   #navitem-developers-docs-dev,
   #navitem-pricing-docs-dev,
   #navitem-download-docs-dev {
@@ -351,12 +362,14 @@ const StyledNavMenu = styled.div`
     }
   }
 
+  #navitem-enterprise-pricing,
   #navitem-developers-pricing {
     &:before {
       background-position-y: -1300px;
     }
   }
 
+  #navitem-enterprise-get,
   #navitem-developers-get {
     &:before {
       background-position-y: -1014px;
@@ -365,7 +378,7 @@ const StyledNavMenu = styled.div`
 
   #navitem-pricing-docs-enterprice,
   #navitem-download-docs-enterprise,
-  #avitem-enterprise-docs-enterprise {
+  #navitem-enterprise-docs-enterprise {
     &:before {
       background-position-y: -780px;
     }
@@ -505,7 +518,7 @@ const StyledNavMenu = styled.div`
 
   #navitem-download-connectors {
     &:before {
-      background-position-y: -1352px;
+      background-position-y: -1196px;;
     }
   }
 
