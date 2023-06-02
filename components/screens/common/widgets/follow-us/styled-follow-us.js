@@ -34,6 +34,7 @@ const StyledFollowUs = styled.div`
       width: 24px;
       height: 24px;
       filter: grayscale(0);
+      border-radius: initial;
 
       &.subscribe-mail {
         background-position-x: -434px;
@@ -89,6 +90,10 @@ const StyledFollowUs = styled.div`
   
       &.toutiao {
         background-position-x: -634px;
+      }
+
+      &.bilibili {
+        background-position-x: -714px;
       }
     }
 
