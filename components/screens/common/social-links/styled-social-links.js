@@ -6,9 +6,9 @@ const StyledSocialLinks = styled.div`
   gap: 16px;
 
   &.zh-hans {
-    gap: 12px;
+    gap: 8px;
 
-    @media (max-width: 1199px) {
+    @media (max-width: 1024px) {
       gap: 18px;
     }
 
@@ -107,6 +107,10 @@ const StyledSocialLinks = styled.div`
 
     &.toutiao {
       background-position-x: -626px;
+    }
+    
+    &.bilibili {
+      background-position-x: -706px;
     }
   }
 

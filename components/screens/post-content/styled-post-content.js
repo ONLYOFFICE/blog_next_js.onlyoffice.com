@@ -147,6 +147,10 @@ const StyledPostContent = styled(Section)`
       &.img-popup {
         cursor: pointer;
       }
+
+      &.aligncenter {
+        margin: 0 auto;
+      }
     }
 
     figure {

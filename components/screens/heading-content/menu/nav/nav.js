@@ -86,7 +86,24 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
         </div>
       </MenuItem>
 
-      <Link id="navitem-enterprise" href={`${hrefLang}/for-enterprises.aspx`}>{t("Enterprise")}</Link>
+      <MenuItem heading={t("Enterprise")} id="navitem-enterprise">
+        <div className="menu-wrapper">
+          <div className="outer-box">
+            <Link id="navitem-enterprise-overview" className="dropdown-item" href={`${hrefLang}/for-enterprises.aspx`}>
+              {t("Overview")}
+            </Link>
+            <Link id="navitem-enterprise-docs-enterprise" className="dropdown-item" href={`${hrefLang}/docs-enterprise.aspx`}>
+              {t("Docs Enterprise")}
+            </Link>
+            <Link id="navitem-enterprise-pricing" className="dropdown-item" href={`${hrefLang}/docs-enterprise-prices.aspx`}>
+              {t("Pricing")}
+            </Link>
+            <Link id="navitem-enterprise-get" className="dropdown-item" href={`${hrefLang}/download-docs.aspx`}>
+              {t("Get it now")}
+            </Link>
+          </div>
+        </div>
+      </MenuItem>
 
       <MenuItem heading={t("Developers")} id="navitem-developers">
         <div className="menu-wrapper">
@@ -155,15 +172,9 @@ const Nav = ({ onClick, t, currentLanguage, ...rest }) => {
               {t("Workspace")}
             </div>
             <div className="inner-box">
-              <div className="nowrap">
-                <Link id="navitem-download-signin" className="nav-item-nowrap-link" href={`${hrefLang}/signin.aspx`}>
-                  {t("Sign in")}
-                </Link>
-                <p className="slash-text">/</p>
-                <Link id="navitem-download-signup" className="nav-item-nowrap-link second" href={`${hrefLang}/registration.aspx`}>
-                  {t("Sign up for cloud")}
-                </Link>
-              </div>
+              <Link id="navitem-download-signin" className="nav-2nd-menu-link" href={`${hrefLang}/signin.aspx`}>
+                {t("Sign in")}
+              </Link>
               <Link id="navitem-download-onpremises" className="nav-2nd-menu-link" href={`${hrefLang}/download-workspace.aspx`}>
                 {t("Install on-premises")}
               </Link>
