@@ -218,7 +218,7 @@ const StyledPostContent = styled(Section)`
       }
     }
 
-    blockquote {
+    blockquote:not([class]) {
       border-left: 3px solid #ff6f3d;
       margin: 1.5em 0;
       padding: 0.5em 10px 0.5em 24px;
