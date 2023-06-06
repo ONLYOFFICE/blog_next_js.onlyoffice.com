@@ -24,7 +24,13 @@ const StyledFooterTablet = css`
     right: 0;
     top: 14px;
     z-index: -1;
+    width: 24px;
+    height: 24px;
+    background-image: url("https://static-oforms.onlyoffice.com/icons/chevron-down.svg");
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
     transition: 0.3s linear;
+
     &.up {
       transform: rotate(180deg);
     }

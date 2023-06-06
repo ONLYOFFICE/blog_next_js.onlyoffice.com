@@ -10,24 +10,12 @@ const ShareButtons = ({ currentLanguage }) => {
 
   return (
     <StyledRecentPosts className="share-buttons">
-      <FacebookShareButton className="share-button" url={routerUrl}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/facebook.svg" alt="Facebook" />
-      </FacebookShareButton>
-      <TwitterShareButton className="share-button" url={routerUrl}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/twitter.svg" alt="Twitter" />
-      </TwitterShareButton>
-      <ExternalLink className="share-button" href={`https://www.linkedin.com/sharing/share-offsite/?url=${routerUrl}`}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/linkedin.svg" alt="LinkedIn" />
-      </ExternalLink>
-      <RedditShareButton className="share-button" url={routerUrl}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/reddit.svg" alt="Reddit" />
-      </RedditShareButton>
-      <TelegramShareButton className="share-button" url={routerUrl}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/telegram.svg" alt="Telegram" />
-      </TelegramShareButton>
-      <ExternalLink className="share-button" href={`https://www.addtoany.com/add_to/mastodon?linkurl=${routerUrl}`}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/mastodon.svg" alt="Mastodon" />
-      </ExternalLink>
+      <FacebookShareButton className="share-button facebook" url={routerUrl}></FacebookShareButton>
+      <TwitterShareButton className="share-button twitter" url={routerUrl}></TwitterShareButton>
+      <ExternalLink className="share-button linkedin" href={`https://www.linkedin.com/sharing/share-offsite/?url=${routerUrl}`}></ExternalLink>
+      <RedditShareButton className="share-button reddit" url={routerUrl}></RedditShareButton>
+      <TelegramShareButton className="share-button telegram" url={routerUrl}></TelegramShareButton>
+      <ExternalLink className="share-button mastodon" href={`https://www.addtoany.com/add_to/mastodon?linkurl=${routerUrl}`}></ExternalLink>
     </StyledRecentPosts>
   );
 };

@@ -62,12 +62,16 @@ export default styled.div`
   }
 
   .arrow-image {
-    margin-bottom: 4px;
+    width: 8px;
+    height 5px;
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-down.svg");
+    background-repeat: no-repeat;
+    transform: translateY(2px);
     outline: none;
     -webkit-tap-highlight-color: transparent;
 
     &.is-open {
-      transform: translateY(6px) rotate(180deg);
+      transform: translateY(2px) rotate(180deg);
     }
   }
 
