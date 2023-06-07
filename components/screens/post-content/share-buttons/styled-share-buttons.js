@@ -13,6 +13,7 @@ const StyledRecentPosts = styled.div`
     background-size: 20px 20px;
     background-repeat: no-repeat;
     background-position: center;
+    filter: grayscale(1);
 
     img {
       width: 20px;
@@ -49,6 +50,14 @@ const StyledRecentPosts = styled.div`
 
     &.mastodon {
       background-image: url("https://static-blog.onlyoffice.com/images/icons/mastodon.svg");
+    }
+
+    &.wechat {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/social-wechat.png");
+    }
+
+    &.weibo {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/weibo.svg");
     }
   }
 `;
