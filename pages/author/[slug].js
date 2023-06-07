@@ -117,7 +117,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate: 86400,
+    revalidate:3153600086400,
   }
 }
 
