@@ -72,7 +72,7 @@ export const getStaticProps = async ({ locale }) => {
       inThePressPosts,
       mainPageDate
     },
-		revalidate:31536000,
+		revalidate:false,
 	}
 }
 
