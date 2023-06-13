@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import banner from "@public/images/banners/docs-bg.png";
+import docsLeft from "@public/images/banners/docs-left.svg";
+import docsRight from "@public/images/banners/docs-right.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -10,7 +13,8 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background: #55b5dc;
+    background-image: url(${banner.src});
+    background-repeat: repeat no-repeat;
 
     a {
       position: absolute;
@@ -38,56 +42,61 @@ const StyledAdventAnnounce = styled.div`
       max-width: 556px;
       padding: 7px 0 8px;
 
-      &:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -486px;
-        width: 476px;
-        height: 56px;
-        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-left.svg");
-        background-position-y: -5px;
-        background-repeat: no-repeat;
-
-        @media (max-width: 1024px) {          
-          left: -490px;
-          height: 48px;
-        }
-      }
-
+      &:before,
       &:after {
         content: "";
         position: absolute;
         top: 0;
-        right: -445px;
-        width: 435px;
+        display: block;
         height: 56px;
-        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-right.svg");
+        z-index: -1;
         background-repeat: no-repeat;
-        background-position-y: 6px;
 
-        @media (max-width: 1024px) {
-          right: -450px;
+        @media (max-width: 1023px) {
           height: 48px;
-          background-position-y: 2px;
         }
       }
 
-      @media (max-width: 1024px) {
+      &:before {
+        background-image: url(${docsLeft.src});
+        background-position-y: -5px;
+        left: -486px;
+        width: 476px;
+        background-position-x: 100%;
+
+        @media (max-width: 1023px) {
+          left: -490px;
+        }
+      }
+
+      &:after {
+        background-image: url(${docsRight.src});
+        background-position-y: 17px;
+        right: -445px;
+        width: 435px;
+
+        @media (max-width: 1023px) {
+          background-position-y: 50%;
+          right: -450px;
+        }
+      }
+
+      .advent-announce-text-active {
+        color: #93f9fe;
+      }
+
+      @media (max-width: 1023px) {
+        background-color: transparent;
+        display: inline-block;
         font-size: 13px;
         height: auto;
         line-height: 18px;
-        padding: 6px 0px;
-        white-space: normal;
-        width: auto !important;
-
-        b {
-          display: block;
-        }
+        padding: 6px 0;
+        max-width: 154px;
       }
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       transition: transform .2s cubic-bezier(.16,.68,.43,.99);
 
       &.is-open {
@@ -111,7 +120,7 @@ const StyledAdventAnnounce = styled.div`
   .advent-desktop-hide {
     display: none;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -120,23 +129,32 @@ const StyledAdventAnnounce = styled.div`
   }
 
   .advent-mobile-hide {
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
       display: none;
+    }
+  }
+
+  &.fr .advent-announce-text, 
+  &.ru .advent-announce-text, 
+  &.zh-hans .advent-announce-text {
+    max-width: 596px;
+
+    @media (max-width: 1023px) {
+      max-width: 154px;
     }
   }
 
   &.zh-hans {
     .advent-announce-text {
-      line-height: 40px;
-      max-width: 572px;
-      
-      @media (max-width: 1024px) {
+      line-height: 22px;
+
+      @media (max-width: 1023px) {
         line-height: 18px;
       }
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     overflow-x: hidden;
 
     &.active {
