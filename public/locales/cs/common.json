@@ -1,12 +1,14 @@
 {
   "SiteName": "ONLYOFFICE Blog",
 
-  "ONLYOFFICE DocSpace released": "Vydán ONLYOFFICE DocSpace",
-  "improve document collaboration with offices, customers, and partners.": "zlepšuje spolupráci na dokumentech s kancelářemi, zákazníky a partnery.",
-  "Use it for free!": "Používejte jej zdarma!",
-  "AdventAnnounceMobileText1": "Vydán",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "",
+  "AdventAnnounceDesk1": "",
+  "AdventAnnounceDesk2": "ONLYOFFICE",
+  "AdventAnnounceDesk3": "Docs 7.4 released",
+  "AdventAnnounceDesk4": "AI helper, drawing, radar charts, combining documents, saving objects as pictures, and more",
+  "AdventAnnounceMob1": "",
+  "AdventAnnounceMob2": "ONLYOFFICE ",
+  "AdventAnnounceMob3": "Docs 7.4 ",
+  "AdventAnnounceMob4": "released",
 
   "Page not found": "Stránka nebyla nalezena",
 
