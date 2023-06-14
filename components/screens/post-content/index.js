@@ -53,6 +53,15 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     };
   
     postData();
+
+    const scriptTiktokEmbed = document.createElement("script");
+    scriptTiktokEmbed.id = "#tiktok-embed"
+    scriptTiktokEmbed.src = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
+    document.body.appendChild(scriptTiktokEmbed);
+
+    return () => {
+      document.body.removeChild(scriptTiktokEmbed);
+    }
   }, [post]);
 
   return (
