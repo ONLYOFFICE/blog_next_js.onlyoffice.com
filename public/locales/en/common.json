@@ -1,0 +1,15 @@
+{
+  "SiteName": "ONLYOFFICE Blog",
+  "AdventAnnounceMobileText1": "",
+  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
+  "AdventAnnounceMobileText3": "released",
+
+  "productReleasesLink": "product-releases",
+  "forDevelopersLink": "for-developers",
+  "forBusinessLink": "for-business",
+  "forEducationLink": "for-education",
+
+  "NewsletterSubscribeText": "By clicking \"Subscribe\", you agree to the",
+  "NewsletterSubscribeLink": "rules for using the service and processing personal data.",
+  "© Ascensio System SIA": "© Ascensio System SIA 2009-{{currentYear}}."
+}

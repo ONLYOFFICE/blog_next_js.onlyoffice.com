@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import calendarIcon from "@public/images/icons/calendar.svg";
-import authorIcon from "@public/images/icons/author.svg";
 
 const StyledSearchPost = styled.div`
   .meta {
@@ -25,22 +23,35 @@ const StyledSearchPost = styled.div`
 
   .date {
     margin-right: 20px;
-    background-image: url(${calendarIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
   }
 
   .author {
-    background-image: url(${authorIcon.src});
+    display: inline-flex;
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+    text-decoration: none;
+
+    .external-link {
+      color: #919192;
+      text-decoration: none;
+    }
 
     &:hover {
-      text-decoration: underline;
+      .external-link {
+        text-decoration: underline;
+      }
     }
   }
 
   .post-title {
-    display: block;
-    margin-bottom: 24px;
+    display: flex;
     color: #333333;
     text-decoration: none;
+
+    .external-link {
+      color: #333333;
+      text-decoration: none;
+    }
 
     h2 {
       font-size: 24px;
@@ -48,25 +59,35 @@ const StyledSearchPost = styled.div`
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       cursor: pointer;
     }
 
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+
     &:hover {
-      text-decoration: underline;
+      .external-link {
+        text-decoration: underline;
+      }
     }
   }
 
   .post-text {
-    display: flex;
+    display: block;
     margin: 0;
+    font-size: 16px;
+    line-height: 26px;
 
     p {
       margin: 0;
-      font-size: 16px;
-      line-height: 26px;
     }
+  }
+
+  .search-excerpt {
+    font-style: italic;
   }
 
   @media ${device.laptop} {
@@ -90,10 +111,8 @@ const StyledSearchPost = styled.div`
     }
 
     .post-text {
-      p {
-        font-size: 14px;
-        line-height: 26px;
-      }
+      font-size: 14px;
+      line-height: 26px;
     }
   }
 `;

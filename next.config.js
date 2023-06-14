@@ -31,10 +31,18 @@ const nextConfig = {
   },
   reactStrictMode: true,
   i18n,
+  basePath: '/blog',
   compiler: {
     styledComponents: true
   },
   productionBrowserSourceMaps: true,
+  staticPageGenerationTimeout: 1000,
+  experimental: {
+    largePageDataBytes: 128 * 1000000,
+    workerThreads: false,
+    cpus: 4,
+    optimisticClientCache: false
+  },
 }
 
 module.exports = nextConfig

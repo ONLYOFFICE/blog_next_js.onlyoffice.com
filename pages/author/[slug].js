@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAuthorPostsSlug, getAuthorPosts } from '../../lib/api';
+import { getAuthorSlug, getAuthorPosts } from "@lib/api";
 
 import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
+import AuthorHeadSEO from "@components/screens/head-content/author";
 import HeadingContent from "@components/screens/heading-content";
 import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
@@ -11,27 +12,26 @@ import AuthorContent from "@components/screens/author-content";
 
 const Author = ({ locale, posts }) => {
   const { t } = useTranslation("common");
+  const [stateMobile, setStateMobile] = useState(false);
   const isAuthorContent = true;
-
-  const authorName = posts?.edges[0]?.node.author?.node.name || "";
+  const authorName = posts?.edges[0]?.node.author?.node?.name;
+  const authorSlug = posts?.edges[0]?.node.author?.node?.slug;
 
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
+        <AuthorHeadSEO
+          currentLanguage={locale}
           title={`${authorName} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={`${authorName}) | ${t("ONLYOFFICE Blog")}`}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
+          authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
+      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} />
+        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} />
+        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} language={locale} />
@@ -40,28 +40,72 @@ const Author = ({ locale, posts }) => {
   )
 }
 
-export const getStaticPaths = async ({ locales }) => {
-  const posts = await getAuthorPostsSlug();
+export const getStaticPaths = async () => {
+  const enAuthorSlug = await getAuthorSlug();
+  const frAuthorSlug = await getAuthorSlug("fr");
+  const deAuthorSlug = await getAuthorSlug("de");
+  const esAuthorSlug = await getAuthorSlug("es");
+  const ptAuthorSlug = await getAuthorSlug("pt-br");
+  const itAuthorSlug = await getAuthorSlug("it");
+  const csAuthorSlug = await getAuthorSlug("cs");
+  const jaAuthorSlug = await getAuthorSlug("ja");
+  const zhAuthorSlug = await getAuthorSlug("zh-hans");
 
-  const paths = locales.map((locale) => (
-    posts.edges.map(({node}) => ({
-      params: {
-        slug: node.author.node.slug
-      }, 
-      locale
-    }))
-  )).flat();
+  const enPosts = enAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "en"
+  }));
+
+  const frPosts = frAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "fr"
+  }));
+
+  const dePosts = deAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "de"
+  }));
+
+  const esPosts = esAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "es"
+  }));
+
+  const ptPosts = ptAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "pt-br"
+  }));
+
+  const itPosts = itAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "it"
+  }));
+
+  const csPosts = csAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "cs"
+  }));
+
+  const jaPosts = jaAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "ja"
+  }));
+
+  const zhPosts = zhAuthorSlug?.edges?.map(({node}) => ({
+    params: { slug: node.author.node.slug },
+    locale: "zh-hans"
+  }));
 
   return {
-    paths,
-    fallback: false,
+    paths: [...enPosts, ...frPosts, ...dePosts, ...esPosts, ...ptPosts, ...itPosts, ...csPosts, ...jaPosts, ...zhPosts],
+    fallback: "blocking",
   }
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const posts = await getAuthorPosts(locale, 6, null, params?.slug);
+  const posts = await getAuthorPosts(locale, 60, null, params?.slug);
 
-  if (posts.edges.length === 0) {
+  if (posts?.edges?.length === 0) {
     return {
       notFound: true
     };
@@ -71,9 +115,9 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      posts
+      posts: posts ? posts : null
     },
-    revalidate: 1,
+    revalidate: 86400,
   }
 }
 

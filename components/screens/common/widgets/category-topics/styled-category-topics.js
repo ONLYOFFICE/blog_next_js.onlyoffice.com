@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import productReleasesIcon from "@public/images/category-topics/product-releases.svg";
-import forDevelopersIcon from "@public/images/category-topics/for-developers.svg";
-import forBusinessIcon from "@public/images/category-topics/for-business.svg";
-import forEducationIcon from "@public/images/category-topics/for-education.svg";
 
 const StyledCategoryTopics = styled.div`
   padding: 23px;
@@ -56,19 +52,19 @@ const StyledCategoryTopics = styled.div`
       }
 
       &.product-releases {
-        background-image: url(${productReleasesIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/product-releases.svg");
       }
 
       &.for-developers {
-        background-image: url(${forDevelopersIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-developers.svg");
       }
 
       &.for-business {
-        background-image: url(${forBusinessIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-business.svg");
       }
 
       &.for-education {
-        background-image: url(${forEducationIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-education.svg");
       }
     }
   }

@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 30007",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 30007",
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "13.1.6",
+    "@next/font": "13.1.6",        
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "html-react-parser": "^3.0.9",
@@ -24,6 +24,8 @@
     "react-i18next": "^12.1.4",
     "react-share": "^4.4.1",
     "react-svg": "^14.1.17",
+    "react-syntax-highlighter": "^15.5.0",
+    "serverless-mysql": "^1.5.5",
     "styled-components": "^5.3.6"
   }
 }

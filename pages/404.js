@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Layout from "@components/layout";
-import HeadSEO from "@components/screens/head-content";
+import ErrornHeadSEO from "@components/screens/head-content/error";
 import HeadingContent from "@components/screens/heading-content";
 import AdventAnnounce from "@components/screens/heading-content/advent-announce";
 import Footer from "@components/screens/footer-content";
@@ -10,21 +11,16 @@ import ErrorContent from "@components/screens/404-content";
 
 const Error = ({ locale }) => {
   const { t } = useTranslation("common");
+  const [stateMobile, setStateMobile] = useState(false);
 
   return (
     <Layout>
       <Layout.PageHead>
-        <HeadSEO
-          title={`${t("Page not found")} – ${t("ONLYOFFICE Blog")}`}
-          metaSiteNameOg={t("Page not found – ONLYOFFICE Blog")}
-          metaDescription={t("titleIndexPage")}
-          metaDescriptionOg={t("metaDescriptionOgIndexPage")}
-          metaKeywords={t("metaKeywordsIndexPage")}
-        />
+        <ErrornHeadSEO title={`${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} />
+      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} />
+        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <ErrorContent t={t} />

@@ -1,9 +1,4 @@
 import styled from "styled-components";
-import left from "@public/images/banners/docs-release-left.svg";
-import right from "@public/images/banners/docs-7-3-right.svg";
-import icon from "@public/images/banners/docs-release-icon.svg";
-import union from "@public/images/banners/docs-release-union.svg";
-import mobile from "@public/images/banners/docs-release-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -15,13 +10,16 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background: #27ABA3;
+    background: #55b5dc;
+
     a {
       position: absolute;
       display: block;
       width: 100%;
+      height: 100%;
       text-decoration: none;
     }
+
     .advent-announce-text {
       position: relative;
       display: inline-block;
@@ -29,71 +27,90 @@ const StyledAdventAnnounce = styled.div`
       justify-content: center;
       text-align: center;
       margin: 0 auto;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 400;
-      line-height: 20px;
+      line-height: 19px;
       letter-spacing: 0.01em;
-      height: 55px;
+      height: 40px;
       color: #fff;
       text-decoration: none;
-      z-index: 0;
-      max-width: 605px;
-      padding: 7px 0px 8px;
+      z-index: 10;
+      max-width: 556px;
+      padding: 7px 0 8px;
+
       &:before {
         content: "";
         position: absolute;
+        top: 0;
+        left: -486px;
+        width: 476px;
+        height: 56px;
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-left.svg");
+        background-position-y: -5px;
         background-repeat: no-repeat;
-        top: 0px;
-        display: block;
-        height: 55px;
-        z-index: -1;
-        background-image: url(${left.src}),url(${icon.src});
-        background-position-x: 40%, 100%;
-        background-position-y: 11px, -7px;
-        left: -472px;
-        width: 462px;
-        @media (max-width: 1024px) {
+
+        @media (max-width: 1024px) {          
+          left: -490px;
           height: 48px;
-          background-image: url(${icon.src});
-          background-position-y: -11px;
-          left: -70px;
-          width: 50px;
         }
       }
+
       &:after {
         content: "";
         position: absolute;
-        top: 0px;
+        top: 0;
+        right: -445px;
+        width: 435px;
+        height: 56px;
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-right.svg");
         background-repeat: no-repeat;
-        display: block;
-        height: 55px;
-        z-index: -1;
-        background-repeat: no-repeat;
-        background-image: url(${right.src});
-        background-position-x: 0;
-        background-position-y: 7px;
-        right: -438px;
-        width: 431px;
+        background-position-y: 6px;
+
         @media (max-width: 1024px) {
+          right: -450px;
           height: 48px;
-          background-image: url(${union.src}),url(${mobile.src});
-          background-position-y: center, 23px;
-          background-position-x: 0%, 30px;
+          background-position-y: 2px;
         }
       }
+
       @media (max-width: 1024px) {
-        display: inline-block;
-        font-size: 12px;
+        font-size: 13px;
         height: auto;
-        line-height: 16px;
-        padding: 16px 0px;
+        line-height: 18px;
+        padding: 6px 0px;
         white-space: normal;
         width: auto !important;
+
+        b {
+          display: block;
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      transition: transform .2s cubic-bezier(.16,.68,.43,.99);
+
+      &.is-open {
+        transform: translate3d(429px, 0, 0);
+      }
+    }
+
+    @media (max-width: 592px) {
+      &.is-open {
+        transform: translate3d(380px, 0, 0);
+      }
+    }
+
+    @media (max-width: 430px) {
+      &.is-open {
+        transform: translate3d(288px, 0, 0);
       }
     }
   }
+
   .advent-desktop-hide {
     display: none;
+
     @media (max-width: 1024px) {
       display: flex;
       align-items: center;
@@ -101,9 +118,31 @@ const StyledAdventAnnounce = styled.div`
       height: 48px;
     }
   }
+
   .advent-mobile-hide {
     @media (max-width: 1024px) {
       display: none;
+    }
+  }
+
+  &.zh-hans {
+    .advent-announce-text {
+      line-height: 40px;
+      max-width: 572px;
+      
+      @media (max-width: 1024px) {
+        line-height: 18px;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    overflow-x: hidden;
+
+    &.active {
+      ~ header {
+        overflow-x: hidden;
+      }
     }
   }
 `;

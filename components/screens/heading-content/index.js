@@ -6,17 +6,16 @@ import SearchArea from "@components/common/search-area";
 import Nav from './menu/nav/nav'
 import StyledHeading from "./styled-heading";
 
-import logo from "@public/images/logo/logo.svg"
-import mobMenu from "@public/images/icons/mob-menu.svg"
-import { ReactSVG } from "react-svg";
-
-const Menu = ({ t, currentLanguage, isMainContent, isSearchContent }) => {
+const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
-  const [stateMobile, setStateMobile] = useState(false);
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const curLang = currentLanguage === "en" ? "/" : `/${currentLanguage}/`;
+  const curLang = `https://www.onlyoffice.com${
+    currentLanguage === "en" ? "" : 
+    currentLanguage === "zh-hans" ? "/zh" : 
+    currentLanguage === "pt-br" ? "/pt" : `/${currentLanguage}` 
+  }`;
 
   const handleSearchFormSubmit = async (e) => {
     e.preventDefault();
@@ -78,24 +77,21 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent }) => {
   };
 
   return (
-    <StyledHeading
-      className="navbar"
-      onMouseLeave={onCloseMenu}
-    >
+    <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
       <img
-        src={mobMenu.src}
+        src="https://static-blog.onlyoffice.com/images/icons/mob-menu.svg"
         className="nav-items-mobile"
         onClick={toggleMobile}
       />
       <span className="nav-item-logo">
         <InternalLink href={curLang}>
-          <ReactSVG src={logo.src} alt="logo"/>
+          <img src="https://static-blog.onlyoffice.com/images/logo/logo.svg" alt="logo"/>
         </InternalLink>
       </span>
-      <div className={`overlay ${stateMobile ? "active" : ""}`}></div>
+      <div className="overlay"></div>
       <Nav
         currentLanguage={currentLanguage}
-        className={`nav-item-links ${stateMobile ? "is-open" : ""}`}
+        className="nav-item-links"
         t={t}
       />
       {isMainContent || isSearchContent !== true && 

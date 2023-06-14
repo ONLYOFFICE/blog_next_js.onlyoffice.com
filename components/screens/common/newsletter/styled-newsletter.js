@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import unionIcon from "@public/images/icons/union.svg";
 
 const StyledNewsletter = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
@@ -21,7 +20,6 @@ const StyledNewsletter = styled.div`
     margin-right: 56px;
     width: 100%;
     max-width: 180px;
-    text-align: center;
   }
 
   .newsletter-body {
@@ -30,27 +28,68 @@ const StyledNewsletter = styled.div`
     width: 100%;
     max-width: 586px;
 
-    .group-input {
-      input {
-        padding: 16px;
+    form {
+      position: relative;
+      display: flex;
 
-        &:placeholder {
-          font-size: 16px;
-          line-height: 24px;
-          color: #AAAAAA;
-        }
+      input {
+        box-sizing: border-box;
+        height: 56px;
+        border: 1px solid #aaaaaa;
+        border-radius: 3px;
+        border-right: none;
+        border-bottom-right-radius: initial;
+        border-top-right-radius: initial;
+        padding: 16px;
+        font-size: 14px;
+        line-height: 280%;
+        color: #333;
       }
 
       button {
+        position: relative;
         padding: 19px 12px;
-        border-radius: 0 3px 3px 0;
+        border-radius: 0px 3px 3px 0px;
         min-width: 122px;
         font-family: "Open Sans", sans-serif;
         font-size: 13px;
         line-height: 17px;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: #ffffff;
+        transition: background-color 0.3s, opacity 0.3s;
+
+        &.loading {
+          font-size: 0;
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            margin: 0 auto;
+            border: 2px solid #ffffff;
+            border-radius: 75%;
+            border-right-color: transparent;
+            transform: translate(-50%, -50%);
+            animation: cssload-spin 1025ms infinite linear;
+          }
+          
+          @keyframes cssload-spin {
+            100%{ transform: translate(-50%, -50%) rotate(360deg); }
+          }
+        }
+      }
+
+      .error-text {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        color: #ff0c3e;
+        font-size: 12px;
+        line-height: 19px;
       }
     }
   }
@@ -59,12 +98,14 @@ const StyledNewsletter = styled.div`
     margin-top: 14px;
     font-size: 13px;
     line-height: 21px;
+    color: #333333;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
 
-    a {
-      display: initial;
-      font-size: 13px;
-      line-height: 21px;
-      color: #333333;
+    u {
+      cursor: pointer;
+      pointer-events: initial;
     }
   }
 
@@ -72,7 +113,6 @@ const StyledNewsletter = styled.div`
     .newsletter-wrapper {
       flex-direction: column;
       align-items: center;
-      text-align: center;
       padding: 32px 16px;
     }
 
@@ -81,18 +121,27 @@ const StyledNewsletter = styled.div`
       font-size: 20px;
       line-height: 27px;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .newsletter-body {
-      .group-input {
+      form {
         button {
           font-size: 0;
           min-width: 56px;
-          background-image: url(${unionIcon.src});
+          background-image: url("https://static-blog.onlyoffice.com/images/icons/union.svg");
           background-position: 50% 50%;
           background-repeat: no-repeat;
+
+          &.loading {
+            background-image: none;
+          }
         }
       }
+    }
+
+    .newsletter-text {
+      text-align: center;
     }
   }
 
@@ -101,19 +150,20 @@ const StyledNewsletter = styled.div`
     margin: 0 -16px;
 
     .newsletter-body {
-      .group-input {
+      form {
+        input,
         button {
           height: 48px;
+        }
+
+        .error-text {
+          top: 48px;
+          font-size: 10px;
         }
       }
     }
 
     .newsletter-text {
-      text-align: center;
-    }
-
-    .newsletter-text,
-    .newsletter-text a {
       font-size: 12px;
       line-height: 16px;
     }

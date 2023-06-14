@@ -42,7 +42,6 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
     }
   }, [searchQueryString]);
 
-
   return (
     <StyledSearchContent>
       <div className="wrapper">
@@ -50,7 +49,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
           <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} />
 
           <SearchArea 
-            label={`${"Search"}`}
+            label={t("Search")}
             searchQuery={searchQuery} 
             setSearchQuery={setSearchQuery} 
             handleSearchFormSubmit={handleSearchFormSubmit}
@@ -67,7 +66,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
                     t={t} 
                     currentLanguage={currentLanguage} 
                     data={queryResults} 
-                    searchQuery={searchQuery} 
+                    searchQueryString={searchQueryString} 
                     isSearchContent={isSearchContent}
                   />
                 :

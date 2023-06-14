@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import cloudBlock from "@public/images/cloud-block.svg";
-import cloudBlockMini from "@public/images/cloud-block-mini.svg";
 
 const StyledCloudBlock = styled.div`
   box-sizing: border-box;
@@ -9,7 +7,7 @@ const StyledCloudBlock = styled.div`
   padding-top: 10px;
   width: 100%;
   height: 300px;
-  background: url(${cloudBlock.src}) no-repeat 50% 10px;
+  background: url("https://static-blog.onlyoffice.com/images/cloud-block.svg") no-repeat 50% 10px;
   background-size: 689px 186px;
   background-color: #f8f8f8;
 
@@ -56,7 +54,7 @@ const StyledCloudBlock = styled.div`
     height: 252px;
     padding-top: 39px;
     background-color: #f8f8f8;
-    background-image: url(${cloudBlockMini.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/cloud-block-mini.svg");
     background-position: 50% 39px;
     background-repeat: no-repeat;
     background-size: 272px 122.78px;

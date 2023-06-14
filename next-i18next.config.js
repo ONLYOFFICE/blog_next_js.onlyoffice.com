@@ -7,4 +7,5 @@ module.exports = {
     locales: availableLanguages,
     localeDetection: false,
   },
+  lowerCaseLng: true
 };

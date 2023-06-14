@@ -1,6 +1,6 @@
 import StyledComments from "./styled-comments";
 import { useForm, Controller } from "react-hook-form";
-import Moment from "moment";
+import DateFormat from "@components/screens/common/date-format";
 import ReCAPTCHA from "react-google-recaptcha";
 import Button from "@components/common/button";
 import Heading from "@components/common/heading";
@@ -29,7 +29,9 @@ const Comments = ({ t, currentLanguage, post, ...rest }) => {
                       <span className="sep">-</span>
                       <a className="comment-reply-link" href="">{t("Reply")}</a>
                     </div>
-                    <div className="comment-date">{Moment(node.date).format("MMMM D, y h:mm a")}</div>
+                    <div className="comment-date">
+                      <DateFormat currentLanguage={currentLanguage} data={node.date} format="MMMM D, y h:mm a" />
+                    </div>
                   </div>
                 </div>
                 <div className="comment-body" dangerouslySetInnerHTML={{ __html: node.content }}></div>

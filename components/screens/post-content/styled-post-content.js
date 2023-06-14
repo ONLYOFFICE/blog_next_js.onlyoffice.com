@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import calendarIcon from "@public/images/icons/calendar.svg";
-import authorIcon from "@public/images/icons/author.svg";
-import commentIcon from "@public/images/icons/comment.svg";
-import viewsIcon from "@public/images/icons/views.svg";
-import linkIcon from "@public/images/icons/link.svg";
 
 const StyledPostContent = styled(Section)`
   padding: 32px 0 0;
@@ -37,19 +32,19 @@ const StyledPostContent = styled(Section)`
       background-repeat: no-repeat;
 
       &.date {
-        background-image: url(${calendarIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
       }
 
       &.author {
-        background-image: url(${authorIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
       }
 
       &.comments {
-        background-image: url(${commentIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
       }
 
       &.views {
-        background-image: url(${viewsIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/views.svg");
         background-size: 14px 10px;
       }
     }
@@ -121,9 +116,59 @@ const StyledPostContent = styled(Section)`
       color: #333;
     }
 
+    .wp-caption {
+      margin: 0;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      max-width: 100%;
+      padding: 5px 3px 10px;
+      text-align: center;
+
+      img {
+        border: 0 none;
+        height: auto;
+        margin: 0;
+        max-width: 98.5%;
+        padding: 0;
+        width: auto;
+      }
+    }
+
+    .wp-caption-text {
+      font-size: 13px;
+      line-height: 13px;
+    }
+
     img {
       object-fit: contain;
+      height: auto;
       max-width: 100%;
+
+      &.img-popup {
+        cursor: pointer;
+      }
+
+      &.aligncenter {
+        margin: 0 auto;
+      }
+    }
+
+    figure {
+      box-sizing: border-box;
+      object-fit: contain;
+      max-width: 100%;
+
+      &.aligncenter {
+        margin: 16px auto;
+      }
+
+      &.wp-action {
+        max-width: 100%;
+      }
+    }
+
+    .aligncenter {
+      display: block;
     }
 
     a {
@@ -170,6 +215,31 @@ const StyledPostContent = styled(Section)`
           width: 5.73px;
           height: 5.72px;
         }
+      }
+    }
+
+    blockquote {
+      border-left: 3px solid #ff6f3d;
+      margin: 1.5em 0;
+      padding: 0.5em 10px 0.5em 24px;
+      quotes: "“" "”";
+
+      &:before {
+        content: open-quote;
+        line-height: .1em;
+        margin-right: 0.4em;
+        vertical-align: 0.1em;
+      }
+
+      &:after {
+        content: close-quote;
+        line-height: .1em;
+        margin-left: 0.4em;
+        vertical-align: 0.1em;
+      }
+
+      p {
+        display: inline;
       }
     }
 
@@ -225,7 +295,7 @@ const StyledPostContent = styled(Section)`
         line-height: 33px;
         color: #333;
         padding-left: 35px;
-        background-image: url(${linkIcon.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/link.svg");
         background-size: 23px;
         background-position: 0 50%;
         background-repeat: no-repeat;
@@ -404,7 +474,7 @@ const StyledPostContent = styled(Section)`
   }
 
   .tag-share {
-    margin: 10px 0;
+    margin: 10px 0 10px auto;
     width: 30%;
 
     .share-buttons {
@@ -439,9 +509,85 @@ const StyledPostContent = styled(Section)`
     }
   }
 
+  .modal {
+    position: fixed;
+    top: 50%;
+    max-height: 80%;
+    left: 50%;
+    transform: translate(-50%, 0) scale(0,0);
+    z-index: 10001;
+    transition: transform .1s ease;
+    opacity 0;
+
+    &.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1, 1); 
+    }
+
+    .modal-img {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 23px;
+      height: 23px;
+      cursor: pointer;
+      z-index: 1003;
+
+      &:before {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(-45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+
+      &:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        height: 2px;
+        width: 31px;
+        top: 11px;
+        transform: rotate(45deg);
+        left: -4px;
+        z-index: 1004;
+      }
+    }
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(119 119 119 / 50%);
+    z-index: 10000;
+
+    &.active {
+      display: block;
+    }
+  }
+
   @media ${device.laptop} {
     .content {
       margin: 70px auto 80px;
+    }
+
+    article {
+      iframe {
+        width: 100%;
+      }
     }
   }
 
@@ -449,7 +595,7 @@ const StyledPostContent = styled(Section)`
     padding: 24px 0 0;
 
     .content {
-      margin: 24px auto 80px;
+      margin: 24px auto;
     }
 
     .title {
@@ -470,6 +616,10 @@ const StyledPostContent = styled(Section)`
       h3 {
         font-size: 22px;
       }
+
+      .useful-links {
+        margin: 44px 0;
+      }
     }
 
     .info-content {
@@ -482,6 +632,7 @@ const StyledPostContent = styled(Section)`
 
     .tag-list {
       flex-direction: column;
+      margin: 44px 0;
     }
 
     .tag-items {
@@ -499,6 +650,16 @@ const StyledPostContent = styled(Section)`
 
       .share-buttons {
         justify-content: initial;
+      }
+    }
+
+    .join-discussion {
+      margin: 44px auto 0;
+
+      a {
+        font-size: 13px;
+        line-height: 133%;
+        letter-spacing: .04em;
       }
     }
   }
@@ -536,6 +697,10 @@ const StyledPostContent = styled(Section)`
         margin: 0;
       }
 
+      iframe {
+        height: 235px;
+      }
+
       h2 {
         font-size: 20px;
       }
@@ -550,6 +715,24 @@ const StyledPostContent = styled(Section)`
 
       .button {
         padding: 16px 20px;
+      }
+    }
+
+    .modal {
+      .modal-img {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .modal-close-btn {
+        top: -30px;
+        right: 0;
+  
+        &:before,
+        &:after {
+          width: 20px;
+          left: 0;
+        }
       }
     }
   }

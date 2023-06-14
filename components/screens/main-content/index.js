@@ -36,8 +36,11 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <Card t={t} currentLanguage={currentLanguage} data={allPosts.edges[0]?.node} mainPost={mainPost} />
 
         <div className="main-sidebar">
-          <CategoryTopics t={t} />
-          <InThePress t={t} inThePressPosts={inThePressPosts} />
+          <CategoryTopics t={t} currentLanguage={currentLanguage} />
+          {
+            inThePressPosts.edges.length > 0 && 
+            <InThePress t={t} inThePressPosts={inThePressPosts} currentLanguage={currentLanguage} />
+          }
         </div>
       </div>
 
@@ -46,7 +49,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("Product releases")}</Heading>
-            <InternalLink className="view-all" href="/category/product-releases">{t("View all posts")}</InternalLink>
+            <InternalLink className="view-all" href={`/category/${t("productReleasesLink")}`}>{t("View all posts")}</InternalLink>
           </div>
           <div className="category-posts">
             {productReleasesPosts.edges.map(({node}) => (
@@ -54,15 +57,15 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
             ))}
           </div>
           <div className="category-more-posts">
-            <InternalLink className="more-posts-btn" href="/category/product-releases">{t("View all posts Product releases")}</InternalLink>
+            <InternalLink className="more-posts-btn" href={`/category/${t("productReleasesLink")}`}>{t("View all posts Product releases")}</InternalLink>
           </div>
         </div>}
 
         {forDevelopersPosts.edges.length > 0 && 
         <div className="category-wrapper">
           <div className="category-posts-top">
-            <Heading className="category-posts-title" level={2}>{t("For Developers")}</Heading>
-            <InternalLink className="view-all" href="/category/for-developers">{t("View all posts")}</InternalLink>
+            <Heading className="category-posts-title" level={2}>{t("For developers")}</Heading>
+            <InternalLink className="view-all" href={`/category/${t("forDevelopersLink")}`}>{t("View all posts")}</InternalLink>
           </div>
           <div className="category-posts">
             {forDevelopersPosts.edges.map(({node}) => (
@@ -70,7 +73,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
             ))}
           </div>
           <div className="category-more-posts">
-            <InternalLink className="more-posts-btn" href="/category/for-developers">{t("View all posts For developers")}</InternalLink>
+            <InternalLink className="more-posts-btn" href={`/category/${t("forDevelopersLink")}`}>{t("View all posts For developers")}</InternalLink>
           </div>
         </div>}
 
@@ -80,7 +83,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("For business")}</Heading>
-            <InternalLink className="view-all" href="/category/for-business">{t("View all posts")}</InternalLink>
+            <InternalLink className="view-all" href={`/category/${t("forBusinessLink")}`}>{t("View all posts")}</InternalLink>
           </div>
           <div className="category-posts">
             {forBusinessPosts.edges.map(({node}) => (
@@ -88,7 +91,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
             ))}
           </div>
           <div className="category-more-posts">
-            <InternalLink className="more-posts-btn" href="/category/for-business">{t("View all posts For business")}</InternalLink>
+            <InternalLink className="more-posts-btn" href={`/category/${t("forBusinessLink")}`}>{t("View all posts For business")}</InternalLink>
           </div>
         </div>}
 
@@ -96,7 +99,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
         <div className="category-wrapper">
           <div className="category-posts-top">
             <Heading className="category-posts-title" level={2}>{t("For education")}</Heading>
-            <InternalLink className="view-all" href="/category/for-education">{t("View all posts")}</InternalLink>
+            <InternalLink className="view-all" href={`/category/${t("forEducationLink")}`}>{t("View all posts")}</InternalLink>
           </div>
           <div className="category-posts">
             {forEducationPosts.edges.map(({node}) => (
@@ -104,7 +107,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
             ))}
           </div>
           <div className="category-more-posts">
-            <InternalLink className="more-posts-btn" href="/category/for-education">{t("View all posts For education")}</InternalLink>
+            <InternalLink className="more-posts-btn" href={`/category/${t("forEducationLink")}`}>{t("View all posts For education")}</InternalLink>
           </div>
         </div>}
 

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import calendarIcon from "@public/images/icons/calendar.svg";
 
 const StyledRecentPosts = styled.div`
   box-sizing: border-box;
@@ -65,7 +64,7 @@ const StyledRecentPosts = styled.div`
     font-size: 12px;
     line-height: 16px;
     color: #919192;
-    background-image: url(${calendarIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 3px;
@@ -120,6 +119,10 @@ const StyledRecentPosts = styled.div`
       .internal-link {
         margin-bottom: 8px;
       }
+    }
+
+    .post-img {
+      display: block;
     }
 
     .post-title {

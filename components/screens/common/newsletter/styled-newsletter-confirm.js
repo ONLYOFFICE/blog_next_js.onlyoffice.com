@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import newsletterConfirm from "@public/images/icons/newsletter-confirm.svg";
 
 const StyledNewsletterConfirm = styled.div`
-  display: none;
   position: relative;
   box-sizing: border-box;
   padding: 43px 26px 67px;
   color: #333;
-  background-image: url(${newsletterConfirm.src});
+  background-image: url("https://static-blog.onlyoffice.com/images/icons/newsletter-confirm.svg");
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: 50% 43px;

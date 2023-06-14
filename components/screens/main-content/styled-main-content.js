@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import arrowRightIcon from "@public/images/icons/arrow-right.svg";
 
 const StyledMainContent = styled(Section)`
   padding: 40px 0 82px;
@@ -9,6 +8,14 @@ const StyledMainContent = styled(Section)`
 
   .search_area {
     margin-bottom: 40px;
+  }
+
+  .search_input {
+    background-color: #f9f9f9;
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 
   .main-block {
@@ -53,7 +60,7 @@ const StyledMainContent = styled(Section)`
 
   .view-all {
     padding-right: 10px;
-    background-image: url(${arrowRightIcon.src});
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-right.svg");
     background-repeat: no-repeat;
     background-position: right 6px;
 
@@ -69,6 +76,11 @@ const StyledMainContent = styled(Section)`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+
+    .category-posts-btn {
+      grid-column: span 3;
+      justify-self: center;
+    }
   }
 
   .more-posts-btn {
@@ -87,6 +99,7 @@ const StyledMainContent = styled(Section)`
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: #333;
+      text-align: center;
     }
 
     &:hover {
@@ -116,6 +129,10 @@ const StyledMainContent = styled(Section)`
 
     .category-posts {
       grid-template-columns: repeat(2, 1fr);
+
+      .category-posts-btn {
+        grid-column: span 2;
+      }
     }
 
     .category-posts-title {
@@ -161,6 +178,11 @@ const StyledMainContent = styled(Section)`
 
     .category-posts {
       grid-template-columns: initial;
+
+      .category-posts-btn {
+        grid-column: initial;
+        justify-self: initial;
+      }
     }
 
     .category-more-posts {

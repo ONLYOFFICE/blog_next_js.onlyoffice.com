@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { ReactSVG } from "react-svg";
 
 import StyledLanguageSelector from "./styled-language-selector";
 import ItemsList from "./items-list";
-import arrowDown from "@public/images/icons/arrow-down.svg"
 
 const LanguageSelector = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +57,7 @@ const LanguageSelector = (props) => {
       <span className={`flag-image ${currentLanguage}`}></span>
       {/*eslint-disable*/}
       <div className={`arrow-image ${isOpen ? "is-open" : ""}`}>
-        <ReactSVG src={arrowDown.src} alt={srcAlt} />
+        <img src="https://static-blog.onlyoffice.com/images/icons/arrow-down.svg" alt={srcAlt} />
       </div>
       {/*eslint-enable*/}
       <ItemsList
