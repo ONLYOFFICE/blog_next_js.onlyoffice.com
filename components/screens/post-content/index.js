@@ -79,6 +79,9 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
               {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
               <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
             </span>
+            {
+              post.outdated && <span className="outdated">{t("Outdated")}</span>
+            }
 
             <ShareButtons currentLanguage={currentLanguage} />
           </div>

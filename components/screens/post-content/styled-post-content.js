@@ -26,10 +26,13 @@ const StyledPostContent = styled(Section)`
 
     > span {
       padding-left: 20px;
-      margin-right: 20px;
       background-size: 12px;
       background-position: left 5px;
       background-repeat: no-repeat;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
 
       &.date {
         background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
@@ -41,6 +44,14 @@ const StyledPostContent = styled(Section)`
 
       &.comments {
         background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
+      }
+
+      &.outdated {
+        color: #CB0000;
+        background-image: url("https://static-blog.onlyoffice.com/images/icons/outdated.svg");
+        background-size: 20px;
+        background-position: left 1px;
+        padding-left: 28px;
       }
 
       &.views {
@@ -673,8 +684,6 @@ const StyledPostContent = styled(Section)`
 
     .info-content {
       span {
-        margin-right: 16px;
-
         &.comments,
         &.views {
           display: none;
