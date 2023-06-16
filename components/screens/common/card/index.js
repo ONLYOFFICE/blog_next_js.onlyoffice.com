@@ -5,7 +5,7 @@ import Text from "@components/common/text"
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
-const Card = ({ t, currentLanguage, data, mainPost, ...rest }) => {
+const Card = ({ t, currentLanguage, data, mainPostExcerpt, mainPost, ...rest }) => {
   const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
   const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
 
@@ -28,7 +28,7 @@ const Card = ({ t, currentLanguage, data, mainPost, ...rest }) => {
           </InternalLink>
         </div>
         {mainPost && 
-          <div className="card-description">{parse(data?.excerpt)}</div>
+          <div className="card-description">{parse(mainPostExcerpt.edges[0].node.moreTextExcerpt)}</div>
         }
       </div>
     </StyledCard>
