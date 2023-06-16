@@ -10,21 +10,9 @@ const SearchArea = ({ valueSearch, label, placeholder, searchQuery, setSearchQue
 
   /*eslint-disable*/
   const imgSearch = !searchQuery ? (
-    <img className="search_img"
-      src="https://static-blog.onlyoffice.com/images/icons/search-icon.react.svg"
-      alt="search"
-      width="24px"
-      height="24px"
-    />
+    <span className="search_img" />
   ) : (
-    <img
-      src="https://static-blog.onlyoffice.com/images/icons/close-icon.react.svg"
-      onClick={() => setSearchQuery("")}
-      className="close-icon"
-      alt="close"
-      width="24px"
-      height="24px"
-    />
+    <span onClick={() => setSearchQuery("")} className="close-icon" />
   );
   /*eslint-enable*/
 

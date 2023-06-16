@@ -8,7 +8,7 @@ const RecentPosts = ({ t, data, currentLanguage, ...rest }) => {
       <Heading level={3}>{t("Recent posts")}</Heading>
 
       <div className="posts">
-        {data?.edges.map(({node}) => (
+        {data?.edges?.map(({node}) => (
           <Card data={node} key={node.id} currentLanguage={currentLanguage} />
         ))}
       </div>

@@ -5,12 +5,14 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE IN DEN MEDIEN",
 
-  "ONLYOFFICE DocSpace released": "ONLYOFFICE DocSpace freigegeben",
-  "improve document collaboration with offices, customers, and partners.": "Verbessern Sie die Zusammenarbeit mit Büros, Kunden und Partnern.",
-  "Use it for free!": "Kostenlos!",
-  "AdventAnnounceMobileText1": "",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "veröffentlicht",
+  "AdventAnnounceDesk1": "",
+  "AdventAnnounceDesk2": "ONLYOFFICE",
+  "AdventAnnounceDesk3": "Docs 7.4 veröffentlicht",
+  "AdventAnnounceDesk4": "KI-Helfer, Zeichnen, Radardiagramme, Kombinieren von Dokumenten, Speichern von Objekten als Bilder und mehr",
+  "AdventAnnounceMob1": "",
+  "AdventAnnounceMob2": "ONLYOFFICE ",
+  "AdventAnnounceMob3": "Docs 7.4 ",
+  "AdventAnnounceMob4": "veröffentlicht",
 
   "Page not found": "Seite nicht gefunden",
   "404 Page not found": "404 Seite nicht gefunden",
@@ -39,6 +41,8 @@
   "Form creator": "Formularersteller",
   "PDF reader & converter": "PDF-Reader & -Konverter",
   "Security": "Sicherheit",
+  "Accessibility": "Zugänglichkeit",
+  "AI helper": "KI-Helfer",
   "Desktop & mobile apps": "Desktop und mobile Anwendungen",
   "For desktop": "Für den Desktop",
   "For iOS": "Für iOS",
@@ -155,5 +159,6 @@
   "Use ONLYOFFICE for free": "Benutzen Sie ONLYOFFICE kostenlos",
   "Author Archives": "Autorenarchiv",
   "Tag Archives": "Tag-Archiv",
-  "No results matching your query could be found": "Keine Ergebnisse gefunden, die Ihrer Anfrage entsprechen"
+  "No results matching your query could be found": "Keine Ergebnisse gefunden, die Ihrer Anfrage entsprechen",
+  "Outdated": "Veraltet"
 }

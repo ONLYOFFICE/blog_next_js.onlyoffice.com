@@ -4,12 +4,14 @@
   "The official source of latest ONLYOFFICE news, tips, ideas, and promos.": "La source officielle des dernières nouvelles, des conseils, des idées et des promotions d'ONLYOFFICE.",
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE dans la presse",
 
-  "ONLYOFFICE DocSpace released": "Sortie de ONLYOFFICE DocSpace ",
-  "improve document collaboration with offices, customers, and partners.": "améliorez la collaboration documentaire avec les clients et les partenaires.",
-  "Use it for free!": "Utilisez-le gratuitement !",
-  "AdventAnnounceMobileText1": "Sortie de",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "",
+  "AdventAnnounceDesk1": "Sortie d'",
+  "AdventAnnounceDesk2": "ONLYOFFICE",
+  "AdventAnnounceDesk3": "Docs 7.4 ",
+  "AdventAnnounceDesk4": "assistant AI, dessins, graphiques radar, combinaison de documents, enregistrement d'objets en tant qu'images, et plus encore",
+  "AdventAnnounceMob1": "Sortie d'",
+  "AdventAnnounceMob2": "ONLYOFFICE ",
+  "AdventAnnounceMob3": "Docs 7.4",
+  "AdventAnnounceMob4": "",
 
   "Page not found": "Page non trouvée",
   "404 Page not found": "404 Page non trouvée",
@@ -38,6 +40,8 @@
   "Form creator": "Créateur de formulaires",
   "PDF reader & converter": "Lecteur et convertisseur de PDF",
   "Security": "Sécurité",
+  "Accessibility": "Accessibilité",
+  "AI helper": "Assistant IA",
   "Desktop & mobile apps": "Applications de bureau et mobiles",
   "For desktop": "Pour le bureau",
   "For iOS": "Pour iOS",
@@ -154,5 +158,6 @@
 
   "Author Archives": "Les archives de l'auteur ",
   "Tag Archives": "Archives d'étiquettes",
-  "No results matching your query could be found": "Aucun résultat ne correspond à votre recherche"
+  "No results matching your query could be found": "Aucun résultat ne correspond à votre recherche",
+  "Outdated": "Obsolète"
 }

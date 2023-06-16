@@ -48,13 +48,15 @@ const Footer = ({ t, language }) => {
           <ExternalLink href={`${hrefLang}/form-creator.aspx`} className="footer-link" label={t("Form creator")} />
           <ExternalLink href={`${hrefLang}/pdf-reader.aspx`} className="footer-link" label={t("PDF reader & converter")} />
           <ExternalLink href={`${hrefLang}/security.aspx`} className="footer-link" label={t("Security")} />
+          <ExternalLink href={`${hrefLang}/accessibility.aspx`} className="footer-link" label={t("Accessibility")} />
+          <ExternalLink href={`${hrefLang}/app-directory/chatgpt`} className="footer-link" label={t("AI helper")} />
           <ExternalLink href={`${hrefLang}/app-directory`} className="footer-link" label={t("App Directory")} />
         </FooterItem>
         <FooterItem dis heading={t("Connectors")} className="byindustry">
           <ExternalLink href={`${hrefLang}/office-for-nextcloud.aspx`} className="footer-link" label={t("Nextcloud")} />
           <ExternalLink href={`${hrefLang}/office-for-moodle.aspx`} className="footer-link" label={t("Moodle")} />
           <ExternalLink href={`${hrefLang}/office-for-odoo.aspx`} className="footer-link" label={t("Odoo")} />
-          <ExternalLink href={`${hrefLang}/office-for-wordpress.aspx`} className="footer-link" label={t("Wordpress")} />
+          <ExternalLink href={`${hrefLang}/office-for-wordpress.aspx`} className="footer-link" label={t("WordPress")} />
           <ExternalLink href={`${hrefLang}/all-connectors.aspx`} className="footer-link" label={t("Others")} />
         </FooterItem>
         <FooterItem dis heading={t("Support")} className="support tablet_view_only">
@@ -84,14 +86,14 @@ const Footer = ({ t, language }) => {
           <ExternalLink href={`${hrefLang}/demo-order.aspx`} className="footer-link" label={t("Order demo")} />
           <ExternalLink href={`${hrefLang}/webinars.aspx`} className="footer-link" label={t("Webinars")} />
           <ExternalLink href={`${hrefLang}/training-courses.aspx`} className="footer-link" label={t("Training courses")} />
+          <ExternalLink href="https://helpcenter.onlyoffice.com/index.aspx" className="footer-link" label={t("Help Center")} />
         </FooterItem>
         <FooterItem dis heading={t("Resources")} className="resources">
-          <ExternalLink href="https://helpcenter.onlyoffice.com/index.aspx" className="footer-link" label={t("Help Center")} />
-          {
-            language !== "zh-hans" &&
-            <ExternalLink href={`${hrefLang}/document-editor-comparison.aspx`} className="footer-link" label={t("Compare to other suites")} />
-          }
+          <ExternalLink href={`https://onlyoffice.com/blog/${language === "en" ? "" : language}`} className="footer-link" label={t("Blog")} />
+          <ExternalLink href={`${hrefLang}/whitepapers.aspx`} className="footer-link" label={t("White papers")} />
           <ExternalLink href={`${hrefLang}/contribute.aspx`} className="footer-link" label={t("Contribute")} />
+          <ExternalLink href={`${hrefLang}/vacancies.aspx`} className="footer-link" label={t("Jobs")} />
+          <ExternalLink href={`${hrefLang}/events.aspx`} className="footer-link" label={t("Events")} />
           <ExternalLink href={`${hrefLang}/legalterms.aspx`} className="footer-link" label={t("Legal notice")} />
         </FooterItem>
       </div>

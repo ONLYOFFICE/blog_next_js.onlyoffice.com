@@ -1,6 +1,8 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState } from "react";
+import { getLastPosts } from "@lib/api";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -10,10 +12,10 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
-import SyntaxHighlighter from 'react-syntax-highlighter';
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   const [postContent, setPostContent] = useState("");
+  const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const [imgAlt, setImgAlt] = useState("");
@@ -44,6 +46,22 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
   useEffect(() => {
     setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
+
+    async function postData() {
+      const data = await getLastPosts(currentLanguage);
+      setRecentPosts(data);
+    };
+  
+    postData();
+
+    const scriptTiktokEmbed = document.createElement("script");
+    scriptTiktokEmbed.id = "#tiktok-embed"
+    scriptTiktokEmbed.src = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
+    document.body.appendChild(scriptTiktokEmbed);
+
+    return () => {
+      document.body.removeChild(scriptTiktokEmbed);
+    }
   }, [post]);
 
   return (
@@ -61,6 +79,9 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
               {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
               <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
             </span>
+            {
+              post.outdated && <span className="outdated">{t("Outdated")}</span>
+            }
 
             <ShareButtons currentLanguage={currentLanguage} />
           </div>
@@ -91,7 +112,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         }
       </div>
 
-      <RecentPosts t={t} data={posts} currentLanguage={currentLanguage} />
+      <RecentPosts t={t} data={recentPosts} currentLanguage={currentLanguage} />
 
       {
         <>

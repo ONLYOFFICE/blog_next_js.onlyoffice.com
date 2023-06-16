@@ -16,8 +16,6 @@ const FooterItem = ({ dis, children, className, heading }) => {
     ? `footer-item-${className}`
     : `footer-item`;
 
-  const footerImageArrow = `footer-item-heading-arrow ${isOpen ? "up" : ""}`;
-
   return (
     <StyledFooterItem isOpen={isOpen} className={footerItemClassName}>
       <Heading
@@ -27,12 +25,7 @@ const FooterItem = ({ dis, children, className, heading }) => {
         label={heading}
       />
       {/*eslint-disable*/}
-      <img
-        className={footerImageArrow}
-        src="https://static-oforms.onlyoffice.com/icons/chevron-down.svg"
-        height="24px"
-        width="24px"
-      />
+      <span className={`footer-item-heading-arrow ${isOpen ? "up" : ""}`}/>
       {/*eslint-enable*/}
       <div ref={content} className="footer-items-group">
         {children}

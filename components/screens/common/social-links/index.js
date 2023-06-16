@@ -1,6 +1,5 @@
 import StyledSocialLinks from "./styled-social-links";
 import ExternalLink from "@components/common/external-link";
-import IconButton from "@components/common/icon-button";
 
 const SocialLinks = ({ language, handlerSetModal, isFooterContent, isFollowUsContent }) => {
   return (

@@ -34,8 +34,23 @@ const StyledSearchArea = styled.form`
     }
   }
 
+  .search_img,
+  .close-icon {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+  }
+
+  .search_img {
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/search-icon.react.svg");
+  }
+
   .close-icon {
     cursor: pointer;
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/close-icon.react.svg");
   }
 `;
 export default StyledSearchArea;

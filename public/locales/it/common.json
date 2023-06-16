@@ -5,12 +5,14 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE nella stampa",
 
-  "ONLYOFFICE DocSpace released": "Rilasciato ONLYOFFICE DocSpace",
-  "improve document collaboration with offices, customers, and partners.": "migliora la collaborazione documentale con uffici, clienti e partner.",
-  "Use it for free!": "Usalo gratuitamente!",
-  "AdventAnnounceMobileText1": "",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "è stato rilasciato",
+  "AdventAnnounceDesk1": "",
+  "AdventAnnounceDesk2": "ONLYOFFICE",
+  "AdventAnnounceDesk3": "Docs 7.4 è stato rilasciato",
+  "AdventAnnounceDesk4": "AI helper, disegni, grafici radar, combinazione di documenti, salvataggio di oggetti come immagini e altro",
+  "AdventAnnounceMob1": "",
+  "AdventAnnounceMob2": "ONLYOFFICE ",
+  "AdventAnnounceMob3": "Docs 7.4 ",
+  "AdventAnnounceMob4": "è stato rilasciato",
 
   "404 Page not found": "404 Pagina non trovata",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "La pagina che stavi cercando non esiste, non è disponibile, o stava caricando in modo errato.",
@@ -35,6 +37,8 @@
   "Form creator": "Creatore di moduli",
   "PDF reader & converter": "Lettore e convertitore PDF",
   "Security": "Sicurezza",
+  "Accessibility": "Accessibilità",
+  "AI helper": "AI helper",
   "Desktop & mobile apps": "App desktop e mobili",
   "For desktop": "Per desktop",
   "For iOS": "Per iOS",
@@ -153,5 +157,6 @@
   "Use ONLYOFFICE for free": "Utilizza ONLYOFFICE gratis",
   "Author Archives": "Archivio dell'Autore",
   "Tag Archives": "Archivio per il tag",
-  "No results matching your query could be found": "Non è stato possibile trovare risultati corrispondenti alla tua ricerca"
+  "No results matching your query could be found": "Non è stato possibile trovare risultati corrispondenti alla tua ricerca",
+  "Outdated": "Obsoleto"
 }

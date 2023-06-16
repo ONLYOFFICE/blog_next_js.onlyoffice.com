@@ -47,7 +47,6 @@ const LanguageSelector = (props) => {
   };
 
   const { currentLanguage, t } = props;
-  const srcAlt = isOpen ? "arrow-up" : "arrow-down";
 
   return (
     <StyledLanguageSelector
@@ -56,9 +55,7 @@ const LanguageSelector = (props) => {
     >
       <span className={`flag-image ${currentLanguage}`}></span>
       {/*eslint-disable*/}
-      <div className={`arrow-image ${isOpen ? "is-open" : ""}`}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/arrow-down.svg" alt={srcAlt} />
-      </div>
+      <div className={`arrow-image ${isOpen ? "is-open" : ""}`}></div>
       {/*eslint-enable*/}
       <ItemsList
         className={`languages-list lng-selector ${

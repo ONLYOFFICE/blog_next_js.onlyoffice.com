@@ -10,6 +10,10 @@ const StyledRecentPosts = styled.div`
     justify-content: center;
     width: 24px;
     height: 24px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: grayscale(1);
 
     img {
       width: 20px;
@@ -22,6 +26,38 @@ const StyledRecentPosts = styled.div`
 
     &:hover {
       opacity: 0.7;
+    }
+
+    &.facebook {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/facebook.svg");
+    }
+
+    &.twitter {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/twitter.svg");
+    }
+
+    &.linkedin {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/linkedin.svg");
+    }
+
+    &.reddit {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/reddit.svg");
+    }
+
+    &.telegram {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/telegram.svg");
+    }
+
+    &.mastodon {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/mastodon.svg");
+    }
+
+    &.wechat {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/social-wechat.png");
+    }
+
+    &.weibo {
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/weibo.svg");
     }
   }
 `;

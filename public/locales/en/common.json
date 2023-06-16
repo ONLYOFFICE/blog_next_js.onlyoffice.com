@@ -1,8 +1,13 @@
 {
   "SiteName": "ONLYOFFICE Blog",
-  "AdventAnnounceMobileText1": "",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "released",
+  "AdventAnnounceDesk1": "",
+  "AdventAnnounceDesk2": "ONLYOFFICE",
+  "AdventAnnounceDesk3": "Docs 7.4 released",
+  "AdventAnnounceDesk4": "AI helper, drawing, radar charts, combining documents, saving objects as pictures, and more",
+  "AdventAnnounceMob1": "",
+  "AdventAnnounceMob2": "ONLYOFFICE ",
+  "AdventAnnounceMob3": "Docs 7.4 ",
+  "AdventAnnounceMob4": "released",
 
   "productReleasesLink": "product-releases",
   "forDevelopersLink": "for-developers",

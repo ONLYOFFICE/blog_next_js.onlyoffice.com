@@ -32,15 +32,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
-          />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
-          />
           {/* Google Tag Manager */}
           <Script id="googletagmanager1" strategy="beforeInteractive" dangerouslySetInnerHTML={{
             __html: `
