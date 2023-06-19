@@ -1,10 +1,11 @@
 import Head from "next/head";
 
-const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
+const PostHeadSEO = ({ t, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
+  const title = post.aioseoTitle !== null ? post.aioseoTitle.replace("#separator_sa", "|").replace("#post_title", post?.title).replace("#site_title", t("ONLYOFFICE Blog")) : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
-  
+
   const languagesKey = 
     currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
     currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
@@ -21,7 +22,7 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={`${baseUrl}${post?.uri}`} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={metaSiteName} />
+      <meta property="og:site_name" content={t("SiteName")} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
