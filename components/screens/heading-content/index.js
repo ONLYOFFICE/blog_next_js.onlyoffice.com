@@ -78,11 +78,7 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
 
   return (
     <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
-      <img
-        src="https://static-blog.onlyoffice.com/images/icons/mob-menu.svg"
-        className="nav-items-mobile"
-        onClick={toggleMobile}
-      />
+      <span onClick={toggleMobile} className="nav-items-mobile" />
       <span className="nav-item-logo">
         <InternalLink href={curLang}>
           <img src="https://static-blog.onlyoffice.com/images/logo/logo.svg" alt="logo"/>

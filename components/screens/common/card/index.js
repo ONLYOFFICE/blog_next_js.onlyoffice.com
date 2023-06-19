@@ -1,6 +1,7 @@
 import StyledCard from "./styled-card";
-import DateFormat from "@components/screens/common/date-format";
+import Image from "next/image";
 import parse from "html-react-parser";
+import DateFormat from "@components/screens/common/date-format";
 import Text from "@components/common/text"
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
@@ -12,7 +13,7 @@ const Card = ({ t, currentLanguage, data, mainPostExcerpt, mainPost, ...rest }) 
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
       <InternalLink className="card-img" href={data?.uri}>
-        <img src={data.featuredImage?.node.sourceUrl ? data.featuredImage?.node.sourceUrl.replace(currentImgUrl, cdnImgUrl) : data?.firstImgPost.replace(currentImgUrl, cdnImgUrl)} alt={data?.title} />
+        <Image src={data.featuredImage?.node.sourceUrl ? data.featuredImage?.node.sourceUrl.replace(currentImgUrl, cdnImgUrl) : data?.firstImgPost.replace(currentImgUrl, cdnImgUrl)} alt={data?.title} width={mainPost ? 736 : 350} height={mainPost ? 392 : 200} />
       </InternalLink>
       <div className="card-body">
         <Heading className="card-title" level={2}>
