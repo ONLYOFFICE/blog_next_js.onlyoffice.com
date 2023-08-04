@@ -35,6 +35,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
+  images: {
+    domains: ['localhost', 'qwerty', process.env.IMG_DOMAIN],
+    formats: ['image/webp']
+  },
   productionBrowserSourceMaps: true,
   staticPageGenerationTimeout: 1000,
   experimental: {

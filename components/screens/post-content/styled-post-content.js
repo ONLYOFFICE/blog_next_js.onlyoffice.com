@@ -538,6 +538,7 @@ const StyledPostContent = styled(Section)`
     .modal-img {
       max-width: 80vw;
       max-height: 80vh;
+      object-fit: contain;
     }
 
     .modal-close-btn {

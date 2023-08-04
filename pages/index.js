@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAllPosts, getInThePressPosts, getMainPageDate } from "@lib/api";
+import { getAllPosts, getInThePressPosts, getMainPageDate, getMainPostExcerpt } from "@lib/api";
 
 import Layout from "@components/layout";
 import MainHeadSEO from "@components/screens/head-content/main";
@@ -10,7 +10,7 @@ import AdventAnnounce from "@components/screens/heading-content/advent-announce"
 import Footer from "@components/screens/footer-content";
 import MainContent from "@components/screens/main-content";
 
-const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
+const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
   const isMainContent = true;
@@ -35,6 +35,7 @@ const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelo
         <MainContent
           t={t} 
           currentLanguage={locale} 
+          mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
           productReleasesPosts={productReleasesPosts} 
           forDevelopersPosts={forDevelopersPosts} 
@@ -59,6 +60,7 @@ export const getStaticProps = async ({ locale }) => {
   const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans");
   const inThePressPosts = await getInThePressPosts(locale, 5, null);
   const mainPageDate = await getMainPageDate(locale);
+  const mainPostExcerpt = await getMainPostExcerpt(locale);
 
 	return {
 		props: {
@@ -70,7 +72,8 @@ export const getStaticProps = async ({ locale }) => {
       forBusinessPosts,
       forEducationPosts,
       inThePressPosts,
-      mainPageDate
+      mainPageDate,
+      mainPostExcerpt
     },
 		revalidate:false,
 	}

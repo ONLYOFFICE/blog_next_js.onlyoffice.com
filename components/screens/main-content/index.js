@@ -11,7 +11,7 @@ import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
 import LoadMorePosts from "../common/load-more-posts";
 
-const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainContent }) => {
+const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainContent }) => {
   const mainPost = true;
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -33,7 +33,7 @@ const MainContent = ({ t, currentLanguage, allPosts, productReleasesPosts, forDe
       />
 
       <div className="main-block">
-        <Card t={t} currentLanguage={currentLanguage} data={allPosts.edges[0]?.node} mainPost={mainPost} />
+        <Card t={t} currentLanguage={currentLanguage} data={allPosts.edges[0]?.node} mainPostExcerpt={mainPostExcerpt} mainPost={mainPost} />
 
         <div className="main-sidebar">
           <CategoryTopics t={t} currentLanguage={currentLanguage} />

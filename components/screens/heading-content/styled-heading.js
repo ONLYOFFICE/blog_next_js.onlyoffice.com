@@ -144,6 +144,10 @@ const StyledHeading = styled.div`
 
   .nav-items-mobile {
     display: none;
+    width: 20px;
+    height: 14px;
+    background-image: url("https://static-blog.onlyoffice.com/images/icons/mob-menu.svg");
+    background-repeat: no-repeat;
   }
 
   .search_area {
