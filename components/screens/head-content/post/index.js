@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
+const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, alternatePostUri }) => {
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
@@ -43,15 +43,15 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
 
-      {enPostLink && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${enPostLink.edges[0].node.uri}`} />}
-      {csPostLink && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${csPostLink.edges[0].node.uri}`} />}
-      {dePostLink && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${dePostLink.edges[0].node.uri}`} />}
-      {esPostLink && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${esPostLink.edges[0].node.uri}`} />}
-      {frPostLink && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${frPostLink.edges[0].node.uri}`} />}
-      {itPostLink && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${itPostLink.edges[0].node.uri}`} />}
-      {jaPostLink && <link rel="alternate" hrefLang="ja-Jp" href={`${baseUrl}${jaPostLink.edges[0].node.uri}`} />}
-      {ptPostLink && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${ptPostLink.edges[0].node.uri}`} />}
-      {zhPostLink && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${zhPostLink.edges[0].node.uri}`} />}
+      {alternatePostUri.enPostUri && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${alternatePostUri.enPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.csPostUri && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${alternatePostUri.csPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.dePostUri && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${alternatePostUri.dePostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.esPostUri && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${alternatePostUri.esPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.frPostUri && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${alternatePostUri.frPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.itPostUri && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${alternatePostUri.itPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.jaPostUri && <link rel="alternate" hrefLang="ja-Jp" href={`${baseUrl}${alternatePostUri.jaPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.ptPostUri && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${alternatePostUri.ptPostUri.edges[0].node.uri}`} />}
+      {alternatePostUri.zhPostUri && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${alternatePostUri.zhPostUri.edges[0].node.uri}`} />}
 
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />

@@ -40,7 +40,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
 
       fetchData();
     }
-  }, [searchQueryString]);
+  }, [searchQueryString, currentLanguage]);
 
   return (
     <StyledSearchContent>
