@@ -1,12 +1,13 @@
 import StyledRecentPosts from "./styled-recent-posts";
+import Image from "next/image";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
 const RecentPosts = ({ t, currentLanguage, data }) => {
   const isRecentPosts = true;
-  const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
-  const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
+  const currentImgUrl = process.env.CURRENT_IMG_URL;
+  const cdnImgUrl = process.env.CDN_IMG_URL;
 
   return (
     <StyledRecentPosts>
@@ -16,7 +17,7 @@ const RecentPosts = ({ t, currentLanguage, data }) => {
         {data.edges.map(({node}) => (
           <li className="post" key={node.id}>
             <InternalLink className="post-img" href={node?.uri}>
-              <img src={node.featuredImage?.node.sourceUrl ? node.featuredImage?.node.sourceUrl.replace(currentImgUrl, cdnImgUrl) : node?.firstImgPost.replace(currentImgUrl, cdnImgUrl)} alt={node?.title} />
+              <Image src={node.featuredImage?.node.sourceUrl ? node.featuredImage?.node.sourceUrl.replace(currentImgUrl, cdnImgUrl) : node?.firstImgPost.replace(currentImgUrl, cdnImgUrl)} width={350} height={200} alt={node?.title} />
             </InternalLink>
             <div className="post-body">
               <InternalLink className="post-title" href={node?.uri}>{node.title}</InternalLink>

@@ -20,8 +20,7 @@ const Post = ({ locale, post, posts, enPostUri, csPostUri, dePostUri, esPostUri,
     <Layout>
       <Layout.PageHead>
         <PostHeadSEO
-          title={`${post?.title} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteName={t("SiteName")}
+          t={t}
           currentLanguage={locale}
           post={post}
           alternatePostUri={alternatePostUri}

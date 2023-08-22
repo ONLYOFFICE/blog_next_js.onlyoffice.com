@@ -1,6 +1,7 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState } from "react";
 import { getLastPosts } from "@lib/api";
+import Image from "next/image";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import DateFormat from "@components/screens/common/date-format";
@@ -20,8 +21,8 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   const [imgUrl, setImgUrl] = useState("");
   const [imgAlt, setImgAlt] = useState("");
 
-  const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
-  const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
+  const currentImgUrl = process.env.CURRENT_IMG_URL;
+  const cdnImgUrl = process.env.CDN_IMG_URL;
 
   const options = {
     replace: domNode => {
@@ -30,6 +31,10 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         return <SyntaxHighlighter {...props} language="javascript">
           {domToReact(domNode.children).toString()}
         </SyntaxHighlighter>;
+      }
+
+      if (domNode.attribs && domNode.name === 'img') {
+        return <Image src={domNode.attribs['src']} className={domNode.attribs['class']} alt={domNode.attribs['alt']} width={1472} height={742} />;
       }
     }
   };
@@ -118,7 +123,10 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         <>
           <div onClick={() => setOpenModal(false)} className={`overlay ${openModal ? "active" : ""}`}></div>
           <div className={`modal ${openModal ? "active" : ""}`}>
-            <img className="modal-img" src={imgUrl} alt={imgAlt} />
+            {
+              imgUrl &&
+              <Image className="modal-img" src={imgUrl} width={1914} height={901} alt={imgAlt} />
+            }
             <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
           </div>
         </>
