@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getPostsUri, getPostAndMorePosts, getPostPagelink } from "@lib/api";
+import { getPostsUri, getPostAndMorePosts, getPostPageUri } from "@lib/api";
 
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";
@@ -10,9 +10,10 @@ import AdventAnnounce from "@components/screens/heading-content/advent-announce"
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
-const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink}) => {
+const Post = ({ locale, post, posts, enPostUri, csPostUri, dePostUri, esPostUri, frPostUri, itPostUri, jaPostUri, ptPostUri, zhPostUri }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
+  const alternatePostUri = { enPostUri, csPostUri, dePostUri, esPostUri, frPostUri, itPostUri, jaPostUri, ptPostUri, zhPostUri };
   const isPostContent = true;
 
   return (
@@ -22,20 +23,19 @@ const Post = ({locale, post, posts, enPostLink, csPostLink, dePostLink, esPostLi
           t={t}
           currentLanguage={locale}
           post={post}
-          enPostLink={enPostLink}
-          csPostLink={csPostLink}
-          dePostLink={dePostLink}
-          esPostLink={esPostLink}
-          frPostLink={frPostLink}
-          itPostLink={itPostLink}
-          jaPostLink={jaPostLink}
-          ptPostLink={ptPostLink}
-          zhPostLink={zhPostLink}
+          alternatePostUri={alternatePostUri}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale}  stateMobile={stateMobile} />
+      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent 
+          t={t}
+          currentLanguage={locale} 
+          stateMobile={stateMobile} 
+          setStateMobile={setStateMobile} 
+          alternatePostUri={alternatePostUri} 
+          isPostContent={isPostContent}
+        />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <PostContent t={t} currentLanguage={locale} post={post} posts={posts} isPostContent={isPostContent} />
@@ -111,15 +111,15 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ locale, params }) => {
   const data = await getPostAndMorePosts(locale, params?.post.join("/"));
-  const enPostLink = await getPostPagelink("", data?.post?.databaseId);
-  const csPostLink = await getPostPagelink("cs", data?.post?.databaseId);
-  const dePostLink = await getPostPagelink("de", data?.post?.databaseId);
-  const esPostLink = await getPostPagelink("es", data?.post?.databaseId);
-  const frPostLink = await getPostPagelink("fr", data?.post?.databaseId);
-  const itPostLink = await getPostPagelink("it", data?.post?.databaseId);
-  const jaPostLink = await getPostPagelink("ja", data?.post?.databaseId);
-  const ptPostLink = await getPostPagelink("pt-br", data?.post?.databaseId);
-  const zhPostLink = await getPostPagelink("zh-hans", data?.post?.databaseId);
+  const enPostUri = await getPostPageUri("", data?.post?.databaseId);
+  const csPostUri = await getPostPageUri("cs", data?.post?.databaseId);
+  const dePostUri = await getPostPageUri("de", data?.post?.databaseId);
+  const esPostUri = await getPostPageUri("es", data?.post?.databaseId);
+  const frPostUri = await getPostPageUri("fr", data?.post?.databaseId);
+  const itPostUri = await getPostPageUri("it", data?.post?.databaseId);
+  const jaPostUri = await getPostPageUri("ja", data?.post?.databaseId);
+  const ptPostUri = await getPostPageUri("pt-br", data?.post?.databaseId);
+  const zhPostUri = await getPostPageUri("zh-hans", data?.post?.databaseId);
 
   if (!data?.post) {
     return {
@@ -133,15 +133,15 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       post: data?.post,
       posts: data?.posts,
-      enPostLink: enPostLink?.edges?.length > 0 ? enPostLink : null,
-      csPostLink: csPostLink?.edges?.length > 0 ? csPostLink : null,
-      dePostLink: dePostLink?.edges?.length > 0 ? dePostLink : null,
-      esPostLink: esPostLink?.edges?.length > 0 ? esPostLink : null,
-      frPostLink: frPostLink?.edges?.length > 0 ? frPostLink : null,
-      itPostLink: itPostLink?.edges?.length > 0 ? itPostLink : null,
-      jaPostLink: jaPostLink?.edges?.length > 0 ? jaPostLink : null,
-      ptPostLink: ptPostLink?.edges?.length > 0 ? ptPostLink : null,
-      zhPostLink: zhPostLink?.edges?.length > 0 ? zhPostLink : null
+      enPostUri: enPostUri?.edges?.length > 0 ? enPostUri : null,
+      csPostUri: csPostUri?.edges?.length > 0 ? csPostUri : null,
+      dePostUri: dePostUri?.edges?.length > 0 ? dePostUri : null,
+      esPostUri: esPostUri?.edges?.length > 0 ? esPostUri : null,
+      frPostUri: frPostUri?.edges?.length > 0 ? frPostUri : null,
+      itPostUri: itPostUri?.edges?.length > 0 ? itPostUri : null,
+      jaPostUri: jaPostUri?.edges?.length > 0 ? jaPostUri : null,
+      ptPostUri: ptPostUri?.edges?.length > 0 ? ptPostUri : null,
+      zhPostUri: zhPostUri?.edges?.length > 0 ? zhPostUri : null
     },
     revalidate:false,
   }

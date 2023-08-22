@@ -6,7 +6,7 @@ import SearchArea from "@components/common/search-area";
 import Nav from './menu/nav/nav'
 import StyledHeading from "./styled-heading";
 
-const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile }) => {
+const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile, alternatePostUri, isPostContent }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
@@ -100,7 +100,7 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
         t={t} 
         placeholder={t("Search blog")}
       />}
-      <LanguageSelector t={t} currentLanguage={currentLanguage} />
+      <LanguageSelector t={t} currentLanguage={currentLanguage} alternatePostUri={alternatePostUri} isPostContent={isPostContent} />
     </StyledHeading>
   );
 };
