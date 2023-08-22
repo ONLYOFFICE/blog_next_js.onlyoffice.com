@@ -1,5 +1,5 @@
 import StyledPostContent from "./styled-post-content";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getLastPosts } from "@lib/api";
 import Image from "next/image";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
@@ -20,6 +20,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const [imgAlt, setImgAlt] = useState("");
+  const refContent = useRef();
 
   const currentImgUrl = process.env.CURRENT_IMG_URL;
   const cdnImgUrl = process.env.CDN_IMG_URL;
@@ -56,18 +57,25 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       const data = await getLastPosts(currentLanguage);
       setRecentPosts(data);
     };
-  
-    postData();
 
-    const scriptTiktokEmbed = document.createElement("script");
-    scriptTiktokEmbed.id = "#tiktok-embed"
-    scriptTiktokEmbed.src = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
-    document.body.appendChild(scriptTiktokEmbed);
+    postData();
+  }, [post]);
+
+  useEffect(() => {
+    const tiktokEmbedUrl = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
+
+    if (refContent.current.querySelector(".tiktok-embed")) {
+      const scriptTiktokEmbed = document.createElement("script");
+      scriptTiktokEmbed.src = tiktokEmbedUrl;
+      document.body.appendChild(scriptTiktokEmbed);
+    };
 
     return () => {
-      document.body.removeChild(scriptTiktokEmbed);
-    }
-  }, [post]);
+      if (document.querySelector(`script[src="${tiktokEmbedUrl}"]`)) {
+        document.querySelector(`script[src="${tiktokEmbedUrl}"]`).remove();
+      };
+    };
+  });
 
   return (
     <StyledPostContent>
@@ -90,14 +98,14 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons currentLanguage={currentLanguage} />
           </div>
-          <div onClick={onClickHandler} className="entry-content">{postContent}</div>
+          <div ref={refContent} onClick={onClickHandler} className="entry-content">{postContent}</div>
         </article>
 
         <div className="tag-list">
           {
             post?.tags?.edges.length > 0 &&
             <div className="tag-items">
-              {post?.tags?.edges.map(({node}) => (
+              {post?.tags?.edges.map(({ node }) => (
                 <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
               ))}
             </div>
@@ -110,7 +118,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
         <CloudBlock t={t} currentLanguage={currentLanguage} />
 
         {
-          post?.discoursePermalink && 
+          post?.discoursePermalink &&
           <div className="join-discussion">
             <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
           </div>
