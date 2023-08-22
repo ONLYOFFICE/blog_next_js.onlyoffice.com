@@ -2,27 +2,27 @@ import StyledAdventAnnounce from "./styled-advent-announce";
 
 const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
   const href = 
-    currentLanguage === "fr" ? "https://www.onlyoffice.com/blog/fr/2023/06/onlyoffice-docs-7-4" :
-    currentLanguage === "de" ? "https://www.onlyoffice.com/blog/de/2023/06/docs-7-4/" :
-    currentLanguage === "es" ? "https://www.onlyoffice.com/blog/es/2023/06/se-lanza-onlyoffice-docs-7-4" :
-    currentLanguage === "it" ? "https://www.onlyoffice.com/blog/it/2023/06/onlyoffice-docs-7-4/" :
-    currentLanguage === "ja" ? "https://www.onlyoffice.com/blog/ja/2023/06/onlyoffice-docs-7-4/" :
-    currentLanguage === "zh-hans" ? "https://www.onlyoffice.com/blog/zh-hans/2023/06/onlyoffice-docs-7-4-released/" : 
-    "https://www.onlyoffice.com/blog/2023/06/onlyoffice-docs-7-4-released/";
+    currentLanguage === "fr" ? "https://www.onlyoffice.com/blog/fr/2023/07/onlyoffice-docspace-auto-heberge" :
+    currentLanguage === "de" ? "https://www.onlyoffice.com/blog/de/2023/07/vor-ort-onlyoffice-docspace" :
+    currentLanguage === "es" ? "https://www.onlyoffice.com/blog/es/2023/07/version-autoalojada-de-onlyoffice-docspace" :
+    currentLanguage === "pt-br" ? "https://www.onlyoffice.com/blog/pt-br/2023/07/onlyoffice-docspace-auto-hospedado" :
+    currentLanguage === "it" ? "https://www.onlyoffice.com/blog/it/2023/07/onlyoffice-docspace-self-hosted" :
+    currentLanguage === "zh-hans" ? "https://www.onlyoffice.com/blog/zh-hans/2023/07/self-hosted-onlyoffice-docspace" : 
+    "https://www.onlyoffice.com/blog/2023/07/self-hosted-onlyoffice-docspace";
 
   return (
     <StyledAdventAnnounce className={`${currentLanguage} ${stateMobile ? "active": ""}`}>
       <div className="advent-announce advent-mobile-hide">
         <a href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">
-            {`${t("AdventAnnounceDesk1")}`}<b>{`${t("AdventAnnounceDesk2")}`}</b> <b className="advent-announce-text-active">{t("AdventAnnounceDesk3")}{currentLanguage === "ja" || currentLanguage === "zh-hans" ? "：" : ": "}</b>{t("AdventAnnounceDesk4")}
+            <b>{t("Self-hosted ONLYOFFICE DocSpace")}{`${currentLanguage === "zh-hans" ? "：" : ": "}`}</b>{t("secure collaboration on your terms")}
           </div>
         </a>
       </div>
       <div className={`advent-announce advent-desktop-hide ${stateMobile ? "is-open": ""}`}>
         <a href={href} target="_blank" rel="noreferrer noopener">
           <div className="advent-announce-text">
-            {t("AdventAnnounceMob1")}<b>{t("AdventAnnounceMob2")}</b><b className="advent-announce-text-active">{t("AdventAnnounceMob3")}</b>{t("AdventAnnounceMob4")}
+            <b>{t("Self-hosted")}{currentLanguage !== "fr" || currentLanguage !== "zh-hans" ? <br /> : ""}{t("ONLYOFFICE DocSpace")}</b>
           </div>
         </a>
       </div>

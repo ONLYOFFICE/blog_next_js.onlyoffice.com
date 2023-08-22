@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import banner from "@public/images/banners/docs-bg.png";
-import docsLeft from "@public/images/banners/docs-left.svg";
-import docsRight from "@public/images/banners/docs-right.svg";
+import docsLeft from "@public/images/banners/self-hosted-docspace-left.svg";
+import docsRight from "@public/images/banners/self-hosted-docspace-right.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -13,8 +12,7 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background-image: url(${banner.src});
-    background-repeat: repeat no-repeat;
+    background-color: #55b5dc;
 
     a {
       position: absolute;
@@ -22,6 +20,10 @@ const StyledAdventAnnounce = styled.div`
       width: 100%;
       height: 100%;
       text-decoration: none;
+
+      @media (max-width: 1023px) {
+        height: 50px;
+      }
     }
 
     .advent-announce-text {
@@ -35,12 +37,12 @@ const StyledAdventAnnounce = styled.div`
       font-weight: 400;
       line-height: 19px;
       letter-spacing: 0.01em;
-      height: 40px;
+      height: 20px;
       color: #fff;
       text-decoration: none;
       z-index: 10;
       max-width: 556px;
-      padding: 7px 0 8px;
+      padding: 17px 0 18px;
 
       &:before,
       &:after {
@@ -60,39 +62,34 @@ const StyledAdventAnnounce = styled.div`
       &:before {
         background-image: url(${docsLeft.src});
         background-position-y: -5px;
-        left: -486px;
-        width: 476px;
+        left: -445px;
+        width: 435px;
         background-position-x: 100%;
 
         @media (max-width: 1023px) {
-          left: -490px;
+          background-position-y: -8px;
+          left: -447px;
         }
       }
 
       &:after {
         background-image: url(${docsRight.src});
-        background-position-y: 17px;
-        right: -445px;
-        width: 435px;
+        background-position-y: 11px;
+        right: -512px;
+        width: 502px;
 
         @media (max-width: 1023px) {
-          background-position-y: 50%;
-          right: -450px;
+          background-position-y: 8px;
+          right: -514px;
         }
-      }
-
-      .advent-announce-text-active {
-        color: #93f9fe;
       }
 
       @media (max-width: 1023px) {
         background-color: transparent;
         display: inline-block;
-        font-size: 13px;
         height: auto;
-        line-height: 18px;
+        line-height: 19px;
         padding: 6px 0;
-        max-width: 154px;
       }
     }
 
@@ -134,22 +131,43 @@ const StyledAdventAnnounce = styled.div`
     }
   }
 
-  &.fr .advent-announce-text, 
-  &.ru .advent-announce-text, 
-  &.zh-hans .advent-announce-text {
+  &.fr .advent-announce-text {
     max-width: 596px;
 
     @media (max-width: 1023px) {
-      max-width: 154px;
+      max-width: 164px;
+    }
+  }
+
+  &.de .advent-announce-text {
+    max-width: 616px;
+
+    @media (max-width: 1023px) {
+      max-width: 164px;
+    }
+  }
+
+  &.cs .advent-announce-text {
+    padding: 10px 0 0;
+
+    @media (max-width: 1023px) {
+      padding: 6px 0;
     }
   }
 
   &.zh-hans {
+    a {
+      @media (max-width: 1023px) {
+        height: 53px;
+      }
+    }
+
     .advent-announce-text {
       line-height: 22px;
-
+  
       @media (max-width: 1023px) {
         line-height: 18px;
+        padding: 17px 0 18px;
       }
     }
   }
