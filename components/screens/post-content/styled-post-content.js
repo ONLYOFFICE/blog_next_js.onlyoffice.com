@@ -14,6 +14,7 @@ const StyledPostContent = styled(Section)`
     letter-spacing: -0.02em;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #333333;
+    overflow: initial;
   }
 
   .info-content {
