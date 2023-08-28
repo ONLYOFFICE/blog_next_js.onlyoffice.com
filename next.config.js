@@ -36,7 +36,7 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: ['localhost', 'qwerty', process.env.IMG_DOMAIN],
+    domains: process.env.IMAGE_DOMAINS.split(',').map((domain) => domain.replace(/"/g, '').trim()),
     formats: ['image/webp']
   },
   productionBrowserSourceMaps: true,
