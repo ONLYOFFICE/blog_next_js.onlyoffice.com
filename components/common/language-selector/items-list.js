@@ -4,40 +4,36 @@ import { useRouter } from "next/router";
 
 import { StyledItem, StyledPanelView } from "./styled-language-selector";
 
-const ItemsList = ({ isOpen, onCloseSelector, alternatePostUri, isPostContent }) => {
+const ItemsList = ({ isOpen, onCloseSelector, postUri, isPostContent }) => {
   const router = useRouter();
   const asPath = router.pathname === "/onlyoffice-in-the-press" || router.pathname === "/search" ? router.asPath : "/";
+
+  const languageItems = [
+    { locale: "en_US", shortKey: "en" },
+    { locale: "fr_FR", shortKey: "fr" },
+    { locale: "de_DE", shortKey: "de" },
+    { locale: "es_ES", shortKey: "es" },
+    { locale: "pt_BR", shortKey: "pt-br" },
+    { locale: "it_IT", shortKey: "it" },
+    { locale: "cs_CZ", shortKey: "cs" },
+    { locale: "ja", shortKey: "ja" },
+    { locale: "zh_CN", shortKey: "zh-hans" }
+  ];
 
   return (
     <StyledPanelView isOpen={isOpen} className="lng-selector">
       {
         isPostContent ?
-          <>
-            <StyledItem className="language-item">
-              <Link className="language-item-link en" href={alternatePostUri.enPostUri !== null || undefined ? alternatePostUri.enPostUri?.edges[0].node.uri : "/"} locale="en" onClick={onCloseSelector}></Link>
+          languageItems.map(language => (
+            <StyledItem className="language-item" key={language.locale}>
+              <Link
+                className={`language-item-link ${language.shortKey}`}
+                href={postUri[language.locale] && `${postUri[language.locale].substring(postUri[language.locale].indexOf("teamlab.info")).replace("teamlab.info", "")}` || "/"}
+                locale={language.shortKey}
+                onClick={onCloseSelector}
+              ></Link>
             </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link fr" href={alternatePostUri.frPostUri !== null || undefined ? alternatePostUri.frPostUri?.edges[0].node.uri : "/"} locale="fr" onClick={onCloseSelector}></Link>
-            </StyledItem>
-              <StyledItem className="language-item">
-              <Link className="language-item-link de" href={alternatePostUri.dePostUri !== null || undefined ? alternatePostUri.dePostUri?.edges[0].node.uri : "/"} locale="de" onClick={onCloseSelector}></Link>
-            </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link pt-br" href={alternatePostUri.ptPostUri !== null || undefined ? alternatePostUri.ptPostUri?.edges[0].node.uri : "/"} locale="pt-br" onClick={onCloseSelector}></Link>
-            </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link it" href={alternatePostUri.itPostUri !== null || undefined ? alternatePostUri.itPostUri?.edges[0].node.uri : "/"} locale="it" onClick={onCloseSelector}></Link>
-            </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link cs" href={alternatePostUri.csPostUri !== null || undefined ? alternatePostUri.csPostUri?.edges[0].node.uri : "/"} locale="cs" onClick={onCloseSelector}></Link>
-            </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link ja" href={alternatePostUri.jaPostUri !== null || undefined ? alternatePostUri.jaPostUri?.edges[0].node.uri : "/"} locale="ja" onClick={onCloseSelector}></Link>
-            </StyledItem>
-            <StyledItem className="language-item">
-              <Link className="language-item-link zh-hans" href={alternatePostUri.zhPostUri !== null || undefined ? alternatePostUri.zhPostUri?.edges[0].node.uri : "/"} locale="zh-hans" onClick={onCloseSelector}></Link>
-            </StyledItem>
-          </>
+          ))
         :
           languages.map((language) => (
             <StyledItem className="language-item" key={language.key}>

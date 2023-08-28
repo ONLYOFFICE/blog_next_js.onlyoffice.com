@@ -1,10 +1,11 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, alternatePostUri }) => {
-
+const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
+  const router = useRouter();
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
-  const title = post.aioseoTitle !== null ? post.aioseoTitle.replace("#separator_sa", "|").replace("#post_title", post?.title).replace("#site_title", t("ONLYOFFICE Blog")) : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
+  const title = post.aioseoTitle !== "" ? post.aioseoTitle.replace("#separator_sa", "|").replace("#post_title", post?.title).replace("#site_title", t("ONLYOFFICE Blog")) : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
 
   const languagesKey = 
@@ -45,15 +46,27 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, alternatePost
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
 
-      {alternatePostUri.enPostUri && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${alternatePostUri.enPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.csPostUri && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${alternatePostUri.csPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.dePostUri && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${alternatePostUri.dePostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.esPostUri && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${alternatePostUri.esPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.frPostUri && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${alternatePostUri.frPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.itPostUri && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${alternatePostUri.itPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.jaPostUri && <link rel="alternate" hrefLang="ja-Jp" href={`${baseUrl}${alternatePostUri.jaPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.ptPostUri && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${alternatePostUri.ptPostUri.edges[0].node.uri}`} />}
-      {alternatePostUri.zhPostUri && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${alternatePostUri.zhPostUri.edges[0].node.uri}`} />}
+      {
+        currentLanguage === "en" &&
+        <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
+      }
+
+      {postUri.en_US && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.cs_CZ && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${postUri.cs_CZ.substring(postUri.cs_CZ.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.de_DE && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${postUri.de_DE.substring(postUri.de_DE.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${postUri.es_ES.substring(postUri.es_ES.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${postUri.fr_FR.substring(postUri.fr_FR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${postUri.it_IT.substring(postUri.it_IT.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.ja && <link rel="alternate" hrefLang="ja" href={`${baseUrl}${postUri.ja.substring(postUri.ja.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${postUri.pt_BR.substring(postUri.pt_BR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${postUri.zh_CN.substring(postUri.zh_CN.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+
+      {
+        currentLanguage === "en" ?
+          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
+        :
+          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />
+      }
 
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />

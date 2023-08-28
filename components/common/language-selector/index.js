@@ -4,7 +4,7 @@ import StyledLanguageSelector from "./styled-language-selector";
 import ItemsList from "./items-list";
 
 const LanguageSelector = (props) => {
-  const { currentLanguage, t, alternatePostUri, isPostContent } = props;
+  const { currentLanguage, t, postUri, isPostContent } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const LanguageSelector = (props) => {
         t={t}
         isOpen={isOpen}
         onCloseSelector={onCloseSelector}
-        alternatePostUri={alternatePostUri}
+        postUri={postUri}
         isPostContent={isPostContent}
       />
     </StyledLanguageSelector>

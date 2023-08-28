@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getPostsUri, getPostAndMorePosts, getPostPageUri } from "@lib/api";
+import { getPostsUri, getPostAndMorePosts } from "@lib/api";
 
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";
@@ -10,11 +10,33 @@ import AdventAnnounce from "@components/screens/heading-content/advent-announce"
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
-const Post = ({ locale, post, posts, enPostUri, csPostUri, dePostUri, esPostUri, frPostUri, itPostUri, jaPostUri, ptPostUri, zhPostUri }) => {
+const Post = ({ locale, post, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const alternatePostUri = { enPostUri, csPostUri, dePostUri, esPostUri, frPostUri, itPostUri, jaPostUri, ptPostUri, zhPostUri };
   const isPostContent = true;
+
+  const [postUri, setPostUri] = useState({
+    en_US: "",
+    fr_FR: "",
+    de_DE: "",
+    es_ES: "",
+    pt_BR: "",
+    it_IT: "",
+    cs_CZ: "",
+    ja: "",
+    zh_CN: ""
+  });
+
+  useEffect(() => {
+    const translations = post?.translations || [];
+    const uri = {};
+
+    translations.forEach(translation => {
+      uri[translation.locale] = translation.href;
+    });
+
+    setPostUri(uri);
+  }, [post]);
 
   return (
     <Layout>
@@ -23,7 +45,7 @@ const Post = ({ locale, post, posts, enPostUri, csPostUri, dePostUri, esPostUri,
           t={t}
           currentLanguage={locale}
           post={post}
-          alternatePostUri={alternatePostUri}
+          postUri={postUri}
         />
       </Layout.PageHead>
       <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
@@ -33,7 +55,7 @@ const Post = ({ locale, post, posts, enPostUri, csPostUri, dePostUri, esPostUri,
           currentLanguage={locale} 
           stateMobile={stateMobile} 
           setStateMobile={setStateMobile} 
-          alternatePostUri={alternatePostUri} 
+          postUri={postUri}
           isPostContent={isPostContent}
         />
       </Layout.PageHeader>
@@ -111,15 +133,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ locale, params }) => {
   const data = await getPostAndMorePosts(locale, params?.post.join("/"));
-  const enPostUri = await getPostPageUri("", data?.post?.databaseId);
-  const csPostUri = await getPostPageUri("cs", data?.post?.databaseId);
-  const dePostUri = await getPostPageUri("de", data?.post?.databaseId);
-  const esPostUri = await getPostPageUri("es", data?.post?.databaseId);
-  const frPostUri = await getPostPageUri("fr", data?.post?.databaseId);
-  const itPostUri = await getPostPageUri("it", data?.post?.databaseId);
-  const jaPostUri = await getPostPageUri("ja", data?.post?.databaseId);
-  const ptPostUri = await getPostPageUri("pt-br", data?.post?.databaseId);
-  const zhPostUri = await getPostPageUri("zh-hans", data?.post?.databaseId);
 
   if (!data?.post) {
     return {
@@ -132,16 +145,7 @@ export const getStaticProps = async ({ locale, params }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       post: data?.post,
-      posts: data?.posts,
-      enPostUri: enPostUri?.edges?.length > 0 ? enPostUri : null,
-      csPostUri: csPostUri?.edges?.length > 0 ? csPostUri : null,
-      dePostUri: dePostUri?.edges?.length > 0 ? dePostUri : null,
-      esPostUri: esPostUri?.edges?.length > 0 ? esPostUri : null,
-      frPostUri: frPostUri?.edges?.length > 0 ? frPostUri : null,
-      itPostUri: itPostUri?.edges?.length > 0 ? itPostUri : null,
-      jaPostUri: jaPostUri?.edges?.length > 0 ? jaPostUri : null,
-      ptPostUri: ptPostUri?.edges?.length > 0 ? ptPostUri : null,
-      zhPostUri: zhPostUri?.edges?.length > 0 ? zhPostUri : null
+      posts: data?.posts
     },
     revalidate:false,
   }
