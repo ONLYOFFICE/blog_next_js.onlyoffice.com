@@ -65,6 +65,7 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
         currentLanguage === "en" ?
           <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
         :
+        postUri.en_US &&
           <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />
       }
 
