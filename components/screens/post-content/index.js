@@ -133,7 +133,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
           <div className={`modal ${openModal ? "active" : ""}`}>
             {
               imgUrl &&
-              <Image className="modal-img" src={imgUrl} width={1914} height={901} alt={imgAlt} />
+              <img className="modal-img" src={imgUrl} alt={imgAlt} />
             }
             <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
           </div>
