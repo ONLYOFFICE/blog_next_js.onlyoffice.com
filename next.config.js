@@ -36,7 +36,7 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: [process.env.IMAGE_DOMAIN_1, process.env.IMAGE_DOMAIN_2],
+    domains: ["static-blog.onlyoffice.com", "static-blog.teamlab.info"],
     formats: ['image/webp']
   },
   productionBrowserSourceMaps: true,
