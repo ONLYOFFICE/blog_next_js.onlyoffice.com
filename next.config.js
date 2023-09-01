@@ -44,7 +44,7 @@ const nextConfig = {
   experimental: {
     largePageDataBytes: 128 * 1000000,
     workerThreads: false,
-    cpus: 4,
+    cpus: 8,
     optimisticClientCache: false
   },
 }
