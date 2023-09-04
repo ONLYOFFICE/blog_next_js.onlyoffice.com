@@ -1,6 +1,5 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState, useRef } from "react";
-import { getLastPosts } from "@lib/api";
 import Image from "next/image";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -54,8 +53,13 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
 
     async function postData() {
-      const data = await getLastPosts(currentLanguage);
-      setRecentPosts(data);
+      const data = await fetch("/blog/api/recent-posts", {
+        method: "POST",
+        body: JSON.stringify({ currentLanguage })
+      });
+
+      const response = await data.json();
+      setRecentPosts(response.data);
     };
 
     postData();
