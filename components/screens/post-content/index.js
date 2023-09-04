@@ -21,9 +21,6 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   const [imgAlt, setImgAlt] = useState("");
   const refContent = useRef();
 
-  const currentImgUrl = process.env.CURRENT_IMG_URL;
-  const cdnImgUrl = process.env.CDN_IMG_URL;
-
   const options = {
     replace: domNode => {
       if (domNode.attribs && domNode.name === 'pre') {
@@ -50,7 +47,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   };
 
   useEffect(() => {
-    setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
+    setPostContent(parse(post?.content, options));
 
     async function postData() {
       const data = await fetch("/blog/api/recent-posts", {
