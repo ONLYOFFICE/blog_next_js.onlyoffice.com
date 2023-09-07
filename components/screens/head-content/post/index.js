@@ -1,10 +1,13 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
-const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, csPostLink, dePostLink, esPostLink, frPostLink, itPostLink, jaPostLink, ptPostLink, zhPostLink }) => {
+const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
+  const router = useRouter();
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
+  const title = post.aioseoTitle !== "" ? post.aioseoTitle.replace("#separator_sa", "|").replace("#post_title", post?.title).replace("#site_title", t("ONLYOFFICE Blog")) : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
-  
+
   const languagesKey = 
     currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
     currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
@@ -21,7 +24,7 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={`${baseUrl}${post?.uri}`} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={metaSiteName} />
+      <meta property="og:site_name" content={t("SiteName")} />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
@@ -43,15 +46,28 @@ const PostHeadSEO = ({ title, metaSiteName, currentLanguage, post, enPostLink, c
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
 
-      {enPostLink && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${enPostLink.edges[0].node.uri}`} />}
-      {csPostLink && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${csPostLink.edges[0].node.uri}`} />}
-      {dePostLink && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${dePostLink.edges[0].node.uri}`} />}
-      {esPostLink && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${esPostLink.edges[0].node.uri}`} />}
-      {frPostLink && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${frPostLink.edges[0].node.uri}`} />}
-      {itPostLink && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${itPostLink.edges[0].node.uri}`} />}
-      {jaPostLink && <link rel="alternate" hrefLang="ja-Jp" href={`${baseUrl}${jaPostLink.edges[0].node.uri}`} />}
-      {ptPostLink && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${ptPostLink.edges[0].node.uri}`} />}
-      {zhPostLink && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${zhPostLink.edges[0].node.uri}`} />}
+      {
+        currentLanguage === "en" &&
+        <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
+      }
+
+      {postUri.en_US && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.cs_CZ && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${postUri.cs_CZ.substring(postUri.cs_CZ.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.de_DE && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${postUri.de_DE.substring(postUri.de_DE.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${postUri.es_ES.substring(postUri.es_ES.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${postUri.fr_FR.substring(postUri.fr_FR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${postUri.it_IT.substring(postUri.it_IT.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.ja && <link rel="alternate" hrefLang="ja" href={`${baseUrl}${postUri.ja.substring(postUri.ja.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${postUri.pt_BR.substring(postUri.pt_BR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${postUri.zh_CN.substring(postUri.zh_CN.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+
+      {
+        currentLanguage === "en" ?
+          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
+        :
+        postUri.en_US &&
+          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />
+      }
 
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />

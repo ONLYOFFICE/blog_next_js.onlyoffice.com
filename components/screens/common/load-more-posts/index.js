@@ -1,6 +1,5 @@
 import StyledLoadMorePosts from "./styled-load-more-posts";
 import { useState, useEffect } from "react";
-import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
 import Card from "@components/screens/common/card";
 import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
@@ -51,22 +50,22 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
   const loadMoreItems = async (endCursor = null) => {
     setIsLoading(true);
 
-    const loadPosts = 
-    isInThePressContent ? 
-      await getInThePressPosts(currentLanguage, 5, `"${endCursor}"`) : 
-    isSearchContent ? 
-      await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQueryString)
-    :
-    isAuthorContent ?
-      await getAuthorPosts(currentLanguage, 6, `"${endCursor}"`, authorSlug)
-    :
-    isTagContent ?
-      await getTagPosts(currentLanguage, 6, `"${endCursor}"`, tagSlug)
-    :
-    isCategoryContent ?
-      await getCategoryPosts(currentLanguage, 6, `"${endCursor}"`, categorySlug)
-    :
-      await getAllPosts(currentLanguage, 6, `"${endCursor}"`, "");
+    const data = await fetch("/blog/api/load-more-posts", {
+      method: "POST",
+      body: JSON.stringify({
+        isInThePressContent,
+        isSearchContent,
+        isAuthorContent,
+        isTagContent,
+        isCategoryContent,
+        currentLanguage,
+        endCursor,
+        data: searchQueryString || authorSlug || tagSlug || categorySlug
+      })
+    });
+
+    const response = await data.json();
+    const loadPosts = response.data;
 
     loadPosts.edges.length > 0 && setIsLoading(false);
     setPosts(loadPosts ?? []);

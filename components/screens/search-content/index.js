@@ -1,6 +1,5 @@
 import StyledSearchContent from "./styled-search-content";
 import { useState, useEffect } from "react";
-import { getSearchResults } from "@lib/api";
 import Router, { useRouter } from "next/router";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
@@ -21,8 +20,18 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
 
     setIsLoading(true);
     Router.push(`/search?s=${searchQuery}`);
-    const data = await getSearchResults(currentLanguage, 5, null, searchQuery);
-    setQueryResults(data ?? {});
+
+    const data = await fetch("/blog/api/search-results", {
+      method: "POST",
+      body: JSON.stringify({
+        currentLanguage,
+        searchQuery: searchQuery
+      })
+    });
+
+    const response = await data.json();
+
+    setQueryResults(response.data ?? {});
     setIsLoading(false);
 
     return null;
@@ -33,14 +42,23 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
       setIsLoading(true);
 
       const fetchData = async () => {
-        const data = await getSearchResults(currentLanguage, 5, null, searchQueryString);
-        setQueryResults(data ?? {});
+        const data = await fetch("/blog/api/search-results", {
+          method: "POST",
+          body: JSON.stringify({
+            currentLanguage,
+            searchQuery: searchQueryString
+          })
+        });
+
+        const response = await data.json();
+
+        setQueryResults(response.data ?? {});
         setIsLoading(false);
       };
 
       fetchData();
     }
-  }, [searchQueryString]);
+  }, [searchQueryString, currentLanguage]);
 
   return (
     <StyledSearchContent>

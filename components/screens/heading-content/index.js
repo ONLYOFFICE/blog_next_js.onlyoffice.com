@@ -6,7 +6,7 @@ import SearchArea from "@components/common/search-area";
 import Nav from './menu/nav/nav'
 import StyledHeading from "./styled-heading";
 
-const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile }) => {
+const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
@@ -78,11 +78,7 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
 
   return (
     <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
-      <img
-        src="https://static-blog.onlyoffice.com/images/icons/mob-menu.svg"
-        className="nav-items-mobile"
-        onClick={toggleMobile}
-      />
+      <span onClick={toggleMobile} className="nav-items-mobile" />
       <span className="nav-item-logo">
         <InternalLink href={curLang}>
           <img src="https://static-blog.onlyoffice.com/images/logo/logo.svg" alt="logo"/>
@@ -104,7 +100,7 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
         t={t} 
         placeholder={t("Search blog")}
       />}
-      <LanguageSelector t={t} currentLanguage={currentLanguage} />
+      <LanguageSelector t={t} currentLanguage={currentLanguage} postUri={postUri} isPostContent={isPostContent} />
     </StyledHeading>
   );
 };

@@ -14,6 +14,7 @@ const StyledPostContent = styled(Section)`
     letter-spacing: -0.02em;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #333333;
+    overflow: initial;
   }
 
   .info-content {
@@ -538,6 +539,7 @@ const StyledPostContent = styled(Section)`
     .modal-img {
       max-width: 80vw;
       max-height: 80vh;
+      object-fit: contain;
     }
 
     .modal-close-btn {
