@@ -1,5 +1,4 @@
 import StyledRecentPosts from "./styled-recent-posts";
-import Image from "next/image";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
@@ -15,12 +14,7 @@ const RecentPosts = ({ t, currentLanguage, data }) => {
         {data.edges.map(({node}) => (
           <li className="post" key={node.id}>
             <InternalLink className="post-img" href={node?.uri}>
-              <Image 
-                src={node.featuredImage?.node.sourceUrl ? node.featuredImage?.node.sourceUrl : node?.firstImgPost} 
-                width={350} 
-                height={200} 
-                alt={node?.title}
-              />
+              <img src={node.featuredImage?.node.sourceUrl ? node.featuredImage?.node.sourceUrl : node?.firstImgPost} alt={node?.title} />
             </InternalLink>
             <div className="post-body">
               <InternalLink className="post-title" href={node?.uri}>{node.title}</InternalLink>

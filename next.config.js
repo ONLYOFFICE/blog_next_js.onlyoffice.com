@@ -35,10 +35,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  images: {
-    domains: ["static-blog.onlyoffice.com", "static-blog.teamlab.info"],
-    formats: ['image/webp']
-  },
   productionBrowserSourceMaps: true,
   staticPageGenerationTimeout: 1000,
   experimental: {

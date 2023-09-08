@@ -1,6 +1,5 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import DateFormat from "@components/screens/common/date-format";
@@ -31,7 +30,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       }
 
       if (domNode.attribs && domNode.name === 'img') {
-        return <Image src={domNode.attribs['src']} className={domNode.attribs['class']} alt={domNode.attribs['alt']} width={1472} height={742} />;
+        return <img src={domNode.attribs['src']} className={domNode.attribs['class']} alt={domNode.attribs['alt']} />;
       }
     }
   };

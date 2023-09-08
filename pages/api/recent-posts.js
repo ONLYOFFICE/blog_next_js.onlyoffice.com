@@ -1,7 +1,8 @@
 import { getLastPosts } from "@lib/api";
 
 export default async (req, res) => {
-  const { currentLanguage } = req.body;
+  const body = JSON.parse(req.body);
+  const { currentLanguage } = body;
 
   if (req.method === "POST") {
     const response = await getLastPosts(currentLanguage);
