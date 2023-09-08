@@ -151,6 +151,15 @@ const StyledPostContent = styled(Section)`
       line-height: 13px;
     }
 
+    .wp-video {
+      max-width: 640px;
+      width: 100% !important;
+  
+      > video {
+        width: 100%;
+      }
+    }
+
     img {
       object-fit: contain;
       height: auto;
@@ -710,6 +719,12 @@ const StyledPostContent = styled(Section)`
 
       iframe {
         height: 235px;
+      }
+
+      .wp-video {
+        > video {
+          height: 100%;
+        }
       }
 
       h2 {
