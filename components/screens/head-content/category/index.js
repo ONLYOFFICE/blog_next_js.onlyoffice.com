@@ -10,7 +10,7 @@ const CategoryHeadSEO = ({ currentLanguage, title, categorySlug }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta content="text/html; charset=UTF-8" />
       <meta name="robots" content="noindex, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <link rel="canonical" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}category/${categorySlug}/`} />
+      <link rel="canonical" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}category/${categorySlug}`} />
       <link rel="next" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}category/${categorySlug}/page/2/`} />
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
