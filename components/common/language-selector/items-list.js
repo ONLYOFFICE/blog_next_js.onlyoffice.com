@@ -28,7 +28,7 @@ const ItemsList = ({ isOpen, onCloseSelector, postUri, isPostContent }) => {
             <StyledItem className="language-item" key={language.locale}>
               <Link
                 className={`language-item-link ${language.shortKey}`}
-                href={postUri[language.locale] && `${postUri[language.locale].replace("https://wpblog.onlyoffice.com", "").replace("https://wpblog.teamlab.info", "")}` || "/"}
+                href={postUri[language.locale] && `${postUri[language.locale].split("/").slice(3).join("/")}` || "/"}
                 locale={language.shortKey}
                 onClick={onCloseSelector}
               ></Link>
