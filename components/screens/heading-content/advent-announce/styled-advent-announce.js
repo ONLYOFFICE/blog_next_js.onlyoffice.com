@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import docsLeft from "@public/images/banners/self-hosted-docspace-left.svg";
-import docsRight from "@public/images/banners/self-hosted-docspace-right.svg";
+import bannerLeft from "@public/images/banners/banner-left.svg";
+import bannerLeftMobile from "@public/images/banners/banner-left-mobile.svg";
+import bannerRight from "@public/images/banners/banner-right.svg";
+import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -12,7 +14,7 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background-color: #55b5dc;
+    background-color: #AA5252;
 
     a {
       position: absolute;
@@ -22,7 +24,7 @@ const StyledAdventAnnounce = styled.div`
       text-decoration: none;
 
       @media (max-width: 1023px) {
-        height: 50px;
+        height: 48px;
       }
     }
 
@@ -33,16 +35,16 @@ const StyledAdventAnnounce = styled.div`
       justify-content: center;
       text-align: center;
       margin: 0 auto;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 19px;
+      line-height: normal;
       letter-spacing: 0.01em;
-      height: 20px;
+      height: 44px;
       color: #fff;
       text-decoration: none;
       z-index: 10;
-      max-width: 556px;
-      padding: 17px 0 18px;
+      max-width: 595px;
+      padding: 6px 0;
 
       &:before,
       &:after {
@@ -60,27 +62,34 @@ const StyledAdventAnnounce = styled.div`
       }
 
       &:before {
-        background-image: url(${docsLeft.src});
-        background-position-y: -5px;
-        left: -445px;
-        width: 435px;
-        background-position-x: 100%;
+        background-image: url(${bannerLeft.src});
+        left: -436px;
+        width: 419px;
 
         @media (max-width: 1023px) {
-          background-position-y: -8px;
-          left: -447px;
+          background-image: url(${bannerLeftMobile.src});
+          background-position: center;
+          top: -16px;
+          left: -61px;
+          width: 68px;
+          height: 68px;
+          z-index: -1;
         }
       }
 
       &:after {
-        background-image: url(${docsRight.src});
-        background-position-y: 11px;
-        right: -512px;
-        width: 502px;
+        background-image: url(${bannerRight.src});
+        top: 8px;
+        right: -360px;
+        width: 352px;
 
         @media (max-width: 1023px) {
-          background-position-y: 8px;
-          right: -514px;
+          background-image: url(${bannerRightMobile.src});
+          background-position: center;
+          top: 0;
+          right: -33px;
+          width: 23px;
+          height: 48px;
         }
       }
 
@@ -88,8 +97,9 @@ const StyledAdventAnnounce = styled.div`
         background-color: transparent;
         display: inline-block;
         height: auto;
-        line-height: 19px;
-        padding: 6px 0;
+        font-size: 13px;
+        line-height: normal;
+        padding: 15px 0;
       }
     }
 
@@ -131,44 +141,19 @@ const StyledAdventAnnounce = styled.div`
     }
   }
 
-  &.fr .advent-announce-text {
-    max-width: 596px;
-
-    @media (max-width: 1023px) {
-      max-width: 164px;
-    }
+  &.es .advent-announce-text {
+    max-width: 626px;
   }
 
-  &.de .advent-announce-text {
-    max-width: 616px;
-
-    @media (max-width: 1023px) {
-      max-width: 164px;
-    }
+  &.it .advent-announce-text {
+    max-width: 606px;
   }
 
-  &.cs .advent-announce-text {
-    padding: 10px 0 0;
+  &.ja .advent-announce-text {
+    padding: 4px 0;
 
-    @media (max-width: 1023px) {
-      padding: 6px 0;
-    }
-  }
-
-  &.zh-hans {
-    a {
-      @media (max-width: 1023px) {
-        height: 53px;
-      }
-    }
-
-    .advent-announce-text {
-      line-height: 22px;
-  
-      @media (max-width: 1023px) {
-        line-height: 18px;
-        padding: 17px 0 18px;
-      }
+    @media (max-width: 1024px) {
+      padding: 14px 0;
     }
   }
 
