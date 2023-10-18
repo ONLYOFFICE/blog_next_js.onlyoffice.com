@@ -22,7 +22,7 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
       <meta content="text/html; charset=UTF-8" />
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
-      <link rel="canonical" href={`${baseUrl}${post?.uri}`} />
+      <link rel="canonical" href={`${baseUrl}${post?.uri.replace(/\/$/, "")}`} />
       <meta property="og:locale" content={languagesKey} />
       <meta property="og:site_name" content={t("SiteName")} />
       <meta property="og:type" content="article" />
@@ -51,22 +51,22 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
         <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
       }
 
-      {postUri.en_US && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.cs_CZ && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}${postUri.cs_CZ.substring(postUri.cs_CZ.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.de_DE && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}${postUri.de_DE.substring(postUri.de_DE.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}${postUri.es_ES.substring(postUri.es_ES.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}${postUri.fr_FR.substring(postUri.fr_FR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}${postUri.it_IT.substring(postUri.it_IT.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.ja && <link rel="alternate" hrefLang="ja" href={`${baseUrl}${postUri.ja.substring(postUri.ja.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}${postUri.pt_BR.substring(postUri.pt_BR.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
-      {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}${postUri.zh_CN.substring(postUri.zh_CN.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />}
+      {postUri.en_US && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}/${postUri.en_US.split("/").slice(3).join("/")}`} />}
+      {postUri.cs_CZ && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}/${postUri.cs_CZ.split("/").slice(3).join("/")}`} />}
+      {postUri.de_DE && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}/${postUri.de_DE.split("/").slice(3).join("/")}`} />}
+      {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}/${postUri.es_ES.split("/").slice(3).join("/")}`} />}
+      {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}/${postUri.fr_FR.split("/").slice(3).join("/")}`} />}
+      {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}/${postUri.it_IT.split("/").slice(3).join("/")}`} />}
+      {postUri.ja && <link rel="alternate" hrefLang="ja" href={`${baseUrl}/${postUri.ja.split("/").slice(3).join("/")}`} />}
+      {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}/${postUri.pt_BR.split("/").slice(3).join("/")}`} />}
+      {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}/${postUri.zh_CN.split("/").slice(3).join("/")}`} />}
 
       {
         currentLanguage === "en" ?
           <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
         :
         postUri.en_US &&
-          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${postUri.en_US.substring(postUri.en_US.indexOf("teamlab.info")).replace("teamlab.info", "")}`} />
+          <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/${postUri.en_US.split("/").slice(3).join("/")}`} />
       }
 
       <meta name="google" content="nositelinkssearchbox" />

@@ -13,7 +13,6 @@ import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 
 const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
-  const [postContent, setPostContent] = useState("");
   const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
@@ -46,8 +45,6 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
   };
 
   useEffect(() => {
-    setPostContent(parse(post?.content, options));
-
     async function postData() {
       const data = await fetch("/blog/api/recent-posts", {
         method: "POST",
@@ -98,7 +95,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
 
             <ShareButtons currentLanguage={currentLanguage} />
           </div>
-          <div ref={refContent} onClick={onClickHandler} className="entry-content">{postContent}</div>
+          <div ref={refContent} onClick={onClickHandler} className="entry-content">{parse(post?.content, options)}</div>
         </article>
 
         <div className="tag-list">
