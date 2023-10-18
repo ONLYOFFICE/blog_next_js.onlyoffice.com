@@ -22,7 +22,7 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
       <meta content="text/html; charset=UTF-8" />
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
-      <link rel="canonical" href={`${baseUrl}${post?.uri}`} />
+      <link rel="canonical" href={`${baseUrl}${post?.uri.replace(/\/$/, "")}`} />
       <meta property="og:locale" content={languagesKey} />
       <meta property="og:site_name" content={t("SiteName")} />
       <meta property="og:type" content="article" />

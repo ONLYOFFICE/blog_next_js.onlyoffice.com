@@ -5,6 +5,7 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, ar
   const baseUrl = "https://www.onlyoffice.com/blog/";
   const baseLocaleUrl = `https://www.onlyoffice.com/blog/${currentLanguage === "en" ? "" : currentLanguage}`;
   const image = "https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg";
+  const canonicalUrl = `${baseUrl}${currentLanguage === "en" ? "" : currentLanguage}`;
 
   const languagesKey = 
     currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
@@ -21,7 +22,7 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, ar
 
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
-      <link rel="canonical" href={`${baseUrl}${currentLanguage === "en" ? "" : currentLanguage}`} />
+      <link rel="canonical" href={canonicalUrl.replace(/\/$/, "")} />
       <link rel="next" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}page/2/`} />
       <meta property="og:locale" content={languagesKey} />
       <meta property="og:site_name" content={metaSiteName} />

@@ -3,7 +3,7 @@ import languages from "@config/languages.json";
 
 const InThePressHeadSEO = ({ title, metaSiteName, currentLanguage, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
-  const inThePressUrl = `${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}onlyoffice-in-the-press/`;
+  const inThePressUrl = `${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}onlyoffice-in-the-press`;
   const languagesKey = 
     currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
     currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
