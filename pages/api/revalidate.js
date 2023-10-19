@@ -18,6 +18,7 @@ export default async function handler(req, res) {
       `/blog/${lang}`,
       `/blog/${lang}/search`,
       `/blog/${lang}/onlyoffice-in-the-press`,
+      `/blog/${lang}${path}`,
       post && post.translations.map(node => `/blog/${node.href.split("/").slice(3).join("/").replace(/\/$/, "")}`),
       post && `/blog/${lang}/author/${post.author.node.slug}`,
       post && post.categories.edges.map(node => `/blog/${lang}/category/${node.node.slug}`),
