@@ -10,14 +10,11 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
       &ensp;/&ensp;
       {
         isPostContent ?
-          <>
-            <li>
-              {data?.map(({node}) => {
-                return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink>&ensp;/&ensp;</span>
-              })}
-            </li>
-            <li>ONLYOFFICE</li>
-          </> 
+          <li>
+            {data?.map(({node}) => {
+              return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink></span>
+            })}
+          </li>
         :
           isAuthorContent ? <li>{data?.edges[0]?.node.author?.node?.name}</li> 
         :
