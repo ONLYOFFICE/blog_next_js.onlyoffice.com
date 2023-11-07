@@ -46,6 +46,10 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     async function postData() {
       const data = await fetch("/blog/api/recent-posts", {
@@ -58,6 +62,20 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     };
 
     postData();
+
+    const handleScroll = () => {
+      if (refContentWrapper.current) {
+        const scrolledHeight = window.scrollY - refContentWrapper.current.offsetTop;
+        const scrolledPercentage = (scrolledHeight / refContentWrapper.current.offsetHeight) * 100;
+        setShowButton(scrolledPercentage > 50);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [post]);
 
   useEffect(() => {
@@ -75,24 +93,6 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
       };
     };
   });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolledHeight = window.scrollY - refContentWrapper.current.offsetTop;
-      const scrolledPercentage = (scrolledHeight / refContentWrapper.current.offsetHeight) * 100;
-      setShowButton(scrolledPercentage > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <>

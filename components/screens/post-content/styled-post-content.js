@@ -204,7 +204,7 @@ const StyledPostContent = styled(Section)`
 
     img {
       object-fit: contain;
-      height: auto;
+      height: auto !important;
       max-width: 100%;
 
       &.img-popup {
@@ -240,10 +240,6 @@ const StyledPostContent = styled(Section)`
       &:hover {
         text-decoration: none;
       }
-    }
-
-    a img.alignnone, p img.alignnone {
-      margin: 5px 20px 20px 0;
     }
 
     ul, ol {
