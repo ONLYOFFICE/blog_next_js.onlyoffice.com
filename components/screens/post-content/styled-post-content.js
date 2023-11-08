@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
+import arrowUp from "@public/images/icons/arrow-up.svg";
 
 const StyledPostContent = styled(Section)`
+  position: initial;
   padding: 32px 0 0;
-  overflow: hidden;
 
   .title {
     margin: 0 0 32px;
@@ -84,8 +85,49 @@ const StyledPostContent = styled(Section)`
   }
 
   .content {
+    position: relative;
     margin: 50px auto 40px;
-    max-width: 736px;
+    padding-left: 88px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 824px;
+
+    .wrap {
+      width: 100%;
+      max-width: 736px;
+    }
+  }
+
+  .btn-scroll-top {
+    position: sticky;
+    top: calc(100% - 76px);
+    right: 0;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 10;
+
+    span {
+      display: inline-flex;
+      border-radius: 2px;
+      width: 32px;
+      height: 32px;
+      background-image: url(${arrowUp.src});
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #cccccc;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
+      span {
+        background-color: #aaaaaa;
+      }
+    }
   }
 
   article {
@@ -162,7 +204,7 @@ const StyledPostContent = styled(Section)`
 
     img {
       object-fit: contain;
-      height: auto;
+      height: auto !important;
       max-width: 100%;
 
       &.img-popup {
@@ -198,10 +240,6 @@ const StyledPostContent = styled(Section)`
       &:hover {
         text-decoration: none;
       }
-    }
-
-    a img.alignnone, p img.alignnone {
-      margin: 5px 20px 20px 0;
     }
 
     ul, ol {
@@ -604,12 +642,20 @@ const StyledPostContent = styled(Section)`
   @media ${device.laptop} {
     .content {
       margin: 70px auto 80px;
+      padding-left: 0;
     }
 
     article {
       iframe {
         width: 100%;
       }
+    }
+
+    .btn-scroll-top {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: initial;
     }
   }
 

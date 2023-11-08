@@ -1,32 +1,11 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import Section from "@components/common/section";
 
-const StyledRecentPosts = styled.div`
+const StyledRecentPosts = styled(Section)`
   position: relative;
   padding: 64px 0 120px;
   background-color: #F5F5F5;
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: #F5F5F5;
-    transform: translateX(100%);
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    background-color: #F5F5F5;
-    transform: translateX(-100%);
-  }
 
   h3 {
     margin-bottom: 56px;
