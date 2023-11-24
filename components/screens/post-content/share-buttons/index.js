@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 
 import { FacebookShareButton, RedditShareButton, TelegramShareButton, TwitterShareButton, LinkedinShareButton, WeiboShareButton } from "react-share";
 
-const ShareButtons = ({ currentLanguage }) => {
+const ShareButtons = ({ locale }) => {
   const router = useRouter();
-  const routerUrl = `https://www.onlyoffice.com/blog${currentLanguage === "en" ? "" : `/${currentLanguage}`}${router.asPath}`;
+  const routerUrl = `https://www.onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}${router.asPath}`;
 
   return (
     <StyledRecentPosts className="share-buttons">
@@ -17,7 +17,7 @@ const ShareButtons = ({ currentLanguage }) => {
       <TelegramShareButton className="share-button telegram" url={routerUrl} title="Telegram"></TelegramShareButton>
       <ExternalLink className="share-button mastodon" href={`https://www.shareaholic.com/share/mastodon/?link=${routerUrl}`} title="Mastodon"></ExternalLink>
       {
-        currentLanguage === "zh-hans" &&
+        locale === "zh-hans" &&
         <>
           <ExternalLink className="share-button wechat" href={`https://www.shareaholic.com/share/wechat/?link=${routerUrl}`} title="WeChat"></ExternalLink>
           <WeiboShareButton className="share-button weibo" url={routerUrl} title="Weibo"></WeiboShareButton>

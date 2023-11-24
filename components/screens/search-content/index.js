@@ -8,7 +8,7 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import SearchArea from "@components/common/search-area";
 import Heading from "@components/common/heading";
 
-const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => {
+const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
   const router = useRouter();
   const searchQueryString = router.query.s;
   const [searchQuery, setSearchQuery] = useState(searchQueryString);
@@ -24,7 +24,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
     const data = await fetch("/blog/api/search-results", {
       method: "POST",
       body: JSON.stringify({
-        currentLanguage,
+        locale,
         searchQuery: searchQuery
       })
     });
@@ -45,7 +45,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
         const data = await fetch("/blog/api/search-results", {
           method: "POST",
           body: JSON.stringify({
-            currentLanguage,
+            locale,
             searchQuery: searchQueryString
           })
         });
@@ -58,7 +58,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
 
       fetchData();
     }
-  }, [searchQueryString, currentLanguage]);
+  }, [searchQueryString, locale]);
 
   return (
     <StyledSearchContent>
@@ -82,7 +82,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
                   <LoadMorePosts 
                     className="search-posts"
                     t={t} 
-                    currentLanguage={currentLanguage} 
+                    locale={locale} 
                     data={queryResults} 
                     searchQueryString={searchQueryString} 
                     isSearchContent={isSearchContent}
@@ -98,7 +98,7 @@ const SearchContent = ({ t, currentLanguage, isSearchContent, recentPosts }) => 
 
         <div className="sidebar">
           <RecentPosts t={t} data={recentPosts} />
-          <FollowUs t={t} currentLanguage={currentLanguage} />
+          <FollowUs t={t} locale={locale} />
         </div>
       </div>
     </StyledSearchContent>

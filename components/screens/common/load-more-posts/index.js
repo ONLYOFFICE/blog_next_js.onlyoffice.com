@@ -5,7 +5,7 @@ import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
 import SearchPost from "@components/screens/search-content/search-post";
 
-const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
+const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
   const dataEdges = isCategoryContent ? data.edges.slice(15) : isInThePressContent ? data.edges.slice(5) : data.edges;
   const dataSliceLength = isCategoryContent || isInThePressContent ? 0 : isAuthorContent || isTagContent ? 6 : isSearchContent ? 5 : 3;
 
@@ -58,7 +58,7 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
         isAuthorContent,
         isTagContent,
         isCategoryContent,
-        currentLanguage,
+        locale,
         endCursor,
         data: searchQueryString || authorSlug || tagSlug || categorySlug
       })
@@ -76,41 +76,41 @@ const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePre
     {
       isCategoryContent ?
         postList?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
       :
       isInThePressContent ?
         postList?.map(({node}) => (
-          <InThePressPost key={node.id} currentLanguage={currentLanguage} data={node} />
+          <InThePressPost key={node.id} locale={locale} data={node} />
         ))
       :
       isSearchContent ?
         postList?.map(({node}) => (
-          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQueryString={searchQueryString} />
+          <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
       :
         postList?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
     }
     {
       isCategoryContent ?
         postsData.slice(60)?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
       :
       isInThePressContent ?
         postsData.slice(60)?.map(({node}) => (
-          <InThePressPost key={node.id} currentLanguage={currentLanguage} data={node} />
+          <InThePressPost key={node.id} locale={locale} data={node} />
         ))
       :
       isSearchContent ?
         postsData.slice(5)?.map(({node}) => (
-          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQueryString={searchQueryString} />
+          <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
       :
         postsData.slice(60)?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
     }
     {

@@ -19,7 +19,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
     <Layout>
       <Layout.PageHead>
         <MainHeadSEO
-          currentLanguage={locale}
+          locale={locale}
           title={t("ONLYOFFICE Blog")}
           metaSiteName={t("SiteName")}
           metaDescription={t("The official source of latest ONLYOFFICE news, tips, ideas, and promos.")}
@@ -27,14 +27,14 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent
           t={t} 
-          currentLanguage={locale} 
+          locale={locale} 
           mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
           productReleasesPosts={productReleasesPosts} 
@@ -46,7 +46,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
