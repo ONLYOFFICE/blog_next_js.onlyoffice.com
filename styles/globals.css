@@ -89,3 +89,9 @@ body {
   min-height: 100%;
   position: relative;
 }
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
