@@ -26,7 +26,6 @@ const StyledSearchArea = styled.form`
     height: 20px;
     transform: translateY(-50%);
     z-index: 1;
-    transition: transform .2s cubic-bezier(.16,.68,.43,.99);
 
     img {
       width: 20px;
