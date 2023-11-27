@@ -12,7 +12,7 @@ import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 
-const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
+const PostContent = ({ t, locale, post, posts, isPostContent }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
@@ -54,7 +54,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     async function postData() {
       const data = await fetch("/blog/api/recent-posts", {
         method: "POST",
-        body: JSON.stringify({ currentLanguage })
+        body: JSON.stringify({ locale })
       });
 
       const response = await data.json();
@@ -105,17 +105,17 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
               <Heading className="title" level={1}>{post?.title}</Heading>
               <div className="info-content">
                 <span className="date">
-                  <DateFormat currentLanguage={currentLanguage} data={post?.date} format="D MMMM y" />
+                  <DateFormat locale={locale} data={post?.date} format="D MMMM y" />
                 </span>
                 <span className="author">
-                  {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
+                  {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : "By "}
                   <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
                 </span>
                 {
                   post.outdated && <span className="outdated">{t("Outdated")}</span>
                 }
 
-                <ShareButtons currentLanguage={currentLanguage} />
+                <ShareButtons locale={locale} />
               </div>
               <div ref={refContent} onClick={onClickHandler} className="entry-content">{parse(post?.content, options)}</div>
             </article>
@@ -130,11 +130,11 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
                 </div>
               }
               <div className="tag-share">
-                <ShareButtons currentLanguage={currentLanguage} />
+                <ShareButtons locale={locale} />
               </div>
             </div>
 
-            <CloudBlock t={t} currentLanguage={currentLanguage} />
+            <CloudBlock t={t} locale={locale} />
 
             {
               post?.discoursePermalink &&
@@ -157,7 +157,7 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
           <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
         </div>
       </StyledPostContent>
-      <RecentPosts t={t} data={recentPosts} currentLanguage={currentLanguage} />
+      <RecentPosts t={t} data={recentPosts} locale={locale} />
     </>
   );
 };

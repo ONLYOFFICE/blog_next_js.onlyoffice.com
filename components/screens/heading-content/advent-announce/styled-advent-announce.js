@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import bannerLeft from "@public/images/banners/banner-left.svg";
-import bannerLeftMobile from "@public/images/banners/banner-left-mobile.svg";
-import bannerRight from "@public/images/banners/banner-right.svg";
-import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -62,12 +58,12 @@ const StyledAdventAnnounce = styled.div`
       }
 
       &:before {
-        background-image: url(${bannerLeft.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/banner-left.svg");
         left: -436px;
         width: 419px;
 
         @media (max-width: 1023px) {
-          background-image: url(${bannerLeftMobile.src});
+          background-image: url("https://static-blog.onlyoffice.com/images/banners/banner-left-mobile.svg");
           background-position: center;
           top: -16px;
           left: -61px;
@@ -78,13 +74,13 @@ const StyledAdventAnnounce = styled.div`
       }
 
       &:after {
-        background-image: url(${bannerRight.src});
+        background-image: url("https://static-blog.onlyoffice.com/images/banners/banner-right.svg");
         top: 8px;
         right: -360px;
         width: 352px;
 
         @media (max-width: 1023px) {
-          background-image: url(${bannerRightMobile.src});
+          background-image: url("https://static-blog.onlyoffice.com/images/banners/banner-right-mobile.svg");
           background-position: center;
           top: 0;
           right: -33px;
@@ -104,10 +100,9 @@ const StyledAdventAnnounce = styled.div`
     }
 
     @media (max-width: 1023px) {
-      transition: transform .2s cubic-bezier(.16,.68,.43,.99);
-
       &.is-open {
         transform: translate3d(429px, 0, 0);
+        transition: transform .2s cubic-bezier(.16,.68,.43,.99);
       }
     }
 

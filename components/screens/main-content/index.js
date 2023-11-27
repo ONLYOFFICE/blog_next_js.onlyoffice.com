@@ -11,7 +11,7 @@ import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
 import LoadMorePosts from "../common/load-more-posts";
 
-const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainContent }) => {
+const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainContent }) => {
   const mainPost = true;
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -26,20 +26,20 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
     <StyledMainContent>
       <SearchArea 
         label={t("Search")} 
-        currentLanguage={currentLanguage}
+        locale={locale}
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery} 
         handleSearchFormSubmit={handleSearchFormSubmit}
       />
 
       <div className="main-block">
-        <Card t={t} currentLanguage={currentLanguage} data={allPosts.edges[0]?.node} mainPostExcerpt={mainPostExcerpt} mainPost={mainPost} />
+        <Card t={t} locale={locale} data={allPosts.edges[0]?.node} mainPostExcerpt={mainPostExcerpt} mainPost={mainPost} />
 
         <div className="main-sidebar">
-          <CategoryTopics t={t} currentLanguage={currentLanguage} />
+          <CategoryTopics t={t} locale={locale} />
           {
             inThePressPosts.edges.length > 0 && 
-            <InThePress t={t} inThePressPosts={inThePressPosts} currentLanguage={currentLanguage} />
+            <InThePress t={t} inThePressPosts={inThePressPosts} locale={locale} />
           }
         </div>
       </div>
@@ -53,7 +53,7 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
           </div>
           <div className="category-posts">
             {productReleasesPosts.edges.map(({node}) => (
-              <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+              <Card key={node.id} t={t} locale={locale} data={node} />
             ))}
           </div>
           <div className="category-more-posts">
@@ -69,7 +69,7 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
           </div>
           <div className="category-posts">
             {forDevelopersPosts.edges.map(({node}) => (
-              <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+              <Card key={node.id} t={t} locale={locale} data={node} />
             ))}
           </div>
           <div className="category-more-posts">
@@ -87,7 +87,7 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
           </div>
           <div className="category-posts">
             {forBusinessPosts.edges.map(({node}) => (
-              <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+              <Card key={node.id} t={t} locale={locale} data={node} />
             ))}
           </div>
           <div className="category-more-posts">
@@ -103,7 +103,7 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
           </div>
           <div className="category-posts">
             {forEducationPosts.edges.map(({node}) => (
-              <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+              <Card key={node.id} t={t} locale={locale} data={node} />
             ))}
           </div>
           <div className="category-more-posts">
@@ -114,7 +114,7 @@ const MainContent = ({ t, currentLanguage, mainPostExcerpt, allPosts, productRel
         <Newsletter t={t} />
 
         <div className="category-posts">
-          <LoadMorePosts t={t} currentLanguage={currentLanguage} data={allPosts} isMainContent={isMainContent} />
+          <LoadMorePosts t={t} locale={locale} data={allPosts} isMainContent={isMainContent} />
         </div>
       </div>
     </StyledMainContent>

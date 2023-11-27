@@ -1,71 +1,40 @@
-import { useEffect, useState } from "react";
-
 import StyledLanguageSelector from "./styled-language-selector";
-import ItemsList from "./items-list";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import languages from "@config/languages.json";
+import InternalLink from "@components/common/internal-link";
 
-const LanguageSelector = (props) => {
-  const { currentLanguage, t, postUri, isPostContent } = props;
+const LanguageSelector = ({ locale }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    typeof window !== "undefined" &&
-      isOpen &&
-      window.addEventListener("click", handleClickOutside);
-      window.addEventListener("resize", resizeHandler);
-
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("resize", resizeHandler);
-    };
-  });
-
-  const handleClickOutside = (e) => {
-    if (
-      isOpen &&
-      (!e.target.closest(".lng-selector") ||
-        e.target.closest(".close-button-img"))
-    ) {
-      onCloseSelector();
-    }
-  };
-
-  const resizeHandler = (e) => {
-    if (window.innerWidth < 769) {
+  const onCloseSelector = () => {
+    if (isOpen === true) {
       setIsOpen(false);
     }
   };
 
-  const onClickHandler = (e) => {
-    e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image")) {
-      setIsOpen(!isOpen);
-      props.onClick && props.onClick(e);
-    }
-  };
-
-  const onCloseSelector = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <StyledLanguageSelector
-      onClick={onClickHandler}
-      className="language-selector"
+    <StyledLanguageSelector 
+      onMouseEnter={() => setIsOpen(true)} 
+      onMouseLeave={() => onCloseSelector()} 
+      onClick={() => setIsOpen(!isOpen)} 
+      className={`language-selector ${isOpen ? "is-open" : ""}`}
     >
-      <span className={`flag-image ${currentLanguage}`}></span>
-      {/*eslint-disable*/}
-      <div className={`arrow-image ${isOpen ? "is-open" : ""}`}></div>
-      {/*eslint-enable*/}
-      <ItemsList
-        className={`languages-list lng-selector ${
-          isOpen ? "language-selector-open" : "language-selector-closed"
-        }`}
-        t={t}
-        isOpen={isOpen}
-        onCloseSelector={onCloseSelector}
-        postUri={postUri}
-        isPostContent={isPostContent}
-      />
+      <button className="language-button">
+        <span className={`flag-image ${locale}`}></span>
+        <div className="arrow-image"></div>
+      </button>
+
+      {isOpen &&
+        <ul className="language-list">
+          {languages.map((language) => (
+            <li className="language-item" key={language.key}>
+              <InternalLink onClick={() => setIsOpen(false)} className={`language-link ${language.shortKey}`} href={router.asPath} locale={language.shortKey}></InternalLink>
+            </li>
+          ))}
+        </ul>
+      }
     </StyledLanguageSelector>
   );
 };

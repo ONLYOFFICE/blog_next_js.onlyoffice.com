@@ -6,7 +6,7 @@ import Newsletter from "@components/screens/common/newsletter";
 import DownloadBlock from "@components/screens/common/download-block";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categoryName, categorySlug }) => {
+const CategoryContent = ({ t, locale, posts, isCategoryContent, categoryName, categorySlug }) => {
   const firstPosts = posts?.edges.length > 6 ? posts?.edges.slice(0, 6) : posts?.edges
 
   return (
@@ -16,24 +16,24 @@ const CategoryContent = ({ t, currentLanguage, posts, isCategoryContent, categor
 
       <div className="category-posts">
         {firstPosts?.map(({node}) => (
-          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
+          <Card data={node} key={node.id} locale={locale} />
         ))}
 
         <DownloadBlock className="download-block" t={t} />
 
         {posts?.edges.length > 6 &&
           posts?.edges.slice(6, 12).map(({node}) => (
-          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
+          <Card data={node} key={node.id} locale={locale} />
         ))}
 
         <Newsletter t={t} />
 
         {posts?.edges.length > 12 &&
         posts?.edges.slice(12, 15).map(({node}) => (
-          <Card data={node} key={node.id} currentLanguage={currentLanguage} />
+          <Card data={node} key={node.id} locale={locale} />
         ))}
 
-        <LoadMorePosts t={t} currentLanguage={currentLanguage} data={posts} isCategoryContent={isCategoryContent} categorySlug={categorySlug} />
+        <LoadMorePosts t={t} locale={locale} data={posts} isCategoryContent={isCategoryContent} categorySlug={categorySlug} />
       </div>
     </StyledCategoryContent>
   );

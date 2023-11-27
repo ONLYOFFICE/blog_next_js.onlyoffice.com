@@ -5,7 +5,7 @@ import Text from "@components/common/text"
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
-const Card = ({ t, currentLanguage, data, mainPostExcerpt, mainPost, ...rest }) => {
+const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
       <InternalLink className="card-img" href={data?.uri}>
@@ -17,10 +17,10 @@ const Card = ({ t, currentLanguage, data, mainPostExcerpt, mainPost, ...rest }) 
         </Heading>
         <div className="card-info">
           <Text className="card-info-item card-date" as="span">
-            <DateFormat currentLanguage={currentLanguage} data={data?.date} format="D MMMM y" />
+            <DateFormat locale={locale} data={data?.date} format="D MMMM y" />
           </Text>
           <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>
-            {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
+            {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : "By "}
             <span>{data?.author?.node.name}</span>
           </InternalLink>
         </div>
