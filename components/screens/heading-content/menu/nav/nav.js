@@ -4,7 +4,11 @@ import Link from "@components/common/external-link";
 import Text from "@components/common/text";
 
 const Nav = ({ onClick, t, locale, ...rest }) => {
-  const hrefLang = `https://onlyoffice.com${locale === "en" ? "" : `/${locale}`}`;
+  const hrefLang = `https://onlyoffice.com${
+    locale === "en" ? "" :
+    locale === "zh-hans" ? "/zh" :
+    locale === "pt-br" ? "/pt" : `/${locale}`
+  }`;
 
   return (
     <StyledNav className={`nav-item-links ${locale}`} {...rest}>
