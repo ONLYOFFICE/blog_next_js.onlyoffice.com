@@ -31,6 +31,7 @@ const StyledHeading = styled.div`
   .search_area {
     margin: 0 16px 0 auto;
     width: 221px;
+    z-index: 10;
 
     .group-input {
       height: 40px;
