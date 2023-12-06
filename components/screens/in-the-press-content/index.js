@@ -21,7 +21,7 @@ const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePre
               <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <Newsletter t={t} />
+            <Newsletter t={t} locale={locale} />
 
             {inThePressPosts.edges.slice(3, 5).map(({node}) => (
               <InThePressPost locale={locale} data={node} key={node.id} />

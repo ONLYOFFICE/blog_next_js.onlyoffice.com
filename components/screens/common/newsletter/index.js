@@ -8,7 +8,7 @@ import Button from "@components/common/button";
 import Text from "@components/common/text";
 import ExternalLink from "@components/common/external-link";
 
-const Newsletter = ({ t }) => {
+const Newsletter = ({ t, locale }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [inputEmailUsed, setInputEmailUsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,7 @@ const Newsletter = ({ t }) => {
         :
           <StyledNewsletter className="newsletter">
             <div className="newsletter-wrapper">
-              <Heading className="newsletter-title" level={2}>{t("Newsletter")}</Heading>
+              <Heading className="newsletter-title" level={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
 
               <div className="newsletter-body">
                 <form onSubmit={handleSubmit(onSubmit)}>

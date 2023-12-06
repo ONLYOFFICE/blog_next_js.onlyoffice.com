@@ -111,7 +111,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
           </div>
         </div>}
 
-        <Newsletter t={t} />
+        <Newsletter t={t} locale={locale} />
 
         <div className="category-posts">
           <LoadMorePosts t={t} locale={locale} data={allPosts} isMainContent={isMainContent} />

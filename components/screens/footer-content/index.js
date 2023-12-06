@@ -132,7 +132,7 @@ const Footer = ({ t, locale }) => {
           <span>{t("All rights reserved")}</span>
         </div>
         <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
-          <Newsletter t={t} />
+          <Newsletter t={t} locale={locale} />
         </Popup>
       </div>
     </StyledFooter>
