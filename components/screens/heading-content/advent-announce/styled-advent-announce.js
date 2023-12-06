@@ -219,6 +219,18 @@ const StyledAdventAnnounce = styled.div`
     }
   }
 
+  &.zh-hans {
+    .advent-announce-text {
+      span {
+        &:before {
+          @media (max-width: 1440px) {
+            left: -452px;
+          }
+        }
+      }
+    }
+  }
+
   &.el {
     .advent-announce-text {
       max-width: 680px;
