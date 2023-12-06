@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import menuBlog1 from "@public/images/menu-pics/menu-blog-1.jpg";
+import menuBlog2 from "@public/images/menu-pics/menu-blog-2.jpg";
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -7,7 +9,7 @@ const StyledNav = styled.nav`
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 936px;
+  max-width: 980px;
   height: 72px;
   transform: translateX(-50%);
   z-index: 2; 
@@ -644,13 +646,13 @@ const StyledNav = styled.nav`
     margin-bottom: 32px;
 
     .menu-blog-img {
-      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu-blog-1.png");
+      background-image: url(${menuBlog1.src});
     }
   }
 
   #blog-box-2 {
     .menu-blog-img {
-      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu-blog-2.png");
+      background-image: url(${menuBlog2.src});
     }
   }
 
@@ -708,6 +710,12 @@ const StyledNav = styled.nav`
 
     #navitem-products {
       .outer-box {
+        &:nth-child(2) {
+          width: max-content;
+          min-width: 312px;
+          max-width: 330px;
+        }
+
         &:last-child {
           width: max-content;
           min-width: 312px;
@@ -736,10 +744,6 @@ const StyledNav = styled.nav`
         }
       }
     }
-  }
-
-  @media screen and (max-width: 1300px) {
-    max-width: 756px;
   }
 
   @media screen and (max-width: 1100px) {
