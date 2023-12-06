@@ -34,5 +34,9 @@
   {
     "key": "zh-CN",
     "shortKey": "zh-hans"
+  },
+  {
+    "key": "el",
+    "shortKey": "el"
   }
 ]

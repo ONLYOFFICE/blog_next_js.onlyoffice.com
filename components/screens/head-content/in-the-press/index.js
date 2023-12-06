@@ -8,7 +8,7 @@ const InThePressHeadSEO = ({ title, metaSiteName, locale, articlePublishedTime, 
     locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
     locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" : 
     locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
-    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : "en_US";
+    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : locale === "el" ? "el_GR" : "en_US";
 
   return (
     <Head>

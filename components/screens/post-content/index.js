@@ -108,7 +108,7 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                   <DateFormat locale={locale} data={post?.date} format="D MMMM y" />
                 </span>
                 <span className="author">
-                  {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : "By "}
+                  {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : locale === "el" ? "Από τον " : "By "}
                   <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
                 </span>
                 {
