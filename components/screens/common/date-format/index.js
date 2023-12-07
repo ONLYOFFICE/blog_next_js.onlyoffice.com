@@ -1,9 +1,13 @@
 import Moment from "moment";
 import "moment/locale/fr";
 import "moment/locale/de";
+import "moment/locale/es";
+import "moment/locale/it";
+import "moment/locale/pt-br";
 import "moment/locale/cs";
 import "moment/locale/ja";
 import "moment/locale/zh-cn";
+import "moment/locale/el";
 
 const DateFormat = ({ locale, data, format, isRecentPosts }) => {
   return (
@@ -15,6 +19,15 @@ const DateFormat = ({ locale, data, format, isRecentPosts }) => {
         locale === "de" ?
           Moment(data, 'YYYY-MM-DD').locale("de").format(format)
         :
+        locale === "es" ?
+          Moment(data, 'YYYY-MM-DD').locale("es").format(format)
+        :
+        locale === "it" ?
+          Moment(data, 'YYYY-MM-DD').locale("it").format(format)
+        :
+        locale === "pt-br" ?
+          Moment(data, 'YYYY-MM-DD').locale("pt-br").format(format)
+        :
         locale === "cs" ?
           Moment(data, 'YYYY-MM-DD').locale("cs").format(format)
         :
@@ -22,7 +35,10 @@ const DateFormat = ({ locale, data, format, isRecentPosts }) => {
           Moment(data, 'YYYY-MM-DD').locale("ja").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
         :
         locale === "zh-hans" ?
-          Moment(data, 'YYYY-MM-DD').locale("zh-cn").format(isRecentPosts ? "MMMM D, y" : "Y日MM月DD日")
+          Moment(data, 'YYYY-MM-DD').locale("zh-cn").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
+        :
+        locale === "el" ?
+          Moment(data, 'YYYY-MM-DD').locale("el").format(format)
         :
           Moment(data, 'YYYY-MM-DD').locale("en").format(format)
       }

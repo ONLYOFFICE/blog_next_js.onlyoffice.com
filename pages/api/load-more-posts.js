@@ -1,6 +1,6 @@
 import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const body = JSON.parse(req.body);
   const { isInThePressContent, isSearchContent, isAuthorContent, isTagContent, isCategoryContent, locale, endCursor, data } = body;
 

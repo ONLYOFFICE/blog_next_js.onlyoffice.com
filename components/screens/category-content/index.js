@@ -26,7 +26,7 @@ const CategoryContent = ({ t, locale, posts, isCategoryContent, categoryName, ca
           <Card data={node} key={node.id} locale={locale} />
         ))}
 
-        <Newsletter t={t} />
+        <Newsletter t={t} locale={locale} />
 
         {posts?.edges.length > 12 &&
         posts?.edges.slice(12, 15).map(({node}) => (

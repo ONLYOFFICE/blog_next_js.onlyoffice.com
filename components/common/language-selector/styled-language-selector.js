@@ -85,6 +85,10 @@ const StyledLanguageSelector = styled.div`
     &.zh-hans {
       background-position-y: -240px;
     }
+
+    &.el {
+      background-position-y: -288px;
+    }
   }
 
   .arrow-image {

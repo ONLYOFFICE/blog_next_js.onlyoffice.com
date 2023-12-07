@@ -5,8 +5,8 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICEについての記事",
 
-  "ONLYOFFICE Docs v7.5 released": "ONLYOFFICE Docs v7.5リリース",
-  "PDF Editor, automatic hyphenation, Page Breaks and tracer arrows in sheets, Screen Readers, and more": "PDFエディタ、自動ハイフネーション、シート内の改ページとトレーサー矢印、スクリーンリーダーなど",
+  "AdventAnnounceDesktop": "<b>ONLYOFFICE DocSpace 2.0</b>の紹介：パブリックルーム、プラグイン、データ再配置など",
+  "AdventAnnounceMobile": "<b>ONLYOFFICE DocSpace 2.0</b>の紹介",
 
   "404 Page not found": "404 ページは見つかりません",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "お探しのページは存在しないか、利用できないか、または正しく読み込まれていません。",
@@ -81,12 +81,12 @@
   "Get help": "ヘルプ",
   "Get news": "ニュース",
   "Blog": "ブログ",
-  "ONLYOFFICE Docs 7.5 released: PDF Editor, automatic hyphenation, Page Breaks and tracer arrows in sheets, Screen Readers, and more": "ONLYOFFICE Docs 7.5リリース： PDFエディタ、自動ハイフネーション、シート内の改ページとトレーサー矢印、スクリーンリーダーなど",
-  "18 October 2023": "2023年10月18日",
-  "New integration available: ONLYOFFICE & Box": "ONLYOFFICE & Box：新しい統合が利用可能に",
-  "27 September 2023": "2023年9月27日",
-  "blogLink1": "https://www.onlyoffice.com/blog/ja/2023/10/onlyoffice-docs-7-5-released",
-  "blogLink2": "https://www.onlyoffice.com/blog/ja/2023/09/onlyoffice-box-integration",
+  "Meet ONLYOFFICE DocSpace 2.0 with Public rooms, plugins, data reassignment, and more": "ONLYOFFICE DocSpace 2.0の紹介：パブリックルーム、プラグイン、データ再配置など",
+  "4 December 2023": "2023年12月04日",
+  "New integration available: ONLYOFFICE Docs and Dropbox": "新しい連携が可能に：ONLYOFFICE Docs & Dropbox",
+  "30 November 2023": "2023年11月30日",
+  "blogLink1": "https://www.onlyoffice.com/blog/ja/2023/12/onlyoffice-docspace-2-0-released",
+  "blogLink2": "https://www.onlyoffice.com/blog/ja/2023/11/new-integration-available-onlyoffice-docs-and-dropbox",
 
   "Solutions": "ソリューション",
   "SMBs": "中小企業",
@@ -122,10 +122,6 @@
 
   "Search": "検索",
   "Category Topics": "カテゴリー",
-  "productReleasesLink": "product-releases-ja",
-  "forDevelopersLink": "for-developers-ja",
-  "forBusinessLink": "for-business-ja",
-  "forEducationLink": "for-education-ja",
   "Product releases": "プロダクトリリース",
   "For education": "教育機関向け",
   "View all posts": "投稿をすべて見る",

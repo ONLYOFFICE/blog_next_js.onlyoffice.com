@@ -47,6 +47,7 @@ const StyledFooterItem = styled.div`
       text-transform: uppercase;
       letter-spacing: 0.04em;
       text-decoration: none;
+      overflow: initial;
       transition: color 0.2s;
     }
 

@@ -20,7 +20,7 @@ const FollowUs = ({ t, locale }) => {
       <SocialLinks locale={locale} handlerSetModal={handlerSetModal} isFollowUsContent={isFollowUsContent} />
 
       <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
-        <Newsletter t={t} />
+        <Newsletter t={t} locale={locale} />
       </Popup>
     </StyledFollowUs>
   );

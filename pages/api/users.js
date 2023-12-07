@@ -1,7 +1,7 @@
 import excuteQuery from "@lib/db";
 import moment from "moment";
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const date = new Date();
   const body = JSON.parse(req.body);
 

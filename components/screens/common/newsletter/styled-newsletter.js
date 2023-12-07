@@ -122,6 +122,7 @@ const StyledNewsletter = styled.div`
       line-height: 27px;
       letter-spacing: -0.01em;
       text-align: center;
+      max-width: 100%;
     }
 
     .newsletter-body {
