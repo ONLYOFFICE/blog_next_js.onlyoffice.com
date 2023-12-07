@@ -14,7 +14,8 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
   const curLang = `https://www.onlyoffice.com${
     locale === "en" ? "" : 
     locale === "zh-hans" ? "/zh" : 
-    locale === "pt-br" ? "/pt" : `/${locale}` 
+    locale === "pt-br" ? "/pt" : 
+    locale === "el" ? "" : `/${locale}` 
   }`;
 
   const handleSearchFormSubmit = async (e) => {
