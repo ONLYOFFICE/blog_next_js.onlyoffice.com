@@ -1,6 +1,6 @@
 import { getLastPosts } from "@lib/api";
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const body = JSON.parse(req.body);
   const { locale } = body;
 
