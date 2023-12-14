@@ -19,7 +19,7 @@ const Footer = ({ t, locale }) => {
   };
 
   const hrefLang = `https://onlyoffice.com${
-    locale === "en" ? "" :
+    locale === "en" || locale === "el" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
