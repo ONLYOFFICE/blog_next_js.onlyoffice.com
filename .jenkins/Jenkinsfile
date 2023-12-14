@@ -39,7 +39,7 @@ pipeline
     steps 
       {
         sh '''
-          tar -czpf .jenkins/blog.tar.gz \
+          tar -czpf .jenkins/blog_next.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
             --exclude ".jenkins" \
