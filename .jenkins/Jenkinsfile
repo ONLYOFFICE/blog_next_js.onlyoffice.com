@@ -38,6 +38,7 @@ pipeline {
         src_domain="${src_domain}"
       }
       steps {
+        withCredentials([string(credentialsId: 'blog_revalidate_token', variable: 'revalidate_token')]) {
         sh '''
           echo "source domain ${src_domain}"
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
@@ -50,6 +51,7 @@ pipeline {
           
           echo "Deploy from ${BRANCH_NAME} is starting."
         '''
+        }
         
         sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@${region}", 
           transfers: [sshTransfer(cleanRemote: false, 
