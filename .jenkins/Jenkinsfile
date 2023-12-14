@@ -1,44 +1,47 @@
-pipeline
-{
+println("Branch name: ${BRANCH_NAME}")
+
+switch(BRANCH_NAME) {
+  case "test":
+    aws_region="us-east-1"
+    region="info"
+    src_domain="wpblog.teamlab.info"
+    break
+  case "production_deploy":
+    aws_region="us-east-1"
+    region="com"
+    MONITOR_ID = '8888888888888'
+    src_domain="wpblog.onlyoffice.com"
+    break
+  default:
+    println("Branch: ${BRANCH_NAME} do not for deploy.")
+    break
+}
+
+pipeline {
   agent { label 'ubuntu' }
-  options
-  {
-  disableConcurrentBuilds()
-  buildDiscarder (logRotator(numToKeepStr: '3', artifactNumToKeepStr: '3'))
+  triggers {
+    githubPush()
   }
-  environment
-  {
-    MONITOR_ID = '8888888888888888'
+  options {
+    disableConcurrentBuilds()
+    buildDiscarder (logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
   }
-  parameters
-  {
-    gitParameter (name: 'BRANCH',
-     type: 'PT_BRANCH',
-     branchFilter:'*',
-     listSize:'5',
-     defaultValue:'main',
-     selectedValue:'DEFAULT',
-     sortMode: 'ASCENDING_SMART',
-     description: 'Select branch name to build')
-    choice(name: 'EXECUTE', choices: ['True','False'],description: 'Choice "True" to run it or "False" to update job')
-  }
-  stages
-  {
-   /* stage('stop_monitor') {
-      when { expression { return env.EXECUTE == "True" } }
+  stages {
+    
+    stage('deploy') {
+      when { 
+        anyOf { branch 'test';
+                branch 'production_deploy' }
+      }
+      environment {
+        region = "${region}"
+        src_domain="${src_domain}"
+      }
       steps {
-        build job: 'monitor.24x7.start.stop', 
-          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
-          string(name: 'action', value: 'suspend')]
-      }    
-    }
-    */
-    stage('deploy')
-    {
-    when { expression { return env.EXECUTE == "True" } }
-    steps 
-      {
         sh '''
+          echo "source domain ${src_domain}"
+          sed -i "s^var_src_domain^${src_domain}^" lib/api.js
+          sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
           tar -czpf .jenkins/blog_next.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
@@ -48,13 +51,13 @@ pipeline
           echo "Deploy from ${BRANCH_NAME} is starting."
         '''
         
-        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@info-timeout-off", 
+        sshPublisher(publishers: [sshPublisherDesc(configName: "strapi_oforms@${region}", 
           transfers: [sshTransfer(cleanRemote: false, 
             excludes: '', 
             execCommand: '''
               sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/blog_deploy.log
             ''', 
-            execTimeout: 14000000, 
+            execTimeout: 600000, 
             flatten: false, 
             makeEmptyDirs: false, 
             noDefaultExcludes: false, 
@@ -62,21 +65,11 @@ pipeline
             remoteDirectory: '', 
             remoteDirectorySDF: false, 
             removePrefix: '', 
-            sourceFiles: '.jenkins/blog.tar.gz,.jenkins/build.sh')], 
+            sourceFiles: '.jenkins/blog_next.tar.gz,.jenkins/build.sh')], 
           usePromotionTimestamp: false, 
           useWorkspaceInPromotion: false, 
           verbose: false)])
       }
-    }
-    /*
-    stage('start_monitor') {
-      when { expression { return env.EXECUTE == "True" } }
-      steps {
-        build job: 'monitor.24x7.start.stop', 
-          parameters: [string(name: 'monitor_id', value: "${MONITOR_ID}"), 
-          string(name: 'action', value: 'activate')]
-      }    
-    }
-    */
+    }    
   }
 }
