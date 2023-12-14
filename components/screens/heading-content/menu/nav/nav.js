@@ -5,7 +5,7 @@ import Text from "@components/common/text";
 
 const Nav = ({ onClick, t, locale, ...rest }) => {
   const hrefLang = `https://onlyoffice.com${
-    locale === "en" ? "" :
+    locale === "en" || locale === "el" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
@@ -41,8 +41,8 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
             </div>
             <div className="outer-box">
               <div className="dropdown-item-label">{t("Perform your tasks online")}</div>
-              <Link id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" ? "" : locale}`} label={t("Find form templates")} />
-              <Link id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" ? "" : locale}`} label={t("Fill out oforms")} />
+              <Link id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" ? "" : locale}`} label={t("Find form templates")} />
+              <Link id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" ? "" : locale}`} label={t("Fill out oforms")} />
               <Link id="navitem-products-convert-text" className="dropdown-item" href={`${hrefLang}/text-file-converter.aspx`} label={t("Convert text files")} />
               <Link id="navitem-products-convert-spreadsheets" className="dropdown-item" href={`${hrefLang}/spreadsheet-converter.aspx`} label={t("Convert spreadsheets")} />
               <Link id="navitem-products-convert-presentations" className="dropdown-item" href={`${hrefLang}/presentation-converter.aspx`} label={t("Convert presentations")} />
@@ -204,7 +204,7 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
               <Link id="navitem-resources-whitepapers" className="dropdown-item" href={`${hrefLang}/whitepapers.aspx`} label={t("White papers")} />
             </div>
             <div className="outer-box bg-gray">
-              <Link id="navitem-resources-blog" className="dropdown-item" href={`https://onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}`} label={t("Blog")} />
+              <Link id="navitem-resources-blog" className="dropdown-item" href={`https://onlyoffice.com/blog${locale === "en" || locale === "el" ? "" : `/${locale}`}`} label={t("Blog")} />
               <div id="blog-box">
                 <Link id="blog-box-1" className="dropdown-item-box" href={t("blogLink1")}>
                   <div className="menu-blog-img"></div>
