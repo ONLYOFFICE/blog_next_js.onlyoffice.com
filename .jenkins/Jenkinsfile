@@ -1,12 +1,12 @@
 println("Branch name: ${BRANCH_NAME}")
 
 switch(BRANCH_NAME) {
-  case "test":
+  case "origin/test":
     aws_region="us-east-1"
     region="info"
     src_domain="wpblog.teamlab.info"
     break
-  case "production_deploy":
+  case "origin/production_deploy":
     aws_region="us-east-1"
     region="com"
     MONITOR_ID = '8888888888888'
@@ -30,8 +30,8 @@ pipeline {
     
     stage('deploy') {
       when { 
-        anyOf { branch 'test';
-                branch 'production_deploy' }
+        anyOf { branch 'origin/test';
+                branch 'origin/production_deploy' }
       }
       environment {
         region = "${region}"
