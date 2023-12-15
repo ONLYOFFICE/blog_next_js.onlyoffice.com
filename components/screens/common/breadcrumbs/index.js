@@ -12,7 +12,7 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
         isPostContent ?
           <li>
             {data?.map(({node}, index) => {
-              return <span key={node.id}>{index > 0 && <>&ensp;/&ensp;</>}<InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink></span>
+              return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink>{index !== data.length - 1 && <>&ensp;/&ensp;</>}</span>
             })}
           </li>
         :
