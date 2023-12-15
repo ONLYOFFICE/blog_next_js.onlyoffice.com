@@ -43,6 +43,7 @@ pipeline {
           echo "source domain ${src_domain}"
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
+          cp .jenkins/build.sh .jenkins/blog_build.sh
           tar -czpf .jenkins/blog_next.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
@@ -57,7 +58,7 @@ pipeline {
           transfers: [sshTransfer(cleanRemote: false, 
             excludes: '', 
             execCommand: '''
-              sudo bash /home/ubuntu/deploy/.jenkins/build.sh |& tee -a > /home/ubuntu/deploy/blog_deploy.log
+              sudo bash /home/ubuntu/deploy/.jenkins/blog_build.sh |& tee -a > /home/ubuntu/deploy/blog_deploy.log
             ''', 
             execTimeout: 600000, 
             flatten: false, 
@@ -67,7 +68,7 @@ pipeline {
             remoteDirectory: '', 
             remoteDirectorySDF: false, 
             removePrefix: '', 
-            sourceFiles: '.jenkins/blog_next.tar.gz,.jenkins/build.sh')], 
+            sourceFiles: '.jenkins/blog_next.tar.gz,.jenkins/blog_build.sh')], 
           usePromotionTimestamp: false, 
           useWorkspaceInPromotion: false, 
           verbose: false)])
