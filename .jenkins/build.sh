@@ -54,3 +54,4 @@ else
         # Build and run a new container if it doesn't exist
         docker run -d --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
 fi
+
