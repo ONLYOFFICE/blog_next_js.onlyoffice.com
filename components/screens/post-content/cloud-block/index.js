@@ -12,7 +12,7 @@ const CloudBlock = ({ t, locale, ...rest }) => {
 
   return (
     <StyledCloudBlock {...rest}>
-      <ExternalLink className="button" href={href}>{t("Use ONLYOFFICE for free")}</ExternalLink>
+      <ExternalLink className={`button ${locale}`} href={href}>{t("Use ONLYOFFICE for free")}</ExternalLink>
     </StyledCloudBlock>
   );
 };

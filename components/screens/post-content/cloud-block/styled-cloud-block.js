@@ -31,6 +31,14 @@ const StyledCloudBlock = styled.div`
     margin: auto;
     max-width: 240px;
 
+    &.de {
+      max-width: 270px;
+    }
+
+    &.el {
+      max-width: 290px;
+    }
+
     &:hover {
       background-color: #ff865c;
     }
@@ -61,6 +69,16 @@ const StyledCloudBlock = styled.div`
 
     .button {
       bottom: 32px;
+
+      &.de {
+        font-size: 12px;
+        max-width: 240px;
+      }
+
+      &.el {
+        font-size: 11px;
+        max-width: 240px;
+      }
     }
   }
 `;
