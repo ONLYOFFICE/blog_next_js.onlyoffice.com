@@ -9,7 +9,7 @@ const StyledNav = styled.nav`
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 980px;
+  max-width: 936px;
   height: 72px;
   transform: translateX(-50%);
   z-index: 2; 
@@ -24,6 +24,14 @@ const StyledNav = styled.nav`
   &.fr {
     #reseller-img {
       background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu-reseller-fr.png");
+    }
+  }
+
+  &.el {
+    @media screen and (min-width: 1024px) {
+      .heading-nav-item {
+        padding: 28px 12px;
+      }
     }
   }
 
@@ -1060,6 +1068,14 @@ const StyledNav = styled.nav`
 
   @media screen and (max-width: 375px) {
     width: calc(100vw - 32px);
+
+    &.el {
+      #navitem-download {
+        .mobile-heading-nav-item {
+          font-size: 14px;
+        }
+      }
+    }
   }
 `;
 
