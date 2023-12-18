@@ -1,26 +1,26 @@
 import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const body = JSON.parse(req.body);
-  const { isInThePressContent, isSearchContent, isAuthorContent, isTagContent, isCategoryContent, currentLanguage, endCursor, data } = body;
+  const { isInThePressContent, isSearchContent, isAuthorContent, isTagContent, isCategoryContent, locale, endCursor, data } = body;
 
   if (req.method === "POST") {
     const response = 
     isInThePressContent ? 
-      await getInThePressPosts(currentLanguage, 5, `"${endCursor}"`) : 
+      await getInThePressPosts(locale, 5, `"${endCursor}"`) : 
     isSearchContent ? 
-      await getSearchResults(currentLanguage, 5, `"${endCursor}"`, data)
+      await getSearchResults(locale, 5, `"${endCursor}"`, data)
     :
     isAuthorContent ?
-      await getAuthorPosts(currentLanguage, 6, `"${endCursor}"`, data)
+      await getAuthorPosts(locale, 6, `"${endCursor}"`, data)
     :
     isTagContent ?
-      await getTagPosts(currentLanguage, 6, `"${endCursor}"`, data)
+      await getTagPosts(locale, 6, `"${endCursor}"`, data)
     :
     isCategoryContent ?
-      await getCategoryPosts(currentLanguage, 6, `"${endCursor}"`, data)
+      await getCategoryPosts(locale, 6, `"${endCursor}"`, data)
     :
-      await getAllPosts(currentLanguage, 6, `"${endCursor}"`, "");
+      await getAllPosts(locale, 6, `"${endCursor}"`, "");
 
     return res.json({ data: response });
   } else {

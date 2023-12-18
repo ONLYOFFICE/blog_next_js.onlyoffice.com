@@ -3,7 +3,7 @@ import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
-const RecentPosts = ({ t, currentLanguage, data }) => {
+const RecentPosts = ({ t, locale, data }) => {
   const isRecentPosts = true;
 
   return (
@@ -19,7 +19,7 @@ const RecentPosts = ({ t, currentLanguage, data }) => {
             <div className="post-body">
               <InternalLink className="post-title" href={node?.uri}>{node.title}</InternalLink>
               <div className="post-date">
-                <DateFormat currentLanguage={currentLanguage} data={node.date} format="MMMM D, y" isRecentPosts={isRecentPosts} />
+                <DateFormat locale={locale} data={node.date} format="MMMM D, y" isRecentPosts={isRecentPosts} />
               </div>
             </div>
           </li>

@@ -32,8 +32,11 @@ const StyledBreadcrumbs = styled.ul`
       text-transform: uppercase;
       text-decoration: none;
       color: #444444;
+      cursor: pointer;
+    }
 
-      &:hover {
+    &:hover {
+      span {
         text-transform: uppercase;
         text-decoration: underline;
         color: #444444;

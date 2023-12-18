@@ -17,7 +17,7 @@ const InternalLink = ({
 
   return (
     <Link
-      href={href}
+      href={href ? href : ""}
       style={{ ...style, outline: "none", textDecoration: "none" }}
       className={linkClassName}
       tabIndex={tabIndex}

@@ -43,16 +43,16 @@ const Post = ({ locale, post, posts }) => {
       <Layout.PageHead>
         <PostHeadSEO
           t={t}
-          currentLanguage={locale}
+          locale={locale}
           post={post}
           postUri={postUri}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent 
           t={t}
-          currentLanguage={locale} 
+          locale={locale} 
           stateMobile={stateMobile} 
           setStateMobile={setStateMobile} 
           postUri={postUri}
@@ -60,10 +60,10 @@ const Post = ({ locale, post, posts }) => {
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <PostContent t={t} currentLanguage={locale} post={post} posts={posts} isPostContent={isPostContent} />
+        <PostContent t={t} locale={locale} post={post} posts={posts} isPostContent={isPostContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

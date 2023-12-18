@@ -7,7 +7,7 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import Newsletter from "@components/screens/common/newsletter";
 import InThePressPost from "./in-the-press-post";
 
-const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, isInThePressContent }) => {
+const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressContent }) => {
   return (
     <StyledInThePressContent>
       <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />
@@ -18,22 +18,22 @@ const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, i
 
           <div className="posts">
             {inThePressPosts.edges.slice(0, 3).map(({node}) => (
-              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
+              <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <Newsletter t={t} />
+            <Newsletter t={t} locale={locale} />
 
             {inThePressPosts.edges.slice(3, 5).map(({node}) => (
-              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
+              <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <LoadMorePosts className="in-the-press-load-more" t={t} currentLanguage={currentLanguage} data={inThePressPosts} isInThePressContent={isInThePressContent} />
+            <LoadMorePosts className="in-the-press-load-more" t={t} locale={locale} data={inThePressPosts} isInThePressContent={isInThePressContent} />
           </div>
         </div>
 
         <div className="sidebar">
-          <RecentPosts t={t} currentLanguage={currentLanguage} data={recentPosts} />
-          <FollowUs t={t} currentLanguage={currentLanguage} />
+          <RecentPosts t={t} locale={locale} data={recentPosts} />
+          <FollowUs t={t} locale={locale} />
         </div>
       </div>
     </StyledInThePressContent>

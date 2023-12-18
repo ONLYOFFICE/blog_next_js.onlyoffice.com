@@ -5,20 +5,20 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
   return (
     <StyledBreadcrumbs {...rest}>
       <li>
-        <InternalLink href="/">BLOG</InternalLink>
+        <InternalLink href="/">{t("Blog")}</InternalLink>
       </li>
       &ensp;/&ensp;
       {
         isPostContent ?
           <li>
-            {data?.map(({node}) => {
-              return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink></span>
+            {data?.map(({node}, index) => {
+              return <span key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink>{index !== data.length - 1 && <>&ensp;/&ensp;</>}</span>
             })}
           </li>
         :
           isAuthorContent ? <li>{data?.edges[0]?.node.author?.node?.name}</li> 
         :
-          isInThePressContent ? <li>ONLYOFFICE IN THE PRESS</li> 
+          isInThePressContent ? <li>{t("ONLYOFFICE IN THE PRESS")}</li> 
         :
           isCategoryContent ? <li>{data?.edges[0]?.node.categories?.nodes[0]?.name}</li>
         :

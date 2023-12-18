@@ -19,7 +19,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
     <Layout>
       <Layout.PageHead>
         <MainHeadSEO
-          currentLanguage={locale}
+          locale={locale}
           title={t("ONLYOFFICE Blog")}
           metaSiteName={t("SiteName")}
           metaDescription={t("The official source of latest ONLYOFFICE news, tips, ideas, and promos.")}
@@ -27,14 +27,14 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent
           t={t} 
-          currentLanguage={locale} 
+          locale={locale} 
           mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
           productReleasesPosts={productReleasesPosts} 
@@ -46,7 +46,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -54,10 +54,10 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
 
 export const getStaticProps = async ({ locale }) => {
   const allPosts = await getAllPosts(locale, 60, null, "");
-  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans");
-  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans");
-  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans");
-  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans");
+  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans, product-releases-el");
+  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el");
+  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el");
+  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el");
   const inThePressPosts = await getInThePressPosts(locale, 5, null);
   const mainPageDate = await getMainPageDate(locale);
   const mainPostExcerpt = await getMainPostExcerpt(locale);

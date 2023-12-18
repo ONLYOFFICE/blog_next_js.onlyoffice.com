@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
+const PostHeadSEO = ({ t, locale, post, postUri }) => {
   const router = useRouter();
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
@@ -9,10 +9,10 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
 
   const languagesKey = 
-    currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
-    currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
-    currentLanguage === "it" ? "it_IT" : currentLanguage === "cs" ? "cs_CZ" :
-    currentLanguage === "ja" ? "ja_JP" : currentLanguage === "zh-hans" ? "zh_CN" : "en_US";
+    locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
+    locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" : 
+    locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
+    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : locale === "el" ? "el_GR" : "en_US";
 
   return (
     <Head>
@@ -47,7 +47,7 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
       <meta name="twitter:image" content={image} />
 
       {
-        currentLanguage === "en" &&
+        locale === "en" &&
         <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
       }
 
@@ -62,7 +62,7 @@ const PostHeadSEO = ({ t, currentLanguage, post, postUri }) => {
       {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}/${postUri.zh_CN.split("/").slice(3).join("/")}`} />}
 
       {
-        currentLanguage === "en" ?
+        locale === "en" ?
           <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
         :
         postUri.en_US &&

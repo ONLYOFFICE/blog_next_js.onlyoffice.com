@@ -3,7 +3,7 @@ import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 
-const InThePress = ({ t, currentLanguage, inThePressPosts }) => {
+const InThePress = ({ t, locale, inThePressPosts }) => {
   return (
     <StyledInThePress>
       <Heading className="in-the-press-title" level={4}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
@@ -13,7 +13,7 @@ const InThePress = ({ t, currentLanguage, inThePressPosts }) => {
           <li key={node.id}>
             <InternalLink href={node?.url} target="_blank">{node.title}</InternalLink>
             <div className="in-the-press-date">
-              <DateFormat currentLanguage={currentLanguage} data={node.dateNews} format="D MMM y" />
+              <DateFormat locale={locale} data={node.dateNews} format="D MMM y" />
             </div>
           </li>
         ))}

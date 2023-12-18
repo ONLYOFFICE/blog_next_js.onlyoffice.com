@@ -21,20 +21,20 @@ const Author = ({ locale, posts }) => {
     <Layout>
       <Layout.PageHead>
         <AuthorHeadSEO
-          currentLanguage={locale}
+          locale={locale}
           title={`${authorName} | ${t("ONLYOFFICE Blog")}`}
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
+        <AuthorContent t={t} locale={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

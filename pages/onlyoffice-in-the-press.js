@@ -19,22 +19,22 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
     <Layout>
       <Layout.PageHead>
         <InThePressHeadSEO 
-          currentLanguage={locale}
+          locale={locale}
           title={`${t("ONLYOFFICE IN THE PRESS")} | ${t("ONLYOFFICE Blog")}`}
           metaSiteName={t("SiteName")}
           articlePublishedTime={inThePressDate?.edges[0]?.node?.dateGmt}
           articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <InThePressContent t={t} currentLanguage={locale} inThePressPosts={inThePressPosts} recentPosts={recentPosts} isInThePressContent={isInThePressContent} />
+        <InThePressContent t={t} locale={locale} inThePressPosts={inThePressPosts} recentPosts={recentPosts} isInThePressContent={isInThePressContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

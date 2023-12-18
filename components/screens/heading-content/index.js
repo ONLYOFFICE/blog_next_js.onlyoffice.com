@@ -4,17 +4,18 @@ import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
 import Nav from './menu/nav/nav'
-import StyledHeading from "./styled-heading";
+import StyledHeadingContent from "./styled-heading-content";
 
-const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
+const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
   const [windowCheck, setWindowCheck] = useState("undefined");
   const [windowCheckSearch, setWindowCheckSearch] = useState("undefined");
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const curLang = `https://www.onlyoffice.com${
-    currentLanguage === "en" ? "" : 
-    currentLanguage === "zh-hans" ? "/zh" : 
-    currentLanguage === "pt-br" ? "/pt" : `/${currentLanguage}` 
+    locale === "en" ? "" : 
+    locale === "zh-hans" ? "/zh" : 
+    locale === "pt-br" ? "/pt" : 
+    locale === "el" ? "" : `/${locale}` 
   }`;
 
   const handleSearchFormSubmit = async (e) => {
@@ -77,32 +78,29 @@ const Menu = ({ t, currentLanguage, isMainContent, isSearchContent, stateMobile,
   };
 
   return (
-    <StyledHeading className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
-      <span onClick={toggleMobile} className="nav-items-mobile" />
-      <span className="nav-item-logo">
-        <InternalLink href={curLang}>
-          <img src="https://static-blog.onlyoffice.com/images/logo/logo.svg" alt="logo"/>
-        </InternalLink>
-      </span>
+    <StyledHeadingContent className={`navbar ${stateMobile ? "is-open" : ""}`} onMouseLeave={onCloseMenu}>
+      <button onClick={toggleMobile} className="nav-btn-mobile"></button>
+      <InternalLink className="nav-item-logo" href={curLang}>
+        <img src="/blog/images/logo/logo.svg" alt="logo"/>
+      </InternalLink>
       <div className="overlay"></div>
-      <Nav
-        currentLanguage={currentLanguage}
-        className="nav-item-links"
-        t={t}
-      />
+      <Nav locale={locale} t={t} />
       {isMainContent || isSearchContent !== true && 
-      <SearchArea 
-        onClick={onClickSearch} 
-        searchQuery={searchQuery} 
-        setSearchQuery={setSearchQuery} 
-        handleSearchFormSubmit={handleSearchFormSubmit}
-        searchActive={searchActive} 
-        t={t} 
-        placeholder={t("Search blog")}
-      />}
-      <LanguageSelector t={t} currentLanguage={currentLanguage} postUri={postUri} isPostContent={isPostContent} />
-    </StyledHeading>
+        <SearchArea 
+          onClick={onClickSearch} 
+          searchQuery={searchQuery} 
+          setSearchQuery={setSearchQuery} 
+          handleSearchFormSubmit={handleSearchFormSubmit}
+          searchActive={searchActive} 
+          t={t} 
+          placeholder={t("Search blog")}
+        />
+      }
+      <div className="nav-selector-wrapper">
+        <LanguageSelector t={t} locale={locale} postUri={postUri} isPostContent={isPostContent} />
+      </div>
+    </StyledHeadingContent>
   );
 };
 
-export default Menu;
+export default HeadingContent;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
-import arrowUp from "@public/images/icons/arrow-up.svg";
 
 const StyledPostContent = styled(Section)`
   position: initial;
@@ -116,7 +115,7 @@ const StyledPostContent = styled(Section)`
       border-radius: 2px;
       width: 32px;
       height: 32px;
-      background-image: url(${arrowUp.src});
+      background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-up.svg");
       background-repeat: no-repeat;
       background-position: center center;
       background-color: #cccccc;
@@ -204,7 +203,7 @@ const StyledPostContent = styled(Section)`
 
     img {
       object-fit: contain;
-      height: auto !important;
+      height: auto;
       max-width: 100%;
 
       &.img-popup {
@@ -752,25 +751,14 @@ const StyledPostContent = styled(Section)`
       p {
         font-size: 14px;
         line-height: 26px;
-
-        img.alignnone {
-          margin: 0;
-        }
       }
 
       img {
-        height: 100%;
         margin: 0;
       }
 
       iframe {
         height: 235px;
-      }
-
-      .wp-video {
-        > video {
-          height: 100%;
-        }
       }
 
       h2 {

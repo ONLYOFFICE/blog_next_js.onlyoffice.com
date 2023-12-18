@@ -24,15 +24,15 @@ const Search = ({ locale, recentPosts }) => {
       <Layout.PageHead>
         <SearchHeadSEO title={`${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} isSearchContent={isSearchContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} isSearchContent={isSearchContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SearchContent t={t} currentLanguage={locale} recentPosts={recentPosts} isSearchContent={isSearchContent} />
+        <SearchContent t={t} locale={locale} recentPosts={recentPosts} isSearchContent={isSearchContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
