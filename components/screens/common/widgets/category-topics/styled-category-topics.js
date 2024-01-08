@@ -52,19 +52,19 @@ const StyledCategoryTopics = styled.div`
       }
 
       &.product-releases {
-        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/product-releases.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/product-releases.svg");
       }
 
       &.for-developers {
-        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-developers.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-developers.svg");
       }
 
       &.for-business {
-        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-business.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-business.svg");
       }
 
       &.for-education {
-        background-image: url("https://static-blog.onlyoffice.com/images/category-topics/for-education.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-education.svg");
       }
     }
   }

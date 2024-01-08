@@ -23,7 +23,7 @@ const StyledNav = styled.nav`
 
   &.fr {
     #reseller-img {
-      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu-reseller-fr.png");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu-reseller-fr.png");
     }
   }
 
@@ -123,7 +123,7 @@ const StyledNav = styled.nav`
       display: block;
       width: 24px;
       height: 24px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/menu-icons.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/menu-icons.svg");
       background-repeat: no-repeat;
     }
 
@@ -286,19 +286,19 @@ const StyledNav = styled.nav`
   }
 
   #see-it-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_see_it_in_act.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_see_it_in_act.png");
   }
 
   #reseller-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_reseller.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_reseller.svg");
   }
 
   #latest-events-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/events.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/events.svg");
   }
 
   #education-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_for_developers.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_for_developers.png");
   }
 
   #navitem-download-docspace,
@@ -477,7 +477,7 @@ const StyledNav = styled.nav`
 
   #navitem-partners-hosting-providers {
     &:before {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/menu-hosting-providers.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/menu-hosting-providers.svg");
     }
   }
 
@@ -818,7 +818,7 @@ const StyledNav = styled.nav`
       text-align: center;
 
       &:before {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-red.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-red.svg");
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;
@@ -1045,7 +1045,7 @@ const StyledNav = styled.nav`
         margin-right: 13px;
         width: 24px;
         height: 24px;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/phone.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/phone.svg");
       }
     }
   }

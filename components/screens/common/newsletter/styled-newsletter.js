@@ -130,7 +130,7 @@ const StyledNewsletter = styled.div`
         button {
           font-size: 0;
           min-width: 56px;
-          background-image: url("https://static-blog.onlyoffice.com/images/icons/union.svg");
+          background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
           background-position: 50% 50%;
           background-repeat: no-repeat;
 

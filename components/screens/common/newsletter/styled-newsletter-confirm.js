@@ -5,7 +5,7 @@ const StyledNewsletterConfirm = styled.div`
   box-sizing: border-box;
   padding: 43px 26px 67px;
   color: #333;
-  background-image: url("https://static-blog.onlyoffice.com/images/icons/newsletter-confirm.svg");
+  background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/newsletter-confirm.svg");
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: 50% 43px;

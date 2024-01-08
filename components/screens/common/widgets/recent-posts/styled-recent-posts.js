@@ -64,7 +64,7 @@ const StyledRecentPosts = styled.div`
     font-size: 12px;
     line-height: 16px;
     color: #919192;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 3px;

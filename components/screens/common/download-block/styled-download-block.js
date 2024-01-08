@@ -53,7 +53,7 @@ const StyledDownLoadBlock = styled.div`
     &:before {
       content: "";
       height: 32px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/download.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/download.svg");
       background-repeat: no-repeat;
       background-size: 514px 34px;
       filter: grayscale(1);

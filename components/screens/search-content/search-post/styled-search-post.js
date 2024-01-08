@@ -23,12 +23,12 @@ const StyledSearchPost = styled.div`
 
   .date {
     margin-right: 20px;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
   }
 
   .author {
     display: inline-flex;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
     text-decoration: none;
 
     .external-link {

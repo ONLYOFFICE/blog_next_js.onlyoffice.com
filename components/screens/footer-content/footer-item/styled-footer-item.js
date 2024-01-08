@@ -91,7 +91,7 @@ const StyledFooterItem = styled.div`
       z-index: -1;
       width: 24px;
       height: 24px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/chevron-down.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/chevron-down.svg");
       background-repeat: no-repeat;
       background-size: 24px 24px;
   
