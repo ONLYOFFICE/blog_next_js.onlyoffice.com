@@ -124,7 +124,7 @@ const Footer = ({ t, locale }) => {
 
       <div className="footer-item-group-last">
         <div className="footer-follow">
-          <Heading label={`${t("Follow us on")}${locale === "ja" || locale === "zh-hans" || locale === "fr" ? "" : ":"}`} level={6} className="footer-item-heading" />
+          <Heading label={`${t("Follow us on")}${locale === "ja" ? "" : locale === "zh-hans" ? "：" : locale === "fr" ? " :" : ":"}`} level={6} className="footer-item-heading" />
           <SocialLinks locale={locale} handlerSetModal={handlerSetModal} isFooterContent={isFooterContent} />
         </div>
         <div className="footer-copyright-block">
