@@ -13,8 +13,8 @@ const CategoryHeadSEO = ({ locale, title, categorySlug }) => {
       <link rel="canonical" href={`${baseUrl}${locale === "en" ? "" : `${locale}/`}category/${categorySlug}`} />
       <link rel="next" href={`${baseUrl}${locale === "en" ? "" : `${locale}/`}category/${categorySlug}/page/2/`} />
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />
+      <link rel="apple-touch-icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} />
     </Head>
   );
 };

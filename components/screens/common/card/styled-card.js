@@ -134,11 +134,11 @@ const StyledCard = styled.div`
     }
 
     &.card-date {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     }
 
     &.card-author {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
 
       &:hover {
         .external-link {

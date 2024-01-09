@@ -29,35 +29,35 @@ const StyledRecentPosts = styled.div`
     }
 
     &.facebook {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/facebook.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/facebook.svg");
     }
 
     &.twitter {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/twitter.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/twitter.svg");
     }
 
     &.linkedin {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/linkedin.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/linkedin.svg");
     }
 
     &.reddit {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/reddit.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/reddit.svg");
     }
 
     &.telegram {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/telegram.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/telegram.svg");
     }
 
     &.mastodon {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/mastodon.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/mastodon.svg");
     }
 
     &.wechat {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/social-wechat.png");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/social-wechat.png");
     }
 
     &.weibo {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/weibo.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/weibo.svg");
     }
   }
 `;

@@ -60,7 +60,7 @@ const StyledMainContent = styled(Section)`
 
   .view-all {
     padding-right: 10px;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-right.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-right.svg");
     background-repeat: no-repeat;
     background-position: right 6px;
 

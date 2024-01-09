@@ -19,7 +19,7 @@ const StyledErrorContent = styled(Section)`
     width: 100%;
     height: 424px;
     max-width: 775px;
-    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/404_errors.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;

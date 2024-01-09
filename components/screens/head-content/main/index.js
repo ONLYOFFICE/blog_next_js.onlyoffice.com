@@ -46,8 +46,8 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, locale, articlePubl
         );
       })}
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />
+      <link rel="apple-touch-icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} />
     </Head>
   );
 };
