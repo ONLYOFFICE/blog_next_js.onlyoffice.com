@@ -44,6 +44,11 @@ pipeline {
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
           cp .jenkins/build.sh .jenkins/blog_build.sh
+          
+          if [ "${region}" = "info" ]; then
+            cp .jenkins/robots.txt ./
+          fi
+          
           tar -czpf .jenkins/blog_next.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \
