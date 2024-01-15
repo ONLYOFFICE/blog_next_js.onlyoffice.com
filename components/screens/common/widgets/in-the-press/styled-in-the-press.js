@@ -29,20 +29,14 @@ const StyledInThePress = styled.div`
     a {
       font-size: 14px;
       line-height: 19px;
-
-      span {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-decoration: none;
-        color: #333333;
-      }
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      color: #333333;
 
       &:hover {
-        span {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
       }
     }
 

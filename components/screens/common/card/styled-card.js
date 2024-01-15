@@ -27,7 +27,7 @@ const StyledCard = styled.div`
     .card-title {
       min-height: initial;
 
-      .external-link {
+      .internal-link {
         font-weight: 700;
         color: #333;
         font-size: 24px;
@@ -87,15 +87,15 @@ const StyledCard = styled.div`
     font-size: 18px;
     line-height: 24px;
     
-    .external-link {
+    .internal-link {
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
       letter-spacing: -0.01em;
       color: #333333;
-      text-decoration: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: underline;
       }
     }
@@ -122,11 +122,10 @@ const StyledCard = styled.div`
     background-size: 12px 12px;
     background-position: 0 50%;
 
-    .external-link {
+    .internal-link {
       font-size: 13px;
       line-height: 21px;
       color: #919192;
-      text-decoration: none;
     }
 
     &:not(:last-child) {
@@ -138,14 +137,11 @@ const StyledCard = styled.div`
     }
 
     &.card-author {
+      display: initial;
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
 
       &:hover {
-        .external-link {
-          span {
-            text-decoration: underline;
-          }
-        }
+        text-decoration: underline;
       }
     }
   }
@@ -188,7 +184,7 @@ const StyledCard = styled.div`
       }
 
       .card-title {
-        .external-link {
+        .internal-link {
           font-size: 16px;
           line-height: 21px;
         }
@@ -211,7 +207,7 @@ const StyledCard = styled.div`
     }
 
     .card-title {
-      .external-link {
+      .internal-link {
         font-size: 16px;
         line-height: 21px;
       }

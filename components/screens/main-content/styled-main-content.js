@@ -60,15 +60,16 @@ const StyledMainContent = styled(Section)`
 
   .view-all {
     padding-right: 10px;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #333333;
     background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-right.svg");
     background-repeat: no-repeat;
     background-position: right 6px;
 
-    span {
-      font-size: 14px;
-      line-height: 19px;
-      text-decoration-line: underline;
-      color: #333333;
+    &:hover {
+      text-decoration-line: none;
     }
   }
 
@@ -90,24 +91,17 @@ const StyledMainContent = styled(Section)`
     min-height: 54px;
     border: 1px solid #aaa;
     border-radius: 3px;
-
-    span {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 16px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #333;
-      text-align: center;
-    }
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #333;
+    text-align: center;
 
     &:hover {
       border-color: #f25620;
-
-      span {
-        color: #f25620; 
-      }
+      color: #f25620; 
     }
   }
 

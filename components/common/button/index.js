@@ -60,7 +60,7 @@ Button.defaultProps = {
   width: "auto",
   height: "56px",
   icon: null,
-  tabIndex: -1,
+  tabIndex: 1,
   minwidth: "unset",
   isDisabled: false,
 };

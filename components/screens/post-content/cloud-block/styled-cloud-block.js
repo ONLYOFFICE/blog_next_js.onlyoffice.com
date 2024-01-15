@@ -30,6 +30,7 @@ const StyledCloudBlock = styled.div`
     padding: 18px 20px;
     margin: auto;
     max-width: 240px;
+    transition: background-color 0.3s ease;
 
     &.de {
       max-width: 270px;

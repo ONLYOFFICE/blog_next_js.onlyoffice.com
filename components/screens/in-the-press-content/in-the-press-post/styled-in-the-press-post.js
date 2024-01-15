@@ -37,27 +37,26 @@ const StyledInThePressPost = styled.div`
   }
 
   .post-title {
-    display: block;
-    color: #333333;
-    text-decoration: none;
-
-    h2 {
+    a {
+      color: #333333;
       font-size: 24px;
       line-height: 32px;
+      font-weight: 700;
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       cursor: pointer;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
 
     &:not(:last-child) {
       margin-bottom: 24px;
-    }
-
-    &:hover {
-      text-decoration: underline;
     }
   }
 
@@ -68,7 +67,7 @@ const StyledInThePressPost = styled.div`
 
   @media ${device.laptop} {
     .post-title {
-      h2 {
+      a {
         -webkit-line-clamp: 3;
       }
     }
@@ -76,7 +75,7 @@ const StyledInThePressPost = styled.div`
 
   @media (max-width: 592px) {
     .post-title {
-      h2 {
+      a {
         font-size: 18px;
         line-height: 21px;
       }
