@@ -39,10 +39,6 @@ const StyledPostContent = styled(Section)`
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       }
 
-      &.author {
-        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
-      }
-
       &.comments {
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/comment.svg");
       }
@@ -63,18 +59,25 @@ const StyledPostContent = styled(Section)`
 
     .internal-link {
       display: inline-flex;
-
-      .external-link {
-        font-size: 13px;
-        line-height: 21px;
-        color: #919192;
-        text-decoration: none;
-      }
+      font-size: 13px;
+      line-height: 21px;
+      color: #919192;
 
       &:hover {
-        .external-link {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
+      }
+    }
+
+    .author {
+      display: initial;
+      padding-left: 20px;
+      background-size: 12px;
+      background-position: left 5px;
+      background-repeat: no-repeat;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+
+      &:not(:last-child) {
+        margin-right: 20px;
       }
     }
 

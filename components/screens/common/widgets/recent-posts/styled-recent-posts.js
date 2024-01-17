@@ -29,17 +29,12 @@ const StyledRecentPosts = styled.div`
 
   .post-title {
     display: inline-flex;
-
-    span {
-      line-height: 19px;
-      color: #000;
-      text-decoration: none;
-    }
+    font-size: 14px;
+    line-height: 19px;
+    color: #000;
 
     &:hover {
-      span {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
 
@@ -126,13 +121,11 @@ const StyledRecentPosts = styled.div`
     }
 
     .post-title {
-      span {
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: -0.01em;
-        color: #000;
-      }
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+      color: #000;
     }
 
     .post-date {
@@ -169,10 +162,8 @@ const StyledRecentPosts = styled.div`
     }
 
     .post-title {
-      span {
-        font-size: 16px;
-        line-height: 21px;
-      }
+      font-size: 16px;
+      line-height: 21px;
     }
   }
 `;

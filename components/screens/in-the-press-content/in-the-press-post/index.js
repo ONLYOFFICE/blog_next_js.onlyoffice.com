@@ -15,9 +15,9 @@ const InThePressPost = ({ locale, data }) => {
           </span>
         </div>
 
-        <ExternalLink className="post-title" href={data?.url}>
-          <Heading level={2}>{data?.title}</Heading>
-        </ExternalLink>
+        <Heading className="post-title" level={2}>
+          <ExternalLink href={data?.url}>{data?.title}</ExternalLink>
+        </Heading>
 
         {
           data?.excerpt &&

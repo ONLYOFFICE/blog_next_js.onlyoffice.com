@@ -8,7 +8,7 @@ import InternalLink from "@components/common/internal-link";
 const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
-      <InternalLink className="card-img" href={data?.uri}>
+      <InternalLink className="card-img" href={data?.uri} tabIndex={-1}>
         <img src={data?.featuredImage?.node.sourceUrl ? data?.featuredImage?.node.sourceUrl : data?.firstImgPost} alt={data?.title} />
       </InternalLink>
       <div className="card-body">

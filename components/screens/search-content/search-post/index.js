@@ -40,9 +40,9 @@ const SearchPost = ({ locale, data, searchQueryString }) => {
           <InternalLink className="author" href={`/author/${data.author?.node.slug}`}>{data.author?.node.name}</InternalLink>
         </div>
 
-        <InternalLink className="post-title" href={data?.uri}>
-          <Heading level={2}>{HightLightText(data?.title)}</Heading>
-        </InternalLink>
+        <Heading className="post-title" level={2}>
+          <InternalLink href={data?.uri}>{HightLightText(data?.title)}</InternalLink>
+        </Heading>
 
         {
           data?.aioseoDescription ?

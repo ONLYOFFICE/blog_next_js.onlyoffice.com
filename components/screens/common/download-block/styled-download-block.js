@@ -42,13 +42,9 @@ const StyledDownLoadBlock = styled.div`
     border: 1px solid #AAAAAA;
     border-radius: 3px;
     padding: 11px 6px;
-
-    span {
-      font-size: 16px;
-      line-height: 24px;
-      color: #444444;
-      text-decoration: none;
-    }
+    font-size: 16px;
+    line-height: 24px;
+    color: #444444;
 
     &:before {
       content: "";
@@ -109,14 +105,11 @@ const StyledDownLoadBlock = styled.div`
 
     .download-block-btn {
       padding: 9px 6px;
+      font-size: 11px;
+      line-height: 17px;
       max-width: 122px;
       min-height: 40px;
       max-height: 40px;
-
-      span {
-        font-size: 11px;
-        line-height: 17px;
-      }
 
       &.windows {
         &:before {
