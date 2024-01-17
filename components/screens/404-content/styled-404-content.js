@@ -19,7 +19,7 @@ const StyledErrorContent = styled(Section)`
     width: 100%;
     height: 424px;
     max-width: 775px;
-    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/404_errors.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -48,26 +48,21 @@ const StyledErrorContent = styled(Section)`
 
   .internal-link {
     display: inline-flex;
-
-    span {
-      padding: 18px 20px;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 160%;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-      box-sizing: border-box;
-      border-radius: 3px;
-      background-color: #ff6f3d;
-      transition: .1s linear all;
-    }
+    padding: 18px 20px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 160%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #ff6f3d;
+    transition: .1s linear all;
 
     &:hover {
-      span {
-        background-color: #ff994f;
-      }
+      background-color: #ff994f;
     }
   }
 

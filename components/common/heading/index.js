@@ -43,7 +43,6 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   level: 1,
-  tabIndex: -1,
 };
 
 export default Heading;

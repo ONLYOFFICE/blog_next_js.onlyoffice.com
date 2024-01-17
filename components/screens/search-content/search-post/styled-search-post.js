@@ -23,37 +23,22 @@ const StyledSearchPost = styled.div`
 
   .date {
     margin-right: 20px;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
   }
 
   .author {
     display: inline-flex;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
-    text-decoration: none;
-
-    .external-link {
-      color: #919192;
-      text-decoration: none;
-    }
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+    color: #919192;
 
     &:hover {
-      .external-link {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
 
   .post-title {
-    display: flex;
-    color: #333333;
-    text-decoration: none;
-
-    .external-link {
+    a {
       color: #333333;
-      text-decoration: none;
-    }
-
-    h2 {
       font-size: 24px;
       line-height: 32px;
       text-decoration: none;
@@ -62,16 +47,15 @@ const StyledSearchPost = styled.div`
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       cursor: pointer;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
 
     &:not(:last-child) {
       margin-bottom: 24px;
-    }
-
-    &:hover {
-      .external-link {
-        text-decoration: underline;
-      }
     }
   }
 
@@ -92,7 +76,7 @@ const StyledSearchPost = styled.div`
 
   @media ${device.laptop} {
     .post-title {
-      h2 {
+      a {
         -webkit-line-clamp: 3;
       }
     }
@@ -100,7 +84,7 @@ const StyledSearchPost = styled.div`
 
   @media (max-width: 592px) {
     .post-title {
-      h2 {
+      a {
         font-size: 20px;
         line-height: 133%;
       }

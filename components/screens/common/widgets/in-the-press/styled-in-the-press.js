@@ -29,20 +29,14 @@ const StyledInThePress = styled.div`
     a {
       font-size: 14px;
       line-height: 19px;
-
-      span {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-decoration: none;
-        color: #333333;
-      }
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      color: #333333;
 
       &:hover {
-        span {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
       }
     }
 
@@ -52,7 +46,7 @@ const StyledInThePress = styled.div`
       font-size: 13px;
       line-height: 21px;
       color: #919192;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       background-repeat: no-repeat;
       background-size: 12px 12px;
       background-position: 0 5px;

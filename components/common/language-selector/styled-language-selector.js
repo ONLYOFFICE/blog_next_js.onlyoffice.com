@@ -51,7 +51,7 @@ const StyledLanguageSelector = styled.div`
     width: 24px;
     height: 24px;
     text-decoration: none;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/flags.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/flags.png");
     background-repeat: no-repeat;
 
     &.fr {
@@ -97,7 +97,7 @@ const StyledLanguageSelector = styled.div`
     transform: translateY(2px);
     outline: none;
     -webkit-tap-highlight-color: transparent;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-down.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-down.svg");
     background-repeat: no-repeat;
   }
 

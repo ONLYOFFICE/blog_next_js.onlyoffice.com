@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import menuIcons from "@public/images/icons/menu-icons.svg";
 import menuBlog1 from "@public/images/menu-pics/menu-blog-1.jpg";
 import menuBlog2 from "@public/images/menu-pics/menu-blog-2.jpg";
 
@@ -12,7 +13,14 @@ const StyledNav = styled.nav`
   max-width: 936px;
   height: 72px;
   transform: translateX(-50%);
-  z-index: 2; 
+  z-index: 2;
+
+  &.hidden {
+    .nav-wrapper ul li:not(.active),
+    .phone-mobile {
+      display: none;
+    }
+  }
 
   ul {
     display: flex;
@@ -23,7 +31,7 @@ const StyledNav = styled.nav`
 
   &.fr {
     #reseller-img {
-      background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu-reseller-fr.png");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu-reseller-fr.png");
     }
   }
 
@@ -33,6 +41,10 @@ const StyledNav = styled.nav`
         padding: 28px 12px;
       }
     }
+  }
+
+  .nav-wrapper {
+    height: 100%;
   }
 
   .menu-wrapper {
@@ -45,7 +57,7 @@ const StyledNav = styled.nav`
         width: 0;
         content: "";
         height: 1px;
-        background-color: #ff642e;
+        background-color: #FF6F3D;
         transition: width 0.2s ease-in-out;
         left: 50%;
         top: 0;
@@ -57,7 +69,7 @@ const StyledNav = styled.nav`
         width: 0;
         content: "";
         height: 1px;
-        background-color: #ff642e;
+        background-color: #FF6F3D;
         transition: width 0.2s ease-in-out;
         left: 50%;
         top: 0;
@@ -81,10 +93,10 @@ const StyledNav = styled.nav`
         position: absolute;
         top: 50%;
         right: 0;
-        width: 1px;
+        border-right: 1px solid #ebebeb;
+        max-width: 1px;
         height: calc(100% - 64px);
         transform: translateY(-50%);
-        background-color: #ebebeb;
       }
     }
   }
@@ -97,11 +109,12 @@ const StyledNav = styled.nav`
     }
 
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
   }
 
   .dropdown-item-box {
+    display: block;
     text-decoration: none;
   }
 
@@ -123,12 +136,12 @@ const StyledNav = styled.nav`
       display: block;
       width: 24px;
       height: 24px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/menu-icons.svg");
+      background-image: url(${menuIcons.src});
       background-repeat: no-repeat;
     }
 
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     &.no-bold {
@@ -154,7 +167,7 @@ const StyledNav = styled.nav`
     margin-bottom: 16px;
     padding: 0 32px;
     font-size: 16px;
-    line-height: 26px;
+    line-height: 24px;
     font-weight: 700;
     color: #444444;
     text-decoration: none;
@@ -173,12 +186,12 @@ const StyledNav = styled.nav`
   }
 
   .dropdown-item-label {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     border-radius: 5px;
     padding: 4px 32px;
     font-size: 13px;
     font-weight: 600;
-    line-height: 24px;
+    line-height: 16px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #808080;
@@ -214,14 +227,14 @@ const StyledNav = styled.nav`
 
   .inner-box {
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
   }
 
   .inner-box-links {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 
     #navitem-download-docspace-signin,
     #navitem-download-docs-enterprise-signin {
@@ -240,13 +253,13 @@ const StyledNav = styled.nav`
     display: flex;
     padding: 0 32px 0 72px;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 23px;
     font-feature-settings: "tnum" on, "lnum" on;
     color: #444444;
     text-decoration: none;
 
     &:not(:last-child) {
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     &:hover {
@@ -286,19 +299,19 @@ const StyledNav = styled.nav`
   }
 
   #see-it-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_see_it_in_act.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_see_it_in_act.png");
   }
 
   #reseller-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_reseller.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_reseller.svg");
   }
 
   #latest-events-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/events.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/events.svg");
   }
 
   #education-img {
-    background-image: url("https://static-blog.onlyoffice.com/images/menu-pics/menu_for_developers.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_for_developers.png");
   }
 
   #navitem-download-docspace,
@@ -316,19 +329,24 @@ const StyledNav = styled.nav`
     display: block;
   }
 
-  #navitem-pricing-for-business,
-  #navitem-pricing-for-dev,
   #navitem-download-docs-enterprise,
   #navitem-download-workspace,
   #navitem-download-docspace,
   #navitem-download-docs-dev {
+    margin-bottom: 8px;
+  }
+
+  #navitem-pricing-for-business,
+  #navitem-pricing-for-dev {
     margin-bottom: 16px;
   }
 
   #navitem-products-docspace,
   #navitem-enterprise-docspace-enterprise,
   #navitem-pricing-docs-docspace,
-  #navitem-download-docspace {
+  #navitem-download-docspace,
+  #navitem-sign-in-docspace-mob,
+  #navitem-pricing-family-pack {
     &:before {
       background-position-y: -1170px;
     }
@@ -352,6 +370,12 @@ const StyledNav = styled.nav`
   #navitem-products-connectors {
     &:before {
       background-position-y: -1196px;
+    }
+  }
+
+  #navitem-products-marketplace {
+    &:before {
+      background-position-y: -1560px;
     }
   }
 
@@ -429,6 +453,12 @@ const StyledNav = styled.nav`
     }
   }
 
+  #navitem-pricing-home-server {
+    &:before {
+      background-position-y: -1534px;
+    }
+  }
+
   #navitem-developers-conversion-api {
     &:before {
       background-position-y: -1092px;
@@ -477,7 +507,7 @@ const StyledNav = styled.nav`
 
   #navitem-partners-hosting-providers {
     &:before {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/menu-hosting-providers.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/menu-hosting-providers.svg");
     }
   }
 
@@ -685,6 +715,7 @@ const StyledNav = styled.nav`
 
   .menu-blog-date {
     color: #808080;
+    font-size: 14px;
     line-height: 1.6em;
   }
 
@@ -699,7 +730,8 @@ const StyledNav = styled.nav`
       }
     }
 
-    #navitem-developers {
+    #navitem-developers,
+    #navitem-pricing {
       .outer-box {
         &:first-child {
           width: max-content;
@@ -754,7 +786,9 @@ const StyledNav = styled.nav`
     }
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1300px) {
+    max-width: 756px;
+
     #navitem-products {
       .outer-box {
         &:last-child {
@@ -785,20 +819,29 @@ const StyledNav = styled.nav`
     transform: translate3d(-100%,0,0);
     transition: transform .2s cubic-bezier(.16,.68,.43,.99);
 
+    #navitem-products {
+      .outer-box {
+        &:last-child {
+          max-width: 100%;
+        }
+      }
+    }
+
     ul {
-      display: flex;
       flex-direction: column;
       justify-content: initial;
-      height: 100%;
+      min-height: calc(100% - 54px);
     }
 
     .menu-items-wrapper {
       text-align: left;
+      border-radius: 0;
     }
 
     .menu-wrapper {
       flex-direction: column;
-      padding: 24px 0;
+      padding: 16px 0;
+      height: 100%;
     }
 
     .mobile-heading-nav-item {
@@ -818,7 +861,7 @@ const StyledNav = styled.nav`
       text-align: center;
 
       &:before {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-red.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-red.svg");
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: auto 100%;
@@ -844,7 +887,10 @@ const StyledNav = styled.nav`
           left: 50%;
           bottom: 0;
           width: calc(100% - 48px);
-          height: 1px;
+          max-width: initial;
+          max-height: 1px;
+          border-right: none;
+          border-bottom: 1px solid #ebebeb;
           transform: translateX(-50%);
         }
       }
@@ -907,6 +953,12 @@ const StyledNav = styled.nav`
       &:not(:last-child) {
         margin-bottom: 8px;
       }
+
+      .dropdown-item {
+        &:not(:last-child) {
+          margin-bottom: 0;
+        }
+      }
     }
 
     .inner-box {
@@ -962,7 +1014,7 @@ const StyledNav = styled.nav`
 
     #navitem-resources {
       .menu-wrapper {
-        padding: 24px 0 0 0;
+        padding: 16px 0 0 0;
 
         .outer-box {
           padding: 0;
@@ -1011,8 +1063,7 @@ const StyledNav = styled.nav`
   
       .menu-wrapper {
         flex-direction: column;
-        padding: 24px 0 0;
-        height: 100%;
+        padding: 16px 0 0;
       }
 
       .outer-box {
@@ -1024,6 +1075,13 @@ const StyledNav = styled.nav`
         &.bg-gray {
           margin-top: auto;
         }
+      }
+    }
+
+    #navitem-enterprise {
+      .menu-wrapper {
+        padding: 16px 0;
+        height: initial;
       }
     }
 
@@ -1045,7 +1103,7 @@ const StyledNav = styled.nav`
         margin-right: 13px;
         width: 24px;
         height: 24px;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/phone.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/phone.svg");
       }
     }
   }
@@ -1061,7 +1119,7 @@ const StyledNav = styled.nav`
       #navitem-download-docspace-signup,
       #navitem-download-docs-enterprise-signup {
         flex: 1 1 100%;
-        padding: 4px 16px 4px 56px;
+        padding: 9px 16px 9px 56px;
       }
     }
   }

@@ -29,17 +29,12 @@ const StyledRecentPosts = styled.div`
 
   .post-title {
     display: inline-flex;
-
-    span {
-      line-height: 19px;
-      color: #000;
-      text-decoration: none;
-    }
+    font-size: 14px;
+    line-height: 19px;
+    color: #000;
 
     &:hover {
-      span {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
 
@@ -64,7 +59,7 @@ const StyledRecentPosts = styled.div`
     font-size: 12px;
     line-height: 16px;
     color: #919192;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 3px;
@@ -126,13 +121,11 @@ const StyledRecentPosts = styled.div`
     }
 
     .post-title {
-      span {
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: -0.01em;
-        color: #000;
-      }
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+      color: #000;
     }
 
     .post-date {
@@ -169,10 +162,8 @@ const StyledRecentPosts = styled.div`
     }
 
     .post-title {
-      span {
-        font-size: 16px;
-        line-height: 21px;
-      }
+      font-size: 16px;
+      line-height: 21px;
     }
   }
 `;

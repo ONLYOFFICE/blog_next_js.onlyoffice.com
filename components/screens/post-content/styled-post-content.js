@@ -36,45 +36,48 @@ const StyledPostContent = styled(Section)`
       }
 
       &.date {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
-      }
-
-      &.author {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       }
 
       &.comments {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/comment.svg");
       }
 
       &.outdated {
         color: #CB0000;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/outdated.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/outdated.svg");
         background-size: 20px;
         background-position: left 1px;
         padding-left: 28px;
       }
 
       &.views {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/views.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/views.svg");
         background-size: 14px 10px;
       }
     }
 
     .internal-link {
       display: inline-flex;
-
-      .external-link {
-        font-size: 13px;
-        line-height: 21px;
-        color: #919192;
-        text-decoration: none;
-      }
+      font-size: 13px;
+      line-height: 21px;
+      color: #919192;
 
       &:hover {
-        .external-link {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
+      }
+    }
+
+    .author {
+      display: initial;
+      padding-left: 20px;
+      background-size: 12px;
+      background-position: left 5px;
+      background-repeat: no-repeat;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+
+      &:not(:last-child) {
+        margin-right: 20px;
       }
     }
 
@@ -115,7 +118,7 @@ const StyledPostContent = styled(Section)`
       border-radius: 2px;
       width: 32px;
       height: 32px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/arrow-up.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-up.svg");
       background-repeat: no-repeat;
       background-position: center center;
       background-color: #cccccc;
@@ -353,7 +356,7 @@ const StyledPostContent = styled(Section)`
         line-height: 33px;
         color: #333;
         padding-left: 35px;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/link.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/link.svg");
         background-size: 23px;
         background-position: 0 50%;
         background-repeat: no-repeat;

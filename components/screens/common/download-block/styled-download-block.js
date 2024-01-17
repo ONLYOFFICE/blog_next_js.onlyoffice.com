@@ -42,18 +42,14 @@ const StyledDownLoadBlock = styled.div`
     border: 1px solid #AAAAAA;
     border-radius: 3px;
     padding: 11px 6px;
-
-    span {
-      font-size: 16px;
-      line-height: 24px;
-      color: #444444;
-      text-decoration: none;
-    }
+    font-size: 16px;
+    line-height: 24px;
+    color: #444444;
 
     &:before {
       content: "";
       height: 32px;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/download.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/download.svg");
       background-repeat: no-repeat;
       background-size: 514px 34px;
       filter: grayscale(1);
@@ -109,14 +105,11 @@ const StyledDownLoadBlock = styled.div`
 
     .download-block-btn {
       padding: 9px 6px;
+      font-size: 11px;
+      line-height: 17px;
       max-width: 122px;
       min-height: 40px;
       max-height: 40px;
-
-      span {
-        font-size: 11px;
-        line-height: 17px;
-      }
 
       &.windows {
         &:before {

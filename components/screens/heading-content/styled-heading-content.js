@@ -24,7 +24,7 @@ const StyledHeading = styled.div`
     border: none;
     width: 20px;
     height: 14px;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/mob-menu.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/mob-menu.svg");
     background-repeat: no-repeat;
   }
 

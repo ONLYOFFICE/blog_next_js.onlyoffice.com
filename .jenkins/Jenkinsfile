@@ -5,12 +5,14 @@ switch(BRANCH_NAME) {
     aws_region="us-east-1"
     region="info"
     src_domain="wpblog.teamlab.info"
+    public_static_url="https://static-blog.teamlab.info"
     break
   case "origin/production_deploy":
     aws_region="us-east-1"
     region="com"
     MONITOR_ID = '8888888888888'
     src_domain="wpblog.onlyoffice.com"
+    public_static_url="https://static-blog.onlyoffice.com"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -36,6 +38,7 @@ pipeline {
       environment {
         region = "${region}"
         src_domain="${src_domain}"
+        public_static_url = "${public_static_url}"
       }
       steps {
         withCredentials([string(credentialsId: 'blog_revalidate_token', variable: 'revalidate_token')]) {
@@ -43,7 +46,13 @@ pipeline {
           echo "source domain ${src_domain}"
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
+          sed -i "s^var_next_public_static_url^$public_static_url^" .env.local
           cp .jenkins/build.sh .jenkins/blog_build.sh
+          
+          if [ "${region}" = "no_robots" ]; then
+            cp .jenkins/robots.txt ./
+          fi
+          
           tar -czpf .jenkins/blog_next.tar.gz \
             --exclude ".git" \
             --exclude ".gitignore" \

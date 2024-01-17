@@ -86,7 +86,6 @@ Text.defaultProps = {
   isItalic: false,
   isBold: false,
   truncate: false,
-  tabIndex: -1,
 };
 
 export default Text;

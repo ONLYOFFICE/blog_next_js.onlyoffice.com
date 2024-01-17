@@ -107,10 +107,10 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                 <span className="date">
                   <DateFormat locale={locale} data={post?.date} format="D MMMM y" />
                 </span>
-                <span className="author">
+                <InternalLink className="author" href={`/author/${post?.author.node.slug}`}>
                   {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : locale === "el" ? "Από τον " : "By "}
-                  <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
-                </span>
+                  <span >{post?.author.node.name}</span>
+                </InternalLink>
                 {
                   post.outdated && <span className="outdated">{t("Outdated")}</span>
                 }
