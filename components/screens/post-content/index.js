@@ -1,7 +1,7 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState, useRef } from "react";
 import parse, { attributesToProps, domToReact } from "html-react-parser";
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter from "react-syntax-highlighter";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -23,15 +23,25 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
 
   const options = {
     replace: domNode => {
-      if (domNode.attribs && domNode.name === 'pre') {
+      if (domNode.attribs && domNode.name === "pre") {
         const props = attributesToProps(domNode.attribs);
         return <SyntaxHighlighter {...props} language="javascript">
           {domToReact(domNode.children).toString()}
         </SyntaxHighlighter>;
       }
 
-      if (domNode.attribs && domNode.name === 'img') {
-        return <img src={domNode.attribs['src']} className={domNode.attribs['class']} alt={domNode.attribs['alt']} />;
+      if (domNode.attribs && domNode.name === "img") {
+        return <img src={domNode.attribs["src"]} className={domNode.attribs["class"]} alt={domNode.attribs["alt"]} />;
+      }
+
+      if (domNode.type === "script") {
+        if (typeof window !== "undefined" && typeof document !== "undefined") {
+          const script = document.createElement("script");
+          script.src = domNode.attribs["src"];
+          document.body.appendChild(script);
+        }
+
+        return <></>;
       }
     }
   };
