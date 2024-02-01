@@ -5,8 +5,8 @@
   
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE EN LA PRENSA",
 
-  "AdventAnnounceDesktop": "Descubre <b>ONLYOFFICE DocSpace 2.0</b> con salas públicas, plugins, reasignación de datos y mucho más",
-  "AdventAnnounceMobile": "Descubre <b>ONLYOFFICE DocSpace 2.0</b>",
+  "AdventAnnounceDesktop": "Disponible ONLYOFFICE Docs 8.0: formularios PDF, RTL, Búsqueda de objetivos y asistente de gráficos en hojas, UI de plugins actualizada y más",
+  "AdventAnnounceMobile": "Disponible ONLYOFFICE Docs 8.0",
 
   "Page not found": "No se encontró la página",
   "404 Page not found": "404 Página no encontrada",
@@ -41,7 +41,7 @@
   "For Android": "Para Android",
   "Perform your tasks online": "Realiza tus tareas en línea",
   "Find form templates": "Busca y rellena formularios",
-  "Fill out oforms": "Rellenar oforms",
+  "Fill out forms online": "Rellena formularios online",
   "See it in action!": "¡Verlo en acción!",
   "Curious to know what the interface looks like and try the main functionality without registration?": "¿Quieres saber cómo es la interfaz y probar las principales funciones sin registrarte?",
   "All Developer solutions": "Todas las soluciones para desarrolladores",
@@ -65,6 +65,7 @@
   "Meet the ONLYOFFICE team": "Conoce al equipo de ONLYOFFICE",
   "Customers": "Clientes",
   "Awards": "Premios",
+  "Certificates": "Certificados",
   "Gift shop": "Tienda de regalos",
   "Contacts": "Contactos",
   "Forum": "Foro",
@@ -85,10 +86,10 @@
   "Get news": "Obtener noticias",
   "Meet ONLYOFFICE DocSpace 2.0 with Public rooms, plugins, data reassignment, and more": "Descubre ONLYOFFICE DocSpace 2.0 con salas públicas, plugins, reasignación de datos y mucho más",
   "4 December 2023": "4 de diciembre de 2023",
-  "New integration available: ONLYOFFICE Docs and Dropbox": "Nueva integración disponible: ONLYOFFICE Docs y Dropbox",
-  "30 November 2023": "30 de noviembre de 2023",
+  "ONLYOFFICE Docs 8.0 released: PDF forms, RTL, Goal Seek and chart wizard in sheets, updated plugins UI, and more": "Disponible ONLYOFFICE Docs 8.0: formularios PDF, RTL, Búsqueda de objetivos y asistente de gráficos en hojas, UI de plugins actualizada y más",
+  "30 January 2024": "30 de enero de 2024",
   "blogLink1": "https://www.onlyoffice.com/blog/es/2023/12/disponible-onlyoffice-docspace-2-0",
-  "blogLink2": "https://www.onlyoffice.com/blog/es/2023/11/nueva-integracion-disponible-onlyoffice-docs-y-dropbox",
+  "blogLink2": "https://www.onlyoffice.com/blog/es/2024/01/onlyoffice-docs-8-0",
 
   "Solutions": "Soluciones",
   "SMBs": "PYMEs",
