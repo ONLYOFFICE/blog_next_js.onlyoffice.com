@@ -5,8 +5,8 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICEについての記事",
 
-  "AdventAnnounceDesktop": "<b>ONLYOFFICE DocSpace 2.0</b>の紹介：パブリックルーム、プラグイン、データ再配置など",
-  "AdventAnnounceMobile": "<b>ONLYOFFICE DocSpace 2.0</b>の紹介",
+  "AdventAnnounceDesktop": "ONLYOFFICE Docs 8.0リリース： PDFフォーム、RTL、シート内のゴールシークとチャートウィザード、プラグインUIの更新など",
+  "AdventAnnounceMobile": "ONLYOFFICE Docs 8.0リリース",
 
   "404 Page not found": "404 ページは見つかりません",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "お探しのページは存在しないか、利用できないか、または正しく読み込まれていません。",
@@ -41,7 +41,7 @@
   "For Android": "アンドロイド用",
   "Perform your tasks online": "オンラインでタスクを実行する",
   "Find form templates": "オンラインでタスクを実行する",
-  "Fill out oforms": "フォームテンプレートを探す",
+  "Fill out forms online": "オンラインでフォームに記入",
   "All Enterprise solutions": "すべてのエンタープライズソリューション",
   "DocSpace Enterprise": "DocSpace エンタープライズ版",
   "See it in action!": "実際に使用してみましょう！",
@@ -67,6 +67,7 @@
   "Meet the ONLYOFFICE team": "ONLYOFFICEチームの紹介",
   "Customers": "お客様",
   "Awards": "受賞",
+  "Certificates": "証明書",
   "Gift shop": "ギフト・ショップ",
   "Contacts": "お問い合わせ",
   "Press downloads": "報道機関向けのダウンロード",
@@ -88,10 +89,10 @@
   "Blog": "ブログ",
   "Meet ONLYOFFICE DocSpace 2.0 with Public rooms, plugins, data reassignment, and more": "ONLYOFFICE DocSpace 2.0の紹介：パブリックルーム、プラグイン、データ再配置など",
   "4 December 2023": "2023年12月04日",
-  "New integration available: ONLYOFFICE Docs and Dropbox": "新しい連携が可能に：ONLYOFFICE Docs & Dropbox",
-  "30 November 2023": "2023年11月30日",
+  "ONLYOFFICE Docs 8.0 released: PDF forms, RTL, Goal Seek and chart wizard in sheets, updated plugins UI, and more": "ONLYOFFICE Docs 8.0リリース： PDFフォーム、RTL、シート内のゴールシークとチャートウィザード、プラグインUIの更新など",
+  "30 January 2024": "2024年01月30日",
   "blogLink1": "https://www.onlyoffice.com/blog/ja/2023/12/onlyoffice-docspace-2-0-released",
-  "blogLink2": "https://www.onlyoffice.com/blog/ja/2023/11/new-integration-available-onlyoffice-docs-and-dropbox",
+  "blogLink2": "https://www.onlyoffice.com/blog/ja/2024/01/onlyoffice-docs-8-0-released",
 
   "Solutions": "ソリューション",
   "SMBs": "中小企業",
