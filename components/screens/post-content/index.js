@@ -1,6 +1,6 @@
 import StyledPostContent from "./styled-post-content";
 import { useEffect, useState, useRef } from "react";
-import parse, { attributesToProps, domToReact } from "html-react-parser";
+import { renderToString } from "react-dom/server";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
@@ -21,31 +21,6 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
   const refContent = useRef();
   const refContentWrapper = useRef();
 
-  const options = {
-    replace: domNode => {
-      if (domNode.attribs && domNode.name === "pre") {
-        const props = attributesToProps(domNode.attribs);
-        return <SyntaxHighlighter {...props} language="javascript">
-          {domToReact(domNode.children).toString()}
-        </SyntaxHighlighter>;
-      }
-
-      if (domNode.attribs && domNode.name === "img") {
-        return <img src={domNode.attribs["src"]} className={domNode.attribs["class"]} alt={domNode.attribs["alt"]} />;
-      }
-
-      if (domNode.type === "script") {
-        if (typeof window !== "undefined" && typeof document !== "undefined") {
-          const script = document.createElement("script");
-          script.src = domNode.attribs["src"];
-          document.body.appendChild(script);
-        }
-
-        return <></>;
-      }
-    }
-  };
-
   const onClickHandler = (e) => {
     const el = e.target.closest(".img-popup");
 
@@ -61,6 +36,9 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
   };
 
   useEffect(() => {
+    const dsFrameUrl = "https://marketingteam.onlyoffice.com/static/scripts/api.js?width=100%25&height=600px&frameId=ds-frame&showHeader=false&showTitle=true&showMenu=false&showFilter=true&init=true";
+    const tiktokEmbedUrl = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
+
     async function postData() {
       const data = await fetch("/blog/api/recent-posts", {
         method: "POST",
@@ -83,26 +61,30 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [post]);
-
-  useEffect(() => {
-    const tiktokEmbedUrl = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
-
     if (refContent.current.querySelector(".tiktok-embed")) {
       const scriptTiktokEmbed = document.createElement("script");
       scriptTiktokEmbed.src = tiktokEmbedUrl;
       document.body.appendChild(scriptTiktokEmbed);
     };
 
+    if (refContent.current.querySelector("#ds-frame")) {
+      const dsFrameScript = document.createElement("script");
+      dsFrameScript.src = dsFrameUrl;
+      document.body.appendChild(dsFrameScript);
+    }
+
     return () => {
+      window.removeEventListener("scroll", handleScroll);
+
       if (document.querySelector(`script[src="${tiktokEmbedUrl}"]`)) {
         document.querySelector(`script[src="${tiktokEmbedUrl}"]`).remove();
       };
+
+      if (document.querySelector(`script[src="${dsFrameUrl}"]`)) {
+        document.querySelector(`script[src="${dsFrameUrl}"]`).remove();
+      };
     };
-  });
+  }, [post]);
 
   return (
     <>
@@ -127,7 +109,15 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
 
                 <ShareButtons locale={locale} />
               </div>
-              <div ref={refContent} onClick={onClickHandler} className="entry-content">{parse(post?.content, options)}</div>
+              <div 
+                ref={refContent} 
+                onClick={onClickHandler} 
+                className="entry-content" 
+                suppressHydrationWarning 
+                dangerouslySetInnerHTML={{
+                  __html: post?.content.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{p1}</SyntaxHighlighter>))
+                }}
+              />
             </article>
 
             <div className="tag-list">
