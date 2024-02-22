@@ -56,6 +56,24 @@ const categoryTopics = {
     forBusiness: "for-business-el",
     forEducation: "for-education-el",
   },
+  "hi": {
+    productReleases: "product-releases-hi",
+    forDevelopers: "for-developers-hi",
+    forBusiness: "for-business-hi",
+    forEducation: "for-education-hi",
+  },
+  "ar": {
+    productReleases: "product-releases-ar",
+    forDevelopers: "for-developers-ar",
+    forBusiness: "for-business-ar",
+    forEducation: "for-education-ar",
+  },
+  "sr": {
+    productReleases: "product-releases-sr",
+    forDevelopers: "for-developers-sr",
+    forBusiness: "for-business-sr",
+    forEducation: "for-education-sr",
+  },
 };
 
 export default categoryTopics;
