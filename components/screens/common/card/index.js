@@ -1,5 +1,4 @@
 import StyledCard from "./styled-card";
-import parse from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Text from "@components/common/text"
 import Heading from "@components/common/heading";
@@ -25,7 +24,7 @@ const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
           </InternalLink>
         </div>
         {mainPost && 
-          <div className="card-description">{mainPostExcerpt.edges.length > 0 ? parse(mainPostExcerpt.edges[0]?.node.moreTextExcerpt) : ""}</div>
+          <div className="card-description" dangerouslySetInnerHTML={{__html: mainPostExcerpt.edges.length > 0 ? mainPostExcerpt.edges[0]?.node.moreTextExcerpt : ""}} />
         }
       </div>
     </StyledCard>
