@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import menuIcons from "@public/images/icons/menu-icons.svg";
-import menuBlog1 from "@public/images/menu-pics/menu-blog-1.jpg";
-import menuBlog2 from "@public/images/menu-pics/menu-blog-2.jpg";
+import menuResellerFr from "@public/images/menu-pics/menu-reseller-fr.svg";
+import menuBlog1 from "@public/images/menu-pics/menu-blog-1.png";
+import menuBlog2 from "@public/images/menu-pics/menu-blog-2.png";
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -31,7 +32,7 @@ const StyledNav = styled.nav`
 
   &.fr {
     #reseller-img {
-      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu-reseller-fr.png");
+      background-image: url(${menuResellerFr.src});
     }
   }
 
@@ -577,6 +578,12 @@ const StyledNav = styled.nav`
     }
   }
 
+  #navitem-resources-certificates {
+    &:before {
+      background-position-y: -1586px;
+    }
+  }
+
   #navitem-resources-events {
     &:before {
       background-position-y: -468px;
@@ -715,7 +722,7 @@ const StyledNav = styled.nav`
 
   .menu-blog-date {
     color: #808080;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6em;
   }
 

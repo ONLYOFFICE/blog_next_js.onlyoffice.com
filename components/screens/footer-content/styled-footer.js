@@ -154,7 +154,7 @@ const StyledFooter = styled.div`
     padding: 8px 16px 64px;
     margin: 0;
 
-    &.zh {
+    &.zh-hans {
       .footer-item-group-last .footer-copyright-block {
         span {
           display: inline-block;
@@ -272,19 +272,17 @@ const StyledFooter = styled.div`
       line-height: 26px;
     }
   }
-  
-  @media screen and (max-width: 551px) {
-    .popup-qr-code.wechat-qr-code {
-      left: 0;
-      right: initial;
-    }
-  }
 
   @media screen and (max-width: 551px) {
     .popup-qr-code.line-qr-code {
       left: initial;
       right: 0;
       transform: initial;
+    }
+
+    .popup-qr-code.wechat-qr-code {
+      left: 0;
+      right: initial;
     }
   }
 

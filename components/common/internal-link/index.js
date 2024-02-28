@@ -12,7 +12,7 @@ const InternalLink = ({
 }) => {
   return (
     <StyledInternalLink
-      href={href}
+      href={href ? href : "/"}
       style={{ ...style }}
       className={`internal-link ${className ? className : ""}`}
       tabIndex={tabIndex}

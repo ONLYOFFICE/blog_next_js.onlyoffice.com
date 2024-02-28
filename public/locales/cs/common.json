@@ -1,7 +1,7 @@
 {
   "SiteName": "ONLYOFFICE Blog",
-  "AdventAnnounceDesktop": "Meet <b>ONLYOFFICE DocSpace 2.0</b> with Public rooms, plugins, data reassignment, and more",
-  "AdventAnnounceMobile": "Meet <b>ONLYOFFICE DocSpace 2.0</b>",
+  "AdventAnnounceDesktop": "<b>Collaborate on documents within Zoom meetings:</b> ONLYOFFICE DocSpace app for Zoom available",
+  "AdventAnnounceMobile": "<b>ONLYOFFICE Zoom integration</b>",
 
   "Page not found": "Stránka nebyla nalezena",
 
@@ -30,7 +30,6 @@
   "For iOS": "Pro iOS",
   "For Android": "Pro Android",
   "Perform your tasks online": "Provádějte své úkoly online",
-  "Fill out oforms": "Vyhledejte a vyplňte oform",
   "All Enterprise solutions": "Všechna podniková řešení",
   "See it in action!": "Podívejte se na formulář v akci!",
   "Curious to know what the interface looks like and try the main functionality without registration?": "Zajímá vás, jak vypadá rozhraní a jak si vyzkoušet hlavní funkce?",
@@ -60,8 +59,8 @@
   "Webinars": "Webináře",
   "Training courses": "Kurzy a školení",
   "Collaborate": "Spolupracujte",
-  "blogLink1": "https://www.onlyoffice.com/blog/2023/12/onlyoffice-docspace-2-0-released",
-  "blogLink2": "https://www.onlyoffice.com/blog/2023/11/new-integration-available-onlyoffice-docs-and-dropbox",
+  "blogLink1": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
+  "blogLink2": "https://www.onlyoffice.com/blog/2024/01/onlyoffice-docs-8-0-released",
 
   "Solutions": "Řešení",
   "SMBs": "Malé a střední podniky",

@@ -51,7 +51,7 @@ const StyledLanguageSelector = styled.div`
     width: 24px;
     height: 24px;
     text-decoration: none;
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/flags.png");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/flags.svg");
     background-repeat: no-repeat;
 
     &.fr {
@@ -88,6 +88,18 @@ const StyledLanguageSelector = styled.div`
 
     &.el {
       background-position-y: -288px;
+    }
+
+    &.hi {
+      background-position-y: -312px;
+    }
+
+    &.ar {
+      background-position-y: -336px;
+    }
+
+    &.sr {
+      background-position-y: -360px;
     }
   }
 

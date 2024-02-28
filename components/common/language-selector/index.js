@@ -19,7 +19,9 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
     { locale: "cs_CZ", shortKey: "cs" },
     { locale: "ja", shortKey: "ja" },
     { locale: "zh_CN", shortKey: "zh-hans" },
-    { locale: "el", shortKey: "el" }
+    { locale: "hi_IN", shortKey: "hi" },
+    { locale: "ar", shortKey: "ar" },
+    { locale: "sr_RS", shortKey: "sr" },
   ];
 
   const onCloseSelector = () => {
@@ -44,8 +46,8 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
         <ul className="language-list">
 
           {isPostContent ?
-            languageItems.map((language) => (
-              <li className="language-item" key={language.key}>
+            languageItems.map((language, index) => (
+              <li className="language-item" key={language.shortKey}>
                 <InternalLink 
                   onClick={() => setIsOpen(false)} 
                   className={`language-link ${language.shortKey}`} 
@@ -56,8 +58,8 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
               </li>
             ))
           :
-            languages.map((language) => (
-              <li className="language-item" key={language.key}>
+            languages.map((language, index) => (
+              <li className="language-item" key={language.shortKey}>
                 <InternalLink 
                   onClick={() => setIsOpen(false)} 
                   className={`language-link ${language.shortKey}`} 

@@ -4,11 +4,11 @@ import MenuItem from "../menu-item";
 import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 
-const Nav = ({ onClick, t, locale, ...rest }) => {
+const Nav = ({ t, locale, ...rest }) => {
   const [navHidden, setNavHidden] = useState(false);
 
   const hrefLang = `https://onlyoffice.com${
-    locale === "en" || locale === "el" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
@@ -51,8 +51,8 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
               </div>
               <div className="outer-box">
                 <div className="dropdown-item-label">{t("Perform your tasks online")}</div>
-                <InternalLink id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Find form templates")} />
-                <InternalLink id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Fill out oforms")} />
+                <InternalLink id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Find form templates")} />
+                <InternalLink id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Fill out forms online")} />
                 <InternalLink id="navitem-products-convert-text" className="dropdown-item" href={`${hrefLang}/text-file-converter.aspx`} label={t("Convert text files")} />
                 <InternalLink id="navitem-products-convert-spreadsheets" className="dropdown-item" href={`${hrefLang}/spreadsheet-converter.aspx`} label={t("Convert spreadsheets")} />
                 <InternalLink id="navitem-products-convert-presentations" className="dropdown-item" href={`${hrefLang}/presentation-converter.aspx`} label={t("Convert presentations")} />
@@ -123,7 +123,7 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
                   <InternalLink id="navitem-download-signin" className="nav-2nd-menu-link" href={`${hrefLang}/signin.aspx`} label={t("Sign in")} />
                   <InternalLink id="navitem-download-onpremises" className="nav-2nd-menu-link" href={`${hrefLang}/download-workspace.aspx`} label={t("Install on-premises")} />
                 </div>
-                <InternalLink id="navitem-download-connectors" className="dropdown-item" href={`${hrefLang}/download-connectors.aspx`} label={t("Connectors")} />
+                <InternalLink id="navitem-download-connectors" className="dropdown-item" href={`${hrefLang}/all-connectors.aspx`} label={t("Connectors")} />
                 <InternalLink id="navitem-download-desktop-mob" className="dropdown-item" href={`${hrefLang}/download-desktop.aspx`} label={t("Desktop & mobile apps")} />
               </div>
               <div className="outer-box">
@@ -198,6 +198,7 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
                 <InternalLink id="navitem-resources-customers" className="dropdown-item" href={`${hrefLang}/customers.aspx`} label={t("Customers")} />
                 <InternalLink id="navitem-resources-success-stories" className="dropdown-item" href={`${hrefLang}/customers.aspx#stories`} label={t("Success stories")} />
                 <InternalLink id="navitem-resources-awards" className="dropdown-item" href={`${hrefLang}/awards.aspx`} label={t("Awards")} />
+                <InternalLink id="navitem-resources-certificates" className="dropdown-item" href={`${hrefLang}/certificates.aspx`} label={t("Certificates")} />
                 <InternalLink id="navitem-resources-events" className="dropdown-item" href={`${hrefLang}/events.aspx`} label={t("Events")} />
                 <InternalLink id="navitem-resources-pressdownloads" className="dropdown-item" href={`${hrefLang}/press-downloads.aspx`} label={t("Press downloads")} />
                 <InternalLink id="navitem-resources-giftshop" className="dropdown-item" href="https://shop.spreadshirt.com/onlyoffice" label={t("Gift shop")} />
@@ -218,17 +219,17 @@ const Nav = ({ onClick, t, locale, ...rest }) => {
                 <InternalLink id="navitem-resources-whitepapers" className="dropdown-item" href={`${hrefLang}/whitepapers.aspx`} label={t("White papers")} />
               </div>
               <div className="outer-box bg-gray">
-                <InternalLink id="navitem-resources-blog" className="dropdown-item" href={`https://onlyoffice.com/blog${locale === "en" || locale === "el" ? "" : `/${locale}`}`} label={t("Blog")} />
+                <InternalLink id="navitem-resources-blog" className="dropdown-item" href={`https://onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}`} label={t("Blog")} />
                 <div id="blog-box">
                   <InternalLink id="blog-box-1" className="dropdown-item-box" href={t("blogLink1")}>
                     <div className="menu-blog-img"></div>
-                    <div className="menu-blog-header">{t("Meet ONLYOFFICE DocSpace 2.0 with Public rooms, plugins, data reassignment, and more")}</div>
-                    <div className="menu-blog-date">{t("4 December 2023")}</div>
+                    <div className="menu-blog-header">{t("Collaborate on documents within Zoom meetings: ONLYOFFICE DocSpace app for Zoom available")}</div>
+                    <div className="menu-blog-date">{t("27 February 2024")}</div>
                   </InternalLink>
                   <InternalLink id="blog-box-2" className="dropdown-item-box" href={t("blogLink2")}>
                     <div className="menu-blog-img"></div>
-                    <div className="menu-blog-header">{t("New integration available: ONLYOFFICE Docs and Dropbox")}</div>
-                    <div className="menu-blog-date">{t("30 November 2023")}</div>
+                    <div className="menu-blog-header">{t("ONLYOFFICE Docs 8.0 released: PDF forms, RTL, Goal Seek and chart wizard in sheets, updated plugins UI, and more")}</div>
+                    <div className="menu-blog-date">{t("30 January 2024")}</div>
                   </InternalLink>
                 </div>
               </div>
