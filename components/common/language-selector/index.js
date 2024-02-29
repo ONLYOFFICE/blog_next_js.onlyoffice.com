@@ -19,9 +19,7 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
     { locale: "cs_CZ", shortKey: "cs" },
     { locale: "ja", shortKey: "ja" },
     { locale: "zh_CN", shortKey: "zh-hans" },
-    { locale: "hi_IN", shortKey: "hi" },
-    { locale: "ar", shortKey: "ar" },
-    { locale: "sr_RS", shortKey: "sr" },
+    { locale: "el", shortKey: "el" },
   ];
 
   const onCloseSelector = () => {
