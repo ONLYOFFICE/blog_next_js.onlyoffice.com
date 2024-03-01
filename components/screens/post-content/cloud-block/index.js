@@ -3,10 +3,9 @@ import ExternalLink from "@components/common/external-link";
 
 const CloudBlock = ({ t, locale, ...rest }) => {
   const href = `https://www.onlyoffice.com${
-    locale === "en" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "sr" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : 
-    locale === "el" ? "" : 
     `/${locale}`
   }/docspace-registration.aspx?utm_source=blog&utm_medium=post_page&utm_campaign=registration_docspace&utm_content=try-onlyoffice-in-the-cloud`
 
