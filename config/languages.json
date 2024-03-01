@@ -38,5 +38,13 @@
   {
     "key": "el",
     "shortKey": "el"
+  },
+  {
+    "key": "hi_IN",
+    "shortKey": "hi"
+  },
+  {
+    "key": "sr_RS",
+    "shortKey": "sr"
   }
 ]

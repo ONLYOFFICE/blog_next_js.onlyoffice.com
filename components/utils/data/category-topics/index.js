@@ -62,12 +62,6 @@ const categoryTopics = {
     forBusiness: "for-business-hi",
     forEducation: "for-education-hi",
   },
-  "ar": {
-    productReleases: "product-releases-ar",
-    forDevelopers: "for-developers-ar",
-    forBusiness: "for-business-ar",
-    forEducation: "for-education-ar",
-  },
   "sr": {
     productReleases: "product-releases-sr",
     forDevelopers: "for-developers-sr",
