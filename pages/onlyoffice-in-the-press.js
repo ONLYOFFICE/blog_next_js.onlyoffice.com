@@ -42,7 +42,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
 
 export const getStaticProps = async ({ locale }) => {
   const inThePressPosts = await getInThePressPosts(locale, 60, null);
-  const inThePressDate = await getInThePressDate(locale);
+  const inThePressDate = await getInThePressDate(locale === "hi" || locale === "sr" ? "en" : locale);
   const recentPosts = await getRecentPosts(locale);
 
 	return {
