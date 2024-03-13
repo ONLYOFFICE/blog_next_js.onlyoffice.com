@@ -12,10 +12,9 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const curLang = `https://www.onlyoffice.com${
-    locale === "en" ? "" : 
-    locale === "zh-hans" ? "/zh" : 
-    locale === "pt-br" ? "/pt" : 
-    locale === "el" ? "" : `/${locale}` 
+    locale === "en" || locale === "el" || locale === "hi" || locale === "sr" ? "" :
+    locale === "zh-hans" ? "/zh" :
+    locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
 
   const handleSearchFormSubmit = async (e) => {
