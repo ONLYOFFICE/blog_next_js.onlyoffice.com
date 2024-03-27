@@ -7,7 +7,7 @@ const StyledCloudBlock = styled.div`
   padding-top: 10px;
   width: 100%;
   height: 300px;
-  background: url("https://static-blog.onlyoffice.com/images/cloud-block.svg") no-repeat 50% 10px;
+  background: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/cloud-block.svg") no-repeat 50% 10px;
   background-size: 689px 186px;
   background-color: #f8f8f8;
 
@@ -30,6 +30,15 @@ const StyledCloudBlock = styled.div`
     padding: 18px 20px;
     margin: auto;
     max-width: 240px;
+    transition: background-color 0.3s ease;
+
+    &.de {
+      max-width: 270px;
+    }
+
+    &.el {
+      max-width: 290px;
+    }
 
     &:hover {
       background-color: #ff865c;
@@ -54,13 +63,23 @@ const StyledCloudBlock = styled.div`
     height: 252px;
     padding-top: 39px;
     background-color: #f8f8f8;
-    background-image: url("https://static-blog.onlyoffice.com/images/cloud-block-mini.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/cloud-block-mini.svg");
     background-position: 50% 39px;
     background-repeat: no-repeat;
     background-size: 272px 122.78px;
 
     .button {
       bottom: 32px;
+
+      &.de {
+        font-size: 12px;
+        max-width: 240px;
+      }
+
+      &.el {
+        font-size: 11px;
+        max-width: 240px;
+      }
     }
   }
 `;

@@ -28,11 +28,23 @@
     "shortKey": "cs"
   },
   {
-    "key": "ja-Jp",
+    "key": "ja",
     "shortKey": "ja"
   },
   {
     "key": "zh-CN",
     "shortKey": "zh-hans"
+  },
+  {
+    "key": "el",
+    "shortKey": "el"
+  },
+  {
+    "key": "hi_IN",
+    "shortKey": "hi"
+  },
+  {
+    "key": "sr_RS",
+    "shortKey": "sr"
   }
 ]

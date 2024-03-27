@@ -21,20 +21,20 @@ const Category = ({ locale, posts }) => {
     <Layout>
       <Layout.PageHead>
         <CategoryHeadSEO
-          currentLanguage={locale}
+          locale={locale}
           title={`${categoryName} | ${t("ONLYOFFICE Blog")}`}
           categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CategoryContent t={t} currentLanguage={locale} posts={posts} isCategoryContent={isCategoryContent} categoryName={categoryName} categorySlug={categorySlug} />
+        <CategoryContent t={t} locale={locale} posts={posts} isCategoryContent={isCategoryContent} categoryName={categoryName} categorySlug={categorySlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -117,7 +117,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate: 900,
+    revalidate:false,
   }
 }
 

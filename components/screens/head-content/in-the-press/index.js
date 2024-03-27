@@ -1,14 +1,16 @@
 import Head from "next/head";
 import languages from "@config/languages.json";
 
-const InThePressHeadSEO = ({ title, metaSiteName, currentLanguage, articlePublishedTime, articleModifiedTime }) => {
+const InThePressHeadSEO = ({ title, metaSiteName, locale, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
-  const inThePressUrl = `${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}onlyoffice-in-the-press/`;
+  const inThePressUrl = `${baseUrl}${locale === "en" ? "" : `${locale}/`}onlyoffice-in-the-press`;
   const languagesKey = 
-    currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
-    currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
-    currentLanguage === "it" ? "it_IT" : currentLanguage === "cs" ? "cs_CZ" :
-    currentLanguage === "ja" ? "ja_JP" : currentLanguage === "zh-hans" ? "zh_CN" : "en_US";
+    locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
+    locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" : 
+    locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
+    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
+    locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
+    locale === "sr" ? "sr_RS" : "en_US";
 
   return (
     <Head>
@@ -39,8 +41,8 @@ const InThePressHeadSEO = ({ title, metaSiteName, currentLanguage, articlePublis
       })}
 
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />
+      <link rel="apple-touch-icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} />
     </Head>
   );
 };

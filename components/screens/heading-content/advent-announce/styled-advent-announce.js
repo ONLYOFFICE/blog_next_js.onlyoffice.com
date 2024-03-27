@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
+import bannerLeft from "@public/images/banners/banner-left.svg";
+import bannerRight from "@public/images/banners/banner-right.svg";
+import bannerLeftMobile from "@public/images/banners/banner-left-mobile.svg";
+import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -10,7 +15,7 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background: #55b5dc;
+    background-color: #0B5CFF;
 
     a {
       position: absolute;
@@ -18,92 +23,87 @@ const StyledAdventAnnounce = styled.div`
       width: 100%;
       height: 100%;
       text-decoration: none;
+
+      @media screen and ${device.laptop} {
+        height: 48px;
+      }
     }
 
     .advent-announce-text {
+      box-sizing: border-box;
       position: relative;
-      display: inline-block;
+      display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
       margin: 0 auto;
       font-size: 14px;
-      font-weight: 400;
       line-height: 19px;
       letter-spacing: 0.01em;
-      height: 40px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      max-width: max-content;
       color: #fff;
       text-decoration: none;
       z-index: 10;
-      max-width: 556px;
-      padding: 7px 0 8px;
 
+      &:after,
       &:before {
         content: "";
+        display: block;
         position: absolute;
         top: 0;
-        left: -486px;
-        width: 476px;
         height: 56px;
-        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-left.svg");
-        background-position-y: -5px;
         background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
 
-        @media (max-width: 1024px) {          
-          left: -490px;
+        @media screen and ${device.laptop} {
           height: 48px;
+        }
+      }
+
+      &:before {
+        right: calc(100% + 12px);
+        width: 382px;
+        background-image: url(${bannerLeft.src});
+
+        @media screen and ${device.laptop} {
+          right: calc(100% - 13px);
+          width: 69px;
+          background-image: url(${bannerLeftMobile.src});
         }
       }
 
       &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -445px;
-        width: 435px;
-        height: 56px;
-        background-image: url("https://static-blog.onlyoffice.com/images/banners/docspace-right.svg");
-        background-repeat: no-repeat;
-        background-position-y: 6px;
+        left: calc(100% - 7px);
+        width: 396px;
+        background-image: url(${bannerRight.src});
 
-        @media (max-width: 1024px) {
-          right: -450px;
-          height: 48px;
-          background-position-y: 2px;
-        }
-      }
-
-      @media (max-width: 1024px) {
-        font-size: 13px;
-        height: auto;
-        line-height: 18px;
-        padding: 6px 0px;
-        white-space: normal;
-        width: auto !important;
-
-        b {
-          display: block;
+        @media screen and ${device.laptop} {
+          left: calc(100% - 48px);
+          width: 92px;
+          background-image: url(${bannerRightMobile.src});
         }
       }
     }
 
-    @media (max-width: 1024px) {
-      transition: transform .2s cubic-bezier(.16,.68,.43,.99);
-
+    @media screen and ${device.laptop} {
       &.is-open {
         transform: translate3d(429px, 0, 0);
+        transition: transform .2s cubic-bezier(.16,.68,.43,.99);
       }
     }
-
+    
     @media (max-width: 592px) {
       &.is-open {
-        transform: translate3d(380px, 0, 0);
+        transform: translate3d(calc(100vw - 64px), 0, 0);
       }
     }
-
-    @media (max-width: 430px) {
+  
+    @media (max-width: 375px) {
       &.is-open {
-        transform: translate3d(288px, 0, 0);
+        transform: translate3d(calc(100vw - 32px), 0, 0);
       }
     }
   }
@@ -111,32 +111,19 @@ const StyledAdventAnnounce = styled.div`
   .advent-desktop-hide {
     display: none;
 
-    @media (max-width: 1024px) {
+    @media screen and ${device.laptop} {
       display: flex;
-      align-items: center;
-      justify-content: center;
       height: 48px;
     }
   }
 
   .advent-mobile-hide {
-    @media (max-width: 1024px) {
+    @media screen and ${device.laptop} {
       display: none;
     }
   }
 
-  &.zh-hans {
-    .advent-announce-text {
-      line-height: 40px;
-      max-width: 572px;
-      
-      @media (max-width: 1024px) {
-        line-height: 18px;
-      }
-    }
-  }
-
-  @media (max-width: 1024px) {
+  @media screen and ${device.laptop} {
     overflow-x: hidden;
 
     &.active {

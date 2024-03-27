@@ -1,6 +1,7 @@
 import StyledPostContent from "./styled-post-content";
-import { useEffect, useState } from "react";
-import parse, { attributesToProps, domToReact } from "html-react-parser";
+import { useEffect, useState, useRef } from "react";
+import { renderToString } from "react-dom/server";
+import SyntaxHighlighter from "react-syntax-highlighter";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -10,27 +11,15 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
-import SyntaxHighlighter from 'react-syntax-highlighter';
 
-const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
-  const [postContent, setPostContent] = useState("");
+const PostContent = ({ t, locale, post, posts, isPostContent }) => {
+  const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
   const [imgAlt, setImgAlt] = useState("");
-
-  const currentImgUrl = "https://wpblog.teamlab.info/wp-content/";
-  const cdnImgUrl = "https://static-blog.teamlab.info/wp-content/";
-
-  const options = {
-    replace: domNode => {
-      if (domNode.attribs && domNode.name === 'pre') {
-        const props = attributesToProps(domNode.attribs);
-        return <SyntaxHighlighter {...props} language="javascript">
-          {domToReact(domNode.children).toString()}
-        </SyntaxHighlighter>;
-      }
-    }
-  };
+  const [showButton, setShowButton] = useState(false);
+  const refContent = useRef();
+  const refContentWrapper = useRef();
 
   const onClickHandler = (e) => {
     const el = e.target.closest(".img-popup");
@@ -42,67 +31,134 @@ const PostContent = ({ t, currentLanguage, post, posts, isPostContent }) => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
-    setPostContent(parse(post?.content.replaceAll(currentImgUrl, cdnImgUrl), options));
+    const dsFrameUrl = "https://marketingteam.onlyoffice.com/static/scripts/api.js?width=100%25&height=600px&frameId=ds-frame&showHeader=false&showTitle=true&showMenu=false&showFilter=true&init=true";
+    const tiktokEmbedUrl = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
+
+    async function postData() {
+      const data = await fetch("/blog/api/recent-posts", {
+        method: "POST",
+        body: JSON.stringify({ locale })
+      });
+
+      const response = await data.json();
+      setRecentPosts(response.data);
+    };
+
+    postData();
+
+    const handleScroll = () => {
+      if (refContentWrapper.current) {
+        const scrolledHeight = window.scrollY - refContentWrapper.current.offsetTop;
+        const scrolledPercentage = (scrolledHeight / refContentWrapper.current.offsetHeight) * 100;
+        setShowButton(scrolledPercentage > 50);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    if (refContent.current.querySelector(".tiktok-embed")) {
+      const scriptTiktokEmbed = document.createElement("script");
+      scriptTiktokEmbed.src = tiktokEmbedUrl;
+      document.body.appendChild(scriptTiktokEmbed);
+    };
+
+    if (refContent.current.querySelector("#ds-frame")) {
+      const dsFrameScript = document.createElement("script");
+      dsFrameScript.src = dsFrameUrl;
+      document.body.appendChild(dsFrameScript);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+
+      if (document.querySelector(`script[src="${tiktokEmbedUrl}"]`)) {
+        document.querySelector(`script[src="${tiktokEmbedUrl}"]`).remove();
+      };
+
+      if (document.querySelector(`script[src="${dsFrameUrl}"]`)) {
+        document.querySelector(`script[src="${dsFrameUrl}"]`).remove();
+      };
+    };
   }, [post]);
 
   return (
-    <StyledPostContent>
-      <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
+    <>
+      <StyledPostContent>
+        <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
 
-      <div className="content">
-        <article>
-          <Heading className="title" level={1}>{post?.title}</Heading>
-          <div className="info-content">
-            <span className="date">
-              <DateFormat currentLanguage={currentLanguage} data={post?.date} format="D MMMM y" />
-            </span>
-            <span className="author">
-              {currentLanguage === "ja" ? "著者：" : currentLanguage === "zh-hans" ? "作者: " : "By "}
-              <InternalLink href={`/author/${post?.author.node.slug}`}>{post?.author.node.name}</InternalLink>
-            </span>
+        <div ref={refContentWrapper} className="content">
+          <div className="wrap">
+            <article>
+              <Heading className="title" level={1}>{post?.title}</Heading>
+              <div className="info-content">
+                <span className="date">
+                  <DateFormat locale={locale} data={post?.date} format="D MMMM y" />
+                </span>
+                <InternalLink className="author" href={`/author/${post?.author.node.slug}`}>
+                  {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : locale === "el" ? "Από τον " : "By "}
+                  <span >{post?.author.node.name}</span>
+                </InternalLink>
+                {
+                  post.outdated && <span className="outdated">{t("Outdated")}</span>
+                }
 
-            <ShareButtons currentLanguage={currentLanguage} />
-          </div>
-          <div onClick={onClickHandler} className="entry-content">{postContent}</div>
-        </article>
+                <ShareButtons locale={locale} />
+              </div>
+              <div 
+                ref={refContent} 
+                onClick={onClickHandler} 
+                className="entry-content" 
+                suppressHydrationWarning 
+                dangerouslySetInnerHTML={{
+                  __html: post?.content.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{p1}</SyntaxHighlighter>))
+                }}
+              />
+            </article>
 
-        <div className="tag-list">
-          {
-            post?.tags?.edges.length > 0 &&
-            <div className="tag-items">
-              {post?.tags?.edges.map(({node}) => (
-                <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
-              ))}
+            <div className="tag-list">
+              {
+                post?.tags?.edges.length > 0 &&
+                <div className="tag-items">
+                  {post?.tags?.edges.map(({ node }) => (
+                    <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
+                  ))}
+                </div>
+              }
+              <div className="tag-share">
+                <ShareButtons locale={locale} />
+              </div>
             </div>
-          }
-          <div className="tag-share">
-            <ShareButtons currentLanguage={currentLanguage} />
+
+            <CloudBlock t={t} locale={locale} />
+
+            {
+              post?.discoursePermalink &&
+              <div className="join-discussion">
+                <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
+              </div>
+            }
           </div>
+          {showButton &&
+            <button onClick={scrollToTop} className="btn-scroll-top"><span></span></button>
+          }
         </div>
 
-        <CloudBlock t={t} currentLanguage={currentLanguage} />
-
-        {
-          post?.discoursePermalink && 
-          <div className="join-discussion">
-            <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
-          </div>
-        }
-      </div>
-
-      <RecentPosts t={t} data={posts} currentLanguage={currentLanguage} />
-
-      {
-        <>
-          <div onClick={() => setOpenModal(false)} className={`overlay ${openModal ? "active" : ""}`}></div>
-          <div className={`modal ${openModal ? "active" : ""}`}>
+        <div onClick={() => setOpenModal(false)} className={`overlay ${openModal ? "active" : ""}`}></div>
+        <div className={`modal ${openModal ? "active" : ""}`}>
+          {
+            imgUrl &&
             <img className="modal-img" src={imgUrl} alt={imgAlt} />
-            <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
-          </div>
-        </>
-      }
-    </StyledPostContent>
+          }
+          <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
+        </div>
+      </StyledPostContent>
+      <RecentPosts t={t} data={recentPosts} locale={locale} />
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ const ExternalLink = ({ className, children, label, href, ...rest }) => {
     : "external-link";
 
   return (
-    <StyledLink as="a" href={href} className={ClassNameExternalLink} {...rest}>
+    <StyledLink as="a" href={href ? href : "/"} className={ClassNameExternalLink} {...rest}>
       {children || label}
     </StyledLink>
   );
@@ -66,7 +66,6 @@ ExternalLink.defaultProps = {
   isItalic: false,
   isBold: false,
   truncate: false,
-  tabIndex: -1,
   target: "_blank",
 };
 

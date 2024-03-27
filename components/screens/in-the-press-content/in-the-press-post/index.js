@@ -4,20 +4,20 @@ import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import ExternalLink from "@components/common/external-link";
 
-const InThePressPost = ({ currentLanguage, data }) => {
+const InThePressPost = ({ locale, data }) => {
   return (
     <StyledInThePressPost>
       <article>
         <div className="meta">
           <ExternalLink className="press-url" href={data?.url}>{data?.shortUrl}</ExternalLink>
           <span className="date">
-            <DateFormat currentLanguage={currentLanguage} data={data?.dateNews} format="MMMM D, y" />
+            <DateFormat locale={locale} data={data?.dateNews} format="MMMM D, y" />
           </span>
         </div>
 
-        <ExternalLink className="post-title" href={data?.url}>
-          <Heading level={2}>{data?.title}</Heading>
-        </ExternalLink>
+        <Heading className="post-title" level={2}>
+          <ExternalLink href={data?.url}>{data?.title}</ExternalLink>
+        </Heading>
 
         {
           data?.excerpt &&

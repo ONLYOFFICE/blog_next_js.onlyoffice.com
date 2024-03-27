@@ -26,7 +26,6 @@ const StyledSearchArea = styled.form`
     height: 20px;
     transform: translateY(-50%);
     z-index: 1;
-    transition: transform .2s cubic-bezier(.16,.68,.43,.99);
 
     img {
       width: 20px;
@@ -34,8 +33,23 @@ const StyledSearchArea = styled.form`
     }
   }
 
+  .search_img,
+  .close-icon {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: center;
+  }
+
+  .search_img {
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/search-icon.react.svg");
+  }
+
   .close-icon {
     cursor: pointer;
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/close-icon.react.svg");
   }
 `;
 export default StyledSearchArea;

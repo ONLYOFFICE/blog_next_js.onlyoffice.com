@@ -3,8 +3,8 @@ import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
 
 const StyledPostContent = styled(Section)`
+  position: initial;
   padding: 32px 0 0;
-  overflow: hidden;
 
   .title {
     margin: 0 0 32px;
@@ -14,6 +14,7 @@ const StyledPostContent = styled(Section)`
     letter-spacing: -0.02em;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #333333;
+    overflow: initial;
   }
 
   .info-content {
@@ -26,43 +27,57 @@ const StyledPostContent = styled(Section)`
 
     > span {
       padding-left: 20px;
-      margin-right: 20px;
       background-size: 12px;
       background-position: left 5px;
       background-repeat: no-repeat;
 
-      &.date {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+      &:not(:last-child) {
+        margin-right: 20px;
       }
 
-      &.author {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+      &.date {
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       }
 
       &.comments {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/comment.svg");
+      }
+
+      &.outdated {
+        color: #CB0000;
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/outdated.svg");
+        background-size: 20px;
+        background-position: left 1px;
+        padding-left: 28px;
       }
 
       &.views {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/views.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/views.svg");
         background-size: 14px 10px;
       }
     }
 
     .internal-link {
       display: inline-flex;
-
-      .external-link {
-        font-size: 13px;
-        line-height: 21px;
-        color: #919192;
-        text-decoration: none;
-      }
+      font-size: 13px;
+      line-height: 21px;
+      color: #919192;
 
       &:hover {
-        .external-link {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
+      }
+    }
+
+    .author {
+      display: initial;
+      padding-left: 20px;
+      background-size: 12px;
+      background-position: left 5px;
+      background-repeat: no-repeat;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+
+      &:not(:last-child) {
+        margin-right: 20px;
       }
     }
 
@@ -72,8 +87,49 @@ const StyledPostContent = styled(Section)`
   }
 
   .content {
+    position: relative;
     margin: 50px auto 40px;
-    max-width: 736px;
+    padding-left: 88px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 824px;
+
+    .wrap {
+      width: 100%;
+      max-width: 736px;
+    }
+  }
+
+  .btn-scroll-top {
+    position: sticky;
+    top: calc(100% - 76px);
+    right: 0;
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 10;
+
+    span {
+      display: inline-flex;
+      border-radius: 2px;
+      width: 32px;
+      height: 32px;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-up.svg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #cccccc;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
+      span {
+        background-color: #aaaaaa;
+      }
+    }
   }
 
   article {
@@ -139,6 +195,15 @@ const StyledPostContent = styled(Section)`
       line-height: 13px;
     }
 
+    .wp-video {
+      max-width: 640px;
+      width: 100% !important;
+  
+      > video {
+        width: 100%;
+      }
+    }
+
     img {
       object-fit: contain;
       height: auto;
@@ -179,10 +244,6 @@ const StyledPostContent = styled(Section)`
       }
     }
 
-    a img.alignnone, p img.alignnone {
-      margin: 5px 20px 20px 0;
-    }
-
     ul, ol {
       padding: 0;
       margin: 0;
@@ -218,7 +279,7 @@ const StyledPostContent = styled(Section)`
       }
     }
 
-    blockquote {
+    blockquote:not([class]) {
       border-left: 3px solid #ff6f3d;
       margin: 1.5em 0;
       padding: 0.5em 10px 0.5em 24px;
@@ -295,7 +356,7 @@ const StyledPostContent = styled(Section)`
         line-height: 33px;
         color: #333;
         padding-left: 35px;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/link.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/link.svg");
         background-size: 23px;
         background-position: 0 50%;
         background-repeat: no-repeat;
@@ -527,6 +588,7 @@ const StyledPostContent = styled(Section)`
     .modal-img {
       max-width: 80vw;
       max-height: 80vh;
+      object-fit: contain;
     }
 
     .modal-close-btn {
@@ -582,12 +644,20 @@ const StyledPostContent = styled(Section)`
   @media ${device.laptop} {
     .content {
       margin: 70px auto 80px;
+      padding-left: 0;
     }
 
     article {
       iframe {
         width: 100%;
       }
+    }
+
+    .btn-scroll-top {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: initial;
     }
   }
 
@@ -673,8 +743,6 @@ const StyledPostContent = styled(Section)`
 
     .info-content {
       span {
-        margin-right: 16px;
-
         &.comments,
         &.views {
           display: none;
@@ -686,14 +754,9 @@ const StyledPostContent = styled(Section)`
       p {
         font-size: 14px;
         line-height: 26px;
-
-        img.alignnone {
-          margin: 0;
-        }
       }
 
       img {
-        height: 100%;
         margin: 0;
       }
 

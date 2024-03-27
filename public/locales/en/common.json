@@ -1,13 +1,9 @@
 {
   "SiteName": "ONLYOFFICE Blog",
-  "AdventAnnounceMobileText1": "",
-  "AdventAnnounceMobileText2": "ONLYOFFICE DocSpace",
-  "AdventAnnounceMobileText3": "released",
-
-  "productReleasesLink": "product-releases",
-  "forDevelopersLink": "for-developers",
-  "forBusinessLink": "for-business",
-  "forEducationLink": "for-education",
+  "AdventAnnounceDesktop": "<b>Collaborate on documents within Zoom meetings:</b> ONLYOFFICE DocSpace app for Zoom available",
+  "AdventAnnounceMobile": "<b>ONLYOFFICE Zoom integration</b>",
+  "blogLink1": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
+  "blogLink2": "https://www.onlyoffice.com/blog/2024/01/onlyoffice-docs-8-0-released",
 
   "NewsletterSubscribeText": "By clicking \"Subscribe\", you agree to the",
   "NewsletterSubscribeLink": "rules for using the service and processing personal data.",

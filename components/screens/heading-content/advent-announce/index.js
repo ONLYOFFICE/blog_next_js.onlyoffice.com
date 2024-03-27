@@ -1,30 +1,32 @@
 import StyledAdventAnnounce from "./styled-advent-announce";
+import InternalLink from "@components/common/internal-link";
 
-const AdventAnnounce = ({t, currentLanguage, stateMobile }) => {
+const AdventAnnounce = ({t, locale, stateMobile }) => {
   const href = 
-    currentLanguage === "de" ? "https://www.onlyoffice.com/blog/de/2023/04/docspace/" :
-    currentLanguage === "es" ? "https://www.onlyoffice.com/blog/es/2023/04/descubre-onlyoffice-docspace/" :
-    currentLanguage === "pt-br" ? "https://www.onlyoffice.com/blog/pt-br/2023/04/conheca-o-onlyoffice-docspace/" :
-    currentLanguage === "it" ? "https://www.onlyoffice.com/blog/it/2023/04/onlyoffice-docspace/" :
-    currentLanguage === "ja" ? "https://www.onlyoffice.com/blog/ja/2023/04/onlyoffice-docspace/" :
-    currentLanguage === "zh-hans" ? "https://www.onlyoffice.com/blog/zh-hans/2023/04/meet-onlyoffice-docspace/" : 
-    "https://www.onlyoffice.com/blog/2023/04/meet-onlyoffice-docspace/";
+    locale === "fr" ? "https://www.onlyoffice.com/blog/fr/2024/02/application-onlyoffice-docspace-pour-zoom" :
+    locale === "de" ? "https://www.onlyoffice.com/blog/de/2024/02/onlyoffice-docspace-app-fuer-zoom-arbeiten-sie-in-videokonferenzen-an-dokumenten-zusammen" :
+    locale === "es" ? "https://www.onlyoffice.com/blog/es/2024/02/app-onlyoffice-docspace-para-zoom" :
+    locale === "pt-br" ? "https://www.onlyoffice.com/blog/pt-br/2024/02/aplicativo-onlyoffice-docspace-para-zoom" :
+    locale === "it" ? "https://www.onlyoffice.com/blog/it/2024/02/onlyoffice-docspace-per-zoom" :
+    locale === "ja" ? "https://www.onlyoffice.com/blog/ja/2024/02/onlyoffice-docspace-app-for-zoom" :
+    locale === "zh-hans" ? "https://www.onlyoffice.com/blog/zh-hans/2024/02/onlyoffice-docspace-app-for-zoom" :
+    "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom";
 
   return (
-    <StyledAdventAnnounce className={`${currentLanguage} ${stateMobile ? "active": ""}`}>
+    <StyledAdventAnnounce className={`${locale} ${stateMobile ? "active": ""}`}>
       <div className="advent-announce advent-mobile-hide">
-        <a href={href} target="_blank" rel="noreferrer noopener">
+        <InternalLink href={href}>
           <div className="advent-announce-text">
-            <b>{`${t("ONLYOFFICE DocSpace released")}${currentLanguage === "ja" || currentLanguage === "zh-hans" ? "" : ": "}`}</b>{t("improve document collaboration with offices, customers, and partners.")} <b>{t("Use it for free!")}</b>
+            <span dangerouslySetInnerHTML={{ __html: t("AdventAnnounceDesktop")}}></span>
           </div>
-        </a>
+        </InternalLink>
       </div>
       <div className={`advent-announce advent-desktop-hide ${stateMobile ? "is-open": ""}`}>
-        <a href={href} target="_blank" rel="noreferrer noopener">
+        <InternalLink href={href}>
           <div className="advent-announce-text">
-            {t("AdventAnnounceMobileText1")} <b>{t("AdventAnnounceMobileText2")}</b> {t("AdventAnnounceMobileText3")}
+            <span dangerouslySetInnerHTML={{ __html: t("AdventAnnounceMobile")}}></span>
           </div>
-        </a>
+        </InternalLink>
       </div>
     </StyledAdventAnnounce>
   )

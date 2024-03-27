@@ -46,7 +46,7 @@ const StyledSearchContent = styled(Section)`
   }
 
   .no-results-bg {
-    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/404_errors.svg");
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;

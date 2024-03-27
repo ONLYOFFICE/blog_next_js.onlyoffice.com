@@ -2,7 +2,7 @@ import StyledFooter from "./styled-footer";
 import { useState } from "react";
 import FooterItem from "./footer-item";
 import SocialLinks from "@components/screens/common/social-links";
-import ExternalLink from "@components/common/external-link";
+import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 import Popup from "@components/screens/common/popup";
 import Newsletter from "@components/screens/common/newsletter";
@@ -11,7 +11,7 @@ import Heading from "@components/common/heading";
 const date = new Date();
 const currentYear = date.getFullYear();
 
-const Footer = ({ t, language }) => {
+const Footer = ({ t, locale }) => {
   const isFooterContent = true;
   const [popupActive, setPopupActive] = useState(false);
   const handlerSetModal = () => {
@@ -19,130 +19,122 @@ const Footer = ({ t, language }) => {
   };
 
   const hrefLang = `https://onlyoffice.com${
-    language === "en" ? "" : 
-    language === "zh-hans" ? "/zh" : 
-    language === "pt-br" ? "/pt" : `/${language}` 
+    locale === "en" || locale === "el" || locale === "hi" || locale === "sr" ? "" :
+    locale === "zh-hans" ? "/zh" :
+    locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
 
   return (
-    <StyledFooter className={language} language={language}>
+    <StyledFooter className={locale} locale={locale}>
       <div className="footer-item-group">
-        <FooterItem dis heading={t("Solutions")} className="bysize no_tablet_view">
-          <ExternalLink href={`${hrefLang}/for-small-business.aspx`} className="footer-link" label={t("SMBs")} />
-          <ExternalLink href={`${hrefLang}/for-enterprises.aspx`} className="footer-link" label={t("Enterprises")} />
-          <ExternalLink href={`${hrefLang}/home-use.aspx`} className="footer-link" label={t("Home use")} />
-          <ExternalLink href={`${hrefLang}/for-developers.aspx`} className="footer-link" label={t("Developers")} />
-          <ExternalLink href={`${hrefLang}/for-hosting-providers.aspx`} className="footer-link" label={t("Hosting providers")} />
-          <ExternalLink href={`${hrefLang}/for-government.aspx`} className="footer-link" label={t("Government")} />
-          <ExternalLink href={`${hrefLang}/healthcare.aspx`} className="footer-link" label={t("Healthcare")} />
-          <ExternalLink href={`${hrefLang}/for-research.aspx`} className="footer-link" label={t("Research")} />
-          <ExternalLink href={`${hrefLang}/education.aspx`} className="footer-link" label={t("Education")} />
-          <ExternalLink href={`${hrefLang}/nonprofit-organizations.aspx`} className="footer-link" label={t("Nonprofits")} />
+        <FooterItem heading={t("Solutions")} className="solutions" href={`${hrefLang}/solutions.aspx`}>
+          <InternalLink className="footer-link" href={`${hrefLang}/for-small-business.aspx`} label={t("SMBs")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/for-enterprises.aspx`} label={t("Enterprises")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/home-use.aspx`} label={t("Home use")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/for-developers.aspx`} label={t("Developers")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/for-hosting-providers.aspx`} label={t("Hosting providers")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/for-government.aspx`} label={t("Government")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/healthcare.aspx`} label={t("Healthcare")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/for-research.aspx`} label={t("Research")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/education.aspx`} label={t("Education")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/nonprofit-organizations.aspx`} label={t("Nonprofits")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
-        <FooterItem dis heading={t("Features")} className="byindustry">
-          <ExternalLink href={`${hrefLang}/document-editor.aspx`} className="footer-link" label={t("Document Editor")} />
-          <ExternalLink href={`${hrefLang}/spreadsheet-editor.aspx`} className="footer-link" label={t("Spreadsheet Editor")} />
-          <ExternalLink href={`${hrefLang}/presentation-editor.aspx`} className="footer-link" label={t("Presentation Editor")} />
-          <ExternalLink href={`${hrefLang}/form-creator.aspx`} className="footer-link" label={t("Form creator")} />
-          <ExternalLink href={`${hrefLang}/pdf-reader.aspx`} className="footer-link" label={t("PDF reader & converter")} />
-          <ExternalLink href={`${hrefLang}/security.aspx`} className="footer-link" label={t("Security")} />
-          <ExternalLink href={`${hrefLang}/app-directory`} className="footer-link" label={t("App Directory")} />
+        <FooterItem heading={t("Features")} className="features">
+          <InternalLink className="footer-link" href={`${hrefLang}/document-editor.aspx`} label={t("Document Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/spreadsheet-editor.aspx`} label={t("Spreadsheet Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/presentation-editor.aspx`} label={t("Presentation Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/form-creator.aspx`} label={t("Form creator")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/pdf-reader.aspx`} label={t("PDF Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/security.aspx`} label={t("Security")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/accessibility.aspx`} label={t("Accessibility")} />
+          <InternalLink className="footer-link" href={`https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" ? `/${locale}` : ""}/openai`} label={t("AI helper")} />
+          <InternalLink className="footer-link" href={`https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" ? `/${locale}` : ""}`} label={t("App Directory")} />
         </FooterItem>
-        <FooterItem dis heading={t("Connectors")} className="byindustry">
-          <ExternalLink href={`${hrefLang}/office-for-nextcloud.aspx`} className="footer-link" label={t("Nextcloud")} />
-          <ExternalLink href={`${hrefLang}/office-for-moodle.aspx`} className="footer-link" label={t("Moodle")} />
-          <ExternalLink href={`${hrefLang}/office-for-odoo.aspx`} className="footer-link" label={t("Odoo")} />
-          <ExternalLink href={`${hrefLang}/office-for-wordpress.aspx`} className="footer-link" label={t("Wordpress")} />
-          <ExternalLink href={`${hrefLang}/all-connectors.aspx`} className="footer-link" label={t("Others")} />
-        </FooterItem>
-        <FooterItem dis heading={t("Support")} className="support tablet_view_only">
-          <ExternalLink href={`${hrefLang}/support-contact-form.aspx`} className="footer-link" label={t("Support contact form")} />
-          <ExternalLink href="https://forum.onlyoffice.com/" className="footer-link" label={t("Forum")} />
-          <ExternalLink href={`${hrefLang}/demo-order.aspx`} className="footer-link" label={t("Order demo")} />
-          <ExternalLink href={`${hrefLang}/webinars.aspx`} className="footer-link" label={t("Webinars")} />
-          <ExternalLink href={`${hrefLang}/training-courses.aspx`} className="footer-link" label={t("Training courses")} />
+        <FooterItem heading={t("Connectors")} className="connectors">
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-nextcloud.aspx`} label={t("Nextcloud")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-moodle.aspx`} label={t("Moodle")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-odoo.aspx`} label={t("Odoo")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-wordpress.aspx`} label={t("WordPress")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/all-connectors.aspx`} label={t("Others")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
-        <FooterItem dis heading={t("Solutions")} className="bysize tablet_view_only">
-          <ExternalLink href={`${hrefLang}/for-small-business.aspx`} className="footer-link" label={t("SMBs")} />
-          <ExternalLink href={`${hrefLang}/for-enterprises.aspx`} className="footer-link" label={t("Enterprises")} />
-          <ExternalLink href={`${hrefLang}/home-use.aspx`} className="footer-link" label={t("Home use")} />
-          <ExternalLink href={`${hrefLang}/for-developers.aspx`} className="footer-link" label={t("Developers")} />
-          <ExternalLink href={`${hrefLang}/for-hosting-providers.aspx`} className="footer-link" label={t("Hosting providers")} />
-          <ExternalLink href={`${hrefLang}/for-government.aspx`} className="footer-link" label={t("Government")} />
-          <ExternalLink href={`${hrefLang}/healthcare.aspx`} className="footer-link" label={t("Healthcare")} />
-          <ExternalLink href={`${hrefLang}/for-research.aspx`} className="footer-link" label={t("Research")} />
-          <ExternalLink href={`${hrefLang}/education.aspx`} className="footer-link" label={t("Education")} />
-          <ExternalLink href={`${hrefLang}/nonprofit-organizations.aspx`} className="footer-link" label={t("Nonprofits")} />
+        <FooterItem heading={t("About us")} className="about-us">
+          <InternalLink className="footer-link" href={`${hrefLang}/about.aspx`} label={t("Company")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/customers.aspx`} label={t("Customers")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/customers.aspx#stories`} label={t("Success stories")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/awards.aspx`} label={t("Awards")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/events.aspx`} label={t("Events")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/press-downloads.aspx`} label={t("Press downloads")} />
+          <InternalLink className="footer-link" href="https://shop.spreadshirt.com/onlyoffice" label={t("Gift shop")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/contacts.aspx`} label={t("Contacts")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/legalterms.aspx`} label={t("Legal notice")} />
         </FooterItem>
-        <FooterItem dis heading={t("Support")} className="support no_tablet_view">
-          <ExternalLink href={`${hrefLang}/support-contact-form.aspx`} className="footer-link" label={t("Support contact form")} />
-          <ExternalLink href="https://forum.onlyoffice.com/" className="footer-link" label={t("Forum")} />
-          <ExternalLink href={`${hrefLang}/demo-order.aspx`} className="footer-link" label={t("Order demo")} />
-          <ExternalLink href={`${hrefLang}/webinars.aspx`} className="footer-link" label={t("Webinars")} />
-          <ExternalLink href={`${hrefLang}/training-courses.aspx`} className="footer-link" label={t("Training courses")} />
+        <FooterItem heading={t("Collaborate")} className="collaborate">
+          <InternalLink className="footer-link" href={`${hrefLang}/contribute.aspx`} label={t("For contributers")} />
+          <InternalLink className="footer-link" href="https://helpcenter.onlyoffice.com/guides/become-translator.aspx" label={t("For translators")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/influencer-program.aspx`} label={t("For influencers")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/vacancies.aspx`} label={t("Vacancies")} />
         </FooterItem>
-        <FooterItem dis heading={t("Resources")} className="resources">
-          <ExternalLink href="https://helpcenter.onlyoffice.com/index.aspx" className="footer-link" label={t("Help Center")} />
-          {
-            language !== "zh-hans" &&
-            <ExternalLink href={`${hrefLang}/document-editor-comparison.aspx`} className="footer-link" label={t("Compare to other suites")} />
-          }
-          <ExternalLink href={`${hrefLang}/contribute.aspx`} className="footer-link" label={t("Contribute")} />
-          <ExternalLink href={`${hrefLang}/legalterms.aspx`} className="footer-link" label={t("Legal notice")} />
+      </div>
+      <div className="footer-item-group">
+        <FooterItem heading={t("Get news")} className="get-news">
+          <InternalLink className="footer-link" href={`https://onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}`} label={t("Blog")} />
+        </FooterItem>
+        <FooterItem heading={t("Get help")} className="get-help">
+          <InternalLink className="footer-link" href="https://forum.onlyoffice.com" label={t("Forum")} />
+          <InternalLink className="footer-link" href="https://helpcenter.onlyoffice.com/index.aspx" label={t("Help Center")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/training-courses.aspx`} label={t("Training courses")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/webinars.aspx`} label={t("Webinars")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/whitepapers.aspx`} label={t("White papers")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/support-contact-form.aspx`} label={t("Support contact form")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/demo-order.aspx`} label={t("Order demo")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
         {
-          language !== "zh-hans" &&
-          <FooterItem dis heading={t("Comparison")} className="comparison">
-            <ExternalLink href={`${hrefLang}/best-microsoft-office-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs MS Office Online")} />
-            <ExternalLink href={`${hrefLang}/best-google-docs-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Google Docs")} />
-            <ExternalLink href={`${hrefLang}/best-zoho-docs-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Zoho Docs")} />
-            <ExternalLink href={`${hrefLang}/best-libreoffice-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs LibreOffice")} />
-            <ExternalLink href={`${hrefLang}/best-wps-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs WPS")} />
-            <ExternalLink href={`${hrefLang}/best-adobe-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Adobe Acrobat")} />
-            <ExternalLink href={`${hrefLang}/best-hancom-alternative.aspx`} className="footer-link" label={t("ONLYOFFICE Docs vs Hancom")} />
+          locale !== "zh-hans" &&
+          <FooterItem heading={t("Comparison")} className="comparison" href={`${hrefLang}/document-editor-comparison.aspx`}>
+            <InternalLink className="footer-link" href={`${hrefLang}/best-microsoft-office-alternative.aspx`} label={t("ONLYOFFICE Docs vs MS Office Online")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-google-docs-alternative.aspx`} label={t("ONLYOFFICE Docs vs Google Docs")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-zoho-docs-alternative.aspx`} label={t("ONLYOFFICE Docs vs Zoho Docs")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-libreoffice-alternative.aspx`} label={t("ONLYOFFICE Docs vs LibreOffice")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-wps-alternative.aspx`} label={t("ONLYOFFICE Docs vs WPS")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-adobe-alternative.aspx`} label={t("ONLYOFFICE Docs vs Adobe Acrobat")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/best-hancom-alternative.aspx`} label={t("ONLYOFFICE Docs vs Hancom")} />
           </FooterItem>
         }
-        <FooterItem dis heading={t("Contact us")} className="contacts">
+        <FooterItem heading={t("Contact us")} className="contacts">
           <Text className="contact-text">
-            {t("Sales questions")}
-            &nbsp;
-            <ExternalLink className="footer-link-contact" label={t("sales@onlyoffice.com")} href="mailto:sales@onlyoffice.com" />
+            {`${t("Sales questions")}${locale === "zh-hans" || locale === "ja" ? "" : " "}`}<InternalLink className="footer-link-contact" label={t("sales@onlyoffice.com")} href="mailto:sales@onlyoffice.com" />
           </Text>
           <Text className="contact-text">
-            {t("Partner inquiries")}
-            &nbsp;
-            <ExternalLink className="footer-link-contact" label={t("partners@onlyoffice.com")} href="mailto:partners@onlyoffice.com" />
+            {`${t("Partner inquiries")}${locale === "zh-hans" || locale === "ja" ? "" : " "}`}
+            <InternalLink className="footer-link-contact" label={t("partners@onlyoffice.com")} href="mailto:partners@onlyoffice.com" />
           </Text>
           <Text className="contact-text">
-            {t("Press inquiries")}
-            &nbsp;
-            <ExternalLink className="footer-link-contact" label={t("press@onlyoffice.com")} href="mailto:press@onlyoffice.com" />
+            {`${t("Press inquiries")}${locale === "zh-hans" || locale === "ja" ? "" : " "}`}
+            <InternalLink className="footer-link-contact" label={t("press@onlyoffice.com")} href="mailto:press@onlyoffice.com" />
           </Text>
-          <ExternalLink href="/call-back-form.aspx" className="footer-link" label={t("Request a call")} />
+          <InternalLink href={`${hrefLang}/call-back-form.aspx`} className="footer-link" label={t("Request a call")} />
         </FooterItem>
       </div>
 
       <div className="footer-item-group-last">
         <div className="footer-follow">
-          <Heading label={`${t("Follow us on")}${language === "ja" || language === "zh-hans" || language === "fr" ? "" : ":"}`} level={6} className="footer-item-heading" />
-          <SocialLinks language={language} handlerSetModal={handlerSetModal} isFooterContent={isFooterContent} />
+          <Heading label={`${t("Follow us on")}${locale === "ja" ? "" : locale === "zh-hans" ? "：" : locale === "fr" ? " :" : ":"}`} level={6} className="footer-item-heading" />
+          <SocialLinks locale={locale} handlerSetModal={handlerSetModal} isFooterContent={isFooterContent} />
         </div>
-
         <div className="footer-copyright-block">
           <span>{t("© Ascensio System SIA", {currentYear})}</span>
           <span>{t("All rights reserved")}</span>
         </div>
+        <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
+          <Newsletter t={t} locale={locale} />
+        </Popup>
       </div>
-
-      <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
-        <Newsletter t={t} />
-      </Popup>
     </StyledFooter>
   );
 };

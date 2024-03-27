@@ -18,15 +18,15 @@ const Error = ({ locale }) => {
       <Layout.PageHead>
         <ErrornHeadSEO title={`${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <ErrorContent t={t} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer t={t} locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

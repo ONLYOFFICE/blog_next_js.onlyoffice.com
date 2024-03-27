@@ -58,6 +58,12 @@ const StyledInThePressContent = styled(Section)`
     .sidebar {
       display: none;
     }
+
+    .newsletter {
+      .newsletter-title {
+        margin-right: 0;
+      }
+    }
   }
 
   @media (max-width: 592px) {

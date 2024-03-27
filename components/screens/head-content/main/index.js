@@ -1,16 +1,19 @@
 import Head from "next/head";
 import languages from "@config/languages.json";
 
-const MainHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, articlePublishedTime, articleModifiedTime }) => {
+const MainHeadSEO = ({ title, metaSiteName, metaDescription, locale, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
-  const baseLocaleUrl = `https://www.onlyoffice.com/blog/${currentLanguage === "en" ? "" : currentLanguage}`;
+  const baseLocaleUrl = `https://www.onlyoffice.com/blog/${locale === "en" ? "" : locale}`;
   const image = "https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg";
+  const canonicalUrl = `${baseUrl}${locale === "en" ? "" : locale}`;
 
   const languagesKey = 
-    currentLanguage === "fr" ? "fr_FR" : currentLanguage === "de" ? "de_DE" :
-    currentLanguage === "es" ? "es_ES" : currentLanguage === "pt-br" ? "pt_BR" : 
-    currentLanguage === "it" ? "it_IT" : currentLanguage === "cs" ? "cs_CZ" :
-    currentLanguage === "ja" ? "ja_JP" : currentLanguage === "zh-hans" ? "zh_CN" : "en_US";
+    locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
+    locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" : 
+    locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
+    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
+    locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
+    locale === "sr" ? "sr_RS" : "en_US";
 
   return (
     <Head>
@@ -21,8 +24,8 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, ar
 
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
-      <link rel="canonical" href={`${baseUrl}${currentLanguage === "en" ? "" : currentLanguage}`} />
-      <link rel="next" href={`${baseUrl}${currentLanguage === "en" ? "" : `${currentLanguage}/`}page/2/`} />
+      <link rel="canonical" href={canonicalUrl.replace(/\/$/, "")} />
+      <link rel="next" href={`${baseUrl}${locale === "en" ? "" : `${locale}/`}page/2/`} />
       <meta property="og:locale" content={languagesKey} />
       <meta property="og:site_name" content={metaSiteName} />
       <meta property="og:type" content="article" />
@@ -45,8 +48,8 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, currentLanguage, ar
         );
       })}
       <meta name="google" content="nositelinkssearchbox" />
-      <link rel="icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" sizes="192x192" />
-      <link rel="apple-touch-icon" href="https://static-blog.onlyoffice.com/images/favicon.ico" />
+      <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />
+      <link rel="apple-touch-icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} />
     </Head>
   );
 };
