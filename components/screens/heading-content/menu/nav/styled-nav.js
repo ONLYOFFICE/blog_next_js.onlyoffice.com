@@ -315,6 +315,23 @@ const StyledNav = styled.nav`
     background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu_for_developers.png");
   }
 
+  #navitem-resources {
+    .heading-nav-item {
+      position: relative;
+      color: #FF6F3D;
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        border-bottom: 1px solid #FF6F3D;
+        width: calc(100% - 40px);
+        transform: translateX(-50%);
+      }
+    }
+  }
+
   #navitem-download-docspace,
   #navitem-download-docs-enterprise,
   #navitem-download-workspace,
@@ -605,6 +622,7 @@ const StyledNav = styled.nav`
   #navitem-resources-blog {
     padding: 0 32px;
     margin-bottom: 16px;
+    color: #FF6F3D;
 
     &:before {
       content: none;
@@ -800,6 +818,14 @@ const StyledNav = styled.nav`
       .outer-box {
         &:last-child {
           max-width: 360px;
+        }
+      }
+    }
+
+    #navitem-resources {
+      .heading-nav-item {
+        &:after {
+          width: calc(100% - 20px);
         }
       }
     }
@@ -1053,6 +1079,15 @@ const StyledNav = styled.nav`
             padding: 32px 0;
             background-color: #f9f9f9;
           }
+        }
+      }
+
+      .heading-nav-item {
+        color: #444444;
+        background-color: #F9F9F9;
+
+        &:after {
+          content: none;
         }
       }
     }

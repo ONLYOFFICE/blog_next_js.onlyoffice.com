@@ -22,29 +22,61 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
     setHasMore(isMore);
   }, [postList]);
 
-  useEffect( () => {
+  useEffect(() => {
     setPostList(dataEdges.slice(0, dataSliceLength));
     setPostsData(data?.edges);
     setPageInfo(data?.pageInfo);
   }, [data?.edges]);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = async () => {
     const currentLength = postList.length;
     const isMore = currentLength < dataEdges.length;
     const nextResultsLength = isInThePressContent ? 5 : isSearchContent ? 5 : 6;
     const nextResults = isMore ? dataEdges.slice(currentLength, currentLength + nextResultsLength) : [];
-    
+    setIsLoading(true);
+
+    if (isMainContent || isCategoryContent || isAuthorContent || isTagContent) {
+      const imageLoadPromises = nextResults.map(async (post) => {
+        const templateImage = new Image();
+        templateImage.src = post.node?.featuredImage?.node.sourceUrl ? post.node?.featuredImage?.node.sourceUrl : post.node?.firstImgPost;
+        const templateImageLoaded = new Promise((resolve) => {
+            templateImage.onload = () => resolve(true);
+            templateImage.onerror = () => resolve(false);
+        });
+  
+        return templateImageLoaded;
+      });
+  
+      await Promise.all(imageLoadPromises);
+    }
+
     setPostList([...postList, ...nextResults]);
+    setIsLoading(false);
   };
 
-  const setPosts = (data) => {
+  const setPosts = async (data) => {
     if (!data || ! data?.edges || ! data?.pageInfo) {
       return;
     }
 
-    const newPosts = postsData.concat(data?.edges);
-    setPostsData(newPosts);
+    if (isMainContent || isCategoryContent || isAuthorContent || isTagContent) {
+      const imageLoadPromises = data?.edges.map(async (post) => {
+        const templateImage = new Image();
+        templateImage.src = post.node?.featuredImage?.node.sourceUrl ? post.node?.featuredImage?.node.sourceUrl : post.node?.firstImgPost;
+        const templateImageLoaded = new Promise((resolve) => {
+            templateImage.onload = () => resolve(true);
+            templateImage.onerror = () => resolve(false);
+        });
+
+        return templateImageLoaded;
+      });
+
+      await Promise.all(imageLoadPromises);
+    }
+
+    setPostsData(postsData.concat(data?.edges));
     setPageInfo({...data?.pageInfo});
+    setIsLoading(false);
   };
 
   const loadMoreItems = async (endCursor = null) => {
@@ -67,7 +99,6 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
     const response = await data.json();
     const loadPosts = response.data;
 
-    loadPosts.edges.length > 0 && setIsLoading(false);
     setPosts(loadPosts ?? []);
   };
 
