@@ -34,7 +34,7 @@ class Layout extends React.Component {
   static PageHead = PageHead;
 
   render() {
-    const { children } = this.props;
+    const { children, locale } = this.props;
     let headerContent = null;
     let mainContent = null;
     let footerContent = null;
@@ -63,7 +63,7 @@ class Layout extends React.Component {
     });
 
     return (
-      <StyledLayout id="page-layout" className="layout">
+      <StyledLayout id="page-layout" className={`layout ${locale === "ar" ? "rtl" : ""}`}>
         {children}
         {headContent && <Head>{headContent.props.children}</Head>}
         {headerContent && <Header>{headerContent.props.children}</Header>}
@@ -79,7 +79,7 @@ class Layout extends React.Component {
 Layout.propTypes = {
   headContent: PropTypes.bool,
   headerContent: PropTypes.bool,
-  footerContent: PropTypes.bool,
+  footerContent: PropTypes.bool
 };
 
 Layout.defaultProps = {

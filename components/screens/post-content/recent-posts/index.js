@@ -5,7 +5,7 @@ import Card from "@components/screens/common/card";
 const RecentPosts = ({ t, data, locale, ...rest }) => {
   return (
     <StyledRecentPosts {...rest}>
-      <Heading level={3}>{t("Recent posts")}</Heading>
+      <Heading className="recent-posts-title" level={3}>{t("Recent posts")}</Heading>
 
       <div className="posts">
         {data?.edges?.map(({node}) => (

@@ -16,7 +16,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
   const isInThePressContent = true;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <InThePressHeadSEO 
           locale={locale}

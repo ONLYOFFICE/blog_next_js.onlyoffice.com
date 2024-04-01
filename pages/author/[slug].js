@@ -18,7 +18,7 @@ const Author = ({ locale, posts }) => {
   const authorSlug = posts?.edges[0]?.node.author?.node?.slug;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <AuthorHeadSEO
           locale={locale}

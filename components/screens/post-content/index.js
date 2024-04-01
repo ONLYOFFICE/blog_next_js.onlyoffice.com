@@ -88,7 +88,7 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
 
   return (
     <>
-      <StyledPostContent>
+      <StyledPostContent className="post-content">
         <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
 
         <div ref={refContentWrapper} className="content">

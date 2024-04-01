@@ -16,7 +16,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
   const isMainContent = true;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <MainHeadSEO
           locale={locale}
