@@ -44,6 +44,10 @@
     "shortKey": "hi"
   },
   {
+    "key": "ar_AR",
+    "shortKey": "ar"
+  },
+  {
     "key": "sr_RS",
     "shortKey": "sr"
   }
