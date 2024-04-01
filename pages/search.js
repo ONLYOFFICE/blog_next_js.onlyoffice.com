@@ -20,7 +20,7 @@ const Search = ({ locale, recentPosts }) => {
   const routerQuery = router.query.s === undefined ? "" : router.query.s;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <SearchHeadSEO title={`${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>

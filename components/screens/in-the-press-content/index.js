@@ -9,7 +9,7 @@ import InThePressPost from "./in-the-press-post";
 
 const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressContent }) => {
   return (
-    <StyledInThePressContent>
+    <StyledInThePressContent className="in-the-press-content">
       <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />
 
       <div className="wrapper">

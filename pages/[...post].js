@@ -39,7 +39,7 @@ const Post = ({ locale, post, posts }) => {
   }, [post]);
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <PostHeadSEO
           t={t}

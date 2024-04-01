@@ -18,7 +18,7 @@ const Tag = ({ locale, posts }) => {
   const tagSlug = posts?.edges[0]?.node.tags?.nodes[0]?.slug;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <TagHeadSEO
           locale={locale}

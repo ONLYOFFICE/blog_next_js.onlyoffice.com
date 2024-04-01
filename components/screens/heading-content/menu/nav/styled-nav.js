@@ -62,6 +62,7 @@ const StyledNav = styled.nav`
         transition: width 0.2s ease-in-out;
         left: 50%;
         top: 0;
+        z-index: 10;
       }
 
       &:after {
@@ -74,6 +75,7 @@ const StyledNav = styled.nav`
         transition: width 0.2s ease-in-out;
         left: 50%;
         top: 0;
+        z-index: 10;
       }
     }
   }
@@ -341,10 +343,6 @@ const StyledNav = styled.nav`
     &:hover {
       color: #444444;
     }
-  }
-
-  #navitem-download-signin {
-    display: block;
   }
 
   #navitem-download-docs-enterprise,
