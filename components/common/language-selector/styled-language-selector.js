@@ -94,6 +94,10 @@ const StyledLanguageSelector = styled.div`
       background-position-y: -312px;
     }
 
+    &.ar {
+      background-position-y: -336px;
+    }
+
     &.sr {
       background-position-y: -360px;
     }

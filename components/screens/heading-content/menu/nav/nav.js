@@ -8,7 +8,7 @@ const Nav = ({ t, locale, ...rest }) => {
   const [navHidden, setNavHidden] = useState(false);
 
   const hrefLang = `https://onlyoffice.com${
-    locale === "en" || locale === "el" || locale === "hi" || locale === "sr" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
@@ -51,8 +51,8 @@ const Nav = ({ t, locale, ...rest }) => {
               </div>
               <div className="outer-box">
                 <div className="dropdown-item-label">{t("Perform your tasks online")}</div>
-                <InternalLink id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Find form templates")} />
-                <InternalLink id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Fill out forms online")} />
+                <InternalLink id="navitem-products-find-templates" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Find form templates")} />
+                <InternalLink id="navitem-products-oforms" className="dropdown-item" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Fill out forms online")} />
                 <InternalLink id="navitem-products-convert-text" className="dropdown-item" href={`${hrefLang}/text-file-converter.aspx`} label={t("Convert text files")} />
                 <InternalLink id="navitem-products-convert-spreadsheets" className="dropdown-item" href={`${hrefLang}/spreadsheet-converter.aspx`} label={t("Convert spreadsheets")} />
                 <InternalLink id="navitem-products-convert-presentations" className="dropdown-item" href={`${hrefLang}/presentation-converter.aspx`} label={t("Convert presentations")} />

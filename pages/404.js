@@ -14,7 +14,7 @@ const Error = ({ locale }) => {
   const [stateMobile, setStateMobile] = useState(false);
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <ErrornHeadSEO title={`${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>

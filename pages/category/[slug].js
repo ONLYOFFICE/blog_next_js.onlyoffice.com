@@ -18,7 +18,7 @@ const Category = ({ locale, posts }) => {
   const categorySlug = posts?.edges[0]?.node.categories?.nodes[0]?.slug;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <CategoryHeadSEO
           locale={locale}

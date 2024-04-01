@@ -3,7 +3,7 @@ import ExternalLink from "@components/common/external-link";
 
 const CloudBlock = ({ t, locale, ...rest }) => {
   const href = `https://www.onlyoffice.com${
-    locale === "en" || locale === "el" || locale === "hi" || locale === "sr" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : 
     `/${locale}`

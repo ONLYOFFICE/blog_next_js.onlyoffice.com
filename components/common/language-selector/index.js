@@ -21,6 +21,7 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
     { locale: "zh_CN", shortKey: "zh-hans" },
     { locale: "el", shortKey: "el" },
     { locale: "hi_IN", shortKey: "hi" },
+    { locale: "ar_AR", shortKey: "ar" },
     { locale: "sr_RS", shortKey: "sr" }
   ];
 

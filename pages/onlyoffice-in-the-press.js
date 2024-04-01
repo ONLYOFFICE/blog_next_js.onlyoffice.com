@@ -16,7 +16,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
   const isInThePressContent = true;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
         <InThePressHeadSEO 
           locale={locale}
@@ -42,7 +42,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
 
 export const getStaticProps = async ({ locale }) => {
   const inThePressPosts = await getInThePressPosts(locale, 60, null);
-  const inThePressDate = await getInThePressDate(locale === "el" || locale === "hi" || locale === "sr" ? "en" : locale);
+  const inThePressDate = await getInThePressDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "en" : locale);
   const recentPosts = await getRecentPosts(locale);
 
 	return {
