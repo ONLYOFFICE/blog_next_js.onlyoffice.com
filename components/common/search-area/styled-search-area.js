@@ -49,7 +49,7 @@ const StyledSearchArea = styled.form`
 
   .close-icon {
     cursor: pointer;
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/close-icon.react.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/close-icon.svg");
   }
 `;
 export default StyledSearchArea;
