@@ -58,7 +58,7 @@ export const getStaticProps = async ({ locale }) => {
   const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el, for-developers-hi, for-developers-ar, for-developers-sr");
   const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el, for-business-hi, for-business-ar, for-business-sr");
   const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el, for-education-hi, for-education-ar, for-education-sr");
-  const inThePressPosts = await getInThePressPosts(locale, 5, null);
+  const inThePressPosts = await getInThePressPosts(locale, 2, null);
   const mainPageDate = await getMainPageDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "en" : locale);
   const mainPostExcerpt = await getMainPostExcerpt(locale);
 

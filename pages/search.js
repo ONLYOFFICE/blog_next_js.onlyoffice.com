@@ -22,7 +22,7 @@ const Search = ({ locale, recentPosts }) => {
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
-        <SearchHeadSEO title={`${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
+        <SearchHeadSEO title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${routerQuery}` : `${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
       <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>

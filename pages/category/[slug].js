@@ -22,7 +22,7 @@ const Category = ({ locale, posts }) => {
       <Layout.PageHead>
         <CategoryHeadSEO
           locale={locale}
-          title={`${categoryName} | ${t("ONLYOFFICE Blog")}`}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${categoryName}` : `${categoryName} | ${t("ONLYOFFICE Blog")}`}
           categorySlug={categorySlug}
         />
       </Layout.PageHead>

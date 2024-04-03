@@ -98,8 +98,8 @@
     "Get help": "احصل على مساعدة",
     "Get news": "الحصول على الأخبار",
     "Blog": "المنتدى",
-    "27 February 2024": "27 Φεβρουαρίου 2024",
-    "30 January 2024": "30 Ιανουαρίου 2024",
+    "27 February 2024": "٢٧ فبراير ٢٠٢٤",
+    "30 January 2024": "٣٠ يناير ٢٠٢٤",
     "blogLink1": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
     "blogLink2": "https://www.onlyoffice.com/blog/2024/01/onlyoffice-docs-8-0-released",
   
@@ -123,7 +123,7 @@
     "App Directory": "دليل التطبيقات",
     "Others": "آخرون",
     "Legal notice": "إشعار قانوني",
-    "Comparison": "Σύγκριση",
+    "Comparison": "Comparison",
     "Contact us": "اتصل بنا",
     "Sales questions": "أسئلة المبيعات",
     "Partner inquiries": "استفسارات الشركاء",
@@ -131,7 +131,7 @@
     "Request a call": "اطلب مكالمة",
     "Follow us on": "تابعنا عبر",
     "All rights reserved": "كل الحقوق محفوظة",
-    "© Ascensio System SIA": "© Ascensio System SIA 2009-{{currentYear}}©.",
+    "© Ascensio System SIA": "© Ascensio System SIA 2009-{{currentYear}}.",
   
     "Search": "يبحث",
     "Category Topics": "موضوعات الفئة",
@@ -165,6 +165,6 @@
     "Tag Archives": "أرشيفات الإشارات",
     "No results matching your query could be found": "لا يمكن العثور على نتائج تطابق استفسارك",
     "Outdated": "قديم",
-    "Search results for": "ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ ΓΙΑ",
-    "Search blog": "Αναζήτηση ιστολογίου"
+    "Search results for": "Search results for",
+    "Search blog": "Search blog"
   }

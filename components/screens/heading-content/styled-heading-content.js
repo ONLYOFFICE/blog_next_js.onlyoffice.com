@@ -150,10 +150,12 @@ const StyledHeading = styled.div`
       .overlay {
         opacity: 1;
         visibility: visible;
+        transition: opacity 0.3s cubic-bezier(0.16,0.68,0.43,0.99), visibility 0.3s cubic-bezier(0.16,0.68,0.43,0.99);
       }
   
       .nav-item-links {
         transform: translate3d(0, 0, 0);
+        transition: transform 0.2s cubic-bezier(0.16,0.68,0.43,0.99);
       }
     }
 
@@ -191,7 +193,6 @@ const StyledHeading = styled.div`
       opacity: 0;
       visibility: hidden;
       background-color: rgba(0, 0, 0, 0.27);
-      transition: opacity 0.3s, visibility 0.3s;
       z-index: 1001;
     }
   
