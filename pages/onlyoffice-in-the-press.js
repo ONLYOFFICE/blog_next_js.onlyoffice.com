@@ -20,7 +20,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
       <Layout.PageHead>
         <InThePressHeadSEO 
           locale={locale}
-          title={`${t("ONLYOFFICE IN THE PRESS")} | ${t("ONLYOFFICE Blog")}`}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${t("ONLYOFFICE IN THE PRESS")}` : `${t("ONLYOFFICE IN THE PRESS")} | ${t("ONLYOFFICE Blog")}`}
           metaSiteName={t("SiteName")}
           articlePublishedTime={inThePressDate?.edges[0]?.node?.dateGmt}
           articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}

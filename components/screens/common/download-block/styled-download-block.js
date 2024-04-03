@@ -59,6 +59,7 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         margin-right: 8px;
         width: 32px;
+        min-width: 32px;
         background-position: -8px 0;
       }
     }
@@ -67,6 +68,7 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         margin-right: 8px;
         width: 32px;
+        min-width: 32px;
         background-position: -39px 0;
       }
     }
@@ -75,6 +77,7 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         margin-right: 8px;
         width: 32px;
+        min-width: 32px;
         background-position: -71px 0;
       }
     }

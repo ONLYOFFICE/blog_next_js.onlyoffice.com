@@ -847,8 +847,7 @@ const StyledNav = styled.nav`
     z-index: 1002;
     overflow: auto;
     overflow-x: hidden;
-    transform: translate3d(-100%,0,0);
-    transition: transform .2s cubic-bezier(.16,.68,.43,.99);
+    transform: translate3d(-100%, 0, 0);
 
     #navitem-products {
       .outer-box {

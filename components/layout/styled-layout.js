@@ -377,6 +377,26 @@ const StyledLayout = styled.div`
       }
     }
 
+    .search-content {
+      .breadcrumbs {
+        li {
+          &:not(:first-child) {
+            direction: initial;
+          }
+        }
+      }
+
+      .post-title {
+        text-align: right;
+      }
+    }
+
+    .main-sidebar {
+      .in-the-press-title {
+        text-align: right;
+      }
+    }
+
     .category-posts-title {
       margin-left: 32px;
       margin-right: 0;
@@ -405,6 +425,7 @@ const StyledLayout = styled.div`
     .newsletter-title {
       margin-right: 0;
       margin-left: 56px;
+      max-width: 204px;
 
       @media screen and ${device.laptop} {
         margin: 0 0 32px;
@@ -416,6 +437,7 @@ const StyledLayout = styled.div`
         input {
           border-right: 1px solid #aaaaaa;
           border-left: none;
+          border-radius: 0 3px 3px 0;
         }
 
         button {
@@ -434,7 +456,22 @@ const StyledLayout = styled.div`
     }
 
     .download-block-btns {
-      direction: initial;
+      .download-block-btn {
+        &.mac-os,
+        &.linux,
+        &.windows {
+          &::before {
+            margin-right: 0;
+            margin-left: 8px;
+
+            @media screen and ${device.tablet} {
+              margin-left: 6px;
+              width: 23px;
+              min-width: 23px;
+            }
+          }
+        }
+      }
     }
 
     .category-topics-list {
@@ -457,6 +494,42 @@ const StyledLayout = styled.div`
     .author-title,
     .tag-title {
       text-align: right;
+    }
+
+    .tag-list {
+      justify-content: end;
+
+      .tag-items {
+        padding-right: 0;
+        padding-left: 12px;
+
+        @media screen and ${device.tablet} {
+          padding-left: 0;
+        }
+      }
+
+      .tag-share {
+        margin: 10px 0;
+
+        @media screen and ${device.tablet} {
+          margin: 0;
+        }
+  
+        .share-buttons {
+          justify-content: left;
+
+          @media screen and ${device.tablet} {
+            justify-content: initial;
+          }
+        }
+  
+        .share-button {
+          &:not(:last-child) {
+            margin-right: 0;
+            margin-left: 8px;
+          }
+        }
+      }
     }
 
     .modal {
