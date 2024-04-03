@@ -1,7 +1,7 @@
 import StyledBreadcrumbs from "./styled-breadcrumbs";
 import InternalLink from "@components/common/internal-link";
 
-const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressContent, isCategoryContent, isTagContent, isSearchContent, searchQuery, ...rest }) => {
+const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressContent, isCategoryContent, isTagContent, isSearchContent, searchQuery, locale, ...rest }) => {
   return (
     <StyledBreadcrumbs {...rest}>
       <li>
@@ -24,7 +24,7 @@ const Breadcrumbs = ({ t, data, isPostContent, isAuthorContent, isInThePressCont
         :
           isTagContent ? <li>{data?.edges[0]?.node.tags?.nodes[0]?.name}</li>
         :
-          isSearchContent ? <li>{`${t("Search results for")} '${searchQuery === undefined ? "" : searchQuery}'`}</li> 
+          isSearchContent ? <li>{`${locale === "ar" ? `'${searchQuery === undefined ? "" : searchQuery}' ${t("Search results for")}` : `${t("Search results for")} '${searchQuery === undefined ? "" : searchQuery}'`}`}</li> 
         : 
           null
       }

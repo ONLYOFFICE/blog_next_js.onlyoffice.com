@@ -64,7 +64,7 @@ const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
     <StyledSearchContent>
       <div className="wrapper">
         <div className="content">
-          <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} />
+          <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} locale={locale} />
 
           <SearchArea 
             label={t("Search")}
@@ -97,7 +97,7 @@ const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
         </div>
 
         <div className="sidebar">
-          <RecentPosts t={t} data={recentPosts} />
+          <RecentPosts t={t} locale={locale} data={recentPosts} />
           <FollowUs t={t} locale={locale} />
         </div>
       </div>
