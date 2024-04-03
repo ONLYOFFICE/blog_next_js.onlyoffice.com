@@ -22,7 +22,7 @@ const Tag = ({ locale, posts }) => {
       <Layout.PageHead>
         <TagHeadSEO
           locale={locale}
-          title={`${tagName} | ${t("ONLYOFFICE Blog")}`}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${tagName}` : `${tagName} | ${t("ONLYOFFICE Blog")}`}
           tagSlug={tagSlug}
         />
       </Layout.PageHead>

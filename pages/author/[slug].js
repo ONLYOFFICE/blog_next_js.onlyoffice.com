@@ -22,7 +22,7 @@ const Author = ({ locale, posts }) => {
       <Layout.PageHead>
         <AuthorHeadSEO
           locale={locale}
-          title={`${authorName} | ${t("ONLYOFFICE Blog")}`}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${authorName}` : `${authorName} | ${t("ONLYOFFICE Blog")}`}
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
