@@ -61,7 +61,7 @@ const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
   }, [searchQueryString, locale]);
 
   return (
-    <StyledSearchContent>
+    <StyledSearchContent className="search-content">
       <div className="wrapper">
         <div className="content">
           <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} locale={locale} />
