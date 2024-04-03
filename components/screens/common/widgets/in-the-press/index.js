@@ -9,7 +9,7 @@ const InThePress = ({ t, locale, inThePressPosts }) => {
       <Heading className="in-the-press-title" level={4}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
 
       <ul className="in-the-press-list">
-        {inThePressPosts?.edges.slice(0, 2).map(({node}) => (
+        {inThePressPosts?.edges.map(({node}) => (
           <li key={node.id}>
             <InternalLink href={node?.url} target="_blank">{node.title}</InternalLink>
             <div className="in-the-press-date">
