@@ -282,11 +282,11 @@ const StyledLayout = styled.div`
       .contact-text {
         text-align: right;
       }
+    }
 
-      .close-icon {
-        right: initial;
-        left: 0;
-      }
+    .close-icon {
+      right: initial;
+      left: 0;
     }
 
     .section-page {
@@ -348,6 +348,13 @@ const StyledLayout = styled.div`
         .share-buttons {
           margin-left: 0;
           margin-right: auto;
+        }
+
+        .share-button {
+          &:not(:last-child) {
+            margin-right: 0;
+            margin-left: 8px;
+          }
         }
       }
     }
