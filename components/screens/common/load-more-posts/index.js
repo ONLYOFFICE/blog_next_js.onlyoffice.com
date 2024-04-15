@@ -74,7 +74,13 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
       await Promise.all(imageLoadPromises);
     }
 
-    setPostsData(postsData.concat(data?.edges));
+    if (isSearchContent) {
+      const uniqueNextResults = data.edges.filter(nextResult => !postsData.some(post => post.node.id === nextResult.node.id));
+      setPostsData(postsData.concat(uniqueNextResults));
+    } else {
+      setPostsData(postsData.concat(data?.edges));
+    }
+
     setPageInfo({...data?.pageInfo});
     setIsLoading(false);
   };
