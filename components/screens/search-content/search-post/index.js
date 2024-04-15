@@ -4,6 +4,7 @@ import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import InternalLink from "@components/common/internal-link";
+import parse from "html-react-parser";
 
 const SearchPost = ({ locale, data, searchQueryString }) => {
   const HightLight = (props) => {
@@ -49,7 +50,7 @@ const SearchPost = ({ locale, data, searchQueryString }) => {
             <Text className="post-text" as="p">{HightLightText(data?.aioseoDescription)}</Text>
           :
           data?.excerpt ?
-            <Text className="post-text" as="p">{HightLightText(data?.excerpt)}</Text>
+            <Text className="post-text" as="p">{HightLightText(parse(data?.excerpt)[0].props.children)}</Text>
           :
             null
         }
