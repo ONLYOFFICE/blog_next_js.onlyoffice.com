@@ -44,7 +44,7 @@ const StyledSearchPost = styled.div`
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       cursor: pointer;
 
@@ -64,6 +64,7 @@ const StyledSearchPost = styled.div`
     margin: 0;
     font-size: 16px;
     line-height: 26px;
+    white-space: initial;
 
     p {
       margin: 0;
