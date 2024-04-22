@@ -97,6 +97,8 @@ const StyledLayout = styled.div`
     }
 
     .advent-announce {
+      direction: initial;
+
       &.is-open {
         @media screen and ${device.laptop} {
           transform: translate3d(-429px, 0, 0);
