@@ -59,7 +59,7 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
   };
 
   const handleClickOutside = (e) => {
-    if (windowCheck && stateMobile && !e.target.closest(".nav-item-links")) {
+    if (windowCheck && stateMobile && !e.target.closest(".nav")) {
       onCloseMenu();
     }
   };

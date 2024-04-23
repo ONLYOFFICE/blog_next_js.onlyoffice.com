@@ -2,76 +2,11 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import bannerLeft from "@public/images/banners/banner-left.svg";
 import bannerRight from "@public/images/banners/banner-right.svg";
-import bannerLeftMobile from "@public/images/banners/banner-left-mobile.svg";
-import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
-import bannerZoom from "@public/images/banners/banner-zoom.svg";
-import bannerZoomMobile from "@public/images/banners/banner-zoom-mobile.svg";
+import bannerIcon from "@public/images/banners/banner-icon.svg";
 import bannerArrow from "@public/images/banners/banner-arrow.svg";
+import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
-  &.ar {
-    .advent-announce {
-      .advent-announce-text {
-        &:before {
-          right: calc(100% + 35px);
-          width: 343px;
-          background-image: url(${bannerRight.src});
-
-          @media screen and ${device.laptop} {
-            right: calc(100% - 22px);
-            width: 101px;
-            background-image: url(${bannerRightMobile.src});
-          }
-        }
-
-        &:after {
-          left: calc(100% + 68px);
-          width: 326px;
-          background-image: url(${bannerLeft.src});
-
-          @media screen and ${device.laptop} {
-            top: 1px;
-            left: calc(100% + 10px);
-            width: 78px;
-            background-image: url(${bannerLeftMobile.src});
-            background-position: center center;
-          }
-        }
-
-        span {
-          &:before {
-            right: calc(100% + 4px);
-            width: 24px;
-            height: 24px;
-            background-image: url(${bannerArrow.src});
-            transform: translateY(-50%) rotate(180deg);
-
-            @media screen and ${device.laptop} {
-              top: calc(50% - 1px);
-              right: calc(100% + 2px);
-            }
-          }
-    
-          &:after {
-            left: calc(100% + 13px);
-            width: 32px;
-            height: 32px;
-            background-image: url(${bannerZoom.src});
-
-            @media screen and ${device.laptop} {
-              top: calc(50% - 1px);
-              left: calc(100% + 7px);
-              width: 28px;
-              height: 28px;
-              background-image: url(${bannerZoomMobile.src});
-              background-size: contain;
-            }
-          }
-        }
-      }
-    }
-  }
-
   .advent-announce {
     position: relative;
     top: 0;
@@ -81,7 +16,7 @@ const StyledAdventAnnounce = styled.div`
     height: 56px;
     overflow: hidden;
     text-align: center;
-    background-color: #0B5CFF;
+    background: linear-gradient(73.99deg, #042959 23.48%, #0A4DA6 100%);
 
     a {
       position: absolute;
@@ -89,9 +24,14 @@ const StyledAdventAnnounce = styled.div`
       width: 100%;
       height: 100%;
       text-decoration: none;
+      background-image: url(${bannerLeft.src}), url(${bannerRight.src});
+      background-repeat: no-repeat;
+      background-position: left, right;
 
       @media screen and ${device.laptop} {
         height: 48px;
+        background-image: url(${bannerRightMobile.src});
+        background-position: right;
       }
     }
 
@@ -103,12 +43,12 @@ const StyledAdventAnnounce = styled.div`
       justify-content: center;
       margin: 0 auto;
       font-size: 14px;
-      line-height: 19px;
+      line-height: 20px;
       letter-spacing: 0.01em;
       text-align: center;
-      width: 100%;
+      width: max-content;
+      max-width: 985px;
       height: 100%;
-      max-width: max-content;
       color: #fff;
       text-decoration: none;
       z-index: 10;
@@ -117,8 +57,6 @@ const StyledAdventAnnounce = styled.div`
       &:before {
         content: "";
         display: block;
-        position: absolute;
-        top: 0;
         height: 56px;
         background-repeat: no-repeat;
         z-index: -1;
@@ -129,69 +67,39 @@ const StyledAdventAnnounce = styled.div`
       }
 
       &:before {
-        right: calc(100% + 68px);
-        width: 326px;
-        background-image: url(${bannerLeft.src});
+        margin-right: 16px;
+        width: 53px;
+        min-width: 53px;
+        height: 39px;
+        background-image: url(${bannerIcon.src});
 
         @media screen and ${device.laptop} {
-          top: 1px;
-          right: calc(100% - 21px);
-          width: 78px;
-          background-image: url(${bannerLeftMobile.src});
-          background-position: center center;
+          content: none;
         }
       }
 
       &:after {
-        left: calc(100% + 35px);
-        width: 343px;
-        background-image: url(${bannerRight.src});
+        margin-left: 4px;
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        background-image: url(${bannerArrow.src});
 
         @media screen and ${device.laptop} {
-          left: calc(100% - 46px);
-          width: 101px;
-          background-image: url(${bannerRightMobile.src});
+          margin-left: 2px;
         }
       }
 
       span {
-        &:before {
-          content: "";
-          position: absolute;
-          right: calc(100% + 13px);
-          top: 50%;
-          width: 32px;
-          height: 32px;
-          background-image: url(${bannerZoom.src});
-          background-repeat: no-repeat;
-          transform: translateY(-50%);
+        font-weight: 600;
+      }
 
-          @media screen and ${device.laptop} {
-            top: calc(50% - 1px);
-            right: calc(100% + 3px);
-            width: 28px;
-            height: 28px;
-            background-image: url(${bannerZoomMobile.src});
-            background-size: contain;
-          }
-        }
+      b {
+        color: #00FFFF;
+      }
 
-        &:after {
-          content: "";
-          position: absolute;
-          left: calc(100% + 4px);
-          top: 50%;
-          width: 24px;
-          height: 24px;
-          background-image: url(${bannerArrow.src});
-          background-repeat: no-repeat;
-          transform: translateY(-50%);
-
-          @media screen and ${device.laptop} {
-            top: calc(50% - 1px);
-            left: calc(100% + 2px);
-          }
-        }
+      @media screen and ${device.laptop} {
+        font-weight: 700;
       }
     }
 
@@ -211,6 +119,35 @@ const StyledAdventAnnounce = styled.div`
     @media (max-width: 375px) {
       &.is-open {
         transform: translate3d(calc(100vw - 32px), 0, 0);
+      }
+    }
+  }
+
+  &.de,
+  &.pt-br {
+    .advent-announce {
+      .advent-announce-text {
+        max-width: 916px;
+      }
+    }
+  }
+
+  &.es {
+    .advent-announce {
+      .advent-announce-text {
+        max-width: 892px;
+      }
+    }
+  }
+
+  &.it {
+    .advent-announce {
+      .advent-announce-text {
+        max-width: 892px;
+
+        @media screen and (max-width: 340px) {
+          max-width: 266px;
+        }
       }
     }
   }
