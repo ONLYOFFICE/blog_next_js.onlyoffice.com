@@ -9,6 +9,8 @@ const Nav = ({ t, locale, ...rest }) => {
   const [navHidden, setNavHidden] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
 
+  const appDirectoryHrefLang = `https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" || locale === "ja" ? `/${locale}` : locale === "zh-hans" ? "/zh" : ""}`;
+  const oformsHrefLang = `https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`;
   const hrefLang = `https://onlyoffice.com${
     locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
     locale === "zh-hans" ? "/zh" :
@@ -100,7 +102,7 @@ const Nav = ({ t, locale, ...rest }) => {
                         <InternalLink className="menu-submenu-link" href={`${hrefLang}/pdf-editor.aspx`} label={t("PDF Editor")} />
                         <InternalLink className="menu-submenu-link" href={`${hrefLang}/form-creator.aspx`} label={t("Form creator")} />
                         <InternalLink className="menu-submenu-link" href={`${hrefLang}/e-book.aspx`} label={t("E-book creator")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/markdown`} label={t("Markdown editor")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/markdown`} label={t("Markdown editor")} />
                         <InternalLink className="menu-submenu-link" href={`${hrefLang}/seamless-collaboration.aspx`} label={t("Collaboration features")} />
                       </div>
                     </div>
@@ -143,21 +145,21 @@ const Nav = ({ t, locale, ...rest }) => {
                       <button onClick={() => setActiveTab(null)} className="mobile-heading-nav-item">{t("Marketplace")}</button>
                       <div className="menu-submenu-wrapper">
                         <div className="menu-label">{t("AI assistants")}</div>
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/openai`} label={t("ChatGPT")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/zhipu`} label={t("ZhiPu Copilot")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/openai`} label={t("ChatGPT")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/zhipu`} label={t("ZhiPu Copilot")} />
                       </div>
                       <div className="menu-submenu-wrapper">
                         <div className="menu-label">{t("Translators")}</div>
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/apertium`} label={t("Apertium")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/deepl`} label={t("DeepL")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/translator`} label={t("Google")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/apertium`} label={t("Apertium")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/deepl`} label={t("DeepL")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/translator`} label={t("Google")} />
                       </div>
                       <div className="menu-submenu-wrapper">
                         <div className="menu-label">{t("Communication")}</div>
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/jitsi`} label={t("Jitsi")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/telegram`} label={t("Telegram")} />
-                        <InternalLink className="menu-submenu-link" href={`${hrefLang}/app-directory/rainbow`} label={t("Rainbow")} />
-                        <InternalLink className="menu-submenu-link" href={`https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" ? `/${locale}` : ""}`} label={t("See all plugins")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/jitsi`} label={t("Jitsi")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/telegram`} label={t("Telegram")} />
+                        <InternalLink className="menu-submenu-link" href={`${appDirectoryHrefLang}/rainbow`} label={t("Rainbow")} />
+                        <InternalLink className="menu-submenu-link" href={appDirectoryHrefLang} label={t("See all plugins")} />
                       </div>
                     </div>
                   }
@@ -171,8 +173,8 @@ const Nav = ({ t, locale, ...rest }) => {
                     <button onClick={() => setActiveTab(null)} className="mobile-heading-nav-item">{t("Online services")}</button>
                     <div className="menu-box-inner">
                       <div className="menu-label">{t("Templates")}</div>
-                      <InternalLink className="menu-submenu-link" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Find PDF form templates")} />
-                      <InternalLink className="menu-submenu-link" href={`https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`} label={t("Fill out PDF forms online")} />
+                      <InternalLink className="menu-submenu-link" href={oformsHrefLang} label={t("Find PDF form templates")} />
+                      <InternalLink className="menu-submenu-link" href={oformsHrefLang} label={t("Fill out PDF forms online")} />
                     </div>
                     <div className="menu-box-inner">
                       <div className="menu-label">{t("Convert")}</div>
