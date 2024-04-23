@@ -37,7 +37,7 @@ const StyledSocialLinks = styled.div`
     vertical-align: middle;
     width: 40px;
     height: 40px;
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/social-icons/color_social_icons.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/color_social_icons-1.svg");
     background-color: #f9f9f9;
     background-repeat: no-repeat;
     background-position: 0;
