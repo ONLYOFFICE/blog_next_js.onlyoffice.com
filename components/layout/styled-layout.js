@@ -51,6 +51,12 @@ const StyledLayout = styled.div`
       }
 
       &.is-open {
+        .nav {
+          @media screen and ${device.laptop} {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
         .nav-btn-mobile,
         .nav-selector-wrapper {
           @media screen and ${device.laptop} {
@@ -114,69 +120,20 @@ const StyledLayout = styled.div`
       }
     }
 
-    .nav-item-links {
-      .dropdown-item {
-        padding: 0 68px 0 32px;
+    .nav {
+      @media screen and ${device.laptop} {
+        border-right: none;
+        border-left: 1px solid #e5e5e5;
+      }
 
-        &:before {
-          left: 0;
-          right: 32px;
-
-          @media screen and ${device.laptop} {
-            top: 8px;
-            right: 24px;
-          }
-        }
-
+      .menu-wrapper {
         @media screen and ${device.laptop} {
-          padding: 8px 58px 8px 24px;
+          text-align: initial;
         }
       }
 
-      .dropdown-item-text {
-        text-align: right;
-      }
-
-      .dropdown-item-label {
-        @media screen and ${device.laptop} {
-          text-align: right;
-        }
-      }
-
-      .nav-2nd-menu-link {
-        padding: 0 72px 0 32px;
-
-        @media screen and ${device.laptop} {
-          padding: 9px 56px 9px 24px;
-        }
-      }
-
-      .inner-box-links {
-        #navitem-download-docspace-signin,
-        #navitem-download-docs-enterprise-signin {
-          padding: 0px 72px 0px 8px;
-
-          @media screen and ${device.laptop} {
-            padding: 9px 56px 9px 8px;
-          }
-
-          @media screen and (max-width: 399px) {
-            padding: 9px 56px 9px 16px;
-          }
-        }
-
-        #navitem-download-docspace-signup,
-        #navitem-download-docs-enterprise-signup {
-          padding: 0px 8px 0px 48px;
-
-          @media screen and ${device.laptop} {
-            padding: 9px 8px 9px 24px;
-          }
-
-          @media screen and (max-width: 399px) {
-            padding: 9px 56px 9px 16px;
-          }
-        }
+      .menu-label {
+        text-align: initial;
       }
 
       .heading-nav-item {
@@ -190,16 +147,6 @@ const StyledLayout = styled.div`
             right: initial;
             left: 24px;
             transform: translateY(-50%) rotate(180deg);
-          }
-        }
-      }
-
-      .outer-box.with-border {
-        &:after {
-          @media screen and ${device.laptop} {
-            left: initial;
-            right: 50%;
-            transform: translateX(50%);
           }
         }
       }
@@ -252,8 +199,165 @@ const StyledLayout = styled.div`
       }
     }
 
-    #navitem-pricing, 
-    #navitem-partners {
+    .nav-products {
+      .menu-box-btn {
+        padding: 0 0 0 28px;
+
+        &:after {
+          right: initial;
+          left: 0;
+          transform: translateY(-50%) rotate(180deg);
+
+          @media screen and ${device.laptop} {
+            left: 16px;
+          }
+        }
+
+        @media screen and ${device.laptop} {
+          padding: 0 0 0 48px;
+        }
+      }
+
+      .menu-link {
+        padding: 0 68px 0 0;
+
+        &:before {
+          left: initial;
+          right: 32px;
+
+          @media screen and ${device.laptop} {
+            top: 4px;
+            left: initial;
+            right: 24px;
+          }
+        }
+
+        @media screen and ${device.laptop} {
+          padding: 4px 58px 4px 0;
+        }
+      }
+    }
+
+    .nav-selector-wrapper {
+      z-index: 2;
+    }
+
+    .menu-link {
+      padding: 0 68px 0 32px;
+
+      &:before {
+        left: 0;
+        right: 32px;
+
+        @media screen and ${device.laptop} {
+          top: 8px;
+          right: 24px;
+        }
+      }
+
+      @media screen and ${device.laptop} {
+        padding: 8px 58px 8px 24px;
+      }
+    }
+
+    .menu-box-link {
+      &.left {
+        padding: 0 32px 0 8px;
+
+        @media screen and ${device.laptop} {
+          padding: 0 24px 0 8px;
+        }
+      }
+
+      &.right {
+        padding: 0 8px 0 68px;
+
+        @media screen and ${device.laptop} {
+          padding: 0 8px 0 56px;
+        }
+
+        @media screen and ${device.mobileM} {
+          padding: 0 24px 0 8px;
+        }
+      }
+    }
+
+    .menu-box-btn-mobile {
+      &:after {
+        @media screen and ${device.laptop} {
+          right: initial;
+          left: 16px;
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+    }
+
+    .menu-box-btn {
+      .menu-box-text {
+        padding: 0 32px 0 0;
+  
+        @media screen and ${device.laptop} {
+          padding: 0 24px 0 0;
+        }
+      }
+    }
+
+    .menu-box-text {
+      text-align: initial;
+    }
+
+    .menu-block-text {
+      text-align: initial;
+    }
+
+    .menu-box-bottom-links {
+      .menu-link {
+        padding: 0 32px 0 0;
+
+        &:before {
+          right: 0;
+
+          @media screen and ${device.laptop} {
+            top: 0;
+            right: 24px;
+          }
+        }
+
+        &:not(:last-child) {
+          margin: 0 0 0 16px;
+
+          @media screen and ${device.laptop} {
+            margin: 0 0 8px 0;
+          }
+        }
+
+        @media screen and ${device.laptop} {
+          padding: 0 56px 0 24px;
+        }
+      }
+    }
+
+    .menu-apps {
+      .menu-label {
+        margin: 0 0 0 16px;
+
+        @media screen and ${device.laptop} {
+          margin: 0 0 16px 0;
+        }
+      }
+    }
+
+    .menu-apps-list {
+      li {
+        &:not(:last-child) {
+          margin-right: initial;
+          margin-left: 16px;
+        }
+      }
+    }
+
+    .nav-pricing, 
+    .nav-partners {
       .menu-items-wrapper {
         @media screen and (min-width: 1024px) {
           left: calc(50% - 160px);
