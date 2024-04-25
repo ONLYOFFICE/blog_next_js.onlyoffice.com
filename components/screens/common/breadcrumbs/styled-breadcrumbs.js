@@ -14,12 +14,6 @@ const StyledBreadcrumbs = styled.ul`
   text-transform: uppercase;
   color: #444444;
 
-  li {
-    > span {
-      white-space: nowrap;
-    }
-  }
-
   a {
     display: inline-flex;
     font-weight: 600;
