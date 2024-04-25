@@ -19,6 +19,13 @@ const StyledDownLoadBlock = styled.div`
       color: #FF6F3D;
       font-weight: 600;
     }
+
+    @media (max-width: 592px) {
+      margin-bottom: 24px;
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: -0.01em;
+    }
   }
 
   .download-block-btns {
@@ -61,6 +68,15 @@ const StyledDownLoadBlock = styled.div`
         width: 32px;
         min-width: 32px;
         background-position: -8px 0;
+
+        @media ${device.tablet} {
+          margin-right: 6px;
+          width: 23px;
+          min-width: 23px;
+          height: 23px;
+          background-size: 357px 23px;
+          background-position: -8px 0;
+        }
       }
     }
 
@@ -70,6 +86,15 @@ const StyledDownLoadBlock = styled.div`
         width: 32px;
         min-width: 32px;
         background-position: -39px 0;
+
+        @media ${device.tablet} {
+          margin-right: 6px;
+          width: 23px;
+          min-width: 23px;
+          height: 23px;
+          background-size: 366px 23px;
+          background-position: -34px 0;
+        }
       }
     }
 
@@ -79,6 +104,15 @@ const StyledDownLoadBlock = styled.div`
         width: 32px;
         min-width: 32px;
         background-position: -71px 0;
+
+        @media ${device.tablet} {
+          margin-right: 6px;
+          width: 23px;
+          min-width: 23px;
+          height: 23px;
+          background-size: 391px 23px;
+          background-position: -69px 0;
+        }
       }
     }
 
@@ -86,6 +120,13 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         width: 128px;
         background-position: -234px 50%;
+
+        @media ${device.tablet} {
+          width: 92px;
+          height: 23px;
+          background-position: -230px 50%;
+          background-size: 494px 23px;
+        }
       }
     }
 
@@ -93,6 +134,13 @@ const StyledDownLoadBlock = styled.div`
       &:before {
         width: 121px;
         background-position: -107px 50%;
+
+        @media ${device.tablet} {
+          width: 87px;
+          height: 23px;
+          background-position: -111px 50%;
+          background-size: 428px 23px;
+        }
       }
     }
 
@@ -101,80 +149,25 @@ const StyledDownLoadBlock = styled.div`
         filter: grayscale(0);
       }
     }
-  }
 
-  @media ${device.tablet} {
-    padding: 48px 18px 42px;
-
-    .download-block-btn {
+    @media ${device.tablet} {
       padding: 9px 6px;
       font-size: 11px;
       line-height: 17px;
       max-width: 122px;
       min-height: 40px;
       max-height: 40px;
-
-      &.windows {
-        &:before {
-          margin-right: 6px;
-          width: 23px;
-          height: 23px;
-          background-size: 357px 23px;
-          background-position: -8px 0;
-        }
-      }
-
-      &.linux {
-        &:before {
-          margin-right: 6px;
-          width: 23px;
-          height: 23px;
-          background-size: 366px 23px;
-          background-position: -34px 0;
-        }
-      }
-
-      &.mac-os {
-        &:before {
-          margin-right: 6px;
-          width: 23px;
-          height: 23px;
-          background-size: 391px 23px;
-          background-position: -69px 0;
-        }
-      }
-
-      &.google-play {
-        &:before {
-          width: 92px;
-          height: 23px;
-          background-position: -230px 50%;
-          background-size: 494px 23px;
-        }
-      }
-
-      &.app-store {
-        &:before {
-          width: 87px;
-          height: 23px;
-          background-position: -111px 50%;
-          background-size: 428px 23px;
-        }
-      }
     }
+  }
+
+  @media ${device.tablet} {
+    padding: 48px 18px 42px;
   }
 
   @media (max-width: 592px) {
     margin: 0 -16px;
     padding: 48px 13px 42px;
     box-shadow: initial;
-
-    .download-block-title {
-      margin-bottom: 24px;
-      font-size: 16px;
-      line-height: 21px;
-      letter-spacing: -0.01em;
-    }
   }
 `;
 
