@@ -3,9 +3,9 @@ import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
 
-const DownloadBlock = ({ t, ...rest }) => {
+const DownloadBlock = ({ t, locale, ...rest }) => {
   return (
-    <StyledDownLoadBlock {...rest}>
+    <StyledDownLoadBlock className={locale} {...rest}>
       <Heading className="download-block-title" level={3}>{t("Download ONLYOFFICE desktop and mobile apps for")} <span>{t("FREE")}</span></Heading>
       <div className="download-block-btns">
         <InternalLink className="download-block-btn windows" href="https://www.onlyoffice.com/download-desktop.aspx" target="_blank">{t("For Windows")}</InternalLink>

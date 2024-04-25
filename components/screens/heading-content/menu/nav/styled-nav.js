@@ -50,6 +50,24 @@ const StyledNav = styled.nav`
     }
   }
 
+  &.hy {
+    .heading-nav-item {
+      padding: 28px 12px;
+
+      @media screen and (max-width: 1300px) {
+        padding: 28px 6px;
+      }
+
+      @media screen and ${device.laptop} {
+        padding: 16px 40px 16px 24px;
+      }
+    }
+
+    @media screen and (max-width: 1300px) {
+      max-width: 800px;
+    }
+  }
+
   &.hidden {
     .nav-wrapper .nav-item:not(.active),
     .phone-mobile {

@@ -10,7 +10,8 @@ const InThePressHeadSEO = ({ title, locale, articlePublishedTime, articleModifie
     locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
     locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
     locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
-    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : "en_US";
+    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : 
+    locale === "hy" ? "hy_AM" : "en_US";
 
   return (
     <Head>

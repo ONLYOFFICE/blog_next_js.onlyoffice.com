@@ -53,12 +53,12 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
 
 export const getStaticProps = async ({ locale }) => {
   const allPosts = await getAllPosts(locale, 60, null, "");
-  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans, product-releases-el, product-releases-hi, product-releases-ar, product-releases-sr");
-  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el, for-developers-hi, for-developers-ar, for-developers-sr");
-  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el, for-business-hi, for-business-ar, for-business-sr");
-  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el, for-education-hi, for-education-ar, for-education-sr");
+  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans, product-releases-el, product-releases-hi, product-releases-ar, product-releases-sr, product-releases-hy");
+  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el, for-developers-hi, for-developers-ar, for-developers-sr, for-developers-hy");
+  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el, for-business-hi, for-business-ar, for-business-sr, for-business-hy");
+  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el, for-education-hi, for-education-ar, for-education-sr, for-education-hy");
   const inThePressPosts = await getInThePressPosts(locale, 2, null);
-  const mainPageDate = await getMainPageDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "en" : locale);
+  const mainPageDate = await getMainPageDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "en" : locale);
   const mainPostExcerpt = await getMainPostExcerpt(locale);
 
 	return {

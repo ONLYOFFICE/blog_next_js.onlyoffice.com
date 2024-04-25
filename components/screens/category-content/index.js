@@ -19,7 +19,7 @@ const CategoryContent = ({ t, locale, posts, isCategoryContent, categoryName, ca
           <Card data={node} key={node.id} locale={locale} />
         ))}
 
-        <DownloadBlock className="download-block" t={t} />
+        <DownloadBlock className="download-block" t={t} locale={locale} />
 
         {posts?.edges.length > 6 &&
           posts?.edges.slice(6, 12).map(({node}) => (

@@ -11,9 +11,9 @@ const Nav = ({ t, locale, ...rest }) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const appDirectoryHrefLang = `https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" || locale === "ja" ? `/${locale}` : locale === "zh-hans" ? "/zh" : ""}`;
-  const oformsHrefLang = `https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`;
+  const oformsHrefLang = `https://oforms.onlyoffice.com/${locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" || locale === "cs" ? "" : locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale}`;
   const hrefLang = `https://onlyoffice.com${
-    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;

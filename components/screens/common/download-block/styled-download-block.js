@@ -8,6 +8,16 @@ const StyledDownLoadBlock = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
   background-color: #FFFFFF;
 
+  &.hy {
+    .download-block-btn {
+      font-size: 13px;
+
+      @media ${device.tablet} {
+        font-size: 11px;
+      }
+    }
+  }
+
   .download-block-title {
     margin-bottom: 32px;
     font-size: 18px;

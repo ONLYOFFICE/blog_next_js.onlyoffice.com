@@ -40,6 +40,10 @@ const StyledCloudBlock = styled.div`
       max-width: 290px;
     }
 
+    &.hy {
+      max-width: 262px;
+    }
+
     &:hover {
       background-color: #ff865c;
     }
@@ -71,7 +75,8 @@ const StyledCloudBlock = styled.div`
     .button {
       bottom: 32px;
 
-      &.de {
+      &.de,
+      &.hy {
         font-size: 12px;
         max-width: 240px;
       }

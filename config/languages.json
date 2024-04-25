@@ -28,7 +28,7 @@
     "shortKey": "cs"
   },
   {
-    "key": "ja",
+    "key": "ja-JP",
     "shortKey": "ja"
   },
   {
@@ -36,19 +36,23 @@
     "shortKey": "zh-hans"
   },
   {
-    "key": "el",
+    "key": "el-GR",
     "shortKey": "el"
   },
   {
-    "key": "hi_IN",
+    "key": "hi-IN",
     "shortKey": "hi"
   },
   {
-    "key": "ar_AR",
+    "key": "ar-AR",
     "shortKey": "ar"
   },
   {
-    "key": "sr_RS",
+    "key": "sr-RS",
     "shortKey": "sr"
+  },
+  {
+    "key": "hy-AM",
+    "shortKey": "hy"
   }
 ]

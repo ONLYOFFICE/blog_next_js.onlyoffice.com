@@ -12,7 +12,7 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const curLang = `https://www.onlyoffice.com${
-    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" ? "" :
+    locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;

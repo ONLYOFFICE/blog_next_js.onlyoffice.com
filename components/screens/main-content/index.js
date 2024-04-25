@@ -78,7 +78,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
           </div>
         </div>}
 
-        <DownloadBlock t={t} />
+        <DownloadBlock t={t} locale={locale} />
 
         {forBusinessPosts.edges.length > 0 &&
         <div className="category-wrapper">

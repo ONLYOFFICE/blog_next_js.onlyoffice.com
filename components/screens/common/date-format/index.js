@@ -9,6 +9,7 @@ import "moment/locale/ja";
 import "moment/locale/zh-cn";
 import "moment/locale/el";
 import "moment/locale/ar-sa";
+import "moment/locale/hy-am";
 
 const DateFormat = ({ locale, data, format, isRecentPosts }) => {
   return (
@@ -43,6 +44,9 @@ const DateFormat = ({ locale, data, format, isRecentPosts }) => {
         :
         locale === "ar" ?
           Moment(data, 'YYYY-MM-DD').locale("ar-sa").format(format)
+        :
+        locale === "hy" ?
+          Moment(data, 'YYYY-MM-DD').locale("hy-am").format(format)
         :
           Moment(data, 'YYYY-MM-DD').locale("en").format(format)
       }

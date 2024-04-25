@@ -152,6 +152,18 @@ const StyledAdventAnnounce = styled.div`
     }
   }
 
+  &.hy {
+    .advent-announce {
+      .advent-announce-text {
+        max-width: 970px;
+
+        @media screen and (max-width: 340px) {
+          max-width: 266px;
+        }
+      }
+    }
+  }
+
   .advent-desktop-hide {
     display: none;
 
