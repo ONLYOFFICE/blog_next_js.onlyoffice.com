@@ -134,6 +134,10 @@ const StyledLayout = styled.div`
 
       .menu-label {
         text-align: initial;
+
+        @media screen and ${device.laptop} {
+          padding: 4px 0 0 4px;
+        }
       }
 
       .heading-nav-item {
@@ -200,40 +204,60 @@ const StyledLayout = styled.div`
     }
 
     .nav-products {
-      .menu-box-btn {
-        padding: 0 0 0 28px;
+      .menu-box {
+        &:nth-child(2) {
+          .menu-link {
+            padding: 0 32px 0 68px;
 
-        &:after {
-          right: initial;
-          left: 0;
-          transform: translateY(-50%) rotate(180deg);
+            &:before {
+              right: 0;
 
-          @media screen and ${device.laptop} {
-            left: 16px;
+              @media screen and ${device.laptop} {
+                left: initial;
+                right: 24px;
+              }
+            }
+
+            @media screen and ${device.laptop} {
+              padding: 0 60px 0 24px;
+            }
+          }
+
+          .menu-label {
+            margin: 0 0 12px 32px;
+
+            @media screen and ${device.laptop} {
+              margin: 0 24px 12px;
+            }
+          }
+
+          .menu-submenu-text {
+            margin: 0 0 16px 32px;
+
+            @media screen and ${device.laptop} {
+              margin: 0 24px 16px;
+            }
           }
         }
 
-        @media screen and ${device.laptop} {
-          padding: 0 0 0 48px;
-        }
-      }
+        &:nth-child(3) {
+          .menu-link {
+            &.online-services {
+              padding: 4px 60px 4px 16px;
 
-      .menu-link {
-        padding: 0 68px 0 0;
-
-        &:before {
-          left: initial;
-          right: 32px;
-
-          @media screen and ${device.laptop} {
-            top: 4px;
-            left: initial;
-            right: 24px;
+              &:after {
+                margin-left: initial;
+                margin-right: 4px;
+                transform: rotate(180deg);
+              }
+            }
           }
-        }
 
-        @media screen and ${device.laptop} {
-          padding: 4px 58px 4px 0;
+          .menu-box-inner {
+            .menu-link {
+              padding: 0 60px 0 24px;
+            }
+          }
         }
       }
     }
@@ -276,7 +300,7 @@ const StyledLayout = styled.div`
           padding: 0 8px 0 56px;
         }
 
-        @media screen and ${device.mobileM} {
+        @media screen and (max-width: 399px) {
           padding: 0 24px 0 8px;
         }
       }
@@ -293,19 +317,20 @@ const StyledLayout = styled.div`
     }
 
     .menu-box-btn {
-      .menu-box-text {
-        padding: 0 32px 0 0;
+      &.menu-link {
+        &:after {
+          margin-left: initial;
+          margin-right: 4px;
+          transform: rotate(180deg);
+        }
   
         @media screen and ${device.laptop} {
-          padding: 0 24px 0 0;
+          padding: 4px 60px 4px 16px;
         }
       }
     }
 
-    .menu-box-text {
-      text-align: initial;
-    }
-
+    .menu-submenu-text,
     .menu-block-text {
       text-align: initial;
     }
@@ -339,6 +364,7 @@ const StyledLayout = styled.div`
 
     .menu-apps {
       .menu-label {
+        padding: 4px 0 0 4px;
         margin: 0 0 0 16px;
 
         @media screen and ${device.laptop} {
