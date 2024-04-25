@@ -21,7 +21,6 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
         <InThePressHeadSEO 
           locale={locale}
           title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${t("ONLYOFFICE IN THE PRESS")}` : `${t("ONLYOFFICE IN THE PRESS")} | ${t("ONLYOFFICE Blog")}`}
-          metaSiteName={t("SiteName")}
           articlePublishedTime={inThePressDate?.edges[0]?.node?.dateGmt}
           articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}
         />

@@ -21,7 +21,6 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
         <MainHeadSEO
           locale={locale}
           title={t("ONLYOFFICE Blog")}
-          metaSiteName={t("SiteName")}
           metaDescription={t("The official source of latest ONLYOFFICE news, tips, ideas, and promos.")}
           articlePublishedTime={mainPageDate?.edges[0]?.node?.dateGmt}
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}

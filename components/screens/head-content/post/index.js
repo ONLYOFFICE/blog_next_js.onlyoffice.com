@@ -29,7 +29,7 @@ const PostHeadSEO = ({ t, locale, post, postUri }) => {
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={`${baseUrl}${post?.uri.replace(/\/$/, "")}`} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={t("SiteName")} />
+      <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />

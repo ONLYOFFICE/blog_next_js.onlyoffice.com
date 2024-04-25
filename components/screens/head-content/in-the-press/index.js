@@ -1,7 +1,7 @@
 import Head from "next/head";
 import languages from "@config/languages.json";
 
-const InThePressHeadSEO = ({ title, metaSiteName, locale, articlePublishedTime, articleModifiedTime }) => {
+const InThePressHeadSEO = ({ title, locale, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
   const inThePressUrl = `${baseUrl}${locale === "en" ? "" : `${locale}/`}onlyoffice-in-the-press`;
   const languagesKey = 
@@ -21,7 +21,7 @@ const InThePressHeadSEO = ({ title, metaSiteName, locale, articlePublishedTime, 
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={inThePressUrl} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={metaSiteName} />
+      <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:url" content={inThePressUrl} />
