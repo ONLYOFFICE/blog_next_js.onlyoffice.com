@@ -41,7 +41,7 @@ const Newsletter = ({ t, locale }) => {
             <Text as="p">{t("We sent an email message with confirmation to your email address")}</Text>
           </StyledNewsletterConfirm>
         :
-          <StyledNewsletter className="newsletter">
+          <StyledNewsletter className={`newsletter ${locale}`}>
             <div className="newsletter-wrapper">
               <Heading className="newsletter-title" level={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
 
