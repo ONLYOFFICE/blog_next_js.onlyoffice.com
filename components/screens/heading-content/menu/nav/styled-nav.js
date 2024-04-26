@@ -245,6 +245,10 @@ const StyledNav = styled.nav`
       }
 
       &:nth-child(3) {
+        width: max-content;
+        min-width: 312px;
+        max-width: 320px;
+
         .menu-box-inner {
           @media screen and ${device.laptop} {
             .menu-link {
@@ -296,6 +300,12 @@ const StyledNav = styled.nav`
               font-weight: 700;
             }
           }
+        }
+
+        @media screen and ${device.laptop} {
+          width: 100%;
+          min-width: initial;
+          max-width: initial;
         }
       }
     }
