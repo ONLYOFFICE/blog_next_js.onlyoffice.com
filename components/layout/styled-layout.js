@@ -206,20 +206,22 @@ const StyledLayout = styled.div`
     .nav-products {
       .menu-box {
         &:nth-child(2) {
-          .menu-link {
-            padding: 0 32px 0 68px;
-
-            &:before {
-              right: 0;
-
-              @media screen and ${device.laptop} {
-                left: initial;
-                right: 24px;
+          .menu-submenu {
+            .menu-link {
+              padding: 0 32px 0 68px;
+  
+              &:before {
+                right: 0;
+  
+                @media screen and ${device.laptop} {
+                  left: initial;
+                  right: 24px;
+                }
               }
-            }
-
-            @media screen and ${device.laptop} {
-              padding: 0 60px 0 24px;
+  
+              @media screen and ${device.laptop} {
+                padding: 0 60px 0 24px;
+              }
             }
           }
 
@@ -243,12 +245,14 @@ const StyledLayout = styled.div`
         &:nth-child(3) {
           .menu-link {
             &.online-services {
-              padding: 4px 60px 4px 16px;
+              @media screen and ${device.laptop} {
+                padding: 4px 60px 4px 16px;
 
-              &:after {
-                margin-left: initial;
-                margin-right: 4px;
-                transform: rotate(180deg);
+                &:after {
+                  margin-left: initial;
+                  margin-right: 4px;
+                  transform: rotate(180deg);
+                }
               }
             }
           }
@@ -274,7 +278,7 @@ const StyledLayout = styled.div`
         right: 32px;
 
         @media screen and ${device.laptop} {
-          top: 8px;
+          top: 4px;
           right: 24px;
         }
       }
