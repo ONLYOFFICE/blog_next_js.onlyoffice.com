@@ -17,7 +17,8 @@ const PostHeadSEO = ({ t, locale, post, postUri }) => {
     locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
     locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
     locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
-    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : "en_US";
+    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : 
+    locale === "hy" ? "hy_AM" :  "en_US";
 
   return (
     <Head>
@@ -29,7 +30,7 @@ const PostHeadSEO = ({ t, locale, post, postUri }) => {
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={`${baseUrl}${post?.uri.replace(/\/$/, "")}`} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={t("SiteName")} />
+      <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
@@ -62,7 +63,7 @@ const PostHeadSEO = ({ t, locale, post, postUri }) => {
       {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}/${postUri.es_ES.split("/").slice(3).join("/")}`} />}
       {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}/${postUri.fr_FR.split("/").slice(3).join("/")}`} />}
       {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}/${postUri.it_IT.split("/").slice(3).join("/")}`} />}
-      {postUri.ja && <link rel="alternate" hrefLang="ja" href={`${baseUrl}/${postUri.ja.split("/").slice(3).join("/")}`} />}
+      {postUri.ja && <link rel="alternate" hrefLang="ja-JP" href={`${baseUrl}/${postUri.ja.split("/").slice(3).join("/")}`} />}
       {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}/${postUri.pt_BR.split("/").slice(3).join("/")}`} />}
       {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}/${postUri.zh_CN.split("/").slice(3).join("/")}`} />}
 

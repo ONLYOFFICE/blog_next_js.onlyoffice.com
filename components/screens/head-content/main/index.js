@@ -1,7 +1,7 @@
 import Head from "next/head";
 import languages from "@config/languages.json";
 
-const MainHeadSEO = ({ title, metaSiteName, metaDescription, locale, articlePublishedTime, articleModifiedTime }) => {
+const MainHeadSEO = ({ title, metaDescription, locale, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
   const baseLocaleUrl = `https://www.onlyoffice.com/blog/${locale === "en" ? "" : locale}`;
   const image = "https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg";
@@ -13,7 +13,8 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, locale, articlePubl
     locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
     locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
     locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
-    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : "en_US";
+    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : 
+    locale === "hy" ? "hy_AM" : "en_US";
 
   return (
     <Head>
@@ -27,7 +28,7 @@ const MainHeadSEO = ({ title, metaSiteName, metaDescription, locale, articlePubl
       <link rel="canonical" href={canonicalUrl.replace(/\/$/, "")} />
       <link rel="next" href={`${baseUrl}${locale === "en" ? "" : `${locale}/`}page/2/`} />
       <meta property="og:locale" content={languagesKey} />
-      <meta property="og:site_name" content={metaSiteName} />
+      <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />

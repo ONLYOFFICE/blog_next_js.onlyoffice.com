@@ -5,6 +5,16 @@ const StyledNewsletter = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
   border-radius: 5px;
   background-color: #FFFFFF;
+
+  &.hy {
+    .newsletter-body form button {
+      min-width: 162px;
+
+      @media ${device.laptop} {
+        min-width: 56px;
+      }
+    }
+  }
   
   .newsletter-wrapper {
     box-sizing: border-box;

@@ -23,7 +23,7 @@ const Post = ({ locale, post, posts }) => {
     pt_BR: "",
     it_IT: "",
     cs_CZ: "",
-    ja: "",
+    ja_JP: "",
     zh_CN: ""
   });
 
