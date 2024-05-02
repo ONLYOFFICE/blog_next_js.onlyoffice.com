@@ -8,7 +8,7 @@ const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
   return (
     <StyledCard className={mainPost ? "main-post" : ""} {...rest}>
       <InternalLink className="card-img" href={data?.uri} tabIndex={-1}>
-        <img src={data?.featuredImage?.node.sourceUrl ? data?.featuredImage?.node.sourceUrl : data?.firstImgPost} alt={data?.title} />
+        <img src={mainPost ? data?.firstImgPost : data?.featuredImage?.node.sourceUrl ? data?.featuredImage?.node.sourceUrl : data?.firstImgPost} alt={data?.title} />
       </InternalLink>
       <div className="card-body">
         <Heading className="card-title" level={2}>
