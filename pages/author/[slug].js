@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAuthorSlug, getAuthorPosts } from "@lib/api";
+import getAuthorSlug from "@lib/requests/getAuthorSlug";
+import getAuthorPosts from "@lib/requests/getAuthorPosts";
 
 import Layout from "@components/layout";
 import AuthorHeadSEO from "@components/screens/head-content/author";

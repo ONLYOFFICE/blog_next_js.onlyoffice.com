@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getInThePressPosts, getInThePressDate, getRecentPosts } from "@lib/api";
+import getInThePressPosts from "@lib/requests/getInThePressPosts";
+import getInThePressDate from "@lib/requests/getInThePressDate";
+import getRecentPosts from "@lib/requests/getRecentPosts";
 
 import Layout from "@components/layout";
 import InThePressHeadSEO from "@components/screens/head-content/in-the-press";
