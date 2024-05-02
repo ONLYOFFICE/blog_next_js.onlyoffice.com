@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getCategorySlug, getCategoryPosts } from "@lib/api";
+import getCategorySlug from "@lib/requests/getCategorySlug";
+import getCategoryPosts from "@lib/requests/getCategoryPosts";
 
 import Layout from "@components/layout";
 import CategoryHeadSEO from "@components/screens/head-content/category";

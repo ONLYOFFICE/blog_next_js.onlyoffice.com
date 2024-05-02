@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getRecentPosts } from "@lib/api";
+import getRecentPosts from "@lib/requests/getRecentPosts";
 import { useRouter } from "next/router";
 
 import Layout from "@components/layout";
