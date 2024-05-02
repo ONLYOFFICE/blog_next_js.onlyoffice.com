@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAllPosts, getInThePressPosts, getMainPageDate, getMainPostExcerpt } from "@lib/api";
+import getAllPosts from "@lib/requests/getAllPosts";
+import getInThePressPosts from "@lib/requests/getInThePressPosts";
+import getMainPageDate from "@lib/requests/getMainPageDate";
+import getMainPostExcerpt from "@lib/requests/getMainPostExcerpt";
 
 import Layout from "@components/layout";
 import MainHeadSEO from "@components/screens/head-content/main";

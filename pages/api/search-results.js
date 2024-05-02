@@ -1,4 +1,4 @@
-import { getSearchResults } from "@lib/api";
+import getSearchResults from "@lib/requests/getSearchResults";
 
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);

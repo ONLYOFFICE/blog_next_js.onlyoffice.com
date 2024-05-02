@@ -1,4 +1,4 @@
-import { getLastPosts } from "@lib/api";
+import getLastPosts from "@lib/requests/getLastPosts";
 
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);

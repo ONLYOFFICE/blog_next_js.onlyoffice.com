@@ -1,4 +1,9 @@
-import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
+import getAllPosts from "@lib/requests/getAllPosts";
+import getInThePressPosts from "@lib/requests/getInThePressPosts";
+import getSearchResults from "@lib/requests/getSearchResults";
+import getCategoryPosts from "@lib/requests/getCategoryPosts";
+import getAuthorPosts from "@lib/requests/getAuthorPosts";
+import getTagPosts from "@lib/requests/getTagPosts";
 
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getPostsUri, getPostAndMorePosts } from "@lib/api";
+import getPostsUri from "@lib/requests/getPostsUri";
+import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
 
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";

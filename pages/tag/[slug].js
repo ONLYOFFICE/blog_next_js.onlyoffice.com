@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getTagSlug, getTagPosts } from "@lib/api";
+import getTagSlug from "@lib/requests/getTagSlug";
+import getTagPosts from "@lib/requests/getTagPosts";
 
 import Layout from "@components/layout";
 import TagHeadSEO from "@components/screens/head-content/tag";

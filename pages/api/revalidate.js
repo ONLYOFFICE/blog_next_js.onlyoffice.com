@@ -1,4 +1,4 @@
-import { getRevalidatePost } from "@lib/api";
+import getRevalidatePost from "@lib/requests/getRevalidatePost";
 
 export default async function handler(req, res) {
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
