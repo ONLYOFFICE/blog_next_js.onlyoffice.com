@@ -24,8 +24,13 @@ const Post = ({ locale, post, posts }) => {
     pt_BR: "",
     it_IT: "",
     cs_CZ: "",
-    ja_JP: "",
-    zh_CN: ""
+    ja: "",
+    zh_CN: "",
+    el: "",
+    hi: "",
+    ar: "",
+    sr_RS: "",
+    hy: ""
   });
 
   useEffect(() => {
