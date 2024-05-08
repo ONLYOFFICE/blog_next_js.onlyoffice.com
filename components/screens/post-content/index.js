@@ -36,7 +36,7 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
   };
 
   useEffect(() => {
-    const dsFrameUrl = "https://marketingteam.onlyoffice.com/static/scripts/api.js?width=100%25&height=600px&frameId=ds-frame&showHeader=false&showTitle=true&showMenu=false&showFilter=true&init=true";
+    const dsFrameUrl = "https://marketingteam.onlyoffice.com/static/scripts/sdk/1.0.0/api.js?mode=manager&width=100%25&height=500px&frameId=ds-frame&showHeader=false&showTitle=true&showMenu=false&showFilter=true&disableActionButton=false&infoPanelVisible=false&init=true&filter=%5Bobject%20Object%5D&id=58927&requestToken=ejJkS3ZPclVIK3hTWlJaRHdwaW51RXdzdDlRdzN1ckp1UDR3TmlnTnhROD0_IjRmZGQ3MTIyLWNhM2QtNGI1Mi04MjY5LWY4NWVjMjBlMjkzYSI&rootPath=%2Frooms%2Fshare";
     const tiktokEmbedUrl = "https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/falcon/embed/embed_v1.0.11.js";
 
     async function postData() {
