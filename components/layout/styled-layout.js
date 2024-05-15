@@ -134,10 +134,6 @@ const StyledLayout = styled.div`
 
       .menu-label {
         text-align: initial;
-
-        @media screen and ${device.laptop} {
-          padding: 4px 0 0 4px;
-        }
       }
 
       .heading-nav-item {
@@ -203,6 +199,19 @@ const StyledLayout = styled.div`
       }
     }
 
+    .menu-box {
+      &.with-border {
+        &:after {
+          right: initial;
+          left: 0;
+
+          @media screen and ${device.laptop} {
+            left: 50%;
+          }
+        }
+      }
+    }
+
     .nav-products {
       .menu-box {
         &:nth-child(2) {
@@ -227,18 +236,6 @@ const StyledLayout = styled.div`
 
           .menu-label {
             margin: 0 0 12px 32px;
-
-            @media screen and ${device.laptop} {
-              margin: 0 24px 12px;
-            }
-          }
-
-          .menu-submenu-text {
-            margin: 0 0 16px 32px;
-
-            @media screen and ${device.laptop} {
-              margin: 0 24px 16px;
-            }
           }
         }
 
@@ -278,7 +275,6 @@ const StyledLayout = styled.div`
         right: 32px;
 
         @media screen and ${device.laptop} {
-          top: 4px;
           right: 24px;
         }
       }
@@ -290,100 +286,33 @@ const StyledLayout = styled.div`
 
     .menu-box-link {
       &.left {
-        padding: 0 32px 0 8px;
+        padding: 0px 72px 0px 8px;
 
         @media screen and ${device.laptop} {
-          padding: 0 24px 0 8px;
+          padding: 9px 56px 9px 8px;
         }
       }
 
       &.right {
-        padding: 0 8px 0 68px;
+        padding: 0px 8px 0px 48px;
 
         @media screen and ${device.laptop} {
-          padding: 0 8px 0 56px;
-        }
-
-        @media screen and (max-width: 399px) {
-          padding: 0 24px 0 8px;
-        }
-      }
-    }
-
-    .menu-box-btn-mobile {
-      &:after {
-        @media screen and ${device.laptop} {
-          right: initial;
-          left: 16px;
-          transform: translateY(-50%) rotate(180deg);
-        }
-      }
-    }
-
-    .menu-box-btn {
-      &.menu-link {
-        &:after {
-          margin-left: initial;
-          margin-right: 4px;
-          transform: rotate(180deg);
+          padding: 9px 8px 9px 24px;
         }
   
-        @media screen and ${device.laptop} {
-          padding: 4px 60px 4px 16px;
+        @media screen and (max-width: 399px) {
+          padding: 9px 56px 9px 16px;
         }
+      }
+
+      @media screen and ${device.laptop} {
+        padding: 9px 56px 9px 24px;
       }
     }
 
-    .menu-submenu-text,
+    .menu-box-text,
     .menu-block-text {
       text-align: initial;
-    }
-
-    .menu-box-bottom-links {
-      .menu-link {
-        padding: 0 32px 0 0;
-
-        &:before {
-          right: 0;
-
-          @media screen and ${device.laptop} {
-            top: 0;
-            right: 24px;
-          }
-        }
-
-        &:not(:last-child) {
-          margin: 0 0 0 16px;
-
-          @media screen and ${device.laptop} {
-            margin: 0 0 8px 0;
-          }
-        }
-
-        @media screen and ${device.laptop} {
-          padding: 0 56px 0 24px;
-        }
-      }
-    }
-
-    .menu-apps {
-      .menu-label {
-        padding: 4px 0 0 4px;
-        margin: 0 0 0 16px;
-
-        @media screen and ${device.laptop} {
-          margin: 0 0 16px 0;
-        }
-      }
-    }
-
-    .menu-apps-list {
-      li {
-        &:not(:last-child) {
-          margin-right: initial;
-          margin-left: 16px;
-        }
-      }
     }
 
     .nav-pricing, 
