@@ -1,10 +1,5 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import bannerLeft from "@public/images/banners/banner-left.svg";
-import bannerRight from "@public/images/banners/banner-right.svg";
-import bannerIcon from "@public/images/banners/banner-icon.svg";
-import bannerArrow from "@public/images/banners/banner-arrow.svg";
-import bannerRightMobile from "@public/images/banners/banner-right-mobile.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -24,13 +19,13 @@ const StyledAdventAnnounce = styled.div`
       width: 100%;
       height: 100%;
       text-decoration: none;
-      background-image: url(${bannerLeft.src}), url(${bannerRight.src});
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/banners/banner-left-1.svg"), url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/banners/banner-right-1.svg");
       background-repeat: no-repeat;
       background-position: left, right;
 
       @media screen and ${device.laptop} {
         height: 48px;
-        background-image: url(${bannerRightMobile.src});
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/banners/banner-right-mobile-1.svg");
         background-position: right;
       }
     }
@@ -71,7 +66,7 @@ const StyledAdventAnnounce = styled.div`
         width: 53px;
         min-width: 53px;
         height: 39px;
-        background-image: url(${bannerIcon.src});
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/banners/banner-icon-1.svg");
 
         @media screen and ${device.laptop} {
           content: none;
@@ -83,7 +78,7 @@ const StyledAdventAnnounce = styled.div`
         width: 24px;
         min-width: 24px;
         height: 24px;
-        background-image: url(${bannerArrow.src});
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/banners/banner-arrow-1.svg");
 
         @media screen and ${device.laptop} {
           margin-left: 2px;

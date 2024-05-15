@@ -23,6 +23,8 @@ const Footer = ({ t, locale }) => {
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
+  const appDirectoryHrefLang = `https://onlyoffice.com/app-directory${locale === "fr" || locale === "de" || locale === "es" || locale === "ja" ? `/${locale}` : locale === "zh-hans" ? "/zh" : ""}`;
+  const blogHrefLang = `https://onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}`;
 
   return (
     <StyledFooter className={locale} locale={locale}>
@@ -37,6 +39,28 @@ const Footer = ({ t, locale }) => {
           <InternalLink className="footer-link" href={`${hrefLang}/for-research.aspx`} label={t("Research")} />
           <InternalLink className="footer-link" href={`${hrefLang}/education.aspx`} label={t("Education")} />
           <InternalLink className="footer-link" href={`${hrefLang}/nonprofit-organizations.aspx`} label={t("Nonprofits")} />
+        </FooterItem>
+      </div>
+      <div className="footer-item-group">
+        <FooterItem heading={t("Features")} className="features">
+          <InternalLink className="footer-link" href={`${hrefLang}/document-editor.aspx`} label={t("Document Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/spreadsheet-editor.aspx`} label={t("Spreadsheet Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/presentation-editor.aspx`} label={t("Presentation Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/form-creator.aspx`} label={t("Form creator")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/pdf-reader.aspx`} label={t("PDF Editor")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/e-book.aspx`} label={t("E-book creator")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/security.aspx`} label={t("Security")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/accessibility.aspx`} label={t("Accessibility")} />
+          <InternalLink className="footer-link" href={`${appDirectoryHrefLang}/openai`} label={t("AI helper")} />
+          <InternalLink className="footer-link" href={appDirectoryHrefLang} label={t("Marketplace")} />
+        </FooterItem>
+        <FooterItem heading={t("Connectors")} className="connectors">
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-nextcloud.aspx`} label={t("Nextcloud")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-moodle.aspx`} label={t("Moodle")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-odoo.aspx`} label={t("Odoo")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-wordpress.aspx`} label={t("WordPress")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/office-for-zoom.aspx`} label={t("Zoom")} />
+          <InternalLink className="footer-link" href={`${hrefLang}/all-connectors.aspx`} label={t("Others")} />
         </FooterItem>
       </div>
       <div className="footer-item-group">
@@ -60,7 +84,7 @@ const Footer = ({ t, locale }) => {
       </div>
       <div className="footer-item-group">
         <FooterItem heading={t("Get news")} className="get-news">
-          <InternalLink className="footer-link" href={`https://onlyoffice.com/blog${locale === "en" ? "" : `/${locale}`}`} label={t("Blog")} />
+          <InternalLink className="footer-link" href={blogHrefLang} label={t("Blog")} />
         </FooterItem>
         <FooterItem heading={t("Get help")} className="get-help">
           <InternalLink className="footer-link" href="https://forum.onlyoffice.com" label={t("Forum")} />
