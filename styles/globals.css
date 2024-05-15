@@ -83,6 +83,7 @@
 @font-face {
   font-family: "Open Sans";
   src: url("../public/fonts/OpenSans-ExtraBold-Italic.woff") format("woff"), url("../public/fonts/OpenSans-ExtraBold-Italic.woff2") format("woff2");
+  font-weight: 800;
   font-style: italic;
   font-display: swap;
 }

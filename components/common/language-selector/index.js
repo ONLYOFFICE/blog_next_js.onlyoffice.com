@@ -17,13 +17,13 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
     { locale: "pt_BR", shortKey: "pt-br" },
     { locale: "it_IT", shortKey: "it" },
     { locale: "cs_CZ", shortKey: "cs" },
-    { locale: "ja_JP", shortKey: "ja" },
+    { locale: "ja", shortKey: "ja" },
     { locale: "zh_CN", shortKey: "zh-hans" },
-    { locale: "el_GR", shortKey: "el" },
-    { locale: "hi_IN", shortKey: "hi" },
-    { locale: "ar_AR", shortKey: "ar" },
+    { locale: "el", shortKey: "el" },
+    { locale: "hi", shortKey: "hi" },
+    { locale: "ar", shortKey: "ar" },
     { locale: "sr_RS", shortKey: "sr" },
-    { locale: "hy_AM", shortKey: "hy" }
+    { locale: "hy", shortKey: "hy" }
   ];
 
   const onCloseSelector = () => {
