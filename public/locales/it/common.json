@@ -23,6 +23,7 @@
   "Customizable rooms for document collaboration": "Stanze personalizzabili per la collaborazione documentale",
   "Business platform to manage your team activities": "Piattaforma aziendale per gestire le attività del tuo team",
   "Desktop & mobile apps": "App desktop e mobili",
+  "Templates": "Modelli",
   "Connectors": "Connettori", 
   "Ready-to-use apps to connect Docs or DocSpace to your business platform": "App pronte all'uso per connettere Docs o DocSpace alla tua piattaforma aziendale",
   "Collection of plugins to extend Docs or DocSpace funtionality": "Raccolta dei plugin per estendere le funzionalità di Docs o DocSpace",
@@ -145,5 +146,8 @@
   "Author Archives": "Archivio dell'Autore",
   "Tag Archives": "Archivio per il tag",
   "No results matching your query could be found": "Non è stato possibile trovare risultati corrispondenti alla tua ricerca",
-  "Outdated": "Obsoleto"
+  "Outdated": "Obsoleto",
+  "Find PDF form templates": "Trova modelli di moduli PDF",
+  "Fill out PDF forms online": "Compila moduli PDF online",
+  "Converters": "Convertitori"
 }
