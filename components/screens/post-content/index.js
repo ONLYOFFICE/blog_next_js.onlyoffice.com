@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
+import Text from "@components/common/text";
 import Tag from "@components/common/tag";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
@@ -120,6 +121,17 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                 }}
               />
             </article>
+
+            <div className="author-info">
+              <div className="author-info-avatar">
+                <img src={post?.author.node.avatar.url} alt={post?.author.node.name} />
+              </div>
+              <div className="author-info-wrapper">
+                <InternalLink className="author-info-title" href={`/author/${post?.author.node.slug}`} label={post?.author.node.name} />
+                <Text className="author-info-role">Chief Editor</Text>
+              </div>
+              <Text className="author-info-description" label={post?.userBiographicalInfoSmall[locale === "pt-br" ? "pt" : locale === "zh-hans" ? "zh" : locale]} />
+            </div>
 
             <div className="tag-list">
               {

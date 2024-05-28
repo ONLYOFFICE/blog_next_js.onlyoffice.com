@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAuthorSlug from "@lib/requests/getAuthorSlug";
+import getAuthorInfo from "@lib/requests/getAuthorInfo";
 import getAuthorPosts from "@lib/requests/getAuthorPosts";
 
 import Layout from "@components/layout";
@@ -11,12 +12,12 @@ import AdventAnnounce from "@components/screens/heading-content/advent-announce"
 import Footer from "@components/screens/footer-content";
 import AuthorContent from "@components/screens/author-content";
 
-const Author = ({ locale, posts }) => {
+const Author = ({ locale, postAuthor, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
   const isAuthorContent = true;
-  const authorName = posts?.edges[0]?.node.author?.node?.name;
-  const authorSlug = posts?.edges[0]?.node.author?.node?.slug;
+  const authorName = postAuthor?.edges[0]?.node.author.node.name;
+  const authorSlug = postAuthor?.edges[0]?.node.author.node.slug;
 
   return (
     <Layout locale={locale}>
@@ -32,7 +33,7 @@ const Author = ({ locale, posts }) => {
         <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <AuthorContent t={t} locale={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
+        <AuthorContent t={t} locale={locale} postAuthor={postAuthor} posts={posts} isAuthorContent={isAuthorContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer t={t} locale={locale} />
@@ -104,6 +105,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
+  const postAuthor = await getAuthorInfo(locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale, params?.slug);
   const posts = await getAuthorPosts(locale, 60, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
@@ -116,6 +118,7 @@ export const getStaticProps = async ({ locale, params }) => {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
+      postAuthor: postAuthor ? postAuthor : null,
       posts: posts ? posts : null
     },
     revalidate:false,

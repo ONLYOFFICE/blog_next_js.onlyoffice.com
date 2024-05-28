@@ -7,7 +7,7 @@ import SearchPost from "@components/screens/search-content/search-post";
 
 const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
   const dataEdges = isCategoryContent ? data.edges.slice(15) : isInThePressContent ? data.edges.slice(5) : data.edges;
-  const dataSliceLength = isCategoryContent || isInThePressContent ? 0 : isAuthorContent || isTagContent ? 6 : isSearchContent ? 5 : 3;
+  const dataSliceLength = isCategoryContent || isInThePressContent ? 0 : isAuthorContent ? 8 : isTagContent ? 6 : isSearchContent ? 5 : 3;
 
   const [postList, setPostList] = useState(dataEdges.slice(0, dataSliceLength));
   const [hasMore, setHasMore] = useState(data.edges.length > 3);
@@ -152,7 +152,7 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
     }
     {
       hasMore || hasNextPage ?
-        <StyledLoadMorePosts {...rest}>
+        <StyledLoadMorePosts className="load-more-posts" {...rest}>
           <>
             <Button onClick={hasMore ? handleLoadMore : hasNextPage ? () => loadMoreItems(endCursor) : null} className={`load-more-btn ${isLoading ? "loading" : ""} ${isSearchContent || isInThePressContent ? "show" : ""}`} typeButton="transparent" label={t("Load more")} />
 

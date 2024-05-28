@@ -138,7 +138,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const data = await getPostAndMorePosts(locale, params?.post.join("/"));
+  const data = await getPostAndMorePosts(locale, params?.post.join("/"), locale === "zh-hans" ? "zh" : locale === "pt-br" ? "pt" : locale);
 
   if (!data?.post) {
     return {

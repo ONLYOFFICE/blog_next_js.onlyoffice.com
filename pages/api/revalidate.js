@@ -1,4 +1,6 @@
 import getRevalidatePost from "@lib/requests/getRevalidatePost";
+import getRevalidateAuthor from "@lib/requests/getRevalidateAuthor";
+import languages from "@config/languages.json";
 
 export default async function handler(req, res) {
   if (req.query.secret !== process.env.REVALIDATE_TOKEN) {
@@ -12,23 +14,34 @@ export default async function handler(req, res) {
   const tag = req.query.tag;
 
   try {
-    const post = await getRevalidatePost(lang, path);
+    if (req.query.revalidate_author = true) {
+      const posts = await getRevalidateAuthor(author);
 
-    const commonPaths = [
-      `/blog/${lang}`,
-      `/blog/${lang}/search`,
-      `/blog/${lang}/onlyoffice-in-the-press`,
-      `/blog/${lang}${path}`,
-      post && post.translations.map(node => `/blog/${node.href.split("/").slice(3).join("/").replace(/\/$/, "")}`),
-      post && `/blog/${lang}/author/${post.author.node.slug}`,
-      post && post.categories.edges.map(node => `/blog/${lang}/category/${node.node.slug}`),
-      post && post.tags.edges?.map(node => `/blog/${lang}/tag/${node.node.slug}`),
-      Array.isArray(category) ? category.map(node => `/blog/${lang}/category/${node}`) : `/blog/${lang}/category/${category}`,
-      Array.isArray(author) ? author.map(node => `/blog/${lang}/author/${node}`) : `/blog/${lang}/author/${author}`,
-      Array.isArray(tag) ? tag.map(node => `/blog/${lang}/tag/${node}`) : `/blog/${lang}/tag/${tag}`,
-    ].flat();
+      const revalidatePaths = [
+        ...languages.map(language => `/blog/${language.shortKey}/author/${author}`),
+        ...posts.edges.map(({ node }) => `/blog${node.uri.endsWith("/") ? node.uri.slice(0, -1) : node.uri}`)
+      ].flat();
 
-    await Promise.all(commonPaths.map(path => res.revalidate(path)));
+      await Promise.all( revalidatePaths.map(path => res.revalidate(path)));
+    } else {
+      const post = await getRevalidatePost(lang, path);
+
+      const commonPaths = [
+        `/blog/${lang}`,
+        `/blog/${lang}/search`,
+        `/blog/${lang}/onlyoffice-in-the-press`,
+        `/blog/${lang}${path}`,
+        post && post.translations.map(node => `/blog/${node.href.split("/").slice(3).join("/").replace(/\/$/, "")}`),
+        post && `/blog/${lang}/author/${post.author.node.slug}`,
+        post && post.categories.edges.map(node => `/blog/${lang}/category/${node.node.slug}`),
+        post && post.tags.edges?.map(node => `/blog/${lang}/tag/${node.node.slug}`),
+        Array.isArray(category) ? category.map(node => `/blog/${lang}/category/${node}`) : `/blog/${lang}/category/${category}`,
+        Array.isArray(author) ? author.map(node => `/blog/${lang}/author/${node}`) : `/blog/${lang}/author/${author}`,
+        Array.isArray(tag) ? tag.map(node => `/blog/${lang}/tag/${node}`) : `/blog/${lang}/tag/${tag}`,
+      ].flat();
+
+      await Promise.all(commonPaths.map(path => res.revalidate(path)));
+    }
 
     return res.json({ revalidated: true });
   } catch (err) {

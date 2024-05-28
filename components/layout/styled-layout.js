@@ -564,8 +564,58 @@ const StyledLayout = styled.div`
     .main-title,
     .category-title,
     .author-title,
+    .author-info-title,
+    .author-posts-title,
     .tag-title {
       text-align: right;
+    }
+
+    .author-card {
+      margin-right: 0;
+      margin-left: 56px;
+
+      @media screen and (max-width: 896px) {
+        margin-left: 0;
+      }
+    }
+
+    .author-avatar {
+      @media screen and (max-width: 896px) {
+        margin-right: 0;
+        margin-left: 32px;
+      }
+    }
+
+    .author-info-avatar {
+      left: initial;
+      right: 0;
+
+      @media screen and (max-width: 592px) {
+        right: initial;
+      }
+    }
+
+    .author-info-wrapper {
+      padding-left: initial;
+      padding-right: 144px;
+
+      @media screen and (max-width: 592px) {
+        padding-right: 0;
+      }
+    }
+
+    .author-info-role {
+      text-align: right;
+    }
+
+    .author-info-description {
+      padding-left: initial;
+      padding-right: 144px;
+      text-align: right;
+
+      @media screen and (max-width: 592px) {
+        padding-right: 0;
+      }
     }
 
     .tag-list {
