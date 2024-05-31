@@ -104,7 +104,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const posts = await getCategoryPosts(locale, 60, null, params?.slug);
+  const posts = await getCategoryPosts(locale, 15, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
     return {

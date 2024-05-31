@@ -104,7 +104,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const posts = await getAuthorPosts(locale, 60, null, params?.slug);
+  const posts = await getAuthorPosts(locale, 15, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
     return {

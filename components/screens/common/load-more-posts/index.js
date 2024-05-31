@@ -132,12 +132,12 @@ const LoadMorePosts = ({ t, locale, data, isCategoryPage, isInThePressPage, isAu
     }
     {
       isCategoryPage ?
-        postsData.slice(60)?.map(({node}) => (
+        postsData.slice(27)?.map(({node}) => (
           <Card key={node.id} t={t} locale={locale} data={node} />
         ))
       :
       isInThePressPage ?
-        postsData.slice(60)?.map(({node}) => (
+        postsData.slice(15)?.map(({node}) => (
           <InThePressPost key={node.id} locale={locale} data={node} />
         ))
       :
@@ -146,7 +146,7 @@ const LoadMorePosts = ({ t, locale, data, isCategoryPage, isInThePressPage, isAu
           <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
       :
-        postsData.slice(60)?.map(({node}) => (
+        postsData.slice(15)?.map(({node}) => (
           <Card key={node.id} t={t} locale={locale} data={node} />
         ))
     }

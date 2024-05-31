@@ -57,7 +57,7 @@ const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRele
 
 export const getStaticProps = async ({ locale }) => {
   const getCategoryKey = (locale, category) => categoryTopics[locale][category];
-  const allPosts = await getAllPosts(locale, 60, null, "");
+  const allPosts = await getAllPosts(locale, 15, null, "");
   const productReleasesPosts = await getAllPosts(locale, 3, null, getCategoryKey(locale, "productReleases"));
   const forDevelopersPosts = await getAllPosts(locale, 3, null, getCategoryKey(locale, "forDevelopers"));
   const forBusinessPosts = await getAllPosts(locale, 3, null, getCategoryKey(locale, "forBusiness"));
