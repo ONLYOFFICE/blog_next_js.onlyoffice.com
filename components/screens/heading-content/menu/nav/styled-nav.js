@@ -263,7 +263,7 @@ const StyledNav = styled.nav`
             color: #FF6F3D;
 
             &:after {
-              background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}images/icons/chevron-right-red-small.svg");
+              background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/chevron-right-red-small.svg");
             }
           }
         }
