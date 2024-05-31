@@ -798,6 +798,7 @@ const StyledNav = styled.nav`
     border-radius: 6px;
     padding: 12px 40px 12px 12px;
     width: 100%;
+    text-align: left;
     background-color: transparent;
     cursor: pointer;
 
