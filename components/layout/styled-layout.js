@@ -133,7 +133,7 @@ const StyledLayout = styled.div`
       }
 
       .menu-label {
-        text-align: initial;
+        padding: 4px 0 0 4px;
       }
 
       .heading-nav-item {
@@ -214,50 +214,48 @@ const StyledLayout = styled.div`
 
     .nav-products {
       .menu-box {
-        &:nth-child(2) {
-          .menu-submenu {
-            .menu-link {
-              padding: 0 32px 0 68px;
-  
-              &:before {
-                right: 0;
-  
-                @media screen and ${device.laptop} {
-                  left: initial;
-                  right: 24px;
-                }
-              }
-  
-              @media screen and ${device.laptop} {
-                padding: 0 60px 0 24px;
-              }
-            }
-          }
-
+        &:nth-child(2),
+        &:last-child {
           .menu-label {
-            margin: 0 0 12px 32px;
+            &:after {
+              margin-left: initial;
+              margin-right: 4px;
+              transform: rotate(180deg);
+            }
           }
         }
+      }
+    }
 
-        &:nth-child(3) {
-          .menu-link {
-            &.online-services {
-              @media screen and ${device.laptop} {
-                padding: 4px 60px 4px 16px;
+    .nav-pricing, 
+    .nav-partners {
+      .menu-items-wrapper {
+        left: calc(50% - 156px);
 
-                &:after {
-                  margin-left: initial;
-                  margin-right: 4px;
-                  transform: rotate(180deg);
-                }
-              }
-            }
-          }
+        @media screen and ${device.laptop} {
+          left: initial;
+        }
+      }
+    }
 
-          .menu-box-inner {
-            .menu-link {
-              padding: 0 60px 0 24px;
-            }
+    .nav-developers {
+      .menu-items-wrapper {
+        left: calc(50% + 156px);
+
+        @media screen and ${device.laptop} {
+          left: initial;
+        }
+      }
+    }
+
+    .nav-enterprise {
+      .menu-wrapper-bottom {
+        .menu-link:not(:last-child) {
+          margin-right: initial;
+          margin-left: 32px;
+
+          @media screen and ${device.laptop} {
+            margin-left: 0;
           }
         }
       }
@@ -268,46 +266,64 @@ const StyledLayout = styled.div`
     }
 
     .menu-link {
-      padding: 0 68px 0 32px;
+      padding-left: initial;
+      padding-right: 36px;
 
       &:before {
-        left: 0;
-        right: 32px;
+        left: initial;
+        right: 0;
 
         @media screen and ${device.laptop} {
-          right: 24px;
+          top: 4px;
         }
       }
 
+      &.blog {
+        padding-right: 0;
+      }
+
       @media screen and ${device.laptop} {
-        padding: 8px 58px 8px 24px;
+        padding: 4px 36px 4px 0;
       }
     }
 
-    .menu-box-link {
-      &.left {
-        padding: 0px 72px 0px 8px;
+    .menu-box-links {
+      margin-left: 0;
+      margin-right: 36px;
+    }
 
-        @media screen and ${device.laptop} {
-          padding: 9px 56px 9px 8px;
-        }
+    .menu-box-link {
+      margin-left: initial;
+      margin-right: 36px;
+
+      &.left {
+        margin: 0 0 0 7px;
       }
 
       &.right {
-        padding: 0px 8px 0px 48px;
+        margin: 0 7px 0 0;
+      }
+    }
 
+    .menu-box-item {
+      padding: 12px 12px 12px 40px;
+
+      &:after {
+        right: initial;
+        left: 12px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .menu-link {
         @media screen and ${device.laptop} {
-          padding: 9px 8px 9px 24px;
-        }
-  
-        @media screen and (max-width: 399px) {
-          padding: 9px 56px 9px 16px;
+          padding: 4px 36px 4px 0;
         }
       }
+    }
 
-      @media screen and ${device.laptop} {
-        padding: 9px 56px 9px 24px;
-      }
+    .menu-box-text {
+      padding-left: 0;
+      padding-right: 36px;
     }
 
     .menu-box-text,
@@ -315,11 +331,42 @@ const StyledLayout = styled.div`
       text-align: initial;
     }
 
-    .nav-pricing, 
-    .nav-partners {
-      .menu-items-wrapper {
-        @media screen and (min-width: 1024px) {
-          left: calc(50% - 160px);
+    .menu-apps {
+      margin-right: initial;
+      margin-left: 32px;
+
+      .menu-label {
+        margin: 0 0 0 16px;
+
+        @media screen and ${device.laptop} {
+          margin: 0 0 16px;
+        }
+      }
+
+      @media screen and ${device.laptop} {
+        margin: 0;
+      }
+    }
+
+    .menu-apps-list {
+      li {
+        &:not(:last-child) {
+          margin-right: initial;
+          margin-left: 16px;
+        }
+      }
+    }
+
+    .menu-wrapper-bottom-links {
+      .menu-link {
+        padding: 0 36px 0 0;
+
+        &:not(:last-child) {
+          margin: 0 0 0 16px;
+
+          @media screen and ${device.laptop} {
+            margin: 0 0 12px 0;
+          }
         }
       }
     }
@@ -514,6 +561,10 @@ const StyledLayout = styled.div`
 
         button {
           border-radius: 3px 0 0 3px;
+
+          @media screen and ${device.laptop} {
+            transform: rotate(180deg);
+          }
         }
 
         .error-text {
@@ -609,6 +660,10 @@ const StyledLayout = styled.div`
         right: initial;
         left: 0;
       }
+    }
+
+    .card-title {
+      text-align: initial;
     }
   }
 `;
