@@ -29,7 +29,7 @@ const nextConfig = {
       },
     ];
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n,
   basePath: '/blog',
   compiler: {
