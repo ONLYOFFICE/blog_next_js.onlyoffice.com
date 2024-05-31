@@ -10,13 +10,6 @@ const StyledLoadMorePosts = styled.div`
     position: relative;
     padding: 18px 20px;
     min-width: 124px;
-    min-height: 56px;
-    font-family: "Open Sans", sans-serif;
-    font-size: 13px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    transition-duration: initial;
-    transition: color 0.3s, border-color 0.3s;
 
     &:after {
       content: "";
@@ -34,9 +27,11 @@ const StyledLoadMorePosts = styled.div`
       transition: border 0.3s;
       opacity: 0;
     }
-    
+
     @keyframes cssload-spin {
-      100%{ transform: translate(-50%, -50%) rotate(360deg); }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
 
     &.loading {
@@ -55,14 +50,8 @@ const StyledLoadMorePosts = styled.div`
     }
   }
 
-  .load-more-mobile-btn {
-    display: none;
-  }
-
-  @media ${device.laptop} {
-    grid-column: span 2;
-
-    .load-more-btn {
+  .load-more-btn {
+    @media screen and ${device.laptop} {
       display: none;
 
       &.show {
@@ -70,20 +59,28 @@ const StyledLoadMorePosts = styled.div`
         width: 100%;
       }
     }
+  }
 
-    .load-more-mobile-btn {
+  .load-more-mobile-btn {
+    display: none;
+
+    @media screen and ${device.laptop} {
       display: block;
       justify-self: center;
     }
-  }
 
-  @media (max-width: 592px) {
-    grid-column: initial;
-    justify-self: initial;
-
-    .load-more-mobile-btn {
+    @media screen and ${device.mobile} {
       width: 100%;
     }
+  }
+
+  @media screen and ${device.laptop} {
+    grid-column: span 2;
+  }
+
+  @media screen and ${device.mobile} {
+    grid-column: initial;
+    justify-self: initial;
   }
 `;
 

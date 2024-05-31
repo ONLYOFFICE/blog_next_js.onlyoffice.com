@@ -1,7 +1,6 @@
 import StyledInThePressPost from "./styled-in-the-press-post";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
-import Text from "@components/common/text";
 import ExternalLink from "@components/common/external-link";
 
 const InThePressPost = ({ locale, data }) => {
@@ -21,7 +20,7 @@ const InThePressPost = ({ locale, data }) => {
 
         {
           data?.excerpt &&
-          <Text className="post-text" as="p" dangerouslySetInnerHTML={{__html: data?.excerpt}}></Text>
+          <p className="post-text" dangerouslySetInnerHTML={{__html: data?.excerpt}}></p>
         }
       </article>
     </StyledInThePressPost>

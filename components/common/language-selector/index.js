@@ -1,10 +1,11 @@
 import StyledLanguageSelector from "./styled-language-selector";
+import PropTypes from "prop-types";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import languages from "@config/languages.json";
 import InternalLink from "@components/common/internal-link";
 
-const LanguageSelector = ({ locale, postUri, isPostContent }) => {
+const LanguageSelector = ({ locale, postUri, isPostPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const asPath = router.pathname === "/onlyoffice-in-the-press" || router.pathname === "/search" ? router.asPath : "/";
@@ -47,7 +48,7 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
       {isOpen &&
         <ul className="language-list">
 
-          {isPostContent ?
+          {isPostPage ?
             languageItems.map((language, index) => (
               <li className="language-item" key={language.shortKey}>
                 <InternalLink 
@@ -76,6 +77,12 @@ const LanguageSelector = ({ locale, postUri, isPostContent }) => {
       }
     </StyledLanguageSelector>
   );
+};
+
+LanguageSelector.propTypes = {
+  locale: PropTypes.string,
+  postUri: PropTypes.object,
+  isPostPage: PropTypes.bool
 };
 
 export default LanguageSelector;

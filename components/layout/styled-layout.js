@@ -10,11 +10,11 @@ const StyledLayout = styled.div`
     unicode-bidi: embed;
 
     .navbar {
-      .search_area {
+      .search-area {
         margin: 0 auto 0 16px;
 
         &.active {
-          .search_input {
+          .search-input {
             @media screen and (max-width: 1530px) {
               padding: 0px 16px 0 40px;
             }
@@ -31,17 +31,17 @@ const StyledLayout = styled.div`
           left: 70px;
         }
 
-        @media screen and (max-width: 592px) {
+        @media screen and ${device.mobile} {
           left: 60px;
         }
       }
 
-      .search_input {
+      .search-input {
         padding: 9px 16px 9px 40px;
         text-align: right;
       }
   
-      .search_icon {
+      .search-icon {
         left: 16px;
         right: initial;
 
@@ -63,7 +63,7 @@ const StyledLayout = styled.div`
             transform: translate3d(-429px, 0, 0);
           }
 
-          @media screen and (max-width: 592px) {
+          @media screen and ${device.mobile} {
             transform: translate3d(calc(64px - 100vw), 0, 0);
           }
 
@@ -77,7 +77,7 @@ const StyledLayout = styled.div`
             transform: translate3d(-429px, 0, 0) translateX(-50%);
           }
 
-          @media screen and (max-width: 592px) {
+          @media screen and ${device.mobile} {
             transform: translate3d(-380px, 0, 0) translateX(-50%);
           }
 
@@ -86,11 +86,11 @@ const StyledLayout = styled.div`
           }
         }
       
-        .search_icon {
+        .search-icon {
           @media screen and ${device.laptop} {
             transform: translate3d(-429px, 0, 0) translateY(-50%);
 
-            @media screen and (max-width: 592px) {
+            @media screen and ${device.mobile} {
               transform: translate3d(-380px, 0, 0) translateX(-50%);
             }
 
@@ -110,7 +110,7 @@ const StyledLayout = styled.div`
           transform: translate3d(-429px, 0, 0);
         }
   
-        @media screen and (max-width: 592px) {
+        @media screen and ${device.mobile} {
           transform: translate3d(calc(64px - 100vw), 0, 0);
         }
 
@@ -193,7 +193,7 @@ const StyledLayout = styled.div`
           object-position: initial;
         }
 
-        @media screen and (max-width: 592px) {
+        @media screen and ${device.mobile} {
           object-position: 122px;
         }
       }
@@ -402,13 +402,13 @@ const StyledLayout = styled.div`
     }
 
     .section-page {
-      .search_area {
-        .search_input {
+      .search-area {
+        .search-input {
           padding: 16px 16px 16px 48px;
           text-align: right;
         }
   
-        .search_icon {
+        .search-icon {
           right: initial;
           left: 16px;
         }

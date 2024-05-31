@@ -15,7 +15,7 @@ const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
           <InternalLink href={data?.uri}>{data?.title}</InternalLink>
         </Heading>
         <div className="card-info">
-          <Text className="card-info-item card-date" as="span">
+          <Text className="card-info-item card-date">
             <DateFormat locale={locale} data={data?.date} format="D MMMM y" />
           </Text>
           <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>

@@ -2,6 +2,7 @@ import StyledInThePress from "./styled-in-the-press";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import InternalLink from "@components/common/internal-link";
+import ExternalLink from "@components/common/external-link";
 
 const InThePress = ({ t, locale, inThePressPosts }) => {
   return (
@@ -11,7 +12,7 @@ const InThePress = ({ t, locale, inThePressPosts }) => {
       <ul className="in-the-press-list">
         {inThePressPosts?.edges.map(({node}) => (
           <li key={node.id}>
-            <InternalLink href={node?.url} target="_blank">{node.title}</InternalLink>
+            <ExternalLink href={node?.url}>{node.title}</ExternalLink>
             <div className="in-the-press-date">
               <DateFormat locale={locale} data={node.dateNews} format="D MMM y" />
             </div>

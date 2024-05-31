@@ -10,7 +10,7 @@ const StyledNewsletter = styled.div`
     .newsletter-body form button {
       min-width: 162px;
 
-      @media ${device.laptop} {
+      @media screen and ${device.laptop} {
         min-width: 56px;
       }
     }
@@ -23,6 +23,12 @@ const StyledNewsletter = styled.div`
     padding: 54px 97px 37px;
     margin: 0 auto;
     width: 100%;
+
+    @media screen and ${device.laptop} {
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
   }
 
   .newsletter-title {
@@ -30,6 +36,15 @@ const StyledNewsletter = styled.div`
     margin-right: 56px;
     width: 100%;
     max-width: 180px;
+
+    @media screen and ${device.laptop} {
+      margin: 0 0 32px;
+      font-size: 20px;
+      line-height: 27px;
+      letter-spacing: -0.01em;
+      text-align: center;
+      max-width: 100%;
+    }
   }
 
   .newsletter-body {
@@ -61,12 +76,6 @@ const StyledNewsletter = styled.div`
         padding: 19px 12px;
         border-radius: 0px 3px 3px 0px;
         min-width: 122px;
-        font-family: "Open Sans", sans-serif;
-        font-size: 13px;
-        line-height: 17px;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: #ffffff;
         transition: background-color 0.3s, opacity 0.3s;
 
         &.loading {
@@ -86,10 +95,31 @@ const StyledNewsletter = styled.div`
             transform: translate(-50%, -50%);
             animation: cssload-spin 1025ms infinite linear;
           }
-          
+
           @keyframes cssload-spin {
-            100%{ transform: translate(-50%, -50%) rotate(360deg); }
+            100% {
+              transform: translate(-50%, -50%) rotate(360deg);
+            }
           }
+
+          @media screen and ${device.laptop} {
+            background-image: none;
+          }
+        }
+
+        @media screen and ${device.laptop} {
+          font-size: 0;
+          min-width: 56px;
+          background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+        }
+      }
+
+      input,
+      button {
+        @media screen and ${device.mobile} {
+          height: 48px;
         }
       }
 
@@ -100,6 +130,11 @@ const StyledNewsletter = styled.div`
         color: #ff0c3e;
         font-size: 12px;
         line-height: 19px;
+
+        @media screen and ${device.mobile} {
+          top: 48px;
+          font-size: 10px;
+        }
       }
     }
   }
@@ -117,67 +152,20 @@ const StyledNewsletter = styled.div`
       cursor: pointer;
       pointer-events: initial;
     }
-  }
 
-  @media ${device.laptop} {
-    .newsletter-wrapper {
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 16px;
-    }
-
-    .newsletter-title {
-      margin: 0 0 32px;
-      font-size: 20px;
-      line-height: 27px;
-      letter-spacing: -0.01em;
-      text-align: center;
-      max-width: 100%;
-    }
-
-    .newsletter-body {
-      form {
-        button {
-          font-size: 0;
-          min-width: 56px;
-          background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-
-          &.loading {
-            background-image: none;
-          }
-        }
-      }
-    }
-
-    .newsletter-text {
+    @media screen and ${device.laptop} {
       text-align: center;
     }
-  }
 
-  @media (max-width: 592px) {
-    box-shadow: initial;
-    margin: 0 -16px;
-
-    .newsletter-body {
-      form {
-        input,
-        button {
-          height: 48px;
-        }
-
-        .error-text {
-          top: 48px;
-          font-size: 10px;
-        }
-      }
-    }
-
-    .newsletter-text {
+    @media screen and ${device.mobile} {
       font-size: 12px;
       line-height: 16px;
     }
+  }
+
+  @media screen and ${device.mobile} {
+    box-shadow: initial;
+    margin: 0 -16px;
   }
 `;
 

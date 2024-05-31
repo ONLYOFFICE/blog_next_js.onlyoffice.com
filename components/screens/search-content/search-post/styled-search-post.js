@@ -24,6 +24,10 @@ const StyledSearchPost = styled.div`
   .date {
     margin-right: 20px;
     background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
+
+    @media screen and ${device.mobile} {
+      margin-right: 16px;
+    }
   }
 
   .author {
@@ -52,6 +56,15 @@ const StyledSearchPost = styled.div`
       &:focus {
         text-decoration: underline;
       }
+
+      @media screen and ${device.laptop} {
+        -webkit-line-clamp: 3;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 20px;
+        line-height: 133%;
+      }
     }
 
     &:not(:last-child) {
@@ -69,36 +82,15 @@ const StyledSearchPost = styled.div`
     p {
       margin: 0;
     }
+
+    @media screen and ${device.mobile} {
+      font-size: 14px;
+      line-height: 26px;
+    }
   }
 
   .search-excerpt {
     font-style: italic;
-  }
-
-  @media ${device.laptop} {
-    .post-title {
-      a {
-        -webkit-line-clamp: 3;
-      }
-    }
-  }
-
-  @media (max-width: 592px) {
-    .post-title {
-      a {
-        font-size: 20px;
-        line-height: 133%;
-      }
-    }
-
-    .date {
-      margin-right: 16px;
-    }
-
-    .post-text {
-      font-size: 14px;
-      line-height: 26px;
-    }
   }
 `;
 

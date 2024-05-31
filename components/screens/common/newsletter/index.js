@@ -69,7 +69,7 @@ const Newsletter = ({ t, locale }) => {
                       />
                     )}
                   />
-                  <Button className={`${isLoading ? "loading" : ""}`} label={t("Subscribe")} />
+                  <Button className={`${isLoading ? "loading" : ""}`} type="submit" label={t("Subscribe")} />
                 </form>
                 <ExternalLink className="newsletter-text" href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t('NewsletterSubscribeText')} <u>{t("NewsletterSubscribeLink")}</u></ExternalLink>
               </div>

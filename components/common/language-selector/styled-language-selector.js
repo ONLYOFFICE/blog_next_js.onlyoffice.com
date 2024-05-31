@@ -182,7 +182,7 @@ const StyledLanguageSelector = styled.div`
   }
 
   @keyframes menuLineLeft {
-    0 {
+    0% {
       width: 0;
       left: 50%;
     }
@@ -194,7 +194,7 @@ const StyledLanguageSelector = styled.div`
   }
 
   @keyframes menuLineRight {
-    0 {
+    0% {
       width: 0;
     }
 

@@ -15,6 +15,18 @@ const StyledPostContent = styled(Section)`
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #333333;
     overflow: initial;
+
+    @media screen and ${device.tablet} {
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      text-align: initial;
+    }
+
+    @media screen and ${device.mobile} {
+      margin-bottom: 24px;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 
   .info-content {
@@ -39,21 +51,12 @@ const StyledPostContent = styled(Section)`
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       }
 
-      &.comments {
-        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/comment.svg");
-      }
-
       &.outdated {
         color: #CB0000;
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/outdated.svg");
         background-size: 20px;
         background-position: left 1px;
         padding-left: 28px;
-      }
-
-      &.views {
-        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/views.svg");
-        background-size: 14px 10px;
       }
     }
 
@@ -83,6 +86,12 @@ const StyledPostContent = styled(Section)`
 
     .share-buttons {
       margin-left: auto;
+
+      @media screen and ${device.tablet} {
+        margin-top: 24px;
+        margin-left: initial;
+        width: 100%;
+      }
     }
   }
 
@@ -97,6 +106,15 @@ const StyledPostContent = styled(Section)`
     .wrap {
       width: 100%;
       max-width: 736px;
+    }
+
+    @media screen and ${device.laptop} {
+      margin: 70px auto 80px;
+      padding-left: 0;
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 24px auto;
     }
   }
 
@@ -130,6 +148,13 @@ const StyledPostContent = styled(Section)`
         background-color: #aaaaaa;
       }
     }
+
+    @media screen and ${device.laptop} {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: initial;
+    }
   }
 
   article {
@@ -139,6 +164,10 @@ const StyledPostContent = styled(Section)`
       font-weight: 700;
       margin-bottom: 32px;
       line-height: 133%;
+
+      @media screen and ${device.laptop} {
+        letter-spacing: -0.01em;
+      }
     }
 
     h1 {
@@ -147,10 +176,26 @@ const StyledPostContent = styled(Section)`
 
     h2 {
       font-size: 32px;
+
+      @media screen and ${device.tablet} {
+        font-size: 30px;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 20px;
+      }
     }
 
     h3 {
       font-size: 24px;
+
+      @media screen and ${device.tablet} {
+        font-size: 22px;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 18px;
+      }
     }
 
     h4 {
@@ -170,6 +215,21 @@ const StyledPostContent = styled(Section)`
       font-size: 16px;
       line-height: 26px;
       color: #333;
+
+      @media screen and ${device.mobile} {
+        font-size: 14px;
+        line-height: 26px;
+      }
+    }
+
+    iframe {
+      @media screen and ${device.laptop} {
+        width: 100%;
+      }
+
+      @media screen and ${device.mobile} {
+        height: 235px;
+      }
     }
 
     .wp-caption {
@@ -215,6 +275,10 @@ const StyledPostContent = styled(Section)`
 
       &.aligncenter {
         margin: 0 auto;
+      }
+
+      @media screen and ${device.mobile} {
+        margin: 0;
       }
     }
 
@@ -342,6 +406,10 @@ const StyledPostContent = styled(Section)`
       &:hover {
         background-color: #ff865c;
       }
+
+      @media screen and ${device.mobile} {
+        padding: 16px 20px;
+      }
     }
 
     .useful-links {
@@ -361,6 +429,10 @@ const StyledPostContent = styled(Section)`
         background-position: 0 50%;
         background-repeat: no-repeat;
         margin-top: 0 !important;
+
+        @media screen and ${device.mobile} {
+          font-size: 18px;
+        }
       }
 
       p {
@@ -369,6 +441,10 @@ const StyledPostContent = styled(Section)`
         &:last-child {
           margin-bottom: 0;
         }
+      }
+
+      @media screen and ${device.tablet} {
+        margin: 44px 0;
       }
     }
 
@@ -388,7 +464,7 @@ const StyledPostContent = styled(Section)`
         font-weight: 400;
       }
 
-      @media (min-width: 768px) {
+      @media screen and (min-width: 768px) {
         .frm-fluent-form .ff-t-container {
           display: flex;
           gap: 15px;
@@ -527,11 +603,22 @@ const StyledPostContent = styled(Section)`
   .tag-list {
     display: flex;
     margin: 80px 0;
+
+    @media screen and ${device.tablet} {
+      flex-direction: column;
+      margin: 44px 0;
+    }
   }
 
   .tag-items {
     padding-right: 12px;
     width: 70%;
+
+    @media screen and ${device.tablet} {
+      padding-right: 0;
+      margin-bottom: 27px;
+      width: 100%;
+    }
   }
 
   .tag-share {
@@ -540,6 +627,18 @@ const StyledPostContent = styled(Section)`
 
     .share-buttons {
       justify-content: right;
+
+      @media screen and ${device.tablet} {
+        justify-content: initial;
+        margin-top: 24px;
+        margin-left: initial;
+        width: 100%;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 0;
+      width: 100%;
     }
   }
 
@@ -567,6 +666,16 @@ const StyledPostContent = styled(Section)`
         color: #FF6F3D;
         border: 1px solid #FF6F3D;
       }
+
+      @media screen and ${device.tablet} {
+        font-size: 13px;
+        line-height: 133%;
+        letter-spacing: .04em;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 44px auto 0;
     }
   }
 
@@ -589,6 +698,11 @@ const StyledPostContent = styled(Section)`
       max-width: 80vw;
       max-height: 80vh;
       object-fit: contain;
+
+      @media screen and ${device.mobile} {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
     }
 
     .modal-close-btn {
@@ -610,6 +724,11 @@ const StyledPostContent = styled(Section)`
         transform: rotate(-45deg);
         left: -4px;
         z-index: 1004;
+
+        @media screen and ${device.mobile} {
+          left: 0;
+          width: 20px;
+        }
       }
 
       &:after {
@@ -622,6 +741,16 @@ const StyledPostContent = styled(Section)`
         transform: rotate(45deg);
         left: -4px;
         z-index: 1004;
+
+        @media screen and ${device.mobile} {
+          left: 0;
+          width: 20px;
+        }
+      }
+
+      @media screen and ${device.mobile} {
+        top: -30px;
+        right: 0;
       }
     }
   }
@@ -641,163 +770,8 @@ const StyledPostContent = styled(Section)`
     }
   }
 
-  @media ${device.laptop} {
-    .content {
-      margin: 70px auto 80px;
-      padding-left: 0;
-    }
-
-    article {
-      iframe {
-        width: 100%;
-      }
-    }
-
-    .btn-scroll-top {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      top: initial;
-    }
-  }
-
-  @media ${device.tablet} {
+  @media screen and ${device.tablet} {
     padding: 24px 0 0;
-
-    .content {
-      margin: 24px auto;
-    }
-
-    .title {
-      font-size: 32px;
-      letter-spacing: -0.01em;
-      text-align: initial;
-    }
-
-    article {
-      h1, h2, h3, h4, h5, h6 {
-        letter-spacing: -0.01em;
-      }
-      
-      h2 {
-        font-size: 30px;
-      }
-
-      h3 {
-        font-size: 22px;
-      }
-
-      .useful-links {
-        margin: 44px 0;
-      }
-    }
-
-    .info-content {
-      .share-buttons {
-        margin-top: 24px;
-        margin-left: initial;
-        width: 100%;
-      }
-    }
-
-    .tag-list {
-      flex-direction: column;
-      margin: 44px 0;
-    }
-
-    .tag-items {
-      padding-right: 0;
-      margin-bottom: 27px;
-    }
-
-    .tag-items,
-    .tag-share {
-      width: 100%;
-    }
-
-    .tag-share {
-      margin: 0;
-
-      .share-buttons {
-        justify-content: initial;
-      }
-    }
-
-    .join-discussion {
-      margin: 44px auto 0;
-
-      a {
-        font-size: 13px;
-        line-height: 133%;
-        letter-spacing: .04em;
-      }
-    }
-  }
-
-  @media (max-width: 592px) {
-    .title {
-      margin-bottom: 24px;
-      font-size: 24px;
-      line-height: 32px;
-    }
-
-    .info-content {
-      span {
-        &.comments,
-        &.views {
-          display: none;
-        }
-      }
-    }
-
-    article {
-      p {
-        font-size: 14px;
-        line-height: 26px;
-      }
-
-      img {
-        margin: 0;
-      }
-
-      iframe {
-        height: 235px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      h3 {
-        font-size: 18px;
-      }
-
-      .useful-links h3 {
-        font-size: 18px;
-      }
-
-      .button {
-        padding: 16px 20px;
-      }
-    }
-
-    .modal {
-      .modal-img {
-        max-width: 90vw;
-        max-height: 90vh;
-      }
-
-      .modal-close-btn {
-        top: -30px;
-        right: 0;
-  
-        &:before,
-        &:after {
-          width: 20px;
-          left: 0;
-        }
-      }
-    }
   }
 `;
 

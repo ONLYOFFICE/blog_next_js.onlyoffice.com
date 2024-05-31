@@ -38,7 +38,7 @@ const StyledAuthorContent = styled(Section)`
     grid-gap: 64px 32px;
   }
 
-  @media ${device.laptop} {
+  @media screen ${device.laptop} {
     padding: 32px 0 80px;
 
     .author-posts {
@@ -47,7 +47,7 @@ const StyledAuthorContent = styled(Section)`
     }
   }
 
-  @media ${device.tablet} {
+  @media screen ${device.tablet} {
     .section-page {
       max-width: 100%;
       padding: 0 40px;
@@ -58,7 +58,7 @@ const StyledAuthorContent = styled(Section)`
     }
   }
 
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     .section-page {
       padding: 0 16px;
     }

@@ -12,7 +12,7 @@ const StyledDownLoadBlock = styled.div`
     .download-block-btn {
       font-size: 13px;
 
-      @media ${device.tablet} {
+      @media screen and ${device.tablet} {
         font-size: 11px;
       }
     }
@@ -30,7 +30,7 @@ const StyledDownLoadBlock = styled.div`
       font-weight: 600;
     }
 
-    @media (max-width: 592px) {
+    @media screen and ${device.mobile} {
       margin-bottom: 24px;
       font-size: 16px;
       line-height: 21px;
@@ -79,7 +79,7 @@ const StyledDownLoadBlock = styled.div`
         min-width: 32px;
         background-position: -8px 0;
 
-        @media ${device.tablet} {
+        @media screen and ${device.tablet} {
           margin-right: 6px;
           width: 23px;
           min-width: 23px;
@@ -97,7 +97,7 @@ const StyledDownLoadBlock = styled.div`
         min-width: 32px;
         background-position: -39px 0;
 
-        @media ${device.tablet} {
+        @media screen and ${device.tablet} {
           margin-right: 6px;
           width: 23px;
           min-width: 23px;
@@ -115,7 +115,7 @@ const StyledDownLoadBlock = styled.div`
         min-width: 32px;
         background-position: -71px 0;
 
-        @media ${device.tablet} {
+        @media screen and ${device.tablet} {
           margin-right: 6px;
           width: 23px;
           min-width: 23px;
@@ -131,7 +131,7 @@ const StyledDownLoadBlock = styled.div`
         width: 128px;
         background-position: -234px 50%;
 
-        @media ${device.tablet} {
+        @media screen and ${device.tablet} {
           width: 92px;
           height: 23px;
           background-position: -230px 50%;
@@ -145,7 +145,7 @@ const StyledDownLoadBlock = styled.div`
         width: 121px;
         background-position: -107px 50%;
 
-        @media ${device.tablet} {
+        @media screen and ${device.tablet} {
           width: 87px;
           height: 23px;
           background-position: -111px 50%;
@@ -160,7 +160,7 @@ const StyledDownLoadBlock = styled.div`
       }
     }
 
-    @media ${device.tablet} {
+    @media screen and ${device.tablet} {
       padding: 9px 6px;
       font-size: 11px;
       line-height: 17px;
@@ -170,11 +170,11 @@ const StyledDownLoadBlock = styled.div`
     }
   }
 
-  @media ${device.tablet} {
+  @media screen and ${device.tablet} {
     padding: 48px 18px 42px;
   }
 
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     margin: 0 -16px;
     padding: 48px 13px 42px;
     box-shadow: initial;

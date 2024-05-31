@@ -12,6 +12,12 @@ const StyledFollowUs = styled.div`
     font-size: 18px;
     line-height: 24px;
     letter-spacing: -0.02em;
+
+    @media screen and ${device.laptop} {
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: -0.01em;
+    }
   }
 
   .social-links {
@@ -25,7 +31,7 @@ const StyledFollowUs = styled.div`
 
     &.ja,
     &.zh-hans {
-      @media (max-width: 600px) {
+      @media screen and (max-width: 600px) {
         column-gap: 24px;
       }
     }
@@ -104,18 +110,8 @@ const StyledFollowUs = styled.div`
       min-width: 24px;
       filter: grayscale(0);
     }
-  }
 
-  @media ${device.laptop} {
-    h4 {
-      font-size: 16px;
-      line-height: 21px;
-      letter-spacing: -0.01em;
-    }
-  }
-
-  @media ${device.tablet} {
-    .social-links {
+    @media screen and ${device.tablet} {
       grid-template-columns: repeat(auto-fit, 28px);
     }
   }

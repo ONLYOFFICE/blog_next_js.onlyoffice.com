@@ -12,7 +12,7 @@ import CloudBlock from "./cloud-block";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 
-const PostContent = ({ t, locale, post, posts, isPostContent }) => {
+const PostContent = ({ t, locale, post, posts, isPostPage }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
@@ -89,7 +89,7 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
   return (
     <>
       <StyledPostContent className="post-content">
-        <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
+        <Breadcrumbs t={t} data={post?.categories?.edges} isPostPage={isPostPage} />
 
         <div ref={refContentWrapper} className="content">
           <div className="wrap">

@@ -1,9 +1,10 @@
 import StyledInput from "./styled-input";
+import PropTypes from "prop-types";
 import Text from "@components/common/text";
 
-const Input = ({ label, type, name, value, onChange, onBlur, errorText, required, placeholder, ...rest }) => {
+const Input = ({ className, label, type, name, value, onChange, onBlur, errorText, required, placeholder }) => {
   return (
-    <StyledInput {...rest}>
+    <StyledInput className={className}>
       <label htmlFor={name} className="label">
         {label} {required && <span>*</span>}
       </label>
@@ -14,6 +15,19 @@ const Input = ({ label, type, name, value, onChange, onBlur, errorText, required
       </Text>}
     </StyledInput>
   );
+};
+
+Input.propTypes = {
+  className: PropTypes.string,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  errorText: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  required: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func
 };
 
 export default Input;

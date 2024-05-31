@@ -6,7 +6,7 @@ import Newsletter from "@components/screens/common/newsletter";
 import SocialLinks from "@components/screens/common/social-links";
 
 const FollowUs = ({ t, locale }) => {
-  const isFollowUsContent = true;
+  const isFollowUs = true;
 
   const [popupActive, setPopupActive] = useState(false);
   const handlerSetModal = () => {
@@ -17,7 +17,7 @@ const FollowUs = ({ t, locale }) => {
     <StyledFollowUs>
       <Heading level={4}>{t("Follow us")}</Heading>
 
-      <SocialLinks locale={locale} handlerSetModal={handlerSetModal} isFollowUsContent={isFollowUsContent} />
+      <SocialLinks locale={locale} handlerSetModal={handlerSetModal} isFollowUs={isFollowUs} />
 
       <Popup popupActive={popupActive} setPopupActive={setPopupActive}>
         <Newsletter t={t} locale={locale} />

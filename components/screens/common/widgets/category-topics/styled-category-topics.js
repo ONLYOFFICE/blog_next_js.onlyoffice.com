@@ -14,6 +14,12 @@ const StyledCategoryTopics = styled.div`
     line-height: 24px;
     letter-spacing: -0.02em;
     color: #333333;
+
+    @media screen and ${device.tablet} {
+      font-size: 16px;
+      line-height: 21px;
+      letter-spacing: -0.01em;
+    }
   }
 
   .category-topics-list {
@@ -61,18 +67,8 @@ const StyledCategoryTopics = styled.div`
       &.for-education {
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-education.svg");
       }
-    }
-  }
 
-  @media ${device.tablet} {
-    .category-topics-title {
-      font-size: 16px;
-      line-height: 21px;
-      letter-spacing: -0.01em;
-    }
-
-    .category-topics-list {
-      .internal-link {
+      @media screen and ${device.tablet} {
         font-size: 14px;
       }
     }

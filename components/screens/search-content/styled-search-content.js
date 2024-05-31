@@ -9,8 +9,14 @@ const StyledSearchContent = styled(Section)`
     margin-bottom: 40px;
   }
 
-  .search_area {
+  .search-area {
     margin-bottom: 40px;
+  }
+
+  .search-input {
+    @media screen and ${device.laptop} {
+      height: 56px;
+    }
   }
 
   .wrapper {
@@ -18,6 +24,11 @@ const StyledSearchContent = styled(Section)`
     grid-template-columns: auto 31.429%;
     align-items: start;
     gap: 32px;
+
+    @media screen and ${device.laptop} {
+      grid-template-columns: initial;
+      gap: 48px;
+    }
   }
 
   .posts {
@@ -28,6 +39,10 @@ const StyledSearchContent = styled(Section)`
   .sidebar {
     display: grid;
     gap: 36px;
+
+    @media screen and ${device.mobile} {
+      gap: 48px;
+    }
   }
 
   .search-posts {
@@ -76,27 +91,13 @@ const StyledSearchContent = styled(Section)`
   }
 
   @keyframes cssload-spin {
-    100%{ transform: translate(-50%, -50%) rotate(360deg); }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
   }
 
-  @media ${device.laptop} {
+  @media screen and ${device.laptop} {
     padding: 40px 0 88px;
-
-    .wrapper {
-      grid-template-columns: initial;
-      gap: 48px;
-    }
-  }
-
-  @media (max-width: 592px) {
-    .group-input,
-    .search_input {
-      height: 56px;
-    }
-
-    .sidebar {
-      gap: 48px;
-    }
   }
 `;
 

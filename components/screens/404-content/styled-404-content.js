@@ -23,6 +23,20 @@ const StyledErrorContent = styled(Section)`
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+
+    @media screen and ${device.tablet} {
+      margin-bottom: 64px;
+      height: 300px;
+    }
+
+    @media screen and ${device.mobile} {
+      margin-bottom: 40px;
+      height: 235px;
+    }
+
+    @media screen and (max-width: 320px) {
+      height: 133px;
+    }
   }
 
   h1 {
@@ -33,6 +47,10 @@ const StyledErrorContent = styled(Section)`
     text-align: center;
     font-feature-settings: 'tnum'on,'lnum'on;
     color: #333;
+
+    @media screen and ${device.mobile} {
+      font-size: 24px;
+    }
   }
 
   p {
@@ -66,35 +84,13 @@ const StyledErrorContent = styled(Section)`
     }
   }
 
-  @media ${device.laptop} {
+  @media screen and ${device.laptop} {
     padding: 112px 16px 80px;
     max-width: 736px;
   }
 
-  @media ${device.tablet} {
-    .error-img {
-      margin-bottom: 64px;
-      height: 300px;
-    }
-  }
-
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     padding: 60px 16px 64px;
-
-    .error-img {
-      margin-bottom: 40px;
-      height: 235px;
-    }
-
-    h1 {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 320px) {
-    .error-img {
-      height: 133px;
-    }
   }
 `;
 

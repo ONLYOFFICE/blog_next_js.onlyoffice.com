@@ -8,7 +8,7 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import SearchArea from "@components/common/search-area";
 import Heading from "@components/common/heading";
 
-const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
+const SearchContent = ({ t, locale, isSearchPage, recentPosts }) => {
   const router = useRouter();
   const searchQueryString = router.query.s;
   const [searchQuery, setSearchQuery] = useState(searchQueryString);
@@ -64,7 +64,7 @@ const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
     <StyledSearchContent className="search-content">
       <div className="wrapper">
         <div className="content">
-          <Breadcrumbs className="breadcrumbs" t={t} isSearchContent={isSearchContent} searchQuery={router?.query.s} locale={locale} />
+          <Breadcrumbs className="breadcrumbs" t={t} isSearchPage={isSearchPage} searchQuery={router?.query.s} locale={locale} />
 
           <SearchArea 
             label={t("Search")}
@@ -85,7 +85,7 @@ const SearchContent = ({ t, locale, isSearchContent, recentPosts }) => {
                     locale={locale} 
                     data={queryResults} 
                     searchQueryString={searchQueryString} 
-                    isSearchContent={isSearchContent}
+                    isSearchPage={isSearchPage}
                   />
                 :
                   <div className="no-results">
