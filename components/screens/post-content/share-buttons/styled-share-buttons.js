@@ -33,7 +33,7 @@ const StyledRecentPosts = styled.div`
     }
 
     &.twitter {
-      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/twitter.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/twitter-1.svg");
     }
 
     &.linkedin {
