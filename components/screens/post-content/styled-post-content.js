@@ -28,7 +28,7 @@ const StyledPostContent = styled(Section)`
     > span {
       padding-left: 20px;
       background-size: 12px;
-      background-position: left 5px;
+      background-position: left center;
       background-repeat: no-repeat;
 
       &:not(:last-child) {
@@ -72,7 +72,7 @@ const StyledPostContent = styled(Section)`
       display: initial;
       padding-left: 20px;
       background-size: 12px;
-      background-position: left 5px;
+      background-position: left center;
       background-repeat: no-repeat;
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
 
