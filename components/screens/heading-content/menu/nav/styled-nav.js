@@ -335,7 +335,6 @@ const StyledNav = styled.nav`
     }
 
     .menu-wrapper-bottom {
-      margin: 0 32px;
       justify-content: flex-end;
 
       .menu-link {
@@ -674,7 +673,7 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: space-between;
     border-top: 1px solid #E2E2E2;
-    padding: 12px 24px;
+    padding: 15px 24px 16px 24px;
 
     @media screen and ${device.laptop} {
       justify-content: initial;
