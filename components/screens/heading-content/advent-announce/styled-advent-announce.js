@@ -14,6 +14,7 @@ const StyledAdventAnnounce = styled.div`
     position: relative;
     top: 0;
     left: 0;
+    border-bottom: 1px solid #d9d9d9;
     padding: 0;
     width: 100%;
     height: 56px;
