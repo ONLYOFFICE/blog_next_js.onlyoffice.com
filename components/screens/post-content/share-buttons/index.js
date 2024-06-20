@@ -11,7 +11,7 @@ const ShareButtons = ({ locale }) => {
   return (
     <StyledRecentPosts className="share-buttons">
       <FacebookShareButton className="share-button facebook" url={routerUrl} title="Facebook"></FacebookShareButton>
-      <TwitterShareButton className="share-button twitter" url={routerUrl} title="Twitter"></TwitterShareButton>
+      <TwitterShareButton className="share-button x" url={routerUrl} title="Twitter"></TwitterShareButton>
       <LinkedinShareButton className="share-button linkedin" url={routerUrl} title="LinkedIn"></LinkedinShareButton>
       <RedditShareButton className="share-button reddit" url={routerUrl} title="Reddit"></RedditShareButton>
       <TelegramShareButton className="share-button telegram" url={routerUrl} title="Telegram"></TelegramShareButton>
