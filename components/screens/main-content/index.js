@@ -39,7 +39,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
         <div className="main-sidebar">
           <CategoryTopics t={t} locale={locale} />
           {
-            inThePressPosts.edges.length > 0 && 
+            inThePressPosts?.edges.length > 0 && 
             <InThePress t={t} inThePressPosts={inThePressPosts} locale={locale} />
           }
         </div>

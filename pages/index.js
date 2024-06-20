@@ -73,7 +73,7 @@ export const getStaticProps = async ({ locale }) => {
       forDevelopersPosts,
       forBusinessPosts,
       forEducationPosts,
-      inThePressPosts,
+      inThePressPosts: inThePressPosts ? inThePressPosts : null,
       mainPageDate,
       mainPostExcerpt
     },

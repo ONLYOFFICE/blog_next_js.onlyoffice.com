@@ -17,13 +17,13 @@ const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePre
           <Heading className="main-title" level={2}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
 
           <div className="posts">
-            {inThePressPosts.edges.slice(0, 3).map(({node}) => (
+            {inThePressPosts?.edges.slice(0, 3).map(({node}) => (
               <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
             <Newsletter t={t} locale={locale} />
 
-            {inThePressPosts.edges.slice(3, 5).map(({node}) => (
+            {inThePressPosts?.edges.slice(3, 5).map(({node}) => (
               <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 

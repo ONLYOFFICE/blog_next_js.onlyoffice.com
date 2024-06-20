@@ -50,7 +50,7 @@ export const getStaticProps = async ({ locale }) => {
 		props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
-      inThePressPosts,
+      inThePressPosts: inThePressPosts ? inThePressPosts : null,
       inThePressDate,
       recentPosts
     },
