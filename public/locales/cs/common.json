@@ -1,6 +1,6 @@
 {
-  "AdventAnnounceDesktop": "<span>ONLYOFFICE Docs 8.1 released:</span> full-featured PDF Editor, Slide Master, improved RTL, enhanced collaboration in sheets, and more",
-  "AdventAnnounceMobile": "<span>ONLYOFFICE Docs 8.1</span> released",
+  "AdventAnnounceDesktop": "Vydání <span>ONLYOFFICE Docs 8.1:</span> plnohodnotný PDF editor, Slide Master, vylepšený RTL, vylepšená spolupráce v listech a další novinky",
+  "AdventAnnounceMobile": "Vydání <span>ONLYOFFICE Docs 8.1</span>",
 
   "Page not found": "Stránka nebyla nalezena",
 
@@ -52,7 +52,9 @@
   "Webinars": "Webináře",
   "Training courses": "Kurzy a školení",
   "Collaborate": "Spolupracujte",
-  "blogLink1": "https://www.onlyoffice.com/blog/2024/06/onlyoffice-docs-8-1-released",
+  "ONLYOFFICE Docs 8.1 released: full-featured PDF Editor, Slide Master, improved RTL, enhanced collaboration in sheets, and more": "Vydání ONLYOFFICE Docs 8.1: plnohodnotný PDF editor, Slide Master, vylepšený RTL, vylepšená spolupráce v listech a další novinky",
+  "19 June 2024": "19 červen 2024",
+  "blogLink1": "https://www.onlyoffice.com/blog/cs/2024/06/onlyoffice-docs-8-1-released",
   "blogLink2": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
 
   "Solutions": "Řešení",
