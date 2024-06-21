@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import x from "@public/images/icons/x.svg";
 
 const StyledRecentPosts = styled.div`
   display: flex;
@@ -32,8 +33,8 @@ const StyledRecentPosts = styled.div`
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/facebook.svg");
     }
 
-    &.twitter {
-      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/twitter.svg");
+    &.x {
+      background-image: url(${x.src});
     }
 
     &.linkedin {

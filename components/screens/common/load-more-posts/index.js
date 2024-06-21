@@ -6,33 +6,33 @@ import InThePressPost from "@components/screens/in-the-press-content/in-the-pres
 import SearchPost from "@components/screens/search-content/search-post";
 
 const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
-  const dataEdges = isCategoryContent ? data.edges.slice(15) : isInThePressContent ? data.edges.slice(5) : data.edges;
+  const dataEdges = isCategoryContent ? data.edges.slice(15) : isInThePressContent ? data?.edges.slice(5) : data?.edges;
   const dataSliceLength = isCategoryContent || isInThePressContent ? 0 : isAuthorContent || isTagContent ? 6 : isSearchContent ? 5 : 3;
 
-  const [postList, setPostList] = useState(dataEdges.slice(0, dataSliceLength));
-  const [hasMore, setHasMore] = useState(data.edges.length > 3);
+  const [postList, setPostList] = useState(dataEdges?.slice(0, dataSliceLength));
+  const [hasMore, setHasMore] = useState(data?.edges.length > 3);
   const [isLoading, setIsLoading] = useState(false);
   const [postsData, setPostsData] = useState(data?.edges ?? []);
   const [pageInfo, setPageInfo] = useState(data?.pageInfo);
   const {endCursor, hasNextPage} = pageInfo || {};
 
   useEffect(() => {
-    const isMore = postList.length < dataEdges.length;
+    const isMore = postList?.length < dataEdges?.length;
 
     setHasMore(isMore);
   }, [postList]);
 
   useEffect(() => {
-    setPostList(dataEdges.slice(0, dataSliceLength));
+    setPostList(dataEdges?.slice(0, dataSliceLength));
     setPostsData(data?.edges);
     setPageInfo(data?.pageInfo);
   }, [data?.edges]);
 
   const handleLoadMore = async () => {
     const currentLength = postList.length;
-    const isMore = currentLength < dataEdges.length;
+    const isMore = currentLength < dataEdges?.length;
     const nextResultsLength = isInThePressContent ? 5 : isSearchContent ? 5 : 6;
-    const nextResults = isMore ? dataEdges.slice(currentLength, currentLength + nextResultsLength) : [];
+    const nextResults = isMore ? dataEdges?.slice(currentLength, currentLength + nextResultsLength) : [];
     setIsLoading(true);
 
     if (isMainContent || isCategoryContent || isAuthorContent || isTagContent) {
@@ -75,10 +75,10 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
     }
 
     if (isSearchContent) {
-      const uniqueNextResults = data.edges.filter(nextResult => !postsData.some(post => post.node.id === nextResult.node.id));
-      setPostsData(postsData.concat(uniqueNextResults));
+      const uniqueNextResults = data.edges.filter(nextResult => !postsData?.some(post => post.node.id === nextResult.node.id));
+      setPostsData(postsData?.concat(uniqueNextResults));
     } else {
-      setPostsData(postsData.concat(data?.edges));
+      setPostsData(postsData?.concat(data?.edges));
     }
 
     setPageInfo({...data?.pageInfo});
@@ -132,21 +132,21 @@ const LoadMorePosts = ({ t, locale, data, isCategoryContent, isInThePressContent
     }
     {
       isCategoryContent ?
-        postsData.slice(60)?.map(({node}) => (
+        postsData?.slice(60)?.map(({node}) => (
           <Card key={node.id} t={t} locale={locale} data={node} />
         ))
       :
       isInThePressContent ?
-        postsData.slice(60)?.map(({node}) => (
+        postsData?.slice(60)?.map(({node}) => (
           <InThePressPost key={node.id} locale={locale} data={node} />
         ))
       :
       isSearchContent ?
-        postsData.slice(5)?.map(({node}) => (
+        postsData?.slice(5)?.map(({node}) => (
           <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
       :
-        postsData.slice(60)?.map(({node}) => (
+        postsData?.slice(60)?.map(({node}) => (
           <Card key={node.id} t={t} locale={locale} data={node} />
         ))
     }
