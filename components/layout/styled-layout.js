@@ -415,6 +415,31 @@ const StyledLayout = styled.div`
       }
     }
 
+    .footer-apps-items {
+      li {
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-left: 16px;
+        }
+      }
+
+      a {
+        &:before {
+          margin-right: 0;
+          margin-left: 8px;
+
+          @media screen and (max-width: 969px) {
+            margin-left: 0;
+            margin-bottom: 8px;
+          }
+
+          @media screen and (max-width: 600px) {
+            margin: 0;
+          }
+        }
+      }
+    }
+
     .close-icon {
       right: initial;
       left: 0;
