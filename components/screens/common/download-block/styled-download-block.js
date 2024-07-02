@@ -18,6 +18,18 @@ const StyledDownLoadBlock = styled.div`
     }
   }
 
+  &.zh-hans {
+    .download-block-btn {
+      &.windows {
+        padding: 11px 26px;
+
+        @media ${device.tablet} {
+          padding: 11px 18px;
+        }
+      }
+    }
+  }
+
   .download-block-title {
     margin-bottom: 32px;
     font-size: 18px;
