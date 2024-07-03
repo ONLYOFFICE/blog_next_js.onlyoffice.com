@@ -6,6 +6,9 @@
 
   "AdventAnnounceDesktop": "<span>ONLYOFFICE 文档 8.1 现已发布：</span>功能齐全的 PDF 编辑器、幻灯片模板、增强的电子表格协作功能、改进的 RTL 等",
   "AdventAnnounceMobile": "<span>ONLYOFFICE 文档 8.1</span> 现已发布",
+  "AdventAnnounceDesktopZh": "参加 ONLYOFFICE 插件开发大赛，<span>赢取万元奖金！</span>",
+  "AdventAnnounceMobileZh": "<span>参加</span> ONLYOFFICE 插件开发大赛！",
+  "AdventAnnounceMobileZhLink": "https://www.onlyoffice.com/zh/plugin-developer-competiton.aspx",
 
   "Page not found": "未找到页面",
   "404 Page not found": "404页面未找到",
