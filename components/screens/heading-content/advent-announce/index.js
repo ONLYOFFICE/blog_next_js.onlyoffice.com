@@ -15,7 +15,7 @@ const AdventAnnounce = ({ t, locale, stateMobile }) => {
   }, [locale]);
 
   return (
-    <StyledAdventAnnounce className={`${locale} ${stateMobile ? "active": ""}`}>
+    <StyledAdventAnnounce locale={locale} className={`${locale} ${stateMobile ? "active": ""}`}>
       <div className={`advent-announce advent-mobile-hide ${locale === "zh-hans" && currentAdventAnnounce === 1 ? "advent-announce-1": ""}`}>
         <a href={t("blogLink1")}>
           <div className="advent-announce-text">
