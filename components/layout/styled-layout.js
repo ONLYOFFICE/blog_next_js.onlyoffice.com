@@ -223,6 +223,12 @@ const StyledLayout = styled.div`
               transform: rotate(180deg);
             }
           }
+
+          .menu-link {
+            @media screen and ${device.laptop} {
+              padding: 0 36px 0 0;
+            }
+          }
         }
       }
     }
@@ -248,14 +254,21 @@ const StyledLayout = styled.div`
       }
     }
 
-    .nav-enterprise {
+    .nav-enterprise,
+    .nav-pricing {
       .menu-wrapper-bottom {
-        .menu-link:not(:last-child) {
-          margin-right: initial;
-          margin-left: 32px;
-
+        .menu-link {
           @media screen and ${device.laptop} {
-            margin-left: 0;
+            padding: 0 36px 0 0;
+          }
+
+          &:not(:last-child) {
+            margin-right: initial;
+            margin-left: 32px;
+
+            @media screen and ${device.laptop} {
+              margin-left: 0;
+            }
           }
         }
       }
@@ -332,8 +345,14 @@ const StyledLayout = styled.div`
     }
 
     .menu-apps {
-      margin-right: initial;
-      margin-left: 32px;
+      &:not(:last-child) {
+        margin-right: initial;
+        margin-left: 32px;
+
+        @media screen and ${device.laptop} {
+          margin-left: 0;
+        }
+      }
 
       .menu-label {
         margin: 0 0 0 16px;
@@ -341,10 +360,6 @@ const StyledLayout = styled.div`
         @media screen and ${device.laptop} {
           margin: 0 0 16px;
         }
-      }
-
-      @media screen and ${device.laptop} {
-        margin: 0;
       }
     }
 
@@ -359,7 +374,7 @@ const StyledLayout = styled.div`
 
     .menu-wrapper-bottom-links {
       .menu-link {
-        padding: 0 36px 0 0;
+        padding: 0 32px 0 0;
 
         &:not(:last-child) {
           margin: 0 0 0 16px;
@@ -367,6 +382,10 @@ const StyledLayout = styled.div`
           @media screen and ${device.laptop} {
             margin: 0 0 12px 0;
           }
+        }
+
+        @media screen and ${device.laptop} {
+          padding: 0 36px 0 0;
         }
       }
     }
@@ -393,6 +412,31 @@ const StyledLayout = styled.div`
   
       .contact-text {
         text-align: right;
+      }
+    }
+
+    .footer-apps-items {
+      li {
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-left: 16px;
+        }
+      }
+
+      a {
+        &:before {
+          margin-right: 0;
+          margin-left: 8px;
+
+          @media screen and (max-width: 969px) {
+            margin-left: 0;
+            margin-bottom: 8px;
+          }
+
+          @media screen and (max-width: 600px) {
+            margin: 0;
+          }
+        }
       }
     }
 

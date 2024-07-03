@@ -10,30 +10,30 @@ const StyledFooterItem = styled.div`
     display: grid;
     row-gap: 8px;
     max-height: 100%;
-    
-  @media screen and (max-width: 600px) {
-    display: grid;
-    position: initial;
-    margin-bottom: 0;
-    overflow: hidden;
-    transition: margin-top 0.5s ease;
 
-    ${(props) =>
-      props.isOpen
-        ? css`
-            display: grid;
-            grid-gap: 12px;
-            margin: 11px 0 12px;
-            position: initial;
-            height: 100%;
-            max-height: 100%;
-          `
-        : css`
-            position: initial;
-            margin-bottom: 0;
-            margin-top: 0;
-            max-height: 0;
-          `}
+    @media screen and (max-width: 600px) {
+      display: grid;
+      position: initial;
+      margin-bottom: 0;
+      overflow: hidden;
+      transition: margin-top 0.5s ease;
+  
+      ${(props) =>
+        props.isOpen
+          ? css`
+              display: grid;
+              grid-gap: 12px;
+              margin: 11px 0 12px;
+              position: initial;
+              height: 100%;
+              max-height: 100%;
+            `
+          : css`
+              position: initial;
+              margin-bottom: 0;
+              margin-top: 0;
+              max-height: 0;
+            `}
     }
   }
 
@@ -101,6 +101,12 @@ const StyledFooterItem = styled.div`
   .footer-item-heading-arrow {
     display: none;
 
+    &.up {
+      @media screen and (max-width: 600px) {
+        transform: rotate(180deg);
+      }
+    }
+
     @media screen and (max-width: 600px) {
       display: block;
       position: absolute;
@@ -112,10 +118,6 @@ const StyledFooterItem = styled.div`
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/chevron-down.svg");
       background-repeat: no-repeat;
       background-size: 24px 24px;
-  
-      &.up {
-        transform: rotate(180deg);
-      }
     }
   }
 

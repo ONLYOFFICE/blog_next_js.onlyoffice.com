@@ -82,17 +82,8 @@
   "blogLink1": "https://www.onlyoffice.com/blog/2024/06/onlyoffice-docs-8-1-released",
   "blogLink2": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
 
-  "Solutions": "Λύσεις",
-  "SMBs": "SMB",
-  "Enterprises": "Επιχειρήσεις",
-  "Home use": "Οικιακή χρήση",
   "Developers": "Για προγραμματιστές",
   "Hosting providers": "Πάροχοι υπηρεσιών φιλοξενίας",
-  "Government": "Κυβέρνηση",
-  "Healthcare": "Υγειονομική περίθαλψη",
-  "Research": "Έρευνα",
-  "Education": "Εκπαίδευση",
-  "Nonprofits": "Μη κερδοσκοπικοί οργανισμοί",
   "Convert text files": "Μετατροπή αρχείων κειμένου",
   "Convert spreadsheets": "Μετατροπή υπολογιστικών φύλλων",
   "Convert presentations": "Μετατροπή παρουσιάσεων",
@@ -144,5 +135,6 @@
   "No results matching your query could be found": "Δεν βρέθηκαν αποτελέσματα που να ταιριάζουν με το ερώτημά σας",
   "Outdated": "Ξεπερασμένο",
   "Search results for": "ΑΠΟΤΕΛΕΣΜΑΤΑ ΑΝΑΖΗΤΗΣΗΣ ΓΙΑ",
-  "Search blog": "Αναζήτηση ιστολογίου"
+  "Search blog": "Αναζήτηση ιστολογίου",
+  "SustainabilityLink": "https://www.onlyoffice.com/blog/2024/06/eco-friendly"
 }

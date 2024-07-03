@@ -1,39 +1,178 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import windows from "@public/images/icons/windows.svg";
+import linux from "@public/images/icons/linux.svg";
+import macos from "@public/images/icons/macos.svg";
+import android from "@public/images/icons/android.svg";
+import ios from "@public/images/icons/ios.svg";
 
 const StyledFooter = styled.div`
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 258px;
-  column-gap: 32px;
   padding: 56px 32px 60px;
   margin: 0 auto;
-  height: auto;
   max-width: 1120px;
+  overflow: hidden;
+  
+  &.zh-hans {
+    .footer-items {
+      grid-template-columns: repeat(4, 1fr);
 
-  .footer-item-group {
-    position: relative;
-
-    &:nth-child(5) {
       @media screen and (max-width: 969px) {
-        display: grid;
-        align-items: start;
-        grid-template-columns: 1fr 1fr;
-        grid-column: span 4;
-        column-gap: 32px;
+        grid-template-columns: repeat(6, 1fr);
       }
+    }
 
-      @media screen and (max-width: 600px) {
-        display: initial;
-        align-items: initial;
-        grid-template-columns: initial;
-        grid-column: initial;
-        column-gap: initial;
+    @media screen and (max-width: 600px) {
+      .footer-bottom .footer-copyright-block {
+        span {
+          display: inline-block;
+        }
       }
     }
   }
 
-  .footer-item-group-last {
+  .footer-apps {
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 600px) {
+      margin-bottom: 0;
+    }
+  }
+
+  .footer-apps-title {
+    display: inline-flex;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .footer-apps-items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 16px;
+
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 20px;
+      color: #444444;
+      background-color: #F9F9F9;
+      transition: background-color 0.3s;
+
+      &:before {
+        content: "";
+        display: flex;
+        margin-right: 8px;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+
+        @media screen and (max-width: 969px) {
+          margin-right: 0;
+          margin-bottom: 8px;
+        }
+
+        @media screen and (max-width: 600px) {
+          margin: 0;
+        }
+      }
+
+      &.windows {
+        &:before {
+          background-image: url(${windows.src});
+        }
+      }
+
+      &.linux {
+        &:before {
+          background-image: url(${linux.src});
+        }
+      }
+
+      &.macos {
+        &:before {
+          width: 42px;
+          background-image: url(${macos.src});
+        }
+      }
+
+      &.android {
+        &:before {
+          width: 42px;
+          background-image: url(${android.src});
+        }
+      }
+
+      &.ios {
+        &:before {
+          width: 41px;
+          background-image: url(${ios.src});
+        }
+      }
+
+      &:hover {
+        background-color: #F5F5F5;
+      }
+
+      @media screen and (max-width: 969px) {
+        flex-direction: column;
+      }
+
+      @media screen and (max-width: 600px) {
+        border-radius: initial;
+        padding: 0;
+        font-size: 0;
+        line-height: 0;
+        background-color: initial;
+      }
+    }
+  }
+
+  .footer-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 240px 1fr;
+    column-gap: 32px;
+
+    @media screen and (max-width: 969px) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media screen and (max-width: 600px) {
+      display: block;
+    }
+  }
+
+  .footer-item-group {
+    position: relative;
+
+    @media screen and (max-width: 969px) {
+      grid-column: span 2;
+
+      &:nth-child(4),
+      &:nth-child(5) {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  .footer-bottom {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -82,12 +221,6 @@ const StyledFooter = styled.div`
     }
   }
 
-  .social-links {
-    @media screen and ${device.laptop} {
-      justify-content: center;
-    }
-  }
-
   .footer-link-contact {
     font-size: 13px;
     line-height: 18px;
@@ -126,8 +259,14 @@ const StyledFooter = styled.div`
     text-align: right;
 
     span {
-      @media screen and ${device.laptop} {
-        margin: 0 1px;
+      &:first-child {
+        @media screen and ${device.laptop} {
+          margin-right: 3px;
+        }
+
+        @media screen and (max-width: 600px) {
+          margin-right: 0;
+        }
       }
 
       @media screen and (max-width: 600px) {
@@ -139,17 +278,18 @@ const StyledFooter = styled.div`
     }
 
     @media screen and ${device.laptop} {
-      flex-direction: initial;
-      justify-content: center;
+      display: block;
       margin: 32px 0 0;
       text-align: center;
     }
 
     @media screen and (max-width: 600px) {
-      flex-wrap: wrap;
-      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      margin: 32px 0 8px;
       line-height: 18px;
       color: #AAAAAA;
+      text-align: center;
     }
   }
 
@@ -159,11 +299,39 @@ const StyledFooter = styled.div`
     line-height: 1.4em;
 
     @media screen and (max-width: 600px) {
+      padding: 10px 0 50px 0;
       font-size: 13px;
       line-height: 26px;
     }
   }
+
+  .footer-item-follow {
+    padding-bottom: 0;
+
+    @media screen and (max-width: 600px) {
+      padding: 32px 0;
+      border: none;
   
+      .footer-items-group {
+        max-height: 100% !important;
+      }
+  
+      .footer-item-heading-arrow {
+        display: none;
+      }
+  
+      .footer-item-heading {
+        display: none;
+      }
+    }
+  }
+
+  .social-links {
+    @media screen and ${device.laptop} {
+      justify-content: center;
+    }
+  }
+
   .popup-qr-code.line-qr-code {
     @media screen and (max-width: 900px) {
       left: initial;
@@ -214,20 +382,11 @@ const StyledFooter = styled.div`
   }
 
   @media screen and ${device.laptop} {
-    vertical-align: top;
     padding: 56px 40px 64px;
-    justify-content: center;
-  }
-
-  @media screen and (max-width: 969px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   @media screen and (max-width: 600px) {
-    display: block;
-    max-width: 100%;
-    padding: 8px 16px 64px;
-    margin: 0;
+    padding: 16px 16px 64px;
   }
 `;
 
