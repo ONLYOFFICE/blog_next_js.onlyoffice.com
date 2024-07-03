@@ -21,7 +21,7 @@ const StyledAdventAnnounce = styled.div`
     overflow: hidden;
     text-align: center;
     background: #1C1A39;
-    transition: opacity 1s ease-in, visibility 1s ease-in;
+    transition: ${(props) => props.locale === "zh-hans" && `opacity 1s ease-in, visibility 1s ease-in`};
 
     a {
       position: absolute;
@@ -268,13 +268,13 @@ const StyledAdventAnnounce = styled.div`
   }
 
   .advent-announce-1 {
-    opacity: 0;
-    visibility: hidden;
+    opacity: ${(props) => props.locale === "zh-hans" && `0`};
+    visibility: ${(props) => props.locale === "zh-hans" && `hidden`};
   }
 
   .advent-announce-2 {
-    opacity: 1;
-    visibility: visible;
+    opacity: ${(props) => props.locale === "zh-hans" && `1`};
+    visibility: ${(props) => props.locale === "zh-hans" && `visible`};
   }
 
   @media screen and ${device.laptop} {
