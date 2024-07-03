@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import sustainability from "@public/images/icons/sustainability.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
+import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -18,6 +19,14 @@ const StyledNav = styled.nav`
     .menu-block-img {
       &.reseller {
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu-reseller-fr.svg");
+      }
+    }
+  }
+
+  &.zh-hans {
+    .menu-block-img {
+      &.blog-1 {
+        background-image: url(${blog1Zh.src});
       }
     }
   }
