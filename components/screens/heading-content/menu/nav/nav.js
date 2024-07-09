@@ -93,7 +93,7 @@ const Nav = ({ t, locale }) => {
                       <InternalLink className="menu-link nextcloud" href={`${hrefLang}/office-for-nextcloud.aspx`} label={t("Nextcloud")} />
                       <InternalLink className="menu-link odoo" href={`${hrefLang}/office-for-odoo.aspx`} label={t("Odoo")} />
                       <InternalLink className="menu-link owncloud" href={`${hrefLang}/office-for-owncloud.aspx`} label={t("ownCloud")} />
-                      <InternalLink className="menu-link no-img" href={`${hrefLang}/all-connectors.aspx`} label={t("See all connectors")} />
+                      <InternalLink className="menu-link no-img" href={`${hrefLang}/all-connectors.aspx`} label={t("See more connectors")} />
                     </>
                   }
                   {activeTab === 1 &&
@@ -102,7 +102,7 @@ const Nav = ({ t, locale }) => {
                       <InternalLink className="menu-link zoom" href={`${hrefLang}/office-for-zoom.aspx`} label={t("Zoom")} />
                       <InternalLink className="menu-link wordpress" href={`${hrefLang}/office-for-wordpress.aspx`} label={t("WordPress")} />
                       <InternalLink className="menu-link drupal" href={`${hrefLang}/office-for-drupal.aspx`} label={t("Drupal")} />
-                      <InternalLink className="menu-link no-img" href={`${hrefLang}/all-connectors.aspx`} label={t("See all connectors")} />
+                      <InternalLink className="menu-link no-img" href={`${hrefLang}/all-connectors.aspx`} label={t("See more connectors")} />
                     </>
                   }
                 </div>
@@ -145,7 +145,7 @@ const Nav = ({ t, locale }) => {
                 </div>
               </div>
               <div className="menu-wrapper-bottom">
-                <InternalLink className="menu-link contact-sales" href="mailto:sales@onlyoffice.com" label={t("Contact sales")} />
+                <InternalLink className="menu-link contact-sales" href={`mailto:sales@onlyoffice.com?subject=${t("ONLYOFFICE%20Docs%20Enterprise%20request")}`} label={t("Contact sales")} />
                 <InternalLink className="menu-link request-demo" href={`${hrefLang}/demo-order.aspx`} label={t("Request demo")} />
               </div>
             </div>
@@ -201,7 +201,6 @@ const Nav = ({ t, locale }) => {
                     <InternalLink className="menu-box-link" href={`${hrefLang}/download-workspace.aspx`} label={t("Install on-premises")} />
                   </div>
                   <InternalLink className="menu-link connectors" href={`${hrefLang}/all-connectors.aspx`} label={t("Connectors")} />
-                  <InternalLink className="menu-link desktop-mobile-apps" href={`${hrefLang}/download-desktop.aspx`} label={t("Desktop & mobile apps")} />
                 </div>
                 <div className="menu-box">
                   <div className="menu-box-wrapper">
@@ -215,14 +214,14 @@ const Nav = ({ t, locale }) => {
                   <div className="menu-box-wrapper">
                     <div className="menu-label">{t("For community")}</div>
                     <InternalLink className="menu-link workspace" href={`${hrefLang}/download-workspace.aspx#workspace-community`} label={t("Workspace Community")} />
-                    <InternalLink className="menu-link docspace" href={`${hrefLang}/download-docspace.aspx?from=downloadintegrationmenu#docspace-community`} label={t("Docspace Community")} />
+                    <InternalLink className="menu-link docspace-community" href={`${hrefLang}/download-docspace.aspx?from=downloadintegrationmenu#docspace-community`} label={t("Docspace Community")} />
                     <InternalLink className="menu-link code-on-github" href="https://github.com/ONLYOFFICE/" label={t("Code on GitHub")} />
                   </div>
                 </div>
               </div>
               <div className="menu-wrapper-bottom">
                 <div className="menu-apps">
-                  <span className="menu-label">{t("Apps")}</span>
+                  <span className="menu-label">{t("Desktop & mobile apps")}</span>
                   <ul className="menu-apps-list">
                     <li><InternalLink className="menu-app-link windows" href={`${hrefLang}/desktop.aspx`} /></li>
                     <li><InternalLink className="menu-app-link macos" href={`${hrefLang}/desktop.aspx`} /></li>
@@ -264,7 +263,7 @@ const Nav = ({ t, locale }) => {
                 </div>
               </div>
               <div className="menu-wrapper-bottom">
-                <InternalLink className="menu-link contact-sales" href="mailto:sales@onlyoffice.com" label={t("Contact sales")} />
+                <InternalLink className="menu-link contact-sales" href={`mailto:sales@onlyoffice.com?subject=${t("ONLYOFFICE%20sales%20request")}`} label={t("Contact sales")} />
               </div>
             </div>
           </MenuItem>

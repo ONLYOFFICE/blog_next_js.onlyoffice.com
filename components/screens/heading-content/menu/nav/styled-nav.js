@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import sustainability from "@public/images/icons/sustainability.svg";
+import docspaceCommunity from "@public/images/icons/docspace-community.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
 import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
 
@@ -245,19 +246,8 @@ const StyledNav = styled.nav`
     .menu-box {
       padding: 24px;
 
-      &:first-child {
-        min-width: 344px;
-
-        @media screen and ${device.laptop} {
-          min-width: initial;
-        }
-      }
-
       &:nth-child(2),
       &:last-child {
-        width: 100%;
-        min-width: 332px;
-
         .menu-label {
           display: flex;
           align-items: center;
@@ -351,6 +341,14 @@ const StyledNav = styled.nav`
         padding: 0;
       }
     }
+
+    .menu-wrapper-bottom {
+      padding: 11px 24px 12px 24px;
+
+      @media screen and ${device.laptop} {
+        padding: 23px 24px 24px;
+      }
+    }
   }
 
   .nav-get-onlyoffice {
@@ -374,6 +372,32 @@ const StyledNav = styled.nav`
     .menu-wrapper-box {
       @media screen and ${device.laptop} {
         padding: 24px;
+      }
+    }
+
+    .menu-wrapper-bottom {
+      justify-content: right;
+      padding: 11px 24px 12px 24px;
+      white-space: nowrap;
+
+      @media screen and ${device.laptop} {
+        padding: 23px 24px 24px;
+        white-space: initial;
+      }
+    }
+  }
+
+  &.pt-br,
+  &.el {
+    .nav-get-onlyoffice {
+      .menu-box {
+        width: 100%;
+        min-width: 312px;
+
+        &:first-child {
+          width: 100%;
+          min-width: 312px;
+        }
       }
     }
   }
@@ -744,7 +768,7 @@ const StyledNav = styled.nav`
   .menu-box {
     box-sizing: border-box;
     position: relative;
-    padding: 32px;
+    padding: 24px;
     width: 312px;
 
     &.bg-gray {
@@ -807,7 +831,7 @@ const StyledNav = styled.nav`
     @media screen and ${device.laptop} {
       justify-content: initial;
       flex-direction: column;
-      padding: 24px;
+      padding: 23px 24px 24px;
     }
   }
 
@@ -860,24 +884,24 @@ const StyledNav = styled.nav`
     height: 32px;
     background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/platforms.svg");
 
+    &.windows {
+      background-position: 0 -52px;
+    }
+
     &.macos {
-      background-position-x: -52px;
+      background-position: -52px -52px;
     }
 
     &.linux {
-      background-position-x: -104px;
+      background-position: -104px -52px;
     }
 
     &.android {
-      background-position-x: -154px;
+      background-position: -154px -52px;
     }
 
     &.ios {
-      background-position-x: -206px;
-    }
-
-    &:hover {
-      background-position-y: -52px;
+      background-position: -206px -52px;
     }
   }
 
@@ -1022,7 +1046,7 @@ const StyledNav = styled.nav`
 
   .menu-box-wrapper {
     &:not(:last-child) {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
   }
 
@@ -1405,9 +1429,9 @@ const StyledNav = styled.nav`
       }
     }
 
-    &.desktop-mobile-apps {
+    &.docspace-community {
       &:before {
-        background-position-y: -156px;
+        background-image: url(${docspaceCommunity.src});
       }
     }
 
