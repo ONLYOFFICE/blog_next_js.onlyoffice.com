@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 import sustainability from "@public/images/icons/sustainability.svg";
+import docspaceCommunity from "@public/images/icons/docspace-community.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
 import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
 
@@ -1425,6 +1426,12 @@ const StyledNav = styled.nav`
     &.connectors {
       &:before {
         background-position-y: -1196px;
+      }
+    }
+
+    &.docspace-community {
+      &:before {
+        background-image: url(${docspaceCommunity.src});
       }
     }
 
