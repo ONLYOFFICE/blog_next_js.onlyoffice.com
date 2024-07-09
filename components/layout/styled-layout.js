@@ -274,6 +274,12 @@ const StyledLayout = styled.div`
       }
     }
 
+    .nav-get-onlyoffice {
+      .menu-wrapper-bottom {
+        justify-content: left;
+      }
+    }
+
     .nav-selector-wrapper {
       z-index: 2;
     }
