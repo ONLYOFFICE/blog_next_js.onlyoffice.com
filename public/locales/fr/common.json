@@ -146,9 +146,8 @@
   "Projects": "Projets",
   "Mails": "Mail",
   "Calendar": "Calendrier",
-  "See all connectors": "Afficher tous les connecteurs",
+  "See more connectors": "Afficher d'autres connecteurs",
   "Templates": "Modèles",
-  "Apps": "Applications",
   "AI assistant": "Assistant IA",
   "Why Docs Enterprise": "Pourquoi Docs Enterprise",
   "Why DocSpace Enterprise": "Pourquoi DocSpace Enterprise",
@@ -159,5 +158,7 @@
   "Get free apps": "Obtenir les appilcations gratuites",
   "For macOS": "Pour macOS",
   "For Android": "Pour Android",
-  "For iOS": "Pour iOS"
+  "For iOS": "Pour iOS",
+  "ONLYOFFICE%20Docs%20Enterprise%20request": "Demande%20d'ONLYOFFICE%20Docs%20Enterprise",
+  "ONLYOFFICE%20sales%20request": "Demande%20de%20vente%20ONLYOFFICE"
 }

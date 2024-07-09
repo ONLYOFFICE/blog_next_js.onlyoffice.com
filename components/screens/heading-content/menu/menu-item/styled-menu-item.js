@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
 
-const StyledNavMenu = styled.li`
+const StyledMenuItem = styled.li`
   list-style-type: none;
   padding: 0;
 
@@ -126,4 +126,4 @@ const StyledNavMenu = styled.li`
   }
 `;
 
-export default StyledNavMenu;
+export default StyledMenuItem;
