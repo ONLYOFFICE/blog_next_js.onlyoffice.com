@@ -1,6 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
+
+const loadSpin = keyframes`
+  100%  { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledSearchContent = styled(Section)`
   padding: 40px 0 80px;
@@ -71,12 +77,8 @@ const StyledSearchContent = styled(Section)`
       border-radius: 75%;
       border-right-color: transparent;
       transform: translate(-50%, -50%);
-      animation: cssload-spin 1025ms infinite linear;
+      animation: ${loadSpin} 1025ms infinite linear;
     }
-  }
-
-  @keyframes cssload-spin {
-    100%{ transform: translate(-50%, -50%) rotate(360deg); }
   }
 
   @media ${device.laptop} {
