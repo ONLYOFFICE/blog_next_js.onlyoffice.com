@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import sustainability from "@public/images/icons/sustainability.svg";
-import docspaceCommunity from "@public/images/icons/docspace-community.svg";
+import menuIcons from "@public/images/icons/menu-icons-4.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
 import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
 
@@ -1117,6 +1116,7 @@ const StyledNav = styled.nav`
   .menu-link {
     position: relative;
     display: flex;
+    align-items: center;
     padding-left: 36px;
     font-size: 16px;
     line-height: 24px;
@@ -1132,7 +1132,7 @@ const StyledNav = styled.nav`
       display: block;
       width: 24px;
       height: 24px;
-      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/menu-icons-3.svg");
+      background-image: url(${menuIcons.src});
       background-repeat: no-repeat;
 
       @media screen and ${device.laptop} {
@@ -1278,6 +1278,12 @@ const StyledNav = styled.nav`
       }
     }
 
+    &.zapier {
+      &:before {
+        background-position-y: -2756px;
+      }
+    }
+
     &.zoom {
       &:before {
         background-position-y: -2366px;
@@ -1346,7 +1352,7 @@ const StyledNav = styled.nav`
 
     &.sustainability {
       &:before {
-        background-image: url(${sustainability.src});
+        background-position-y: -312px;
       }
     }
 
@@ -1430,7 +1436,7 @@ const StyledNav = styled.nav`
 
     &.docspace-community {
       &:before {
-        background-image: url(${docspaceCommunity.src});
+        background-position-y: -2704px;
       }
     }
 
@@ -1638,6 +1644,26 @@ const StyledNav = styled.nav`
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+  }
+
+  .menu-link-new {
+    margin-right: 6px;
+  }
+
+  .menu-label-new {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border: 1px solid #FF6F3D;
+    padding: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    min-height: 18px;
+    letter-spacing: 0.1em;
+    color: #FF6F3D;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .menu-label {
