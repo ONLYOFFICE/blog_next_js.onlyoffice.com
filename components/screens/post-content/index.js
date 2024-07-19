@@ -2,6 +2,7 @@ import StyledPostContent from "./styled-post-content";
 import { useEffect, useState, useRef } from "react";
 import { renderToString } from "react-dom/server";
 import SyntaxHighlighter from "react-syntax-highlighter";
+import decodeHtml from "decode-html";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -116,7 +117,8 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                 className="entry-content" 
                 suppressHydrationWarning 
                 dangerouslySetInnerHTML={{
-                  __html: post?.content.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{p1}</SyntaxHighlighter>))
+                  __html: post?.content.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => 
+                    renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>))
                 }}
               />
             </article>
