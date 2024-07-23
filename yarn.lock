@@ -786,6 +786,11 @@ debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   dependencies:
     ms "2.1.2"
 
+decode-html@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/decode-html/-/decode-html-2.0.0.tgz#7d0a887ce44280e60978a707ebb7f8081fd61eaa"
+  integrity sha512-lVJ+EBozhAXA2nSQG+xAgcD0P5K3uejnIIvM09uoQfS8AALkQ+HhHcEUvKovXi0EIpIZWjm0y8X7ULjaJpgY9w==
+
 deep-equal@^2.0.5:
   version "2.2.0"
   resolved "https://registry.npmjs.org/deep-equal/-/deep-equal-2.2.0.tgz"

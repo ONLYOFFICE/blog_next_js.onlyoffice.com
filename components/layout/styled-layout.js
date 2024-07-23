@@ -306,6 +306,11 @@ const StyledLayout = styled.div`
       }
     }
 
+    .menu-link-new {
+      margin-right: 0;
+      margin-left: 6px;
+    }
+
     .menu-box-links {
       margin-left: 0;
       margin-right: 36px;

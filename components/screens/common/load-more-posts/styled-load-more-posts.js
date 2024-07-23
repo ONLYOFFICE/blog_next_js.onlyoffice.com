@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
+
+const loadSpin = keyframes`
+  100%  { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledLoadMorePosts = styled.div`
   grid-column: span 3;
@@ -30,13 +36,9 @@ const StyledLoadMorePosts = styled.div`
       border-radius: 75%;
       border-right-color: transparent;
       transform: translate(-50%, -50%);
-      animation: cssload-spin 1025ms infinite linear;
+      animation: ${loadSpin} 1025ms infinite linear;
       transition: border 0.3s;
       opacity: 0;
-    }
-    
-    @keyframes cssload-spin {
-      100%{ transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     &.loading {
