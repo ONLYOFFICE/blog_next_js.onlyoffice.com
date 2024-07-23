@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
-import sustainability from "@public/images/icons/sustainability.svg";
-import docspaceCommunity from "@public/images/icons/docspace-community.svg";
+import menuIcons from "@public/images/icons/menu-icons-4.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
 import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
 
@@ -392,11 +391,11 @@ const StyledNav = styled.nav`
     .nav-get-onlyoffice {
       .menu-box {
         width: 100%;
-        min-width: 312px;
+        min-width: 264px;
 
         &:first-child {
           width: 100%;
-          min-width: 312px;
+          min-width: 264px;
         }
       }
     }
@@ -464,8 +463,8 @@ const StyledNav = styled.nav`
   .nav-enterprise {
     .menu-box {
       width: max-content;
-      min-width: 312px;
-      max-width: 410px;
+      min-width: 264px;
+      max-width: 362px;
 
       @media screen and ${device.laptop} {
         width: 100%;
@@ -479,8 +478,8 @@ const StyledNav = styled.nav`
     .menu-box {
       &:first-child {
         width: max-content;
-        min-width: 312px;
-        max-width: 460px;
+        min-width: 264px;
+        max-width: 412px;
 
         @media screen and ${device.laptop} {
           width: 100%;
@@ -560,8 +559,8 @@ const StyledNav = styled.nav`
     .menu-box {
       &:first-child {
         width: max-content;
-        min-width: 312px;
-        max-width: 520px;
+        min-width: 264px;
+        max-width: 472px;
 
         @media screen and ${device.laptop} {
           width: 100%;
@@ -577,8 +576,8 @@ const StyledNav = styled.nav`
     .menu-box {
       &:first-child {
         width: max-content;
-        min-width: 312px;
-        max-width: 520px;
+        min-width: 264px;
+        max-width: 472px;
 
         @media screen and ${device.laptop} {
           width: 100%;
@@ -621,8 +620,8 @@ const StyledNav = styled.nav`
     .menu-box {
       &:first-child {
         width: max-content;
-        min-width: 312px;
-        max-width: 320px;
+        min-width: 264px;
+        max-width: 272px;
 
         @media screen and ${device.laptop} {
           width: 100%;
@@ -766,10 +765,9 @@ const StyledNav = styled.nav`
   }
 
   .menu-box {
-    box-sizing: border-box;
     position: relative;
     padding: 24px;
-    width: 312px;
+    width: 264px;
 
     &.bg-gray {
       background-color: #F8F9F9;
@@ -818,7 +816,7 @@ const StyledNav = styled.nav`
 
     @media screen and ${device.laptop} {
       padding: 0;
-      width: 100%;
+      width: initial;
     }
   }
 
@@ -1118,6 +1116,7 @@ const StyledNav = styled.nav`
   .menu-link {
     position: relative;
     display: flex;
+    align-items: center;
     padding-left: 36px;
     font-size: 16px;
     line-height: 24px;
@@ -1133,7 +1132,7 @@ const StyledNav = styled.nav`
       display: block;
       width: 24px;
       height: 24px;
-      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/menu-icons-3.svg");
+      background-image: url(${menuIcons.src});
       background-repeat: no-repeat;
 
       @media screen and ${device.laptop} {
@@ -1279,6 +1278,12 @@ const StyledNav = styled.nav`
       }
     }
 
+    &.zapier {
+      &:before {
+        background-position-y: -2756px;
+      }
+    }
+
     &.zoom {
       &:before {
         background-position-y: -2366px;
@@ -1347,7 +1352,7 @@ const StyledNav = styled.nav`
 
     &.sustainability {
       &:before {
-        background-image: url(${sustainability.src});
+        background-position-y: -312px;
       }
     }
 
@@ -1431,7 +1436,7 @@ const StyledNav = styled.nav`
 
     &.docspace-community {
       &:before {
-        background-image: url(${docspaceCommunity.src});
+        background-position-y: -2704px;
       }
     }
 
@@ -1639,6 +1644,26 @@ const StyledNav = styled.nav`
     &:not(:last-child) {
       margin-bottom: 8px;
     }
+  }
+
+  .menu-link-new {
+    margin-right: 6px;
+  }
+
+  .menu-label-new {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border: 1px solid #FF6F3D;
+    padding: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    min-height: 18px;
+    letter-spacing: 0.1em;
+    color: #FF6F3D;
+    text-align: center;
+    text-transform: uppercase;
   }
 
   .menu-label {

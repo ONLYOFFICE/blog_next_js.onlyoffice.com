@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
+
+const loadSpin = keyframes`
+  100%  { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledNewsletter = styled.div`
   box-shadow: 0px 7px 25px rgba(85, 85, 85, 0.15);
@@ -84,11 +90,7 @@ const StyledNewsletter = styled.div`
             border-radius: 75%;
             border-right-color: transparent;
             transform: translate(-50%, -50%);
-            animation: cssload-spin 1025ms infinite linear;
-          }
-          
-          @keyframes cssload-spin {
-            100%{ transform: translate(-50%, -50%) rotate(360deg); }
+            animation: ${loadSpin} 1025ms infinite linear;
           }
         }
       }

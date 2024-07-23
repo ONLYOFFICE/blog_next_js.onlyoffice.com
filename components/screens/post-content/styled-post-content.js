@@ -578,7 +578,7 @@ const StyledPostContent = styled(Section)`
     transform: translate(-50%, 0) scale(0,0);
     z-index: 10001;
     transition: transform .1s ease;
-    opacity 0;
+    opacity: 0;
 
     &.active {
       opacity: 1;

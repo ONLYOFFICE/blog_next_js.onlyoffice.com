@@ -5,10 +5,6 @@ import bannerLeftIcon from "@public/images/banners/banner-left-icon.svg";
 import bannerRight from "@public/images/banners/banner-right.png";
 import bannerRightIcon from "@public/images/banners/banner-right-icon.svg";
 import arrowRight from "@public/images/banners/arrow-right.svg";
-import pdcRight from "@public/images/banners/pdc-right.svg";
-import pdcLeft from "@public/images/banners/pdc-left.svg";
-import pdcFrame from "@public/images/banners/pdc-frame.svg";
-import pdcFrameMob from "@public/images/banners/pdc-frame-mob.svg";
 
 const StyledAdventAnnounce = styled.div`
   .advent-announce {
@@ -21,7 +17,6 @@ const StyledAdventAnnounce = styled.div`
     overflow: hidden;
     text-align: center;
     background: #1C1A39;
-    transition: ${(props) => props.locale === "zh-hans" && `opacity 1s ease-in, visibility 1s ease-in`};
 
     a {
       position: absolute;
@@ -164,117 +159,6 @@ const StyledAdventAnnounce = styled.div`
     @media screen and ${device.laptop} {
       display: none;
     }
-  }
-
-  .advent-announce-zh {
-    position: absolute;
-    background-color: #7F58EF;
-    background-image: linear-gradient(90deg, #9573F5 0.02%, #7F58EF 17.69%, #5D32DD 86.55%, #6B41EA 99.86%);
-    opacity: 0;
-    visibility: hidden;
-
-    a {
-      position: relative;
-      background: none;
-
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 577px;
-        height: 56px;
-        background-image: url(${pdcLeft.src});
-        background-repeat: no-repeat;
-        background-size: cover;
-
-        @media screen and (max-width: 1440px) {
-          width: 68px;
-        }
-
-        @media screen and ${device.laptop} {
-          content: none;
-        }
-      }
-
-      &:after {
-        @media screen and (max-width: 1440px) {
-          content: "";
-          position: absolute;
-          left: 186px;
-          top: 0;
-          display: block;
-          width: 263px;
-          height: 56px;
-          background-image: url(${pdcLeft.src});
-          background-position-x: right;
-        }
-
-        @media screen and (max-width: 1440px) {
-          left: 108px;
-        }
-
-        @media screen and (max-width: 1140px) {
-          left: 60px;
-        }
-
-        @media screen and ${device.laptop} {
-          content: none;
-        }
-      }
-    }
-
-    .advent-announce-text {
-      &:before {
-        top: 0;
-        left: -70px;
-        width: 453px;
-        background-image: url(${pdcFrame.src});
-
-        @media screen and ${device.laptop} {
-          content: "";
-          width: 320px;
-          background-image: url(${pdcFrameMob.src});
-        }
-      }
-
-      &:after {
-        top: 0;
-        right: -400px;
-        width: 312px;
-        height: 56px;
-        background-image: url(${pdcRight.src});
-      }
-
-      > div {
-        padding-right: 0;
-
-        &:after {
-          content: none;
-        }
-
-        span {
-          color: #FFF400;
-        }
-      }
-
-      @media screen and ${device.laptop} {
-        font-size: 12px;
-      }
-    }
-
-    @media screen and ${device.laptop} {
-      background: linear-gradient(89.87deg, #9573F5 0.09%, #7F58EF 17.75%, #5D32DD 92.72%, #6B41EA 99.88%);
-    }
-  }
-
-  .advent-announce-1 {
-    opacity: ${(props) => props.locale === "zh-hans" && `0`};
-    visibility: ${(props) => props.locale === "zh-hans" && `hidden`};
-  }
-
-  .advent-announce-2 {
-    opacity: ${(props) => props.locale === "zh-hans" && `1`};
-    visibility: ${(props) => props.locale === "zh-hans" && `visible`};
   }
 
   @media screen and ${device.laptop} {
