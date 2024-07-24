@@ -34,7 +34,7 @@ tar -czf "$BACKUP_DIR/$BACKUP_NAME" -C "$APP_DIR" .
 
 # Cleanup other www-cms-marketplace backups to leave only 7 latest
 cd "$BACKUP_DIR"
-ls -1t "$APP_NAME-*.tar.gz" | tail -n +8 | xargs -I {} rm -- {}
+ls -1t $APP_NAME-*.tar.gz | tail -n +8 | xargs -I {} rm -- {}
 
 # Stop application container if it exists
 if docker ps -a | grep -wq "$APP_NAME"; then
