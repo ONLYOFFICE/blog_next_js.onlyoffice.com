@@ -4,8 +4,9 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE NA IMPRENSA",
 
-  "AdventAnnounceDesktop": "<span>ONLYOFFICE Docs 8.1 lançado:</span> editor de PDF completo, Slide Mestre, RTL aprimorado, colaboração aprimorada em planilhas e muito mais",
-  "AdventAnnounceMobile": "<span>ONLYOFFICE Docs 8.1</span> lançado",
+  "AdventAnnounceDesktop": "<b>Lançamento do <span>ONLYOFFICE DocSpace 2.6</span></b>: salas de preenchimento de formulários, LDAP, gerenciamento de salas e arquivos aprimorado e muito mais",
+  "AdventAnnounceMobile": "<b>Lançamento do <span>ONLYOFFICE DocSpace 2.6</span></b>",
+  "AdventAnnounceLink": "https://www.onlyoffice.com/blog/pt-br/2024/07/disponivel-onlyoffice-docspace-2-6",
 
   "404 Page not found": "404 Página Não Encontrada",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "A página que você está procurando não existe, não está disponível ou carrega incorretamente.",

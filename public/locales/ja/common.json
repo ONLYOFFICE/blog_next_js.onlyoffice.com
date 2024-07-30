@@ -4,8 +4,9 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICEについての記事",
 
-  "AdventAnnounceDesktop": "<span>ONLYOFFICE Docs 8.1リリース：</span>フル機能のPDFエディタ、スライドマスター、RTLの改善、シートでのコラボレーションの強化など",
-  "AdventAnnounceMobile": "<span>ONLYOFFICE Docs 8.1</span>がリリースされた",
+  "AdventAnnounceDesktop": "<b><span>ONLYOFFICE DocSpace 2.6</span>版のリリース</b>：フォーム記入ルーム、LDAP、強化されたルームとファイル管理など",
+  "AdventAnnounceMobile": "<b><span>ONLYOFFICE DocSpace 2.6</span>版はリリースされた</b>",
+  "AdventAnnounceLink": "https://www.onlyoffice.com/blog/2024/07/onlyoffice-docspace-2-6-released",
 
   "404 Page not found": "404 ページは見つかりません",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "お探しのページは存在しないか、利用できないか、または正しく読み込まれていません。",
