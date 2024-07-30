@@ -3,6 +3,7 @@ import { device } from "@components/utils/devices";
 import menuIcons from "@public/images/icons/menu-icons-4.svg";
 import blog1 from "@public/images/menu-pics/menu-blog-1-1.jpg";
 import blog1Zh from "@public/images/menu-pics/menu-blog-1-1-zh.jpg";
+import zhDev from "@public/images/menu-pics/menu-banner-zh.svg";
 
 const StyledNav = styled.nav`
   position: absolute;
@@ -292,7 +293,7 @@ const StyledNav = styled.nav`
             }
           }
 
-          &.custom-rooms {
+          &.form-filling-rooms {
             &:not(:last-child) {
               margin-bottom: 12px;
 
@@ -1224,6 +1225,12 @@ const StyledNav = styled.nav`
       }
     }
 
+    &.form-filling-rooms {
+      &:before {
+        background-position-y: -2782px;
+      }
+    }
+
     &.e-book-creator {
       &:before {
         background-position-y: -1898px;
@@ -1615,6 +1622,18 @@ const StyledNav = styled.nav`
       }
     }
 
+    &.zh-dev {
+      padding-left: 0;
+
+      &:before {
+        content: none;
+      }
+
+      @media screen and ${device.laptop} {
+        margin-bottom: 16px;
+      }
+    }
+
     &.workspace,
     &.workspace-cloud {
       &:before {
@@ -1732,6 +1751,10 @@ const StyledNav = styled.nav`
 
     &.blog-2 {
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/menu-pics/menu-blog-2-1.png");
+    }
+
+    &.zh-dev-img {
+      background-image: url(${zhDev.src});
     }
   }
 

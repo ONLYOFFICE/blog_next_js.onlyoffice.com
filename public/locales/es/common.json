@@ -4,8 +4,9 @@
   
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE EN LA PRENSA",
 
-  "AdventAnnounceDesktop": "<span>Lanzamiento de ONLYOFFICE Docs 8.1:</span> editor de PDF con todas las funciones, patrón de diapositivas, RTL mejorado, colaboración mejorada en hojas y mucho más",
-  "AdventAnnounceMobile": "Lanzamiento de <span>ONLYOFFICE Docs 8.1</span>",
+  "AdventAnnounceDesktop": "<b>Disponible <span>ONLYOFFICE DocSpace 2.6</span></b>: salas para rellenar formularios, LDAP, gestión mejorada de salas y archivos, y mucho más",
+  "AdventAnnounceMobile": "<b>Disponible <span>ONLYOFFICE DocSpace 2.6</span></b>",
+  "AdventAnnounceLink": "https://www.onlyoffice.com/blog/es/2024/07/disponible-onlyoffice-docspace-2-6",
 
   "Page not found": "No se encontró la página",
   "404 Page not found": "404 Página no encontrada",
@@ -145,6 +146,7 @@
   "Meeting rooms": "Salas de reunión",
   "Public rooms": "Salas públicas",
   "Custom rooms": "Salas personalizadas",
+  "Form filling rooms": "Salas para rellenar formularios",
   "Markdown editor": "Editor de Markdown",
   "Documents": "Documentos",
   "Projects": "Proyectos",
