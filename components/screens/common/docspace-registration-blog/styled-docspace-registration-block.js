@@ -107,8 +107,7 @@ const StyledDocSpaceBlock = styled.div`
         .docspace_block_btn{
           background: #FF6F3D;
           color: #FFFFFF;
-          width: 140px;
-          padding: 19px 24px ;
+          width: 140px;          
           border-radius: 0px 3px 3px 0px;
           font-size: 13px;
           font-weight: 600;
