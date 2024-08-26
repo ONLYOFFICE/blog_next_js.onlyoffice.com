@@ -5,6 +5,7 @@ import Router from "next/router";
 import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
+import PopupDocSpace from "../common/popup-docspace";
 
 const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
   const [searchActive, setSearchActive] = useState(false);
@@ -15,7 +16,28 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
 
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
+    const modalClosed = localStorage.getItem("modalClosed");
+
+    if (!modalClosed) {
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+      }, 20000); // Открываем модальное окно через 20 секунд
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    localStorage.setItem("modalClosed", "true"); // Устанавливаем метку, что модальное окно закрыто
+  };
+
+  useEffect(() => {
+
     if (typeof window !== "undefined" && window.innerWidth <= 1024 && stateMobile) {
       const handleClickOutside = (e) => {
         if (!e.target.closest(".nav")) {
@@ -62,6 +84,7 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
 
   return (
     <StyledHeadingContent onMouseLeave={() => setStateMobile(false)} className={`navbar ${stateMobile ? "is-open" : ""}`}>
+       {isModalOpen && <PopupDocSpace onClose={handleCloseModal} locale={locale} t={t}/>}
       <GlobalStyles stateMobile={stateMobile} />
       <button onClick={() => setStateMobile(true)} className="nav-btn-mobile"></button>
       <InternalLink className="nav-item-logo" href={curLang}>
