@@ -6,7 +6,7 @@ import InternalLink from "@components/common/internal-link";
 import Heading from "@components/common/heading";
 import Card from "@components/screens/common/card";
 import SearchArea from "@components/common/search-area";
-import DownloadBlock from "@components/screens/common/download-block";
+import DocSpaceRegistrayionBlock from "../common/docspace-registration-blog";
 import Newsletter from "@components/screens/common/newsletter";
 import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
@@ -78,7 +78,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
           </div>
         </div>}
 
-        <DownloadBlock t={t} locale={locale} />
+        <DocSpaceRegistrayionBlock t={t} locale={locale} />
 
         {forBusinessPosts.edges.length > 0 &&
         <div className="category-wrapper">
