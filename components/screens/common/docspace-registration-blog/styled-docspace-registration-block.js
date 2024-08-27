@@ -9,6 +9,7 @@ const StyledDocSpaceBlock = styled.div`
   background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/docspace-block/blok_create account_bg.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-size: cover;
 
     .docspace_block_icons {
       display:grid;
