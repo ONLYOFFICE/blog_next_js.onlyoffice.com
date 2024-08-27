@@ -9,7 +9,7 @@ import Tag from "@components/common/tag";
 import InternalLink from "@components/common/internal-link";
 import ExternalLink from "@components/common/external-link";
 import Breadcrumbs from "@components/screens/common/breadcrumbs";
-import CloudBlock from "./cloud-block";
+import DocSpaceRegistrationBlock from "../common/docspace-registration-blog";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 
@@ -136,8 +136,8 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                 <ShareButtons locale={locale} />
               </div>
             </div>
-
-            <CloudBlock t={t} locale={locale} />
+            <DocSpaceRegistrationBlock t={t} locale={locale}></DocSpaceRegistrationBlock>
+            
 
             {
               post?.discoursePermalink &&
