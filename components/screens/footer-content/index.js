@@ -41,10 +41,10 @@ const Footer = ({ t, locale }) => {
       <div className="footer-items">
         <div className="footer-item-group">
           <FooterItem heading={t("Templates")} className="templates">
-            <InternalLink className="footer-link" href={oformsHrefLang} label={t("PDF form templates")} />
-            <InternalLink className="footer-link" href={oformsHrefLang} label={t("Text document templates")} />
-            <InternalLink className="footer-link" href={oformsHrefLang} label={t("Spreadsheet templates")} />
-            <InternalLink className="footer-link" href={oformsHrefLang} label={t("Presentation templates")} />
+            <InternalLink className="footer-link" href={`${oformsHrefLang}pdf-form-templates`} label={t("PDF form templates")} />
+            <InternalLink className="footer-link" href={`${oformsHrefLang}document-templates`} label={t("Text document templates")} />
+            <InternalLink className="footer-link" href={`${oformsHrefLang}spreadsheet-templates`} label={t("Spreadsheet templates")} />
+            <InternalLink className="footer-link" href={`${oformsHrefLang}presentation-templates`} label={t("Presentation templates")} />
           </FooterItem>
           <FooterItem heading={t("Converters")} className="solutions">
             <InternalLink className="footer-link" href={`${hrefLang}/text-file-converter.aspx`} label={t("Convert text files")} />
@@ -54,6 +54,10 @@ const Footer = ({ t, locale }) => {
           </FooterItem>
         </div>
         <div className="footer-item-group">
+        <FooterItem heading={t("For education")} className="get-news">
+            <InternalLink className="footer-link" href={`${hrefLang}/office-for-students.aspx`} label={t("For students")} />
+            <InternalLink className="footer-link" href={`${hrefLang}/office-for-educators.aspx`} label={t("For educators")} />
+          </FooterItem>
           <FooterItem heading={t("Get news")} className="get-news">
             <InternalLink className="footer-link" href={blogHrefLang} label={t("Blog")} />
           </FooterItem>
