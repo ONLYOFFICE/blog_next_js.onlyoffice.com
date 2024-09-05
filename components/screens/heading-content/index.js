@@ -6,6 +6,7 @@ import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
 import PopupDocSpace from "../common/popup-docspace";
+import AdventMobileOnly from "@components/screens/common/advent-mobile";
 
 const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
   const [searchActive, setSearchActive] = useState(false);
@@ -84,6 +85,7 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
 
   return (
     <StyledHeadingContent onMouseLeave={() => setStateMobile(false)} className={`navbar ${stateMobile ? "is-open" : ""}`}>
+      <AdventMobileOnly t={t} local={locale}></AdventMobileOnly>
        {isModalOpen && <PopupDocSpace onClose={handleCloseModal} locale={locale} t={t}/>}
       <GlobalStyles stateMobile={stateMobile} />
       <button onClick={() => setStateMobile(true)} className="nav-btn-mobile"></button>
