@@ -31,7 +31,7 @@ const StyledAdventMobileOnly = styled.div`
         letter-spacing: -0.02em;
         display: flex;
         align-items: center;
-        margin: 0;
+        margin: 0 24px 0 0;
 
         &:before {
           content: '';
@@ -42,6 +42,7 @@ const StyledAdventMobileOnly = styled.div`
           background-size: contain;
           height: 40px;
           width: 40px;
+          min-width: 40px;
           margin-right: 16px;
 
           @media (max-width: 592px) {
@@ -54,8 +55,9 @@ const StyledAdventMobileOnly = styled.div`
         }
 
         @media (max-width: 592px) {
+          padding: 55px 0 25px;
           font-size: 16px;
-          margin-bottom: 8px;
+          line-height: 21px;
         }
       }
 
@@ -75,6 +77,7 @@ const StyledAdventMobileOnly = styled.div`
           text-decoration: none;
           margin-right: 16px;
           border-radius: 3px;
+          text-align: center;
 
           &:hover {
             background: #FF865C;
@@ -82,7 +85,10 @@ const StyledAdventMobileOnly = styled.div`
           }
 
           @media (max-width: 592px) {
+            padding: 10px 12px;
             margin-right: 0;
+            margin-bottom: 8px;
+            line-height: 15px;
           }
         }
 
@@ -94,7 +100,7 @@ const StyledAdventMobileOnly = styled.div`
           cursor: pointer;
 
           @media (max-width: 592px) {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
           }
         }
 
@@ -108,14 +114,13 @@ const StyledAdventMobileOnly = styled.div`
       @media (max-width: 592px) {
         padding: 0px;
         max-width: 100%;
-        align-items: flex-end;
       }
     }
 
     @media (max-width: 592px) {
       border-radius: 10px 10px 0 0;
       margin-bottom: 0;
-      padding: 12px 16px 16px 16px;
+      padding: 0 16px;
     }
   }
 
