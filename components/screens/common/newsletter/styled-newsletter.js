@@ -137,22 +137,6 @@ const StyledNewsletter = styled.div`
       max-width: 100%;
     }
 
-    .newsletter-body {
-      form {
-        button {
-          font-size: 0;
-          min-width: 56px;
-          background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-
-          &.loading {
-            background-image: none;
-          }
-        }
-      }
-    }
-
     .newsletter-text {
       text-align: center;
     }
@@ -172,6 +156,18 @@ const StyledNewsletter = styled.div`
         .error-text {
           top: 48px;
           font-size: 10px;
+        }
+
+        button {
+          font-size: 0;
+          min-width: 56px;
+          background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+
+          &.loading {
+            background-image: none;
+          }
         }
       }
     }

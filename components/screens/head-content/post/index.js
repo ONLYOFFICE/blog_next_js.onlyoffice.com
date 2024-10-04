@@ -1,15 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import HTMLReactParser from "html-react-parser";
 
 const PostHeadSEO = ({ t, locale, post, postUri }) => {
   const router = useRouter();
   const baseUrl = "https://www.onlyoffice.com/blog";
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
-  const postAioseoTitle = post.aioseoTitle ? post.aioseoTitle.replace("#separator_sa", "|").replace("#post_title", post?.title).replace("#site_title", t("ONLYOFFICE Blog")) : "";
-  const title = post.aioseoTitle ? 
-    locale === "ar" ? `${postAioseoTitle.split(" | ")[1]} | ${postAioseoTitle.split(" | ")[0]}` : postAioseoTitle : 
-    locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
-  const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : "";
+  const title = post.aioseoTitle ? post.aioseoTitle : locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
+  const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : HTMLReactParser(post?.excerpt)[0]?.props?.children;
 
   const languagesKey = 
     locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
