@@ -4,9 +4,12 @@
 
   "ONLYOFFICE IN THE PRESS": "ONLYOFFICE nella stampa",
 
-  "AdventAnnounceDesktop": "<b>Rilasciato <span> ONLYOFFICE DocSpace 2.6</span></b>: Stanze di compilazione di moduli, LDAP, gestione migliorata di stanze e file e altro",
-  "AdventAnnounceMobile": "<b>Rilasciato <span> ONLYOFFICE DocSpace 2.6</span></b>",
-  "AdventAnnounceLink": "https://onlyoffice.com/blog/it/2024/07/rilasciato-onlyoffice-docspace-2-6",
+  "AdventAnnounceDesktop": "Rilascio di <b>ONLYOFFICE DOCS 8.2</b> il 17 ottobre: ​​partecipa al nostro webinar gratuito e vinci fantastici premi",
+  "AdventAnnounceMobile": "<b>Partecipa al webinar gratuito su ONLYOFFICE Docs 8.2</b>",
+  "Learn more": "Scopri di più",
+  "Register": "Registrati",
+  "AdventAnnounceLink": "https://www.onlyoffice.com/blog/it/2024/09/onlyoffice-docs-8-2-rilascio-webinar",
+  "AdventAnnounceWebinarsLink": "https://www.onlyoffice.com/it/webinars.aspx",
 
   "404 Page not found": "404 Pagina non trovata",
   "The page you were looking for doesn't exist, isn't available, or was loading incorrectly.": "La pagina che stavi cercando non esiste, non è disponibile, o stava caricando in modo errato.",
