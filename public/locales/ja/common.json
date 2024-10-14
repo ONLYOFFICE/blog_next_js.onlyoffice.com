@@ -35,7 +35,7 @@
   "Form creator": "フォーム作成",
   "PDF editor": "PDFエディタ",
   "E-book creator": "電子書籍クリエイター",
-  "Security": "安全",
+  "Security": "セキュリティ",
   "Accessibility": "アクセシビリティ",
   "AI helper": "AIヘルパー",
   "All Enterprise solutions": "すべてのエンタープライズソリューション",
@@ -92,7 +92,7 @@
   "blogLink1": "https://www.onlyoffice.com/blog/ja/2024/06/onlyoffice-docs-8-1-released",
   "blogLink2": "https://www.onlyoffice.com/blog/ja/2024/02/onlyoffice-docspace-app-for-zoom",
 
-  "Developers": "開発者",
+  "Developers": "開発者向け",
   "Resellers": "再販業者",
   "Affiliates": "アフィリエイト",
   "Hosting providers": "ホスティングプロバイダー",
@@ -110,7 +110,7 @@
   "Partner inquiries": "パートナー事業に関する質問",
   "Press inquiries": "プレスリリースに関する質問",
   "Request a call": "折返し電話をリクエスト",
-  "Follow us on": "当社をフォローする",
+  "Follow us on": "ONLYOFFICE公式SNS：",
   "All rights reserved": "著作権",
   "© Ascensio System SIA": "© Ascensio System SIA 2009-{{currentYear}}。",
 
@@ -185,5 +185,11 @@
   "Create now": "今すぐ登録",
   "For students": "学生向け",
   "For educators": "教育関係者向け",
-  "Get free mobile app": "無料モバイルアプリを入手"
+  "Get free mobile app": "無料モバイルアプリを入手",  
+  "For All solutions": "すべてのソリューション",
+  "Why Docs Developer": "Docs Developerを選ぶべき理由",
+  "Automation API": "自動化API",
+  "API Docs": "APIドキュメント",
+  "Schedule free demo": "無料デモを予約"
+
 }

@@ -118,6 +118,21 @@ const StyledSocialLinks = styled.div`
     &.bilibili {
       background-position-x: -706px;
     }
+    &.discord {
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/social-icons/discord_footer.svg");
+      background-position: center;
+      background-size: 75%;
+    }
+    &.note {
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/social-icons/note_footer.svg");
+      background-position: center;
+      background-size: 75%;
+    }
+    &.qiita {
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/social-icons/qiita_footer.svg");
+      background-position: center;
+      background-size: 75%;
+    }
   }
 
   .icon-item {
