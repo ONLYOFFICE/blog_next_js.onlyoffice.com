@@ -19,7 +19,7 @@ const Card = ({ t, locale, data, mainPostExcerpt, mainPost, ...rest }) => {
             <DateFormat locale={locale} data={data?.date} format="D MMMM y" />
           </Text>
           <InternalLink className="card-info-item card-author" href={`/author/${data?.author?.node.slug}`}>
-            {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : locale === "el" ? "Από τον " : locale === "ar" ? "بواسطة " : locale === "hy" ? "" : "By "}
+            {locale === "ja" ? "著者：" : locale === "zh-hans" ? "作者: " : locale === "el" ? "Από τον " : locale === "ru" ? "Автор " : locale === "ar" ? "بواسطة " : locale === "hy" ? "" : "By "}
             <span>{data?.author?.node.name}</span>
             {locale === "hy" ? "-ի կողմից" : ""}
           </InternalLink>

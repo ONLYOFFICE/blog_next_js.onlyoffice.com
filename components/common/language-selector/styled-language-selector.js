@@ -127,6 +127,9 @@ const StyledLanguageSelector = styled.div`
     &.hy {
       background-position-y: -384px;
     }
+    &.ru {
+      background-position-y: -264px;
+    }
   }
 
   .arrow-image {

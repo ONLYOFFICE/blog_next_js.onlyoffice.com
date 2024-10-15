@@ -30,7 +30,8 @@ const Post = ({ locale, post, posts }) => {
     hi: "",
     ar: "",
     sr_RS: "",
-    hy: ""
+    hy: "",
+    ru_RU: "",
   });
 
   useEffect(() => {

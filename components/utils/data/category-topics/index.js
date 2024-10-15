@@ -80,6 +80,12 @@ const categoryTopics = {
     forBusiness: "for-business-hy",
     forEducation: "for-education-hy",
   },
+  "ru": {
+    productReleases: "product-releases-ru",
+    forDevelopers: "for-developers-ru",
+    forBusiness: "for-business-ru",
+    forEducation: "for-education-ru",
+  },
 };
 
 export default categoryTopics;

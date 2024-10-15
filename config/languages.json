@@ -54,5 +54,9 @@
   {
     "key": "hy-AM",
     "shortKey": "hy"
+  },
+  {
+    "key": "ru-RU",
+    "shortKey": "ru"
   }
 ]

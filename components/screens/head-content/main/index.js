@@ -14,7 +14,7 @@ const MainHeadSEO = ({ title, metaDescription, locale, articlePublishedTime, art
     locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
     locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
     locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : 
-    locale === "hy" ? "hy_AM" : "en_US";
+    locale === "hy" ? "hy_AM" : locale === "ru" ? "ru_RU" : "en_US";
 
   return (
     <Head>

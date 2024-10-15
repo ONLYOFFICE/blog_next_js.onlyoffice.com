@@ -66,7 +66,7 @@ const StyledNewsletter = styled.div`
         position: relative;
         padding: 19px 12px;
         border-radius: 0px 3px 3px 0px;
-        min-width: 122px;
+        min-width: 128px;
         font-family: "Open Sans", sans-serif;
         font-size: 13px;
         line-height: 17px;
