@@ -18,6 +18,9 @@ const StyledAdventAnnounce = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-color: #1B181F;
+    @media screen and ${device.laptop} {
+          display: none;
+        }
 
     .advent-announce-wrapper {
       position: relative;
