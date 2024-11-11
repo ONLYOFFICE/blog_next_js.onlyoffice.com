@@ -19,7 +19,7 @@ const Newsletter = ({ t, locale }) => {
       setIsLoading(true);
     }
 
-    const response = await fetch("/blog/api/users", {
+    const response = await fetch("/blog/api/newsletter", {
       method: "POST",
       body: JSON.stringify(data)
     });

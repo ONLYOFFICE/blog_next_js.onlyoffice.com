@@ -1,4 +1,4 @@
-import excuteQuery from "@lib/db";
+import excuteQuery from "@lib/db/newsletter";
 import moment from "moment";
 
 export default async function handler(req, res) {
