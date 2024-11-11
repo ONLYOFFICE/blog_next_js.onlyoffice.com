@@ -8,7 +8,7 @@ import getRecentPosts from "@lib/requests/getRecentPosts";
 import Layout from "@components/layout";
 import InThePressHeadSEO from "@components/screens/head-content/in-the-press";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import InThePressContent from "@components/screens/in-the-press-content";
 
@@ -27,7 +27,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
           articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -35,7 +35,7 @@ const InThePress = ({ locale, inThePressPosts, inThePressDate, recentPosts }) =>
         <InThePressContent t={t} locale={locale} inThePressPosts={inThePressPosts} recentPosts={recentPosts} isInThePressContent={isInThePressContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

@@ -7,7 +7,7 @@ import getTagPosts from "@lib/requests/getTagPosts";
 import Layout from "@components/layout";
 import TagHeadSEO from "@components/screens/head-content/tag";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import TagContent from "@components/screens/tag-content";
 
@@ -27,7 +27,7 @@ const Tag = ({ locale, posts }) => {
           tagSlug={tagSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -35,7 +35,7 @@ const Tag = ({ locale, posts }) => {
         <TagContent t={t} locale={locale} posts={posts} isTagContent={isTagContent} tagName={tagName} tagSlug={tagSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

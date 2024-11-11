@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import Layout from "@components/layout";
 import SearchHeadSEO from "@components/screens/head-content/search";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import SearchContent from "@components/screens/search-content";
 
@@ -24,7 +24,7 @@ const Search = ({ locale, recentPosts }) => {
       <Layout.PageHead>
         <SearchHeadSEO title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${routerQuery}` : `${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} isSearchContent={isSearchContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -32,7 +32,7 @@ const Search = ({ locale, recentPosts }) => {
         <SearchContent t={t} locale={locale} recentPosts={recentPosts} isSearchContent={isSearchContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

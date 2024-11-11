@@ -1,7 +1,8 @@
 import { StyledHeadingContent, GlobalStyles } from "./styled-heading-content";
-import Nav from "./menu/nav/nav";
 import { useState, useEffect } from "react";
 import Router from "next/router";
+import { HeaderMenu } from "onlyoffice-react-ui-kit/header-menu";
+import "onlyoffice-react-ui-kit/header-menu/css";
 import InternalLink from "@components/common/internal-link";
 import LanguageSelector from "@components/common/language-selector";
 import SearchArea from "@components/common/search-area";
@@ -11,14 +12,13 @@ import AdventMobileOnly from "@components/screens/common/advent-mobile";
 const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile, setStateMobile, postUri, isPostContent }) => {
   const [searchActive, setSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const curLang = `https://www.onlyoffice.com${
     locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "" :
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : `/${locale}`
   }`;
-
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const modalClosed = localStorage.getItem("modalClosed");
@@ -26,22 +26,16 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
     if (!modalClosed) {
       const timer = setTimeout(() => {
         setIsModalOpen(true);
-      }, 20000); // Открываем модальное окно через 20 секунд
+      }, 20000);
 
       return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    localStorage.setItem("modalClosed", "true"); // Устанавливаем метку, что модальное окно закрыто
-  };
-
   useEffect(() => {
-
     if (typeof window !== "undefined" && window.innerWidth <= 1024 && stateMobile) {
       const handleClickOutside = (e) => {
-        if (!e.target.closest(".nav")) {
+        if (!e.target.closest(".oo-hm")) {
           setStateMobile(false);
         };
       };
@@ -83,6 +77,11 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
     }
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    localStorage.setItem("modalClosed", "true");
+  };
+
   return (
     <StyledHeadingContent onMouseLeave={() => setStateMobile(false)} className={`navbar ${stateMobile ? "is-open" : ""}`}>
       <AdventMobileOnly t={t} local={locale}></AdventMobileOnly>
@@ -93,7 +92,9 @@ const HeadingContent = ({ t, locale, isMainContent, isSearchContent, stateMobile
         <img src="/blog/images/logo/logo.svg" alt="logo" />
       </InternalLink>
       <div className="overlay"></div>
-      <Nav locale={locale} t={t} />
+      <div className={`nav-menu ${locale}`}>
+        <HeaderMenu locale={locale} isOpen={stateMobile} />
+      </div>
       {isMainContent || isSearchContent !== true &&
         <SearchArea
           onClick={onClickSearch}

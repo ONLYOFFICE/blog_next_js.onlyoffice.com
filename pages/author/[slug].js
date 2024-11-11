@@ -7,7 +7,7 @@ import getAuthorPosts from "@lib/requests/getAuthorPosts";
 import Layout from "@components/layout";
 import AuthorHeadSEO from "@components/screens/head-content/author";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import AuthorContent from "@components/screens/author-content";
 
@@ -27,7 +27,7 @@ const Author = ({ locale, posts }) => {
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -35,7 +35,7 @@ const Author = ({ locale, posts }) => {
         <AuthorContent t={t} locale={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

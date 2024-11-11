@@ -74,6 +74,60 @@ const StyledHeadingContent = styled.div`
     align-items: center;
   }
 
+  .nav-menu {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    max-width: 936px;
+    transform: translateX(-50%);
+    z-index: 1002;
+
+    @media (max-width: 1024px) {
+      position: initial;
+      left: initial;
+      width: initial;
+      max-width: initial;
+      transform: initial;
+    }
+  }
+
+  .oo-hm {
+    .oo-hm-item--resources {
+      .oo-hm-item-heading {
+        position: relative;
+        color: #ff6f3d;
+
+        &:after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          border-bottom: 1px solid #ff6f3d;
+          width: calc(100% - 40px);
+          transform: translateX(-50%);
+
+          @media screen and (max-width: 1300px) {
+            width: calc(100% - 20px);
+          }
+
+          @media screen and (max-width: 1024px) {
+            content: none;
+          }
+        }
+
+        @media screen and (max-width: 1024px) {
+          color: #444444;
+          background-color: #f9f9f9;
+        }
+      }
+    }
+
+    .oo-hm-item-link--blog {
+      color: #FF6F3D;
+    }
+  }
+
+
   @media (max-width: 1530px) {
     .nav-item-logo {
       overflow: hidden;
@@ -136,7 +190,6 @@ const StyledHeadingContent = styled.div`
     height: 48px;
   
     &.is-open {
-      .advent-announce,
       .nav-btn-mobile,
       .nav-selector-wrapper {
         transform: translate3d(429px, 0, 0);
@@ -222,7 +275,6 @@ const StyledHeadingContent = styled.div`
     padding: 0 18px 0 15px;
 
     &.is-open {
-      .advent-announce,
       .nav-btn-mobile,
       .nav-selector-wrapper {
         transform: translate3d(calc(100vw - 64px), 0, 0);
@@ -276,7 +328,6 @@ const StyledHeadingContent = styled.div`
 
   @media screen and (max-width: 375px) {
     &.is-open {
-      .advent-announce,
       .nav-btn-mobile,
       .nav-selector-wrapper {
         transform: translate3d(calc(100vw - 32px), 0, 0);

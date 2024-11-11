@@ -7,7 +7,7 @@ import getCategoryPosts from "@lib/requests/getCategoryPosts";
 import Layout from "@components/layout";
 import CategoryHeadSEO from "@components/screens/head-content/category";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import CategoryContent from "@components/screens/category-content";
 
@@ -27,7 +27,7 @@ const Category = ({ locale, posts }) => {
           categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -35,7 +35,7 @@ const Category = ({ locale, posts }) => {
         <CategoryContent t={t} locale={locale} posts={posts} isCategoryContent={isCategoryContent} categoryName={categoryName} categorySlug={categorySlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

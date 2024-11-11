@@ -9,7 +9,7 @@ import getMainPostExcerpt from "@lib/requests/getMainPostExcerpt";
 import Layout from "@components/layout";
 import MainHeadSEO from "@components/screens/head-content/main";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import MainContent from "@components/screens/main-content";
 
@@ -29,7 +29,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent t={t} locale={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
@@ -48,7 +48,7 @@ const Index = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRelease
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )

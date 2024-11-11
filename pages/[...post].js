@@ -7,7 +7,7 @@ import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
 import Layout from "@components/layout";
 import PostHeadSEO from "@components/screens/head-content/post";
 import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
+import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
 import Footer from "@components/screens/footer-content";
 import PostContent from "@components/screens/post-content";
 
@@ -54,7 +54,7 @@ const Post = ({ locale, post, posts }) => {
           postUri={postUri}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
         <HeadingContent 
           t={t}
@@ -69,7 +69,7 @@ const Post = ({ locale, post, posts }) => {
         <PostContent t={t} locale={locale} post={post} posts={posts} isPostContent={isPostContent} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
