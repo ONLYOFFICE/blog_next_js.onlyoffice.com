@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 30007",
-    "build": "next build",
+    "dev": "npm run clean-cache && next dev -p 30007",
+    "build": "npm run clean-cache && next build",
     "start": "next start -p 30007",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
     "@next/font": "13.1.6",
