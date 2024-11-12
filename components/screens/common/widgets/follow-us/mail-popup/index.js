@@ -97,7 +97,7 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
             {formComplete ? (
               <div className="mail-popup-success">
                 <div className="mail-popup-success-text">{t("We sent an email message with confirmation to your email address.")}</div>
-                <button onClick={() => handleCloseForm()} className="mail-popup-success-btn">OK</button>
+                <button onClick={() => handleCloseForm()} className="mail-popup-success-btn">{t("OK")}</button>
               </div>
             ) : (
               <div className="mail-popup-form">
