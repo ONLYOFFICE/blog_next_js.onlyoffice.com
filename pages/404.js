@@ -3,30 +3,30 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Layout from "@components/layout";
-import ErrornHeadSEO from "@components/screens/head-content/error";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import ErrornHead from "@components/screens/head/error";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import ErrorContent from "@components/screens/404-content";
 
-const Error = ({ locale }) => {
+const Error404Page = ({ locale }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
 
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
-        <ErrornHeadSEO title={locale === "ar" ? `${t("ONLYOFFICE Blog")} – ${t("Page not found")}` : `${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
+        <ErrornHead title={locale === "ar" ? `${t("ONLYOFFICE Blog")} – ${t("Page not found")}` : `${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <ErrorContent t={t} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -41,4 +41,4 @@ export const getStaticProps = async ({ locale }) => {
 	}
 }
 
-export default Error;
+export default Error404Page;

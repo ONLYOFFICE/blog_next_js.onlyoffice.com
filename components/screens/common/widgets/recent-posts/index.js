@@ -7,7 +7,7 @@ const RecentPosts = ({ t, locale, data }) => {
   const isRecentPosts = true;
 
   return (
-    <StyledRecentPosts>
+    <StyledRecentPosts locale={locale}>
       <Heading level={4}>{t("Recent posts")}</Heading>
 
       <ul>

@@ -17,22 +17,22 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
   const { handleSubmit, formState: { errors }, control, getValues, trigger } = useForm();
 
   const handleButtonClick = async () => {
-    const isValid = await trigger("email"); // Проверяем валидность email
+    const isValid = await trigger("email");
 
     if (isValid) {
       const email = getValues("email");
-      localStorage.setItem('email', email);
+      localStorage.setItem("email", email);
       window.location.href = `${href}`;
     }
   };
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();  // Отменяем стандартное поведение формы
-    handleButtonClick(); // Вызываем логику обработки клика
+    e.preventDefault();
+    handleButtonClick();
   };
 
   return (
-    <StyledDocSpaceBlock className={locale} {...rest}>
+    <StyledDocSpaceBlock className={locale} locale={locale} {...rest}>
       <div className="docspace_block_icons">
         <div className="docspace_block_icon doc"></div>
         <div className="docspace_block_icon spreadsheet"></div>
@@ -40,11 +40,11 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
         <div className="docspace_block_icon pdf_form"></div>
         <div className="docspace_block_icon pdf"></div>
       </div>
-      <Heading className="docspace_block_title" level={3}  dangerouslySetInnerHTML={{ __html: t("Create your")}}>
-     
+      <Heading className="docspace_block_title" level={3}>
+        <div dangerouslySetInnerHTML={{ __html: t("Create your")}}></div>
       </Heading>
-      <Text className="docspace_block_subheader">
-      {t("View, edit and collaborate on docs, sheets, slides, forms, and PDF files online.")}
+      <Text className="docspace_block_subheader" as="p">
+        {t("View, edit and collaborate on docs, sheets, slides, forms, and PDF files online.")}
       </Text>
       <div className="docspace_block_wrapper">
         <form onSubmit={handleFormSubmit}>
@@ -80,7 +80,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
             )}
           />
           <button
-            type="submit" // Заменяем на кнопку
+            type="submit"
             className="docspace_block_btn arrow"
             id="blog_docspace_registration"
           >

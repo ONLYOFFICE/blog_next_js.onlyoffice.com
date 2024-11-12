@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import StyledAdventMobileOnly from './styled-advent-mobile-only';
+import React, { useEffect, useState } from "react";
+import StyledAdventMobileOnly from "./styled-advent-mobile-only";
 
 const AdventMobileOnly = ({ t, locale }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [os, setOs] = useState(null);
-  const [downloadLink, setDownloadLink] = useState('#'); // Состояние для ссылки
+  const [downloadLink, setDownloadLink] = useState("#");
 
   useEffect(() => {
-    const hasSeenComponent = sessionStorage.getItem('hasSeenAd');
+    const hasSeenComponent = sessionStorage.getItem("hasSeenAd");
 
     if (!hasSeenComponent) {
       const detectMobileDevice = () => {
@@ -16,10 +16,10 @@ const AdventMobileOnly = ({ t, locale }) => {
         if (/android/i.test(userAgent)) {
           setOs("Android");
 
-          if (locale === 'zh-hans') {
-            setDownloadLink('https://download.onlyoffice.com/install/mobile/android/onlyoffice-documents.apk');
+          if (locale === "zh-hans") {
+            setDownloadLink("https://download.onlyoffice.com/install/mobile/android/onlyoffice-documents.apk");
           } else {
-            setDownloadLink('https://play.google.com/store/apps/details?id=com.onlyoffice.documents');
+            setDownloadLink("https://play.google.com/store/apps/details?id=com.onlyoffice.documents");
           }
 
           return true;
@@ -27,7 +27,7 @@ const AdventMobileOnly = ({ t, locale }) => {
 
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
           setOs("iOS");
-          setDownloadLink('https://apps.apple.com/us/app/onlyoffice-documents/id944896972');
+          setDownloadLink("https://apps.apple.com/us/app/onlyoffice-documents/id944896972");
           return true;
         }
 
@@ -38,10 +38,10 @@ const AdventMobileOnly = ({ t, locale }) => {
       setIsMobile(isMobileDevice);
 
       if (isMobileDevice) {
-        sessionStorage.setItem('hasSeenAd', 'true');
+        sessionStorage.setItem("hasSeenAd", "true");
       }
     }
-  }, [locale]); // Добавили locale как зависимость для useEffect
+  }, [locale]);
 
   const handleClose = () => {
     setIsMobile(false);
@@ -50,7 +50,7 @@ const AdventMobileOnly = ({ t, locale }) => {
   if (!isMobile) return null;
 
   return (
-    <StyledAdventMobileOnly>
+    <StyledAdventMobileOnly locale={locale}>
       <div className="mobile_mess">
         <div className="container">
           <p className="mobile_mess_text">{t("Get free mobile app")}</p>

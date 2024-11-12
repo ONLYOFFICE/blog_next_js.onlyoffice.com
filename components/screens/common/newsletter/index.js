@@ -19,7 +19,7 @@ const Newsletter = ({ t, locale }) => {
       setIsLoading(true);
     }
 
-    const response = await fetch("/blog/api/users", {
+    const response = await fetch("/blog/api/newsletter", {
       method: "POST",
       body: JSON.stringify(data)
     });
@@ -34,48 +34,47 @@ const Newsletter = ({ t, locale }) => {
 
   return (
     <>
-      {
-        isSuccess ?
-          <StyledNewsletterConfirm className="newsletter-confirm">
-            <Heading level={4}>{t("Confirm your subscription")}</Heading>
-            <Text as="p">{t("We sent an email message with confirmation to your email address")}</Text>
-          </StyledNewsletterConfirm>
-        :
-          <StyledNewsletter className={`newsletter ${locale}`}>
-            <div className="newsletter-wrapper">
-              <Heading className="newsletter-title" level={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
+      {isSuccess ? (
+        <StyledNewsletterConfirm className="newsletter-confirm">
+          <Heading level={4}>{t("Confirm your subscription")}</Heading>
+          <Text as="p">{t("We sent an email message with confirmation to your email address")}</Text>
+        </StyledNewsletterConfirm>
+      ) : (
+        <StyledNewsletter locale={locale} className={`newsletter ${locale}`}>
+          <div className="newsletter-wrapper">
+            <Heading className="newsletter-title" level={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
 
-              <div className="newsletter-body">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <Controller name="email" control={control} 
-                    rules={{
-                      required: { value: true, message: `${t("Email is empty")}` },
-                      pattern: { 
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, 
-                        message: `${t("Email is incorrect")}`
-                      }
-                    }}
-                    render={({ field: { onChange, onBlur } }) => (
-                      <Input 
-                        className={errors.email && "error"}
-                        onChange={(e) => {
-                          onChange(e);
-                          setInputEmailUsed(false);
-                        }}
-                        onBlur={onBlur}
-                        name="email"
-                        placeholder={`${t("Your e-mail")}*`}
-                        errorText={errors.email && errors.email.message || inputEmailUsed && t("Email is used")} 
-                      />
-                    )}
-                  />
-                  <Button className={`${isLoading ? "loading" : ""}`} label={t("Subscribe")} />
-                </form>
-                <ExternalLink className="newsletter-text" href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t('NewsletterSubscribeText')} <u>{t("NewsletterSubscribeLink")}</u></ExternalLink>
-              </div>
+            <div className="newsletter-body">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Controller name="email" control={control} 
+                  rules={{
+                    required: { value: true, message: `${t("Email is empty")}` },
+                    pattern: { 
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, 
+                      message: `${t("Email is incorrect")}`
+                    }
+                  }}
+                  render={({ field: { onChange, onBlur } }) => (
+                    <Input 
+                      className={errors.email && "error"}
+                      onChange={(e) => {
+                        onChange(e);
+                        setInputEmailUsed(false);
+                      }}
+                      onBlur={onBlur}
+                      name="email"
+                      placeholder={`${t("Your e-mail")}*`}
+                      errorText={errors.email && errors.email.message || inputEmailUsed && t("Email is used")} 
+                    />
+                  )}
+                />
+                <Button className={`${isLoading ? "loading" : ""}`} label={t("Subscribe")} type="submit" />
+              </form>
+              <ExternalLink className="newsletter-text" href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t("NewsletterSubscribeText")} <u>{t("NewsletterSubscribeLink")}</u></ExternalLink>
             </div>
-          </StyledNewsletter>
-        }
+          </div>
+        </StyledNewsletter>
+      )}
     </>
   );
 };

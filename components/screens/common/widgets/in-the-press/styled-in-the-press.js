@@ -41,7 +41,7 @@ const StyledInThePress = styled.div`
     }
 
     .in-the-press-date {
-      padding-left: 20px;
+      ${props => props.locale === "ar" ? "padding-right: 20px;" : "padding-left: 20px;"}
       margin-top: 8px;
       font-size: 13px;
       line-height: 21px;
@@ -49,7 +49,7 @@ const StyledInThePress = styled.div`
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       background-repeat: no-repeat;
       background-size: 12px 12px;
-      background-position: 0 5px;
+      background-position: ${props => props.locale === "ar" ? "right" : "0 5px"};
     }
   }
 
