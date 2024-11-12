@@ -7,10 +7,10 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import Newsletter from "@components/screens/common/newsletter";
 import InThePressPost from "./in-the-press-post";
 
-const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressContent }) => {
+const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressPage }) => {
   return (
-    <StyledInThePressContent className="in-the-press-content">
-      <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />
+    <StyledInThePressContent locale={locale} className="in-the-press-content">
+      <Breadcrumbs className="breadcrumbs" t={t} isInThePressPage={isInThePressPage} />
 
       <div className="wrapper">
         <div className="content">
@@ -27,7 +27,7 @@ const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePre
               <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <LoadMorePosts className="in-the-press-load-more" t={t} locale={locale} data={inThePressPosts} isInThePressContent={isInThePressContent} />
+            <LoadMorePosts className="in-the-press-load-more" t={t} locale={locale} data={inThePressPosts} isInThePressPage={isInThePressPage} />
           </div>
         </div>
 

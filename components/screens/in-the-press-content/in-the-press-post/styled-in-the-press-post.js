@@ -11,7 +11,7 @@ const StyledInThePressPost = styled.div`
 
   .press-url {
     display: inline-block;
-    margin-right: 24px;
+    ${props => props.locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
     border-radius: 3px;
     font-size: 12px;
     line-height: 16px;
@@ -53,6 +53,15 @@ const StyledInThePressPost = styled.div`
       &:focus {
         text-decoration: underline;
       }
+
+      @media screen and ${device.laptop} {
+        -webkit-line-clamp: 3;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 18px;
+        line-height: 21px;
+      }
     }
 
     &:not(:last-child) {
@@ -61,27 +70,12 @@ const StyledInThePressPost = styled.div`
   }
 
   .post-text {
+    margin: 0;
     font-size: 16px;
     line-height: 26px;
-  }
+    color: #333333;
 
-  @media ${device.laptop} {
-    .post-title {
-      a {
-        -webkit-line-clamp: 3;
-      }
-    }
-  }
-
-  @media (max-width: 592px) {
-    .post-title {
-      a {
-        font-size: 18px;
-        line-height: 21px;
-      }
-    }
-
-    .post-text {
+    @media screen and ${device.mobile} {
       font-size: 14px;
       line-height: 26px;
     }

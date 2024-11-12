@@ -54,6 +54,10 @@ const StyledLanguageSelector = styled.div`
     padding: 0;
     min-height: 72px;
     background-color: transparent;
+
+    @media screen and ${device.laptop} {
+      min-height: 48px;
+    }
   }
 
   .flag-image {
@@ -201,12 +205,6 @@ const StyledLanguageSelector = styled.div`
     .title-lng:hover {
       color: #ff865c;
       cursor: pointer;
-    }
-  }
-
-  @media screen and ${device.laptop} {
-    .language-button {
-      min-height: 48px;
     }
   }
 `;

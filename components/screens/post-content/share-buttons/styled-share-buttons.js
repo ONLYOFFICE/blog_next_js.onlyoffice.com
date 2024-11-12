@@ -22,7 +22,7 @@ const StyledRecentPosts = styled.div`
     }
 
     &:not(:last-child) {
-      margin-right: 8px;
+      ${props => props.locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
     }
 
     &:hover {

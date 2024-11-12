@@ -13,7 +13,7 @@ import DocSpaceRegistrationBlock from "../common/docspace-registration-blog";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 
-const PostContent = ({ t, locale, post, posts, isPostContent }) => {
+const PostContent = ({ t, locale, post, posts, isPostPage }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
@@ -89,8 +89,8 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
 
   return (
     <>
-      <StyledPostContent className="post-content">
-        <Breadcrumbs t={t} data={post?.categories?.edges} isPostContent={isPostContent} />
+      <StyledPostContent locale={locale} className="post-content">
+        <Breadcrumbs t={t} data={post?.categories?.edges} isPostPage={isPostPage} />
 
         <div ref={refContentWrapper} className="content">
           <div className="wrap">
@@ -105,58 +105,53 @@ const PostContent = ({ t, locale, post, posts, isPostContent }) => {
                   <span >{post?.author.node.name}</span>
                   {locale === "hy" ? "-ի կողմից" : ""}
                 </InternalLink>
-                {
-                  post.outdated && <span className="outdated">{t("Outdated")}</span>
-                }
-
+                {post.outdated && (
+                  <span className="outdated">{t("Outdated")}</span>
+                )}
                 <ShareButtons locale={locale} />
               </div>
-              <div 
-                ref={refContent} 
-                onClick={onClickHandler} 
-                className="entry-content" 
-                suppressHydrationWarning 
+              <div
+                ref={refContent}
+                onClick={onClickHandler}
+                className="entry-content"
+                suppressHydrationWarning
                 dangerouslySetInnerHTML={{
-                  __html: post?.content.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => 
+                  __html: post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) =>
                     renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>))
                 }}
               />
             </article>
 
             <div className="tag-list">
-              {
-                post?.tags?.edges.length > 0 &&
+              {post?.tags?.edges.length > 0 && (
                 <div className="tag-items">
                   {post?.tags?.edges.map(({ node }) => (
                     <Tag href={`/tag/${node.slug}`} key={node.id}>{node.name}</Tag>
                   ))}
                 </div>
-              }
+              )}
               <div className="tag-share">
                 <ShareButtons locale={locale} />
               </div>
             </div>
             <DocSpaceRegistrationBlock t={t} locale={locale}></DocSpaceRegistrationBlock>
-            
 
-            {
-              post?.discoursePermalink &&
+            {post?.discoursePermalink && (
               <div className="join-discussion">
                 <ExternalLink href={post.discoursePermalink}>{t("Join the Discussion")}</ExternalLink>
               </div>
-            }
+            )}
           </div>
-          {showButton &&
+          {showButton && (
             <button onClick={scrollToTop} className="btn-scroll-top"><span></span></button>
-          }
+          )}
         </div>
 
         <div onClick={() => setOpenModal(false)} className={`overlay ${openModal ? "active" : ""}`}></div>
         <div className={`modal ${openModal ? "active" : ""}`}>
-          {
-            imgUrl &&
+          {imgUrl && (
             <img className="modal-img" src={imgUrl} alt={imgAlt} />
-          }
+          )}
           <div onClick={() => setOpenModal(false)} className="modal-close-btn"></div>
         </div>
       </StyledPostContent>

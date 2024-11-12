@@ -14,42 +14,31 @@ import "moment/locale/hy-am";
 const DateFormat = ({ locale, data, format, isRecentPosts }) => {
   return (
     <>
-      {
-        locale === "fr" ?
-          Moment(data, 'YYYY-MM-DD').locale("fr").format(format)
-        :
-        locale === "de" ?
-          Moment(data, 'YYYY-MM-DD').locale("de").format(format)
-        :
-        locale === "es" ?
-          Moment(data, 'YYYY-MM-DD').locale("es").format(format)
-        :
-        locale === "it" ?
-          Moment(data, 'YYYY-MM-DD').locale("it").format(format)
-        :
-        locale === "pt-br" ?
-          Moment(data, 'YYYY-MM-DD').locale("pt-br").format(format)
-        :
-        locale === "cs" ?
-          Moment(data, 'YYYY-MM-DD').locale("cs").format(format)
-        :
-        locale === "ja" ?
-          Moment(data, 'YYYY-MM-DD').locale("ja").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
-        :
-        locale === "zh-hans" ?
-          Moment(data, 'YYYY-MM-DD').locale("zh-cn").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
-        :
-        locale === "el" ?
-          Moment(data, 'YYYY-MM-DD').locale("el").format(format)
-        :
-        locale === "ar" ?
-          Moment(data, 'YYYY-MM-DD').locale("ar-sa").format(format)
-        :
-        locale === "hy" ?
-          Moment(data, 'YYYY-MM-DD').locale("hy-am").format(format)
-        :
-          Moment(data, 'YYYY-MM-DD').locale("en").format(format)
-      }
+      {locale === "fr" ? (
+        Moment(data, "YYYY-MM-DD").locale("fr").format(format)
+      ) : locale === "de" ? (
+        Moment(data, "YYYY-MM-DD").locale("de").format(format)
+      ) : locale === "es" ? (
+        Moment(data, "YYYY-MM-DD").locale("es").format(format)
+      ) : locale === "it" ? (
+        Moment(data, "YYYY-MM-DD").locale("it").format(format)
+      ) : locale === "pt-br" ? (
+        Moment(data, "YYYY-MM-DD").locale("pt-br").format(format)
+      ) : locale === "cs" ? (
+        Moment(data, "YYYY-MM-DD").locale("cs").format(format)
+      ) : locale === "ja" ? (
+        Moment(data, "YYYY-MM-DD").locale("ja").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
+      ) : locale === "zh-hans" ? (
+        Moment(data, "YYYY-MM-DD").locale("zh-cn").format(isRecentPosts ? "MMMM D, y" : "Y年MM月DD日")
+      ) : locale === "el" ? (
+        Moment(data, "YYYY-MM-DD").locale("el").format(format)
+      ) : locale === "ar" ? (
+        Moment(data, "YYYY-MM-DD").locale("ar-sa").format(format)
+      ) : locale === "hy" ? (
+        Moment(data, "YYYY-MM-DD").locale("hy-am").format(format)
+      ) : (
+        Moment(data, "YYYY-MM-DD").locale("en").format(format)
+      )}
     </>
   );
 };

@@ -13,7 +13,7 @@ const StyledFollowUs = styled.div`
     line-height: 24px;
     letter-spacing: -0.02em;
 
-    @media ${device.laptop} {
+    @media screen and ${device.laptop} {
       font-size: 16px;
       line-height: 21px;
       letter-spacing: -0.01em;

@@ -67,15 +67,6 @@ const StyledMailPopup = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-
-    .group-input {
-      margin-bottom: 26px;
-      height: 36px;
-
-      @media screen and (max-width: 399px) {
-        margin-bottom: 22px;
-      }
-    }
   }
 
   .mail-popup-header {

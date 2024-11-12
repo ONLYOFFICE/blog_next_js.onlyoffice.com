@@ -22,7 +22,7 @@ const PopupDocSpace = ({ t, locale, onClose, ...rest }) => {
         const isValid = await trigger("email"); 
         if (isValid) {
             const email = getValues("email");
-            localStorage.setItem('email', email);
+            localStorage.setItem("email", email);
             window.location.href = `${href}`;
         }
     };
@@ -46,14 +46,16 @@ const PopupDocSpace = ({ t, locale, onClose, ...rest }) => {
     }, [onClose]);
 
     return (
-        <StyledPopupDocSpace>            
-            <div className="modal_wrapper" ref={modalRef}> {/* Реф на модальное окно */}
+        <StyledPopupDocSpace locale={locale}>            
+            <div className="modal_wrapper" ref={modalRef}>
                 <div className="close_btn" onClick={onClose}></div>
                 <div className="modal_content">
                     <div className="modal_img"></div>
-                    <div className="madal_text">
-                        <Heading className="docspace_block_title" level={3} dangerouslySetInnerHTML={{ __html: t("Create your") }}></Heading>
-                        <Text className="docspace_block_subheader">
+                    <div className="modal_text">
+                        <Heading className="docspace_block_title" level={3}>
+                            <div dangerouslySetInnerHTML={{ __html: t("Create your")}}></div>
+                        </Heading>
+                        <Text className="docspace_block_subheader" as="p">
                             {t("View, edit and collaborate on docs, sheets, slides, forms, and PDF files online.")}
                         </Text>
                         <div className="docspace_block_wrapper">

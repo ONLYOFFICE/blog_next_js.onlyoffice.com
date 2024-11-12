@@ -63,7 +63,7 @@ class Layout extends React.Component {
     });
 
     return (
-      <StyledLayout id="page-layout" className={`layout ${locale === "ar" ? "rtl" : ""}`}>
+      <StyledLayout locale={locale} id="page-layout" className="layout">
         {children}
         {headContent && <Head>{headContent.props.children}</Head>}
         {headerContent && <Header>{headerContent.props.children}</Header>}

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const body = JSON.parse(req.body);
 
   const result = await excuteQuery({
-    query: `INSERT INTO users(id, email, date) VALUES(null, '${body.email}', '${moment(date).locale("en").format('YYYY-MM-DD HH:mm:ss')}')`,
+    query: `INSERT INTO users(id, email, date) VALUES(null, "${body.email}", "${moment(date).locale("en").format("YYYY-MM-DD HH:mm:ss")}")`,
   });
 
   if (result.error?.code === "ER_DUP_ENTRY") {

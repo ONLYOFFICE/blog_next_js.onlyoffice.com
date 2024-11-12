@@ -5,16 +5,16 @@ import getPostsUri from "@lib/requests/getPostsUri";
 import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
 
 import Layout from "@components/layout";
-import PostHeadSEO from "@components/screens/head-content/post";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounceBanner from "@components/screens/heading-content/advent-announce-banner";
-import Footer from "@components/screens/footer-content";
+import PostHead from "@components/screens/head/post";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import PostContent from "@components/screens/post-content";
 
-const Post = ({ locale, post, posts }) => {
+const PostPage = ({ locale, post, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isPostContent = true;
+  const isPostPage = true;
 
   const [postUri, setPostUri] = useState({
     en_US: "",
@@ -47,7 +47,7 @@ const Post = ({ locale, post, posts }) => {
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
-        <PostHeadSEO
+        <PostHead
           t={t}
           locale={locale}
           post={post}
@@ -56,17 +56,17 @@ const Post = ({ locale, post, posts }) => {
       </Layout.PageHead>
       <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent 
+        <Header 
           t={t}
           locale={locale} 
           stateMobile={stateMobile} 
           setStateMobile={setStateMobile} 
           postUri={postUri}
-          isPostContent={isPostContent}
+          isPostPage={isPostPage}
         />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <PostContent t={t} locale={locale} post={post} posts={posts} isPostContent={isPostContent} />
+        <PostContent t={t} locale={locale} post={post} posts={posts} isPostPage={isPostPage} />
       </Layout.SectionMain>
       <Layout.PageFooter>
         <Footer locale={locale} />
@@ -157,4 +157,4 @@ export const getStaticProps = async ({ locale, params }) => {
   }
 }
 
-export default Post;
+export default PostPage;

@@ -6,15 +6,29 @@ const StyledMainContent = styled(Section)`
   padding: 40px 0 82px;
   background-color: #F5F5F5;
 
-  .search_area {
+  .search-area {
     margin-bottom: 40px;
+
+    @media screen and ${device.mobile} {
+      margin-bottom: 32px;
+    }
   }
 
-  .search_input {
+  .search-input {
     background-color: #f9f9f9;
 
     &:focus {
       background-color: transparent;
+    }
+
+    @media screen and ${device.mobile} {
+      height: 56px;
+    }
+  }
+
+  .input-label {
+    @media screen and ${device.mobile} {
+      top: 30%;
     }
   }
 
@@ -23,6 +37,11 @@ const StyledMainContent = styled(Section)`
     grid-template-columns: auto 31.429%;
     margin-bottom: 60px;
     grid-gap: 32px;
+
+    @media screen and ${device.laptop} {
+      grid-template-columns: initial;
+      margin-bottom: 44px;
+    }
   }
 
   .main-sidebar {
@@ -37,6 +56,10 @@ const StyledMainContent = styled(Section)`
   .wrapper-posts {
     display: grid;
     gap: 72px;
+
+    @media screen and ${device.laptop} {
+      gap: 48px;
+    }
   }
 
   .category-posts-top {
@@ -46,16 +69,34 @@ const StyledMainContent = styled(Section)`
 
     a {
       display: inline-flex;
+
+      @media screen and ${device.laptop} {
+        display: none;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin-bottom: 18px;
     }
   }
 
   .category-posts-title {
-    margin-right: 32px;
+    ${props => props.locale === "ar" ? " margin-left: 32px;" : "margin-right: 32px;"}
     font-size: 32px;
     line-height: 43px;
     letter-spacing: -0.02em;
-    font-feature-settings: 'tnum' on, 'lnum' on;
+    font-feature-settings: "tnum" on, "lnum" on;
     color: #333333;
+
+    @media screen and ${device.laptop} {
+      ${props => props.locale === "ar" ? " margin-left: 0;" : "margin-right: 0;"}
+    }
+
+    @media screen and ${device.mobile} {
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+    }
   }
 
   .view-all {
@@ -81,6 +122,37 @@ const StyledMainContent = styled(Section)`
     .category-posts-btn {
       grid-column: span 3;
       justify-self: center;
+
+      @media screen and ${device.laptop} {
+        grid-column: span 2;
+      }
+
+      @media screen and ${device.mobile} {
+        grid-column: initial;
+        justify-self: initial;
+      }
+    }
+
+    @media screen and ${device.laptop} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and ${device.mobile} {
+      grid-template-columns: initial;
+    }
+  }
+
+  .category-more-posts {
+    a {
+      @media screen and ${device.mobile} {
+        width: 100%;
+      }
+    }
+
+    @media screen and ${device.laptop} {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
     }
   }
 
@@ -103,89 +175,12 @@ const StyledMainContent = styled(Section)`
       border-color: #f25620;
       color: #f25620; 
     }
-  }
 
-  @media ${device.laptop} {
-    .main-block {
-      grid-template-columns: initial;
-      margin-bottom: 44px;
-    }
-
-    .wrapper-posts {
-      gap: 48px;
-    }
-
-    .category-posts-top {
-      a {
-        display: none;
-      }
-    }
-
-    .category-posts {
-      grid-template-columns: repeat(2, 1fr);
-
-      .category-posts-btn {
-        grid-column: span 2;
-      }
-    }
-
-    .category-posts-title {
-      margin-right: 0;
-    }
-
-    .category-more-posts {
-      display: flex;
-      justify-content: center;
-      margin-top: 32px;
-    }
-
-    .more-posts-btn {
+    @media screen and ${device.laptop} {
       display: inline-block;
     }
-  }
 
-  @media ${device.tablet} {
-    .category-posts-top {
-      margin-bottom: 18px;
-    }
-  }
-
-  @media (max-width: 592px) {
-    .search_area {
-      margin-bottom: 32px;
-    }
-
-    .group-input,
-    .search_input {
-      height: 56px;
-    }
-
-    .input-label {
-      top: 30%;
-    }
-
-    .category-posts-title {
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -0.01em;
-    }
-
-    .category-posts {
-      grid-template-columns: initial;
-
-      .category-posts-btn {
-        grid-column: initial;
-        justify-self: initial;
-      }
-    }
-
-    .category-more-posts {
-      a {
-        width: 100%;
-      }
-    }
-
-    .more-posts-btn {
+    @media screen and ${device.mobile} {
       display: flex;
       justify-content: center;
     }
