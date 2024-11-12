@@ -37,6 +37,14 @@ const StyledCard = styled.div`
         font-size: 24px;
         line-height: 32px;
         text-decoration: none;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        @media screen and ${device.tablet} {
+          -webkit-line-clamp: 3;
+        }
 
         @media screen and ${device.mobile} {
           font-size: 16px;
@@ -131,16 +139,12 @@ const StyledCard = styled.div`
       color: #333333;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
 
       &:hover,
       &:focus {
         text-decoration: underline;
-      }
-
-      @media screen and ${device.tablet} {
-        -webkit-line-clamp: 3;
       }
 
       @media screen and ${device.mobile} {
