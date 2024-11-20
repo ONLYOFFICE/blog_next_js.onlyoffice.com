@@ -5,37 +5,37 @@ import getCategorySlug from "@lib/requests/getCategorySlug";
 import getCategoryPosts from "@lib/requests/getCategoryPosts";
 
 import Layout from "@components/layout";
-import CategoryHeadSEO from "@components/screens/head-content/category";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import CategoryHead from "@components/screens/head/category";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import CategoryContent from "@components/screens/category-content";
 
-const Category = ({ locale, posts }) => {
+const CategoryPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isCategoryContent = true;
+  const isCategoryPage = true;
   const categoryName = posts?.edges[0]?.node.categories?.nodes[0]?.name;
   const categorySlug = posts?.edges[0]?.node.categories?.nodes[0]?.slug;
 
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
-        <CategoryHeadSEO
+        <CategoryHead
           locale={locale}
           title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${categoryName}` : `${categoryName} | ${t("ONLYOFFICE Blog")}`}
           categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <CategoryContent t={t} locale={locale} posts={posts} isCategoryContent={isCategoryContent} categoryName={categoryName} categorySlug={categorySlug} />
+        <CategoryContent t={t} locale={locale} posts={posts} isCategoryPage={isCategoryPage} categoryName={categoryName} categorySlug={categorySlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -122,4 +122,4 @@ export const getStaticProps = async ({ locale, params }) => {
   }
 }
 
-export default Category;
+export default CategoryPage;

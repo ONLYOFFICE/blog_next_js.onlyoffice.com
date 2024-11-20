@@ -5,16 +5,16 @@ import getRecentPosts from "@lib/requests/getRecentPosts";
 import { useRouter } from "next/router";
 
 import Layout from "@components/layout";
-import SearchHeadSEO from "@components/screens/head-content/search";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import SearchHead from "@components/screens/head/search";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import SearchContent from "@components/screens/search-content";
 
-const Search = ({ locale, recentPosts }) => {
+const SearchPage = ({ locale, recentPosts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isSearchContent = true;
+  const isSearchPage = true;
 
   const router = useRouter();
   const routerQuery = router.query.s === undefined ? "" : router.query.s;
@@ -22,17 +22,17 @@ const Search = ({ locale, recentPosts }) => {
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
-        <SearchHeadSEO title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${routerQuery}` : `${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
+        <SearchHead title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${routerQuery}` : `${routerQuery} | ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounce t={t} locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} locale={locale} isSearchContent={isSearchContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} isSearchPage={isSearchPage} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <SearchContent t={t} locale={locale} recentPosts={recentPosts} isSearchContent={isSearchContent} />
+        <SearchContent t={t} locale={locale} recentPosts={recentPosts} isSearchPage={isSearchPage} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} locale={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -51,4 +51,4 @@ export const getStaticProps = async ({ locale }) => {
 	}
 }
 
-export default Search;
+export default SearchPage;

@@ -6,12 +6,12 @@ import Newsletter from "@components/screens/common/newsletter";
 import DownloadBlock from "@components/screens/common/download-block";
 import LoadMorePosts from "@components/screens/common/load-more-posts";
 
-const CategoryContent = ({ t, locale, posts, isCategoryContent, categoryName, categorySlug }) => {
+const CategoryContent = ({ t, locale, posts, isCategoryPage, categoryName, categorySlug }) => {
   const firstPosts = posts?.edges.length > 6 ? posts?.edges.slice(0, 6) : posts?.edges
 
   return (
     <StyledCategoryContent>
-      <Breadcrumbs className="breadcrumbs" t={t} data={posts} isCategoryContent={isCategoryContent} />
+      <Breadcrumbs className="breadcrumbs" t={t} data={posts} isCategoryPage={isCategoryPage} />
       <Heading className="category-title" level={1}>{categoryName}</Heading>
 
       <div className="category-posts">
@@ -21,19 +21,19 @@ const CategoryContent = ({ t, locale, posts, isCategoryContent, categoryName, ca
 
         <DownloadBlock className="download-block" t={t} locale={locale} />
 
-        {posts?.edges.length > 6 &&
-          posts?.edges.slice(6, 12).map(({node}) => (
+        {posts?.edges.length > 6 && posts?.edges.slice(6, 12).map(({node}) => (
           <Card data={node} key={node.id} locale={locale} />
         ))}
 
         <Newsletter t={t} locale={locale} />
 
-        {posts?.edges.length > 12 &&
-        posts?.edges.slice(12, 15).map(({node}) => (
-          <Card data={node} key={node.id} locale={locale} />
-        ))}
+        {posts?.edges.length > 12 && (
+          posts?.edges.slice(12, 15).map(({node}) => (
+            <Card data={node} key={node.id} locale={locale} />
+          ))
+        )}
 
-        <LoadMorePosts t={t} locale={locale} data={posts} isCategoryContent={isCategoryContent} categorySlug={categorySlug} />
+        <LoadMorePosts t={t} locale={locale} data={posts} isCategoryPage={isCategoryPage} categorySlug={categorySlug} />
       </div>
     </StyledCategoryContent>
   );

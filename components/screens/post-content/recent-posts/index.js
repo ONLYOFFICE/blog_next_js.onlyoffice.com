@@ -4,7 +4,7 @@ import Card from "@components/screens/common/card";
 
 const RecentPosts = ({ t, data, locale, ...rest }) => {
   return (
-    <StyledRecentPosts {...rest}>
+    <StyledRecentPosts locale={locale} {...rest}>
       <Heading className="recent-posts-title" level={3}>{t("Recent posts")}</Heading>
 
       <div className="posts">

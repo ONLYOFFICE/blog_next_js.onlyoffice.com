@@ -7,25 +7,22 @@ import getTagPosts from "@lib/requests/getTagPosts";
 
 export default async function handler(req, res) {
   const body = JSON.parse(req.body);
-  const { isInThePressContent, isSearchContent, isAuthorContent, isTagContent, isCategoryContent, locale, endCursor, data } = body;
+  const { isInThePressPage, isSearchPage, isAuthorPage, isTagPage, isCategoryPage, locale, endCursor, data } = body;
 
   if (req.method === "POST") {
-    const response = 
-    isInThePressContent ? 
-      await getInThePressPosts(locale, 5, `"${endCursor}"`) : 
-    isSearchContent ? 
+    const response = isInThePressPage ? (
+      await getInThePressPosts(locale, 5, `"${endCursor}"`)
+    ) : isSearchPage ? (
       await getSearchResults(locale, 5, `"${endCursor}"`, data)
-    :
-    isAuthorContent ?
+    ) : isAuthorPage ? (
       await getAuthorPosts(locale, 6, `"${endCursor}"`, data)
-    :
-    isTagContent ?
+    ) : isTagPage ? (
       await getTagPosts(locale, 6, `"${endCursor}"`, data)
-    :
-    isCategoryContent ?
+    ) : isCategoryPage ? (
       await getCategoryPosts(locale, 6, `"${endCursor}"`, data)
-    :
-      await getAllPosts(locale, 6, `"${endCursor}"`, "");
+    ) : (
+      await getAllPosts(locale, 6, `"${endCursor}"`, "")
+    );
 
     return res.json({ data: response });
   } else {

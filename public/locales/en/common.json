@@ -1,15 +1,9 @@
 {
-  "AdventAnnounceDesktop": "<b>ONLYOFFICE Docs 8.2 released:</b> PDF collaborative editing, revamped interface, optimized performance, and more",
-  "AdventAnnounceMobile": "<b>Meet ONLYOFFICE Docs 8.2</b>",
-  "AdventAnnounceLink": "https://www.onlyoffice.com/blog/2024/10/onlyoffice-docs-8-2-released",
-  "AdventAnnounceWebinarsLink": "https://www.onlyoffice.com/webinars.aspx",
-  "blogLink1": "https://www.onlyoffice.com/blog/2024/06/onlyoffice-docs-8-1-released",
-  "blogLink2": "https://www.onlyoffice.com/blog/2024/02/onlyoffice-docspace-app-for-zoom",
-
   "NewsletterSubscribeText": "By clicking \"Subscribe\", you agree to the",
   "NewsletterSubscribeLink": "rules for using the service and processing personal data.",
-  "© Ascensio System SIA": "© Ascensio System SIA 2009-{{currentYear}}.",
-  "SustainabilityLink": "https://www.onlyoffice.com/blog/2024/06/eco-friendly",
   "Create your": "Create your <span>free</span> ONLYOFFICE account",
-  "Get free mobile app": "Get free mobile app"
+  "XSocialLink": "https://x.com/ONLY_OFFICE",
+  "TikTokSocialLink": "https://www.tiktok.com/@only_office",
+  "LinkedInSocialLink": "https://www.linkedin.com/company/ascensio-system-sia/",
+  "TelegramSocialLink": "https://t.me/onlyofficeofficial"
 }

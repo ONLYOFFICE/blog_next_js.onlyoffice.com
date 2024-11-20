@@ -43,18 +43,22 @@ const StyledPopupDocSpace = styled.div`
       gap: 32px;
       align-items: center;
 
+      .modal_text {
+        width: 100%;
+      }
+
       .modal_img {
         width: 324px;
         height: 180px;
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/docspace-block/popup_picture_1.gif");
         background-size: cover;
 
-        @media ${device.laptop} {
+        @media screen and ${device.laptop} {
           width: 162px;
           height: 90px;
         }
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           width: 162px;
           height: 90px;
         }
@@ -62,32 +66,31 @@ const StyledPopupDocSpace = styled.div`
 
       .docspace_block_title {
         margin-top: 32px;
-        text-align: initial;
 
         span {
           color: #FF6F3D;
           font-weight: 700;
         }
 
-        @media ${device.laptop} {
+        @media screen and ${device.laptop} {
           text-align: center;
           margin-top: 0;
         }
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           margin-top: 0;
         }
       }
 
       .docspace_block_subheader {
         margin-top: 16px;
-        text-align: center;
 
-        @media ${device.laptop} {
+        @media screen and ${device.laptop} {
           margin-top: 8px;
+          text-align: center;
         }
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           margin-top: 8px;
         }
       }
@@ -102,21 +105,16 @@ const StyledPopupDocSpace = styled.div`
           input {
             box-sizing: border-box;
             height: 56px;
-            border-top: 1px solid rgb(170, 170, 170);
-            border-bottom: 1px solid rgb(170, 170, 170);
-            border-left: 1px solid rgb(170, 170, 170);
+            border: 1px solid #aaaaaa;
             border-image: initial;
-            border-top-left-radius: 3px;
-            border-bottom-left-radius: 3px;
-            border-right: none;
-            border-bottom-right-radius: initial;
-            border-top-right-radius: initial;
+            border-radius: ${props => props.locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
+            ${props => props.locale === "ar" ? "border-left: none;" : "border-right: none;"}
             padding: 16px;
             font-size: 14px;
             line-height: 280%;
             color: rgb(51, 51, 51);
 
-            @media (max-width: 592px) {
+            @media screen and ${device.mobile} {
               height: 48px;
             }
           }
@@ -124,12 +122,12 @@ const StyledPopupDocSpace = styled.div`
           .error-message {            
             position: absolute;
             top: 60px;
-            left: 0;
+            ${props => props.locale === "ar" ? "right: 0;" : "left: 0;"}
             color: #ff0c3e;
             font-size: 12px;
             line-height: 19px;
 
-            @media (max-width: 592px) {
+            @media screen and ${device.mobile} {
               top: 48px;
               font-size: 10px;
             }
@@ -139,7 +137,7 @@ const StyledPopupDocSpace = styled.div`
             background: #FF6F3D;
             color: #FFFFFF;
             min-width: 140px;
-            border-radius: 0px 3px 3px 0px;
+            border-radius: ${props => props.locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
             font-size: 13px;
             font-weight: 600;
             line-height: 17.29px;
@@ -154,11 +152,16 @@ const StyledPopupDocSpace = styled.div`
               opacity: 1;
             }
 
-            @media ${device.laptopM} {
+            @media screen and ${device.laptopM} {
               padding: 0;
             }
 
-            @media (max-width: 592px) {
+            @media screen and ${device.laptop} {
+              border-radius: ${props => props.locale === "ar" && "0 3px 3px 0"};
+              transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+            }
+
+            @media screen and ${device.mobile} {
               &.arrow {
                 width: 48px;
                 min-width: 48px;
@@ -182,29 +185,29 @@ const StyledPopupDocSpace = styled.div`
         }
       }
 
-      @media ${device.laptop} {
+      @media screen and ${device.laptop} {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
         justify-items: center;
         gap: 24px;
       }
 
-      @media (max-width: 592px) {
+      @media screen and ${device.mobile} {
         gap: 24px;
       }
     }
 
-    @media ${device.laptopM} {
+    @media screen and ${device.laptopM} {
       max-width: calc(100% - 40px);
       padding: 56px 26px;
     }
 
-    @media ${device.laptop} {
+    @media screen and ${device.laptop} {
       max-width: calc(100% - 40px);
       padding: 32px 53px;
     }
 
-    @media (max-width: 592px) {
+    @media screen and ${device.mobile} {
       max-width: calc(100% - 40px);
       padding: 24px 24px;
     }

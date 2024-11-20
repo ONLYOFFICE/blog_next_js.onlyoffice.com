@@ -34,34 +34,51 @@ const StyledCloudBlock = styled.div`
 
     &.de {
       max-width: 270px;
+
+      @media screen and ${device.mobile} {
+        font-size: 12px;
+        max-width: 240px;
+      }
     }
 
     &.el {
       max-width: 290px;
+
+      @media screen and ${device.mobile} {
+        font-size: 11px;
+        max-width: 240px;
+      }
     }
 
     &.hy {
       max-width: 262px;
+
+      @media screen and ${device.mobile} {
+        font-size: 12px;
+        max-width: 240px;
+      }
     }
 
     &:hover {
       background-color: #ff865c;
     }
-  }
 
-  @media ${device.laptop} {
-    .button {
+    @media screen and ${device.laptop} {
       padding: 12px 20px;
+    }
+
+    @media screen and ${device.mobile} {
+      bottom: 32px;
     }
   }
 
-  @media ${device.tablet} {
+  @media screen and ${device.tablet} {
     background-position: 50% 25%;
     background-size: 95%;
     background-color: #f8f8f8;
   }
 
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     margin: 0 -16px;
     width: initial;
     height: 252px;
@@ -71,21 +88,6 @@ const StyledCloudBlock = styled.div`
     background-position: 50% 39px;
     background-repeat: no-repeat;
     background-size: 272px 122.78px;
-
-    .button {
-      bottom: 32px;
-
-      &.de,
-      &.hy {
-        font-size: 12px;
-        max-width: 240px;
-      }
-
-      &.el {
-        font-size: 11px;
-        max-width: 240px;
-      }
-    }
   }
 `;
 

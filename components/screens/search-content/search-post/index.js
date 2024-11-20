@@ -12,7 +12,7 @@ const SearchPost = ({ locale, data, searchQueryString }) => {
 
     if (!searchQuery) return string;
 
-    const regexp = new RegExp(searchQuery, 'ig');
+    const regexp = new RegExp(searchQuery, "ig");
     const matchValue = text.match(regexp);
 
     if (matchValue) {
@@ -45,15 +45,13 @@ const SearchPost = ({ locale, data, searchQueryString }) => {
           <InternalLink href={data?.uri}>{HightLightText(data?.title)}</InternalLink>
         </Heading>
 
-        {
-          data?.aioseoDescription ?
-            <Text className="post-text" as="p">{HightLightText(data?.aioseoDescription)}</Text>
-          :
-          data?.excerpt ?
-            <Text className="post-text" as="p">{HightLightText(parse(data?.excerpt)[0].props.children)}</Text>
-          :
-            null
-        }
+        {data?.aioseoDescription ? (
+          <Text className="post-text" as="p">{HightLightText(data?.aioseoDescription)}</Text>
+        ) : data?.excerpt ? (
+          <Text className="post-text" as="p">{HightLightText(parse(data?.excerpt)[0].props.children)}</Text>
+        ) : (
+          null
+        )}
       </article>
     </StyledSearchPost>
   );

@@ -28,7 +28,7 @@ const StyledDocSpaceBlock = styled.div`
         width: 48px;
         min-width: 48px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           grid-area: A;
         }
       }
@@ -40,7 +40,7 @@ const StyledDocSpaceBlock = styled.div`
         width: 48px;
         min-width: 48px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           grid-area: B;
         }
       }
@@ -52,7 +52,7 @@ const StyledDocSpaceBlock = styled.div`
         width: 48px;
         min-width: 48px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           grid-area: C;
         }
       }
@@ -64,7 +64,7 @@ const StyledDocSpaceBlock = styled.div`
         width: 48px;
         min-width: 48px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           grid-area: D;
         }
       }
@@ -76,12 +76,12 @@ const StyledDocSpaceBlock = styled.div`
         width: 48px;
         min-width: 48px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           grid-column: E;
         }
       }
 
-      @media (max-width: 592px) {
+      @media screen and ${device.mobile} {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -89,7 +89,7 @@ const StyledDocSpaceBlock = styled.div`
       }
     }
 
-    @media (max-width: 592px) {
+    @media screen and ${device.mobile} {
       max-width: 254px;
       display: flex;
       flex-wrap: wrap;
@@ -122,21 +122,16 @@ const StyledDocSpaceBlock = styled.div`
       input {
         box-sizing: border-box;
         height: 56px;
-        border-top: 1px solid rgb(170, 170, 170);
-        border-bottom: 1px solid rgb(170, 170, 170);
-        border-left: 1px solid rgb(170, 170, 170);
+        border: 1px solid #aaaaaa;
         border-image: initial;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
-        border-right: none;
-        border-bottom-right-radius: initial;
-        border-top-right-radius: initial;
+        border-radius: ${props => props.locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
+        ${props => props.locale === "ar" ? "border-left: none;" : "border-right: none;"}
         padding: 16px;
         font-size: 14px;
         line-height: 280%;
         color: rgb(51, 51, 51);
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           width: 100%;
           height: 48px;
         }
@@ -145,12 +140,12 @@ const StyledDocSpaceBlock = styled.div`
       .error-message {            
         position: absolute;
         top: 60px;
-        left: 0;
+        ${props => props.locale === "ar" ? "right: 0;" : "left: 0;"}
         color: #ff0c3e;
         font-size: 12px;
         line-height: 19px;
 
-        @media (max-width: 592px) {
+        @media screen and ${device.mobile} {
           top: 48px;
           font-size: 10px;
         }
@@ -160,7 +155,7 @@ const StyledDocSpaceBlock = styled.div`
         background: #FF6F3D;
         color: #FFFFFF;
         min-width: 140px;          
-        border-radius: 0px 3px 3px 0px;
+        border-radius: ${props => props.locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
         font-size: 13px;
         font-weight: 600;
         line-height: 17.29px;
@@ -176,7 +171,12 @@ const StyledDocSpaceBlock = styled.div`
           opacity: 1;
         }
 
-        @media (max-width: 592px) {
+        @media screen and ${device.laptop} {
+          border-radius: ${props => props.locale === "ar" && "0 3px 3px 0"};
+          transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+        }
+
+        @media screen and ${device.mobile} {
           padding: 0;
           min-width: initial;
 
@@ -200,19 +200,19 @@ const StyledDocSpaceBlock = styled.div`
         }
       }
 
-      @media (max-width: 592px) {
+      @media screen and ${device.mobile} {
         display: grid;
         grid-template-columns: 1fr 48px;
       }
     }
   }
 
-  @media ${device.laptop} {
+  @media screen and ${device.laptop} {
     padding: 48px 53px;
     background-size: cover;
   }
 
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     padding: 32px 16px;
   }
 `;

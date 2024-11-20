@@ -22,6 +22,10 @@ const StyledCard = styled.div`
 
     .card-img {
       padding-bottom: 50.273%;
+
+      @media screen and ${device.mobile} {
+        padding-bottom: 50%;
+      }
     }
 
     .card-title {
@@ -37,11 +41,30 @@ const StyledCard = styled.div`
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+
+        @media screen and ${device.tablet} {
+          -webkit-line-clamp: 3;
+        }
+
+        @media screen and ${device.mobile} {
+          font-size: 16px;
+          line-height: 21px;
+        }
+      }
+
+      @media screen and ${device.tablet} {
+        margin-bottom: 10px;
       }
     }
 
     .card-info {
       margin-top: initial;
+
+      &:not(:last-child) {
+        @media screen and ${device.tablet} {
+          margin-bottom: 9px;
+        }
+      }
     }
 
     .card-description {
@@ -54,6 +77,15 @@ const StyledCard = styled.div`
   
       p {
         margin: 0;
+      }
+
+      @media screen and ${device.tablet} {
+        -webkit-line-clamp: 3;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 14px;
+        line-height: 26px;
       }
     }
   }
@@ -71,6 +103,10 @@ const StyledCard = styled.div`
       height: 100%;
       object-fit: cover;
     }
+
+    @media screen and ${device.mobile} {
+      padding-bottom: 50.28%;
+    }
   }
 
   .card-body {
@@ -78,6 +114,14 @@ const StyledCard = styled.div`
     flex-direction: column;
     padding: 24px 24px 32px;
     height: 100%;
+
+    @media screen and ${device.tablet} {
+      padding: 24px;
+    }
+
+    @media screen and ${device.mobile} {
+      padding: 21px 22px 21px;
+    }
   }
 
   .card-title {
@@ -93,11 +137,25 @@ const StyledCard = styled.div`
       line-height: 24px;
       letter-spacing: -0.01em;
       color: #333333;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
 
       &:hover,
       &:focus {
         text-decoration: underline;
       }
+
+      @media screen and ${device.mobile} {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin-bottom: 16px;
+      min-height: initial;
     }
   }
 
@@ -129,7 +187,11 @@ const StyledCard = styled.div`
     }
 
     &:not(:last-child) {
-      margin-right: 20px;
+      ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+
+      @media screen and ${device.mobile} {
+        ${props => props.locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
+      }
     }
 
     &.card-date {
@@ -143,78 +205,6 @@ const StyledCard = styled.div`
       &:hover {
         text-decoration: underline;
       }
-    }
-  }
-
-  @media ${device.tablet} {
-    &.main-post {
-      .card-title {
-        margin-bottom: 10px;
-
-        a {
-          -webkit-line-clamp: 3;
-        }
-      }
-
-      .card-info {
-        &:not(:last-child) {
-          margin-bottom: 9px;
-        }
-      }
-
-      .card-description {
-        -webkit-line-clamp: 3;
-      }
-    }
-
-    .card-body {
-      padding: 24px;
-    }
-
-    .card-title {
-      margin-bottom: 16px;
-      min-height: initial;
-    }
-  }
-
-  @media (max-width: 592px) {
-    &.main-post {
-      .card-img {
-        padding-bottom: 50%;
-      }
-
-      .card-title {
-        .internal-link {
-          font-size: 16px;
-          line-height: 21px;
-        }
-      }
-
-      .card-description {
-        font-size: 14px;
-        line-height: 26px;
-      }
-    }
-
-    .card-img {
-      padding-bottom: 50.28%;
-    }
-
-    .card-info-item {
-      &:not(:last-child) {
-        margin-right: 16px;
-      }
-    }
-
-    .card-title {
-      .internal-link {
-        font-size: 16px;
-        line-height: 21px;
-      }
-    }
-
-    .card-body {
-      padding: 21px 22px 21px;
     }
   }
 `;

@@ -20,4 +20,5 @@ const StyledTag = styled.div`
     }
   }
 `;
+
 export default StyledTag;
