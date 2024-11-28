@@ -24,8 +24,15 @@ find "$BUILD_DIR" -type d -exec chmod 755 {} \;
 find "$BUILD_DIR" -type f -exec chmod 644 {} \;
 cd "$BUILD_DIR"
 
-# Build application
+# Build application with error handling
+echo "Starting application build..."
 docker run --rm -v "$BUILD_DIR":"$APP_DIR" -w "$APP_DIR" "$DOCKER_CONTAINER_TAG" sh -c "yarn && yarn build"
+if [ $? -ne 0 ]; then
+    echo "Error: Application build failed. Cleaning up build directory and exiting."
+    rm -rf "$BUILD_DIR"
+    exit 1
+fi
+echo "Application build completed successfully."
 
 ### DEPLOY STAGE
 
@@ -61,7 +68,6 @@ if docker ps -a | grep -wq "$APP_NAME"; then
         docker run -d --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
     fi
 else
-        # Build and run a new container if it doesn't exist
-        docker run -d --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
+    # Build and run a new container if it doesn't exist
+    docker run -d --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
 fi
-
