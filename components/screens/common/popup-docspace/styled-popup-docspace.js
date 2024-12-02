@@ -12,7 +12,7 @@ const StyledPopupDocSpace = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(119, 119, 119, 0.5);  
-  z-index: 1001;
+  z-index: 1004;
   transition: opacity 0.3s, visibility 0.3s;
   
   .modal_wrapper {
