@@ -100,14 +100,24 @@ const StyledMainContent = styled(Section)`
   }
 
   .view-all {
-    padding-right: 10px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
     font-size: 14px;
     line-height: 19px;
     text-decoration-line: underline;
     color: #333333;
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-right.svg");
-    background-repeat: no-repeat;
-    background-position: right 6px;
+    
+    &:after {
+      content: "";
+      ${props => props.locale === "ar" ? "margin-right: 10px;" : "margin-left: 10px;"}
+      width: 4px;
+      height: 8px;
+      transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
 
     &:hover {
       text-decoration-line: none;
