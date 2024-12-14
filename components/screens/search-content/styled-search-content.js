@@ -1,16 +1,34 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
+
+const loadSpin = keyframes`
+  100%  { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledSearchContent = styled(Section)`
   padding: 40px 0 80px;
 
   .breadcrumbs {
     margin-bottom: 40px;
+    
+    li {
+      &:not(:first-child) {
+        direction: ${props => props.locale === "ar" && "initial"};
+      }
+    }
   }
 
-  .search_area {
+  .search-area {
     margin-bottom: 40px;
+  }
+
+  .search-input {
+    @media screen and ${device.mobile} {
+      height: 56px;
+    }
   }
 
   .wrapper {
@@ -18,6 +36,11 @@ const StyledSearchContent = styled(Section)`
     grid-template-columns: auto 31.429%;
     align-items: start;
     gap: 32px;
+
+    @media screen and ${device.laptop} {
+      grid-template-columns: initial;
+      gap: 48px;
+    }
   }
 
   .posts {
@@ -28,6 +51,10 @@ const StyledSearchContent = styled(Section)`
   .sidebar {
     display: grid;
     gap: 36px;
+
+    @media screen and ${device.mobile} {
+      gap: 48px;
+    }
   }
 
   .search-posts {
@@ -46,7 +73,7 @@ const StyledSearchContent = styled(Section)`
   }
 
   .no-results-bg {
-    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/404_errors.svg");
     background-size: contain;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -71,32 +98,12 @@ const StyledSearchContent = styled(Section)`
       border-radius: 75%;
       border-right-color: transparent;
       transform: translate(-50%, -50%);
-      animation: cssload-spin 1025ms infinite linear;
+      animation: ${loadSpin} 1025ms infinite linear;
     }
   }
 
-  @keyframes cssload-spin {
-    100%{ transform: translate(-50%, -50%) rotate(360deg); }
-  }
-
-  @media ${device.laptop} {
+  @media screen and ${device.laptop} {
     padding: 40px 0 88px;
-
-    .wrapper {
-      grid-template-columns: initial;
-      gap: 48px;
-    }
-  }
-
-  @media (max-width: 592px) {
-    .group-input,
-    .search_input {
-      height: 56px;
-    }
-
-    .sidebar {
-      gap: 48px;
-    }
   }
 `;
 

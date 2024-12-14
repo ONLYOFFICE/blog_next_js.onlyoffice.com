@@ -1,40 +1,41 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getTagSlug, getTagPosts } from "@lib/api";
+import getTagSlug from "@lib/requests/getTagSlug";
+import getTagPosts from "@lib/requests/getTagPosts";
 
 import Layout from "@components/layout";
-import TagHeadSEO from "@components/screens/head-content/tag";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import TagHead from "@components/screens/head/tag";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import TagContent from "@components/screens/tag-content";
 
-const Tag = ({ locale, posts }) => {
+const TagPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isTagContent = true;
+  const isTagPage = true;
   const tagName = posts?.edges[0]?.node.tags?.nodes[0]?.name;
   const tagSlug = posts?.edges[0]?.node.tags?.nodes[0]?.slug;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
-        <TagHeadSEO
-          currentLanguage={locale}
-          title={`${tagName} | ${t("ONLYOFFICE Blog")}`}
+        <TagHead
+          locale={locale}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${tagName}` : `${tagName} | ${t("ONLYOFFICE Blog")}`}
           tagSlug={tagSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <TagContent t={t} currentLanguage={locale} posts={posts} isTagContent={isTagContent} tagName={tagName} tagSlug={tagSlug} />
+        <TagContent t={t} locale={locale} posts={posts} isTagPage={isTagPage} tagName={tagName} tagSlug={tagSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -73,8 +74,8 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate: 86400,
+    revalidate:false,
   }
 }
 
-export default Tag;
+export default TagPage;

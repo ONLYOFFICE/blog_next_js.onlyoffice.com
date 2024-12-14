@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledTextarea = styled.div`
+const StyledInput = styled.div`
   width: 100%;
 
   input:-webkit-autofill,
@@ -40,4 +40,5 @@ const StyledTextarea = styled.div`
     color: #cb0000;
   }
 `;
-export default StyledTextarea;
+
+export default StyledInput;

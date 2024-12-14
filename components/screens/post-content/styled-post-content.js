@@ -3,8 +3,8 @@ import { device } from "@components/utils/devices";
 import Section from "@components/common/section";
 
 const StyledPostContent = styled(Section)`
+  position: initial;
   padding: 32px 0 0;
-  overflow: hidden;
 
   .title {
     margin: 0 0 32px;
@@ -12,8 +12,21 @@ const StyledPostContent = styled(Section)`
     line-height: 53px;
     text-align: center;
     letter-spacing: -0.02em;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: "pnum" on, "lnum" on;
     color: #333333;
+    overflow: initial;
+
+    @media screen and ${device.tablet} {
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      text-align: initial;
+    }
+
+    @media screen and ${device.mobile} {
+      margin-bottom: 24px;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
 
   .info-content {
@@ -26,54 +39,127 @@ const StyledPostContent = styled(Section)`
 
     > span {
       padding-left: 20px;
-      margin-right: 20px;
       background-size: 12px;
-      background-position: left 5px;
+      background-position: left center;
       background-repeat: no-repeat;
 
+      &:not(:last-child) {
+        ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+      }
+
       &.date {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       }
 
-      &.author {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
-      }
-
-      &.comments {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/comment.svg");
-      }
-
-      &.views {
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/views.svg");
-        background-size: 14px 10px;
+      &.outdated {
+        color: #CB0000;
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/outdated.svg");
+        background-size: 20px;
+        background-position: left 1px;
+        padding-left: 28px;
       }
     }
 
     .internal-link {
       display: inline-flex;
-
-      .external-link {
-        font-size: 13px;
-        line-height: 21px;
-        color: #919192;
-        text-decoration: none;
-      }
+      font-size: 13px;
+      line-height: 21px;
+      color: #919192;
 
       &:hover {
-        .external-link {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
+      }
+    }
+
+    .author {
+      display: initial;
+      padding-left: 20px;
+      background-size: 12px;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+
+      &:not(:last-child) {
+        ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
       }
     }
 
     .share-buttons {
-      margin-left: auto;
+      ${props => props.locale === "ar" ? "margin-right: auto;" : "margin-left: auto;"}
+
+      @media screen and ${device.tablet} {
+        margin-top: 24px;
+        ${props => props.locale === "ar" ? "margin-right: initial;" : "margin-left: initial;"}
+        width: 100%;
+      }
     }
   }
 
   .content {
+    position: relative;
     margin: 50px auto 40px;
-    max-width: 736px;
+    ${props => props.locale === "ar" ? "padding-right: 88px;" : "padding-left: 88px;"}
+    display: flex;
+    justify-content: space-between;
+    max-width: 824px;
+
+    .wrap {
+      width: 100%;
+      max-width: 736px;
+    }
+
+    ul li:before {
+      padding-left: ${props => props.locale === "ar" && "15px"};
+      padding-right: ${props => props.locale === "ar" && "0"};
+    }
+
+    @media screen and ${device.laptop} {
+      margin: 70px auto 80px;
+      ${props => props.locale === "ar" ? "padding-right: 0;" : "padding-left: 0;"}
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 24px auto;
+    }
+  }
+
+  .btn-scroll-top {
+    position: sticky;
+    top: calc(100% - 76px);
+    ${props => props.locale === "ar" ? "left: 0;" : "right: 0;"}
+    padding: 0;
+    width: 56px;
+    height: 56px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 10;
+
+    span {
+      display: inline-flex;
+      border-radius: 2px;
+      width: 32px;
+      height: 32px;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-up.svg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #cccccc;
+      transition: background-color 0.3s;
+    }
+
+    &:hover {
+      span {
+        background-color: #aaaaaa;
+      }
+    }
+
+    @media screen and ${device.laptop} {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      top: initial;
+    }
   }
 
   article {
@@ -83,6 +169,10 @@ const StyledPostContent = styled(Section)`
       font-weight: 700;
       margin-bottom: 32px;
       line-height: 133%;
+
+      @media screen and ${device.tablet} {
+        letter-spacing: -0.01em;
+      }
     }
 
     h1 {
@@ -91,10 +181,26 @@ const StyledPostContent = styled(Section)`
 
     h2 {
       font-size: 32px;
+
+      @media screen and ${device.tablet} {
+        font-size: 30px;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 20px;
+      }
     }
 
     h3 {
       font-size: 24px;
+
+      @media screen and ${device.tablet} {
+        font-size: 22px;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 18px;
+      }
     }
 
     h4 {
@@ -114,6 +220,11 @@ const StyledPostContent = styled(Section)`
       font-size: 16px;
       line-height: 26px;
       color: #333;
+
+      @media screen and ${device.mobile} {
+        font-size: 14px;
+        line-height: 26px;
+      }
     }
 
     .wp-caption {
@@ -139,6 +250,15 @@ const StyledPostContent = styled(Section)`
       line-height: 13px;
     }
 
+    .wp-video {
+      max-width: 640px;
+      width: 100% !important;
+  
+      > video {
+        width: 100%;
+      }
+    }
+
     img {
       object-fit: contain;
       height: auto;
@@ -150,6 +270,10 @@ const StyledPostContent = styled(Section)`
 
       &.aligncenter {
         margin: 0 auto;
+      }
+
+      @media screen and ${device.mobile} {
+        margin: 0;
       }
     }
 
@@ -177,10 +301,6 @@ const StyledPostContent = styled(Section)`
       &:hover {
         text-decoration: none;
       }
-    }
-
-    a img.alignnone, p img.alignnone {
-      margin: 5px 20px 20px 0;
     }
 
     ul, ol {
@@ -218,7 +338,17 @@ const StyledPostContent = styled(Section)`
       }
     }
 
-    blockquote {
+    iframe {
+      @media screen and ${device.laptop} {
+        width: 100%;
+      }
+
+      @media screen and ${device.mobile} {
+        height: 235px;
+      }
+    }
+
+    blockquote:not([class]) {
       border-left: 3px solid #ff6f3d;
       margin: 1.5em 0;
       padding: 0.5em 10px 0.5em 24px;
@@ -281,6 +411,10 @@ const StyledPostContent = styled(Section)`
       &:hover {
         background-color: #ff865c;
       }
+
+      @media screen and ${device.mobile} {
+        padding: 16px 20px;
+      }
     }
 
     .useful-links {
@@ -295,11 +429,15 @@ const StyledPostContent = styled(Section)`
         line-height: 33px;
         color: #333;
         padding-left: 35px;
-        background-image: url("https://static-blog.onlyoffice.com/images/icons/link.svg");
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/link.svg");
         background-size: 23px;
         background-position: 0 50%;
         background-repeat: no-repeat;
         margin-top: 0 !important;
+
+        @media screen and ${device.mobile} {
+          font-size: 18px;
+        }
       }
 
       p {
@@ -308,6 +446,10 @@ const StyledPostContent = styled(Section)`
         &:last-child {
           margin-bottom: 0;
         }
+      }
+
+      @media screen and ${device.tablet} {
+        margin: 44px 0;
       }
     }
 
@@ -323,11 +465,11 @@ const StyledPostContent = styled(Section)`
       }
 
       input, select, button, textarea {
-        font-family: 'Open Sans', sans-serif, Arial;
+        font-family: "Open Sans", sans-serif, Arial;
         font-weight: 400;
       }
 
-      @media (min-width: 768px) {
+      @media screen and ${device.tablet} {
         .frm-fluent-form .ff-t-container {
           display: flex;
           gap: 15px;
@@ -465,20 +607,41 @@ const StyledPostContent = styled(Section)`
 
   .tag-list {
     display: flex;
+    justify-content: ${props => props.locale === "ar" && "end"};
     margin: 80px 0;
+
+    @media screen and ${device.tablet} {
+      flex-direction: column;
+      margin: 44px 0;
+    }
   }
 
   .tag-items {
-    padding-right: 12px;
+    ${props => props.locale === "ar" ? "padding-left: 12px;" : "padding-right: 12px;"}
     width: 70%;
+
+    @media screen and ${device.tablet} {
+      ${props => props.locale === "ar" ? "padding-left: 0;" : "padding-right: 0;"}
+      margin-bottom: 27px;
+      width: 100%;
+    }
   }
 
   .tag-share {
-    margin: 10px 0 10px auto;
+    margin: ${props => props.locale === "ar" ? "10px auto 10px 0" : "10px 0 10px auto"};
     width: 30%;
 
     .share-buttons {
-      justify-content: right;
+      justify-content: ${props => props.locale === "ar" ? "left" : "right"};
+
+      @media screen and ${device.tablet} {
+        justify-content: initial;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 0;
+      width: 100%;
     }
   }
 
@@ -506,6 +669,16 @@ const StyledPostContent = styled(Section)`
         color: #FF6F3D;
         border: 1px solid #FF6F3D;
       }
+
+      @media screen and ${device.tablet} {
+        font-size: 13px;
+        line-height: 133%;
+        letter-spacing: 0.04em;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin: 44px auto 0;
     }
   }
 
@@ -517,7 +690,7 @@ const StyledPostContent = styled(Section)`
     transform: translate(-50%, 0) scale(0,0);
     z-index: 10001;
     transition: transform .1s ease;
-    opacity 0;
+    opacity: 0;
 
     &.active {
       opacity: 1;
@@ -527,39 +700,51 @@ const StyledPostContent = styled(Section)`
     .modal-img {
       max-width: 80vw;
       max-height: 80vh;
+      object-fit: contain;
+
+      @media screen and ${device.mobile} {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
     }
 
     .modal-close-btn {
       position: absolute;
       top: -30px;
-      right: -30px;
+      ${props => props.locale === "ar" ? "left: -30px;" : "right: -30px;"}
       width: 23px;
       height: 23px;
       cursor: pointer;
       z-index: 1003;
 
-      &:before {
+      &:before,
+      &:after {
         content: "";
-        background-color: #fff;
         position: absolute;
-        height: 2px;
-        width: 31px;
         top: 11px;
-        transform: rotate(-45deg);
         left: -4px;
+        width: 31px;
+        height: 2px;
+        background-color: #fff;
         z-index: 1004;
+
+        @media screen and ${device.mobile} {
+          width: 20px;
+          left: 0;
+        }
+      }
+
+      &:before {
+        transform: rotate(-45deg);
       }
 
       &:after {
-        content: "";
-        background-color: #fff;
-        position: absolute;
-        height: 2px;
-        width: 31px;
-        top: 11px;
         transform: rotate(45deg);
-        left: -4px;
-        z-index: 1004;
+      }
+
+      @media screen and ${device.mobile} {
+        top: -30px;
+        right: 0;
       }
     }
   }
@@ -579,162 +764,8 @@ const StyledPostContent = styled(Section)`
     }
   }
 
-  @media ${device.laptop} {
-    .content {
-      margin: 70px auto 80px;
-    }
-
-    article {
-      iframe {
-        width: 100%;
-      }
-    }
-  }
-
-  @media ${device.tablet} {
+  @media screen and ${device.tablet} {
     padding: 24px 0 0;
-
-    .content {
-      margin: 24px auto;
-    }
-
-    .title {
-      font-size: 32px;
-      letter-spacing: -0.01em;
-      text-align: initial;
-    }
-
-    article {
-      h1, h2, h3, h4, h5, h6 {
-        letter-spacing: -0.01em;
-      }
-      
-      h2 {
-        font-size: 30px;
-      }
-
-      h3 {
-        font-size: 22px;
-      }
-
-      .useful-links {
-        margin: 44px 0;
-      }
-    }
-
-    .info-content {
-      .share-buttons {
-        margin-top: 24px;
-        margin-left: initial;
-        width: 100%;
-      }
-    }
-
-    .tag-list {
-      flex-direction: column;
-      margin: 44px 0;
-    }
-
-    .tag-items {
-      padding-right: 0;
-      margin-bottom: 27px;
-    }
-
-    .tag-items,
-    .tag-share {
-      width: 100%;
-    }
-
-    .tag-share {
-      margin: 0;
-
-      .share-buttons {
-        justify-content: initial;
-      }
-    }
-
-    .join-discussion {
-      margin: 44px auto 0;
-
-      a {
-        font-size: 13px;
-        line-height: 133%;
-        letter-spacing: .04em;
-      }
-    }
-  }
-
-  @media (max-width: 592px) {
-    .title {
-      margin-bottom: 24px;
-      font-size: 24px;
-      line-height: 32px;
-    }
-
-    .info-content {
-      span {
-        margin-right: 16px;
-
-        &.comments,
-        &.views {
-          display: none;
-        }
-      }
-    }
-
-    article {
-      p {
-        font-size: 14px;
-        line-height: 26px;
-
-        img.alignnone {
-          margin: 0;
-        }
-      }
-
-      img {
-        height: 100%;
-        margin: 0;
-      }
-
-      iframe {
-        height: 235px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      h3 {
-        font-size: 18px;
-      }
-
-      .useful-links h3 {
-        font-size: 18px;
-      }
-
-      .button {
-        padding: 16px 20px;
-      }
-    }
-
-    .modal {
-      .modal-img {
-        max-width: 90vw;
-        max-height: 90vh;
-      }
-
-      .modal-close-btn {
-        top: -30px;
-        right: 0;
-  
-        &:before,
-        &:after {
-          width: 20px;
-          left: 0;
-        }
-      }
-    }
   }
 `;
 

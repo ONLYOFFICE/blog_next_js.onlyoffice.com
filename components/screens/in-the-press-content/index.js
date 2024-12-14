@@ -7,33 +7,33 @@ import FollowUs from "@components/screens/common/widgets/follow-us";
 import Newsletter from "@components/screens/common/newsletter";
 import InThePressPost from "./in-the-press-post";
 
-const InThePressContent = ({ t, currentLanguage, inThePressPosts, recentPosts, isInThePressContent }) => {
+const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressPage }) => {
   return (
-    <StyledInThePressContent>
-      <Breadcrumbs className="breadcrumbs" t={t} isInThePressContent={isInThePressContent} />
+    <StyledInThePressContent locale={locale} className="in-the-press-content">
+      <Breadcrumbs className="breadcrumbs" t={t} isInThePressPage={isInThePressPage} />
 
       <div className="wrapper">
         <div className="content">
           <Heading className="main-title" level={2}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
 
           <div className="posts">
-            {inThePressPosts.edges.slice(0, 3).map(({node}) => (
-              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
+            {inThePressPosts?.edges.slice(0, 3).map(({node}) => (
+              <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <Newsletter t={t} />
+            <Newsletter t={t} locale={locale} />
 
-            {inThePressPosts.edges.slice(3, 5).map(({node}) => (
-              <InThePressPost currentLanguage={currentLanguage} data={node} key={node.id} />
+            {inThePressPosts?.edges.slice(3, 5).map(({node}) => (
+              <InThePressPost locale={locale} data={node} key={node.id} />
             ))}
 
-            <LoadMorePosts className="in-the-press-load-more" t={t} currentLanguage={currentLanguage} data={inThePressPosts} isInThePressContent={isInThePressContent} />
+            <LoadMorePosts className="in-the-press-load-more" t={t} locale={locale} data={inThePressPosts} isInThePressPage={isInThePressPage} />
           </div>
         </div>
 
         <div className="sidebar">
-          <RecentPosts t={t} currentLanguage={currentLanguage} data={recentPosts} />
-          <FollowUs t={t} currentLanguage={currentLanguage} />
+          <RecentPosts t={t} locale={locale} data={recentPosts} />
+          <FollowUs t={t} locale={locale} />
         </div>
       </div>
     </StyledInThePressContent>

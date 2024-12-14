@@ -23,55 +23,52 @@ const StyledSearchPost = styled.div`
 
   .date {
     margin-right: 20px;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
+
+    @media screen and ${device.mobile} {
+      margin-right: 16px;
+    }
   }
 
   .author {
     display: inline-flex;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
-    text-decoration: none;
-
-    .external-link {
-      color: #919192;
-      text-decoration: none;
-    }
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
+    color: #919192;
 
     &:hover {
-      .external-link {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
     }
   }
 
   .post-title {
-    display: flex;
-    color: #333333;
-    text-decoration: none;
-
-    .external-link {
+    a {
       color: #333333;
-      text-decoration: none;
-    }
-
-    h2 {
       font-size: 24px;
       line-height: 32px;
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       cursor: pointer;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      @media screen and ${device.laptop} {
+        -webkit-line-clamp: 3;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 20px;
+        line-height: 133%;
+      }
     }
 
     &:not(:last-child) {
       margin-bottom: 24px;
-    }
-
-    &:hover {
-      .external-link {
-        text-decoration: underline;
-      }
     }
   }
 
@@ -80,40 +77,20 @@ const StyledSearchPost = styled.div`
     margin: 0;
     font-size: 16px;
     line-height: 26px;
+    white-space: initial;
 
     p {
       margin: 0;
+    }
+
+    @media screen and ${device.mobile} {
+      font-size: 14px;
+      line-height: 26px;
     }
   }
 
   .search-excerpt {
     font-style: italic;
-  }
-
-  @media ${device.laptop} {
-    .post-title {
-      h2 {
-        -webkit-line-clamp: 3;
-      }
-    }
-  }
-
-  @media (max-width: 592px) {
-    .post-title {
-      h2 {
-        font-size: 20px;
-        line-height: 133%;
-      }
-    }
-
-    .date {
-      margin-right: 16px;
-    }
-
-    .post-text {
-      font-size: 14px;
-      line-height: 26px;
-    }
   }
 `;
 

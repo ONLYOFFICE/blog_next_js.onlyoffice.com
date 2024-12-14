@@ -14,30 +14,21 @@ const StyledBreadcrumbs = styled.ul`
   text-transform: uppercase;
   color: #444444;
 
-  li {
-    > span {
-      white-space: nowrap;
-    }
-  }
-
   a {
     display: inline-flex;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 133%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-decoration: none;
+    color: #444444;
+    cursor: pointer;
 
-    span {
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 133%;
-      letter-spacing: 0.04em;
+    &:hover {
       text-transform: uppercase;
-      text-decoration: none;
+      text-decoration: underline;
       color: #444444;
-
-      &:hover {
-        text-transform: uppercase;
-        text-decoration: underline;
-        color: #444444;
-      }
     }
   }
 `;

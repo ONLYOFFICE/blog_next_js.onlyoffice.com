@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { device } from "@components/utils/devices";
+
+const loadSpin = keyframes`
+  100%  { 
+    transform: translate(-50%, -50%) rotate(360deg); 
+  }
+`;
 
 const StyledLoadMorePosts = styled.div`
   grid-column: span 3;
@@ -10,13 +16,6 @@ const StyledLoadMorePosts = styled.div`
     position: relative;
     padding: 18px 20px;
     min-width: 124px;
-    min-height: 56px;
-    font-family: "Open Sans", sans-serif;
-    font-size: 13px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    transition-duration: initial;
-    transition: color 0.3s, border-color 0.3s;
 
     &:after {
       content: "";
@@ -30,13 +29,9 @@ const StyledLoadMorePosts = styled.div`
       border-radius: 75%;
       border-right-color: transparent;
       transform: translate(-50%, -50%);
-      animation: cssload-spin 1025ms infinite linear;
+      animation: ${loadSpin} 1025ms infinite linear;
       transition: border 0.3s;
       opacity: 0;
-    }
-    
-    @keyframes cssload-spin {
-      100%{ transform: translate(-50%, -50%) rotate(360deg); }
     }
 
     &.loading {
@@ -55,35 +50,39 @@ const StyledLoadMorePosts = styled.div`
     }
   }
 
-  .load-more-mobile-btn {
-    display: none;
-  }
-
-  @media ${device.laptop} {
-    grid-column: span 2;
-
-    .load-more-btn {
-      display: none;
-
-      &.show {
+  .load-more-btn {
+    &.show {
+      @media screen and ${device.laptop} {
         display: block;
         width: 100%;
       }
     }
 
-    .load-more-mobile-btn {
-      display: block;
-      justify-self: center;
+    @media screen and ${device.laptop} {
+      display: none;
     }
   }
 
-  @media (max-width: 592px) {
-    grid-column: initial;
-    justify-self: initial;
+  .load-more-mobile-btn {
+    display: none;
 
-    .load-more-mobile-btn {
+    @media screen and ${device.laptop} {
+      display: block;
+      justify-self: center;
+    }
+
+    @media screen and ${device.mobile} {
       width: 100%;
     }
+  }
+
+  @media screen and ${device.laptop} {
+    grid-column: span 2;
+  }
+
+  @media screen and ${device.mobile} {
+    grid-column: initial;
+    justify-self: initial;
   }
 `;
 

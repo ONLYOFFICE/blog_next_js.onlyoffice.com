@@ -19,10 +19,24 @@ const StyledErrorContent = styled(Section)`
     width: 100%;
     height: 424px;
     max-width: 775px;
-    background-image: url("https://static-blog.onlyoffice.com/images/404_errors.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/404_errors.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+
+    @media screen and ${device.tablet} {
+      margin-bottom: 64px;
+      height: 300px;
+    }
+
+    @media screen and ${device.mobile} {
+      margin-bottom: 40px;
+      height: 235px;
+    }
+
+    @media screen and ${device.mobileS} {
+      height: 133px;
+    }
   }
 
   h1 {
@@ -31,8 +45,12 @@ const StyledErrorContent = styled(Section)`
     line-height: 133%;
     letter-spacing: -0.01em;
     text-align: center;
-    font-feature-settings: 'tnum'on,'lnum'on;
+    font-feature-settings: "tnum" on,"lnum" on;
     color: #333;
+
+    @media screen and ${device.mobile} {
+      font-size: 24px;
+    }
   }
 
   p {
@@ -48,58 +66,31 @@ const StyledErrorContent = styled(Section)`
 
   .internal-link {
     display: inline-flex;
-
-    span {
-      padding: 18px 20px;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 160%;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      text-decoration: none;
-      box-sizing: border-box;
-      border-radius: 3px;
-      background-color: #ff6f3d;
-      transition: .1s linear all;
-    }
+    padding: 18px 20px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 160%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: #ff6f3d;
+    transition: 0.1s linear all;
 
     &:hover {
-      span {
-        background-color: #ff994f;
-      }
+      background-color: #ff994f;
     }
   }
 
-  @media ${device.laptop} {
+  @media screen and ${device.laptop} {
     padding: 112px 16px 80px;
     max-width: 736px;
   }
 
-  @media ${device.tablet} {
-    .error-img {
-      margin-bottom: 64px;
-      height: 300px;
-    }
-  }
-
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     padding: 60px 16px 64px;
-
-    .error-img {
-      margin-bottom: 40px;
-      height: 235px;
-    }
-
-    h1 {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 320px) {
-    .error-img {
-      height: 133px;
-    }
   }
 `;
 

@@ -1,135 +1,166 @@
 import StyledLoadMorePosts from "./styled-load-more-posts";
 import { useState, useEffect } from "react";
-import { getAllPosts, getInThePressPosts, getSearchResults, getCategoryPosts, getAuthorPosts, getTagPosts } from "@lib/api";
 import Card from "@components/screens/common/card";
 import Button from "@components/common/button";
 import InThePressPost from "@components/screens/in-the-press-content/in-the-press-post";
 import SearchPost from "@components/screens/search-content/search-post";
 
-const LoadMorePosts = ({ t, currentLanguage, data, isCategoryContent, isInThePressContent, isAuthorContent, isTagContent, searchQueryString, isSearchContent, isMainContent, authorSlug, tagSlug, categorySlug, ...rest }) => {
-  const dataEdges = isCategoryContent ? data.edges.slice(15) : isInThePressContent ? data.edges.slice(5) : data.edges;
-  const dataSliceLength = isCategoryContent || isInThePressContent ? 0 : isAuthorContent || isTagContent ? 6 : isSearchContent ? 5 : 3;
+const LoadMorePosts = ({ t, locale, data, isCategoryPage, isInThePressPage, isAuthorPage, isTagPage, searchQueryString, isSearchPage, isMainPage, authorSlug, tagSlug, categorySlug, ...rest }) => {
+  const dataEdges = isCategoryPage ? data.edges.slice(15) : isInThePressPage ? data?.edges.slice(5) : data?.edges;
+  const dataSliceLength = isCategoryPage || isInThePressPage ? 0 : isAuthorPage || isTagPage ? 6 : isSearchPage ? 5 : 3;
 
-  const [postList, setPostList] = useState(dataEdges.slice(0, dataSliceLength));
-  const [hasMore, setHasMore] = useState(data.edges.length > 3);
+  const [postList, setPostList] = useState(dataEdges?.slice(0, dataSliceLength));
+  const [hasMore, setHasMore] = useState(data?.edges.length > 3);
   const [isLoading, setIsLoading] = useState(false);
   const [postsData, setPostsData] = useState(data?.edges ?? []);
   const [pageInfo, setPageInfo] = useState(data?.pageInfo);
   const {endCursor, hasNextPage} = pageInfo || {};
 
   useEffect(() => {
-    const isMore = postList.length < dataEdges.length;
+    const isMore = postList?.length < dataEdges?.length;
 
     setHasMore(isMore);
   }, [postList]);
 
-  useEffect( () => {
-    setPostList(dataEdges.slice(0, dataSliceLength));
+  useEffect(() => {
+    setPostList(dataEdges?.slice(0, dataSliceLength));
     setPostsData(data?.edges);
     setPageInfo(data?.pageInfo);
   }, [data?.edges]);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = async () => {
     const currentLength = postList.length;
-    const isMore = currentLength < dataEdges.length;
-    const nextResultsLength = isInThePressContent ? 5 : isSearchContent ? 5 : 6;
-    const nextResults = isMore ? dataEdges.slice(currentLength, currentLength + nextResultsLength) : [];
-    
+    const isMore = currentLength < dataEdges?.length;
+    const nextResultsLength = isInThePressPage ? 5 : isSearchPage ? 5 : 6;
+    const nextResults = isMore ? dataEdges?.slice(currentLength, currentLength + nextResultsLength) : [];
+    setIsLoading(true);
+
+    if (isMainPage || isCategoryPage || isAuthorPage || isTagPage) {
+      const imageLoadPromises = nextResults.map(async (post) => {
+        const templateImage = new Image();
+        templateImage.src = post.node?.featuredImage?.node.sourceUrl ? post.node?.featuredImage?.node.sourceUrl : post.node?.firstImgPost;
+        const templateImageLoaded = new Promise((resolve) => {
+            templateImage.onload = () => resolve(true);
+            templateImage.onerror = () => resolve(false);
+        });
+  
+        return templateImageLoaded;
+      });
+  
+      await Promise.all(imageLoadPromises);
+    }
+
     setPostList([...postList, ...nextResults]);
+    setIsLoading(false);
   };
 
-  const setPosts = (data) => {
+  const setPosts = async (data) => {
     if (!data || ! data?.edges || ! data?.pageInfo) {
       return;
     }
 
-    const newPosts = postsData.concat(data?.edges);
-    setPostsData(newPosts);
+    if (isMainPage || isCategoryPage || isAuthorPage || isTagPage) {
+      const imageLoadPromises = data?.edges.map(async (post) => {
+        const templateImage = new Image();
+        templateImage.src = post.node?.featuredImage?.node.sourceUrl ? post.node?.featuredImage?.node.sourceUrl : post.node?.firstImgPost;
+        const templateImageLoaded = new Promise((resolve) => {
+            templateImage.onload = () => resolve(true);
+            templateImage.onerror = () => resolve(false);
+        });
+
+        return templateImageLoaded;
+      });
+
+      await Promise.all(imageLoadPromises);
+    }
+
+    if (isSearchPage) {
+      const uniqueNextResults = data.edges.filter(nextResult => !postsData?.some(post => post.node.id === nextResult.node.id));
+      setPostsData(postsData?.concat(uniqueNextResults));
+    } else {
+      setPostsData(postsData?.concat(data?.edges));
+    }
+
     setPageInfo({...data?.pageInfo});
+    setIsLoading(false);
   };
 
   const loadMoreItems = async (endCursor = null) => {
     setIsLoading(true);
 
-    const loadPosts = 
-    isInThePressContent ? 
-      await getInThePressPosts(currentLanguage, 5, `"${endCursor}"`) : 
-    isSearchContent ? 
-      await getSearchResults(currentLanguage, 5, `"${endCursor}"`, searchQueryString)
-    :
-    isAuthorContent ?
-      await getAuthorPosts(currentLanguage, 6, `"${endCursor}"`, authorSlug)
-    :
-    isTagContent ?
-      await getTagPosts(currentLanguage, 6, `"${endCursor}"`, tagSlug)
-    :
-    isCategoryContent ?
-      await getCategoryPosts(currentLanguage, 6, `"${endCursor}"`, categorySlug)
-    :
-      await getAllPosts(currentLanguage, 6, `"${endCursor}"`, "");
+    const data = await fetch("/blog/api/load-more-posts", {
+      method: "POST",
+      body: JSON.stringify({
+        isInThePressPage,
+        isSearchPage,
+        isAuthorPage,
+        isTagPage,
+        isCategoryPage,
+        locale,
+        endCursor,
+        data: searchQueryString || authorSlug || tagSlug || categorySlug
+      })
+    });
 
-    loadPosts.edges.length > 0 && setIsLoading(false);
+    const response = await data.json();
+    const loadPosts = response.data;
+
     setPosts(loadPosts ?? []);
   };
 
   return (
     <>
-    {
-      isCategoryContent ?
+      {isCategoryPage ? (
         postList?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
-      :
-      isInThePressContent ?
+      ) : isInThePressPage ? (
         postList?.map(({node}) => (
-          <InThePressPost key={node.id} currentLanguage={currentLanguage} data={node} />
+          <InThePressPost key={node.id} locale={locale} data={node} />
         ))
-      :
-      isSearchContent ?
+      ) : isSearchPage ? (
         postList?.map(({node}) => (
-          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQueryString={searchQueryString} />
+          <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
-      :
+      ) : (
         postList?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
-    }
-    {
-      isCategoryContent ?
-        postsData.slice(60)?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+      )}
+
+      {isCategoryPage ? (
+        postsData?.slice(60)?.map(({node}) => (
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
-      :
-      isInThePressContent ?
-        postsData.slice(60)?.map(({node}) => (
-          <InThePressPost key={node.id} currentLanguage={currentLanguage} data={node} />
+      ) : isInThePressPage ? (
+        postsData?.slice(60)?.map(({node}) => (
+          <InThePressPost key={node.id} locale={locale} data={node} />
         ))
-      :
-      isSearchContent ?
-        postsData.slice(5)?.map(({node}) => (
-          <SearchPost key={node.id} t={t} currentLanguage={currentLanguage} data={node} searchQueryString={searchQueryString} />
+      ) : isSearchPage ? (
+        postsData?.slice(5)?.map(({node}) => (
+          <SearchPost key={node.id} t={t} locale={locale} data={node} searchQueryString={searchQueryString} />
         ))
-      :
-        postsData.slice(60)?.map(({node}) => (
-          <Card key={node.id} t={t} currentLanguage={currentLanguage} data={node} />
+      ) : (
+        postsData?.slice(60)?.map(({node}) => (
+          <Card key={node.id} t={t} locale={locale} data={node} />
         ))
-    }
-    {
-      hasMore || hasNextPage ?
+      )}
+
+      {hasMore || hasNextPage ? (
         <StyledLoadMorePosts {...rest}>
           <>
-            <Button onClick={hasMore ? handleLoadMore : hasNextPage ? () => loadMoreItems(endCursor) : null} className={`load-more-btn ${isLoading ? "loading" : ""} ${isSearchContent || isInThePressContent ? "show" : ""}`} typeButton="transparent" label={t("Load more")} />
+            <Button onClick={hasMore ? handleLoadMore : hasNextPage ? () => loadMoreItems(endCursor) : null} className={`load-more-btn ${isLoading ? "loading" : ""} ${isSearchPage || isInThePressPage ? "show" : ""}`} typeButton="transparent" label={t("Load more")} />
 
-            {
-              isMainContent || isCategoryContent || isAuthorContent || isTagContent ?
-                <Button onClick={hasMore ? handleLoadMore : hasNextPage ? () => loadMoreItems(endCursor) : null} className={`load-more-mobile-btn ${isLoading ? "loading" : ""}`} typeButton="transparent" label={t("View all posts")} />
-              : null
-            }
+            {isMainPage || isCategoryPage || isAuthorPage || isTagPage ? (
+              <Button onClick={hasMore ? handleLoadMore : hasNextPage ? () => loadMoreItems(endCursor) : null} className={`load-more-mobile-btn ${isLoading ? "loading" : ""}`} typeButton="transparent" label={t("View all posts")} />
+            ) : (
+              null
+            )}
           </>
         </StyledLoadMorePosts>
-      :
+      ) : (
         null
-    }
+      )}
     </>
   );
 };

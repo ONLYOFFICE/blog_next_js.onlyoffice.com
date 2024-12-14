@@ -29,33 +29,27 @@ const StyledInThePress = styled.div`
     a {
       font-size: 14px;
       line-height: 19px;
-
-      span {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        text-decoration: none;
-        color: #333333;
-      }
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      color: #333333;
 
       &:hover {
-        span {
-          text-decoration: underline;
-        }
+        text-decoration: underline;
       }
     }
 
     .in-the-press-date {
-      padding-left: 20px;
+      ${props => props.locale === "ar" ? "padding-right: 20px;" : "padding-left: 20px;"}
       margin-top: 8px;
       font-size: 13px;
       line-height: 21px;
       color: #919192;
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
       background-repeat: no-repeat;
       background-size: 12px 12px;
-      background-position: 0 5px;
+      background-position: ${props => props.locale === "ar" ? "right" : "0 5px"};
     }
   }
 

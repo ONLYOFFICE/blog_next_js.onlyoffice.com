@@ -1,51 +1,53 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAllPosts, getInThePressPosts, getMainPageDate } from "@lib/api";
-
+import getAllPosts from "@lib/requests/getAllPosts";
+import getInThePressPosts from "@lib/requests/getInThePressPosts";
+import getMainPageDate from "@lib/requests/getMainPageDate";
+import getMainPostExcerpt from "@lib/requests/getMainPostExcerpt";
 import Layout from "@components/layout";
-import MainHeadSEO from "@components/screens/head-content/main";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import MainHead from "@components/screens/head/main";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import MainContent from "@components/screens/main-content";
 
-const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
+const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isMainContent = true;
+  const isMainPage = true;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
-        <MainHeadSEO
-          currentLanguage={locale}
+        <MainHead
+          locale={locale}
           title={t("ONLYOFFICE Blog")}
-          metaSiteName={t("SiteName")}
           metaDescription={t("The official source of latest ONLYOFFICE news, tips, ideas, and promos.")}
           articlePublishedTime={mainPageDate?.edges[0]?.node?.dateGmt}
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} isMainContent={isMainContent} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} isMainPage={isMainPage} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent
           t={t} 
-          currentLanguage={locale} 
+          locale={locale} 
+          mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
           productReleasesPosts={productReleasesPosts} 
           forDevelopersPosts={forDevelopersPosts} 
           forBusinessPosts={forBusinessPosts} 
           forEducationPosts={forEducationPosts}
           inThePressPosts={inThePressPosts}
-          isMainContent={isMainContent}
+          isMainPage={isMainPage}
         />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -53,12 +55,13 @@ const Index = ({ locale, mainPageDate, allPosts, productReleasesPosts, forDevelo
 
 export const getStaticProps = async ({ locale }) => {
   const allPosts = await getAllPosts(locale, 60, null, "");
-  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans");
-  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans");
-  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans");
-  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans");
-  const inThePressPosts = await getInThePressPosts(locale, 5, null);
-  const mainPageDate = await getMainPageDate(locale);
+  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans, product-releases-el, product-releases-hi, product-releases, product-releases-sr, product-releases-hy");
+  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el, for-developers-hi, for-developers, for-developers-sr, for-developers-hy");
+  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el, for-business-hi, for-business, for-business-sr, for-business-hy");
+  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el, for-education-hi, for-education, for-education-sr, for-education-hy");
+  const inThePressPosts = await getInThePressPosts(locale, 2, null);
+  const mainPageDate = await getMainPageDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "en" : locale);
+  const mainPostExcerpt = await getMainPostExcerpt(locale);
 
 	return {
 		props: {
@@ -69,11 +72,12 @@ export const getStaticProps = async ({ locale }) => {
       forDevelopersPosts,
       forBusinessPosts,
       forEducationPosts,
-      inThePressPosts,
-      mainPageDate
+      inThePressPosts: inThePressPosts ? inThePressPosts : null,
+      mainPageDate,
+      mainPostExcerpt
     },
-		revalidate: 900,
+		revalidate:false,
 	}
 }
 
-export default Index;
+export default MainPage;

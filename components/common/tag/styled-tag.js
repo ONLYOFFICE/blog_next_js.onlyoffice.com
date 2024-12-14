@@ -10,21 +10,15 @@ const StyledTag = styled.div`
   .internal-link {
     display: inline-flex;
     padding: 6px 16px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #616161;
+    text-decoration: none;
 
-    span {
-      font-size: 14px;
-      line-height: 22px;
-      color: #616161;
-      text-decoration: none;
-    }
-  }
-
-  &:hover {
-    .internal-link {
-      span {
-        text-decoration: underline;
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 `;
+
 export default StyledTag;

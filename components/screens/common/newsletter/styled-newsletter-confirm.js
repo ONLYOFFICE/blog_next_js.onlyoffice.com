@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { device } from "@components/utils/devices";
 
 const StyledNewsletterConfirm = styled.div`
   position: relative;
   box-sizing: border-box;
   padding: 43px 26px 67px;
   color: #333;
-  background-image: url("https://static-blog.onlyoffice.com/images/icons/newsletter-confirm.svg");
+  background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/newsletter-confirm.svg");
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: 50% 43px;
@@ -19,6 +20,10 @@ const StyledNewsletterConfirm = styled.div`
     line-height: 133%;
     letter-spacing: -0.01em;
     text-align: center;
+
+    @media screen and ${device.mobile} {
+      font-size: 18px;
+    }
   }
 
   p {
@@ -29,15 +34,11 @@ const StyledNewsletterConfirm = styled.div`
     text-align: center;
   }
 
-  @media (max-width: 592px) {
+  @media screen and ${device.mobile} {
     margin: 0 -16px;
     padding: 32px 16px;
     box-shadow: initial;
     border: none;
-
-    h4 {
-      font-size: 18px;
-    }
   }
 `;
 

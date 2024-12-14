@@ -11,7 +11,7 @@ const StyledInThePressPost = styled.div`
 
   .press-url {
     display: inline-block;
-    margin-right: 24px;
+    ${props => props.locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
     border-radius: 3px;
     font-size: 12px;
     line-height: 16px;
@@ -30,59 +30,52 @@ const StyledInThePressPost = styled.div`
     font-size: 13px;
     line-height: 21px;
     color: #919192;
-    background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 0 5px;
   }
 
   .post-title {
-    display: block;
-    color: #333333;
-    text-decoration: none;
-
-    h2 {
+    a {
+      color: #333333;
       font-size: 24px;
       line-height: 32px;
+      font-weight: 700;
       text-decoration: none;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       cursor: pointer;
-    }
 
-    &:not(:last-child) {
-      margin-bottom: 24px;
-    }
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  .post-text {
-    font-size: 16px;
-    line-height: 26px;
-  }
-
-  @media ${device.laptop} {
-    .post-title {
-      h2 {
+      @media screen and ${device.laptop} {
         -webkit-line-clamp: 3;
       }
-    }
-  }
 
-  @media (max-width: 592px) {
-    .post-title {
-      h2 {
+      @media screen and ${device.mobile} {
         font-size: 18px;
         line-height: 21px;
       }
     }
 
-    .post-text {
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+
+  .post-text {
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: #333333;
+
+    @media screen and ${device.mobile} {
       font-size: 14px;
       line-height: 26px;
     }

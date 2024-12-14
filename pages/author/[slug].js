@@ -1,40 +1,41 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { getAuthorSlug, getAuthorPosts } from "@lib/api";
+import getAuthorSlug from "@lib/requests/getAuthorSlug";
+import getAuthorPosts from "@lib/requests/getAuthorPosts";
 
 import Layout from "@components/layout";
-import AuthorHeadSEO from "@components/screens/head-content/author";
-import HeadingContent from "@components/screens/heading-content";
-import AdventAnnounce from "@components/screens/heading-content/advent-announce";
-import Footer from "@components/screens/footer-content";
+import AuthorHead from "@components/screens/head/author";
+import Header from "@components/screens/header";
+import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import Footer from "@components/screens/footer";
 import AuthorContent from "@components/screens/author-content";
 
-const Author = ({ locale, posts }) => {
+const AuthorPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
-  const isAuthorContent = true;
+  const isAuthorPage = true;
   const authorName = posts?.edges[0]?.node.author?.node?.name;
   const authorSlug = posts?.edges[0]?.node.author?.node?.slug;
 
   return (
-    <Layout>
+    <Layout locale={locale}>
       <Layout.PageHead>
-        <AuthorHeadSEO
-          currentLanguage={locale}
-          title={`${authorName} | ${t("ONLYOFFICE Blog")}`}
+        <AuthorHead
+          locale={locale}
+          title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${authorName}` : `${authorName} | ${t("ONLYOFFICE Blog")}`}
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounce t={t} currentLanguage={locale} stateMobile={stateMobile} />
+      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <HeadingContent t={t} currentLanguage={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
       </Layout.PageHeader>
       <Layout.SectionMain>
-        <AuthorContent t={t} currentLanguage={locale} posts={posts} isAuthorContent={isAuthorContent} authorName={authorName} authorSlug={authorSlug} />
+        <AuthorContent t={t} locale={locale} posts={posts} isAuthorPage={isAuthorPage} authorName={authorName} authorSlug={authorSlug} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer t={t} language={locale} />
+        <Footer locale={locale} />
       </Layout.PageFooter>
     </Layout>
   )
@@ -117,8 +118,8 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate: 86400,
+    revalidate:false,
   }
 }
 
-export default Author;
+export default AuthorPage;

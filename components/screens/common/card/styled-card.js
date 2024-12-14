@@ -22,12 +22,16 @@ const StyledCard = styled.div`
 
     .card-img {
       padding-bottom: 50.273%;
+
+      @media screen and ${device.mobile} {
+        padding-bottom: 50%;
+      }
     }
 
     .card-title {
       min-height: initial;
 
-      .external-link {
+      .internal-link {
         font-weight: 700;
         color: #333;
         font-size: 24px;
@@ -37,11 +41,30 @@ const StyledCard = styled.div`
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+
+        @media screen and ${device.tablet} {
+          -webkit-line-clamp: 3;
+        }
+
+        @media screen and ${device.mobile} {
+          font-size: 16px;
+          line-height: 21px;
+        }
+      }
+
+      @media screen and ${device.tablet} {
+        margin-bottom: 10px;
       }
     }
 
     .card-info {
       margin-top: initial;
+
+      &:not(:last-child) {
+        @media screen and ${device.tablet} {
+          margin-bottom: 9px;
+        }
+      }
     }
 
     .card-description {
@@ -54,6 +77,15 @@ const StyledCard = styled.div`
   
       p {
         margin: 0;
+      }
+
+      @media screen and ${device.tablet} {
+        -webkit-line-clamp: 3;
+      }
+
+      @media screen and ${device.mobile} {
+        font-size: 14px;
+        line-height: 26px;
       }
     }
   }
@@ -71,6 +103,10 @@ const StyledCard = styled.div`
       height: 100%;
       object-fit: cover;
     }
+
+    @media screen and ${device.mobile} {
+      padding-bottom: 50.28%;
+    }
   }
 
   .card-body {
@@ -78,6 +114,14 @@ const StyledCard = styled.div`
     flex-direction: column;
     padding: 24px 24px 32px;
     height: 100%;
+
+    @media screen and ${device.tablet} {
+      padding: 24px;
+    }
+
+    @media screen and ${device.mobile} {
+      padding: 21px 22px 21px;
+    }
   }
 
   .card-title {
@@ -87,17 +131,31 @@ const StyledCard = styled.div`
     font-size: 18px;
     line-height: 24px;
     
-    .external-link {
+    .internal-link {
       font-weight: 600;
       font-size: 18px;
       line-height: 24px;
       letter-spacing: -0.01em;
       color: #333333;
-      text-decoration: none;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
 
-      &:hover {
+      &:hover,
+      &:focus {
         text-decoration: underline;
       }
+
+      @media screen and ${device.mobile} {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+
+    @media screen and ${device.tablet} {
+      margin-bottom: 16px;
+      min-height: initial;
     }
   }
 
@@ -122,103 +180,31 @@ const StyledCard = styled.div`
     background-size: 12px 12px;
     background-position: 0 50%;
 
-    .external-link {
+    .internal-link {
       font-size: 13px;
       line-height: 21px;
       color: #919192;
-      text-decoration: none;
     }
 
     &:not(:last-child) {
-      margin-right: 20px;
+      ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+
+      @media screen and ${device.mobile} {
+        ${props => props.locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
+      }
     }
 
     &.card-date {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/calendar.svg");
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     }
 
     &.card-author {
-      background-image: url("https://static-blog.onlyoffice.com/images/icons/author.svg");
+      display: initial;
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
 
       &:hover {
-        .external-link {
-          span {
-            text-decoration: underline;
-          }
-        }
+        text-decoration: underline;
       }
-    }
-  }
-
-  @media ${device.tablet} {
-    &.main-post {
-      .card-title {
-        margin-bottom: 10px;
-
-        a {
-          -webkit-line-clamp: 3;
-        }
-      }
-
-      .card-info {
-        &:not(:last-child) {
-          margin-bottom: 9px;
-        }
-      }
-
-      .card-description {
-        -webkit-line-clamp: 3;
-      }
-    }
-
-    .card-body {
-      padding: 24px;
-    }
-
-    .card-title {
-      margin-bottom: 16px;
-      min-height: initial;
-    }
-  }
-
-  @media (max-width: 592px) {
-    &.main-post {
-      .card-img {
-        padding-bottom: 50%;
-      }
-
-      .card-title {
-        .external-link {
-          font-size: 16px;
-          line-height: 21px;
-        }
-      }
-
-      .card-description {
-        font-size: 14px;
-        line-height: 26px;
-      }
-    }
-
-    .card-img {
-      padding-bottom: 50.28%;
-    }
-
-    .card-info-item {
-      &:not(:last-child) {
-        margin-right: 16px;
-      }
-    }
-
-    .card-title {
-      .external-link {
-        font-size: 16px;
-        line-height: 21px;
-      }
-    }
-
-    .card-body {
-      padding: 21px 22px 21px;
     }
   }
 `;

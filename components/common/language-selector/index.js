@@ -1,75 +1,87 @@
-import { useEffect, useState } from "react";
-
 import StyledLanguageSelector from "./styled-language-selector";
-import ItemsList from "./items-list";
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import languages from "@config/languages.json";
+import InternalLink from "@components/common/internal-link";
 
-const LanguageSelector = (props) => {
+const LanguageSelector = ({ locale, postUri, isPostPage }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const asPath = router.pathname === "/onlyoffice-in-the-press" || router.pathname === "/search" ? router.asPath : "/";
 
-  useEffect(() => {
-    typeof window !== "undefined" &&
-      isOpen &&
-      window.addEventListener("click", handleClickOutside);
-      window.addEventListener("resize", resizeHandler);
+  const languageItems = [
+    { locale: "en_US", shortKey: "en" },
+    { locale: "fr_FR", shortKey: "fr" },
+    { locale: "de_DE", shortKey: "de" },
+    { locale: "es_ES", shortKey: "es" },
+    { locale: "pt_BR", shortKey: "pt-br" },
+    { locale: "it_IT", shortKey: "it" },
+    { locale: "cs_CZ", shortKey: "cs" },
+    { locale: "ja", shortKey: "ja" },
+    { locale: "zh_CN", shortKey: "zh-hans" },
+    { locale: "el", shortKey: "el" },
+    { locale: "hi", shortKey: "hi" },
+    { locale: "ar", shortKey: "ar" },
+    { locale: "sr_RS", shortKey: "sr" },
+    { locale: "hy", shortKey: "hy" }
+  ];
 
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
-      window.removeEventListener("resize", resizeHandler);
-    };
-  });
-
-  const handleClickOutside = (e) => {
-    if (
-      isOpen &&
-      (!e.target.closest(".lng-selector") ||
-        e.target.closest(".close-button-img"))
-    ) {
-      onCloseSelector();
-    }
-  };
-
-  const resizeHandler = (e) => {
-    if (window.innerWidth < 769) {
+  const onCloseSelector = () => {
+    if (isOpen === true) {
       setIsOpen(false);
     }
   };
 
-  const onClickHandler = (e) => {
-    e.stopPropagation();
-    if (e.target.closest(".flag-image") || e.target.closest(".arrow-image")) {
-      setIsOpen(!isOpen);
-      props.onClick && props.onClick(e);
-    }
-  };
-
-  const onCloseSelector = () => {
-    setIsOpen(false);
-  };
-
-  const { currentLanguage, t } = props;
-  const srcAlt = isOpen ? "arrow-up" : "arrow-down";
-
   return (
-    <StyledLanguageSelector
-      onClick={onClickHandler}
-      className="language-selector"
+    <StyledLanguageSelector 
+      onMouseEnter={() => setIsOpen(true)} 
+      onMouseLeave={() => onCloseSelector()} 
+      onClick={() => setIsOpen(!isOpen)} 
+      className={`language-selector ${isOpen ? "is-open" : ""}`}
     >
-      <span className={`flag-image ${currentLanguage}`}></span>
-      {/*eslint-disable*/}
-      <div className={`arrow-image ${isOpen ? "is-open" : ""}`}>
-        <img src="https://static-blog.onlyoffice.com/images/icons/arrow-down.svg" alt={srcAlt} />
-      </div>
-      {/*eslint-enable*/}
-      <ItemsList
-        className={`languages-list lng-selector ${
-          isOpen ? "language-selector-open" : "language-selector-closed"
-        }`}
-        t={t}
-        isOpen={isOpen}
-        onCloseSelector={onCloseSelector}
-      />
+      <button className="language-button">
+        <span className={`flag-image ${locale}`}></span>
+        <div className="arrow-image"></div>
+      </button>
+
+      {isOpen && (
+        <ul className="language-list">
+          {isPostPage ? (
+            languageItems.map((language, index) => (
+              <li className="language-item" key={language.shortKey}>
+                <InternalLink 
+                  onClick={() => setIsOpen(false)} 
+                  className={`language-link ${language.shortKey}`} 
+                  href={postUri[language.locale] && `${postUri[language.locale].split("/").slice(3).join("/")}` || "/"} 
+                  locale={language.shortKey}
+                >
+                </InternalLink>
+              </li>
+            ))
+          ) : (
+            languages.map((language, index) => (
+              <li className="language-item" key={language.shortKey}>
+                <InternalLink 
+                  onClick={() => setIsOpen(false)} 
+                  className={`language-link ${language.shortKey}`} 
+                  href={asPath} 
+                  locale={language.shortKey}
+                >
+                </InternalLink>
+              </li>
+            ))
+          )}
+        </ul>
+      )}
     </StyledLanguageSelector>
   );
+};
+
+LanguageSelector.propTypes = {
+  locale: PropTypes.string,
+  postUri: PropTypes.object,
+  isPostPage: PropTypes.bool
 };
 
 export default LanguageSelector;
