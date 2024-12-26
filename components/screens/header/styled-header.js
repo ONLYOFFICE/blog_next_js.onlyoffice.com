@@ -443,13 +443,6 @@ const StyledHeader = styled.div`
       height: 24px;
       transform: translateX(-50%);
     }
-
-    @media screen and (max-width: 592px) {
-      width: 31px;
-      min-width: 31px;
-      height: 28px;
-      overflow: hidden;
-    }
   }
 
   .nav-btn-mobile {
@@ -540,6 +533,10 @@ const StyledHeader = styled.div`
     @media screen and ${device.laptop} {
       ${props => props.locale === "ar" ? "margin-right: auto;" : "margin-left: auto;"}
       padding: 12px 8px;
+    }
+
+    @media screen and (max-width: 592px) {
+      ${props => props.locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
     }
   }
 
