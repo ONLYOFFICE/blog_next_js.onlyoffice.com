@@ -49,5 +49,8 @@
   "First name": "Nome",
   "First name is empty": "Nome está vazio",
   "Your email": "E-mail",
-  "We sent an email message with confirmation to your email address.": "Enviamos uma mensagem de confirmação para o seu e-mail."
+  "We sent an email message with confirmation to your email address.": "Enviamos uma mensagem de confirmação para o seu e-mail.",
+  "Search blog": "Pesquisar blog",
+  "Search results for": "Resultados da pesquisa para",
+  "ByAuthor": "Por {{authorName}}"
 }

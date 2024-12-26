@@ -66,35 +66,21 @@ const StyledSearchArea = styled.form`
     position: absolute;
     top: 50%;
     ${props => props.locale === "ar" ? "left: 16px;" : "right: 16px;"}
+    border: none;
+    padding: 0;
     width: 20px;
     height: 20px;
+    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/search-icon.react.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
     transform: translateY(-50%);
     z-index: 1;
 
-    img {
-      width: 20px;
-      height: 20px;
+    &.has-query {
+      background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/close-icon.svg");
+      cursor: pointer;
     }
-  }
-
-  .search-img,
-  .close-icon {
-    display: flex;
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position: center;
-  }
-
-  .search-img {
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/search-icon.react.svg");
-  }
-
-  .close-icon {
-    ${props => props.locale === "ar" ? "left: 0;" : "right: initial;"}
-    background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/close-icon.svg");
-    cursor: pointer;
   }
 `;
 

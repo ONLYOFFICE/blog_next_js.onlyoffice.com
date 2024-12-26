@@ -21,7 +21,7 @@ const Breadcrumbs = ({ t, data, isPostPage, isAuthorPage, isInThePressPage, isCa
         ) : isTagPage ? (
           <li>{data?.edges[0]?.node.tags?.nodes[0]?.name}</li>
         ) : isSearchPage ? (
-          <li>{`${locale === "ar" ? `'${searchQuery === undefined ? "" : searchQuery}' ${t("Search results for")}` : `${t("Search results for")} '${searchQuery === undefined ? "" : searchQuery}'`}`}</li>
+          <li>{`${(locale === "ar" || locale === "zh-hans") ? `'${searchQuery === undefined ? "" : searchQuery}' ${t("Search results for")}` : `${t("Search results for")} '${searchQuery === undefined ? "" : searchQuery}'`}`}</li>
         ) : null
       }
     </StyledBreadcrumbs>

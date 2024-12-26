@@ -55,5 +55,8 @@
   "First name": "Nom",
   "First name is empty": "Le champ Prénom est vide",
   "Your email": "Email",
-  "We sent an email message with confirmation to your email address.": "Nous avons envoyé un email de confirmation à votre adresse de courrier électronique."
+  "We sent an email message with confirmation to your email address.": "Nous avons envoyé un email de confirmation à votre adresse de courrier électronique.",
+  "Search blog": "Rechercher un blog",
+  "Search results for": "Résultats de la recherche pour",
+  "ByAuthor": "Par {{authorName}}"
 }
