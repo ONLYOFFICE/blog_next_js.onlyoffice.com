@@ -440,6 +440,7 @@ const StyledHeader = styled.div`
       min-width: 130px;
       height: 24px;
       transform: translateX(-50%);
+      overflow: initial;
     }
   }
 
