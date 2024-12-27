@@ -414,16 +414,14 @@ const StyledHeader = styled.div`
     height: 24px;
 
     img {
+      object-fit: contain;
+
       @media screen and (max-width: 1300px) {
         object-position: ${props => props.locale === "ar" && "104px"};
       }
 
       @media screen and ${device.laptop} {
         object-position: ${props => props.locale === "ar" && "initial"};
-      }
-
-      @media screen and (max-width: 592px) {
-        object-position: ${props => props.locale === "ar" && "122px"};
       }
     }
 

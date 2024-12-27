@@ -41,9 +41,6 @@ const StyledCategoryTopics = styled.div`
       line-height: 24px;
       color: #333333;
       text-decoration: none;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       background-repeat: no-repeat;
       background-size: 24px 24px;
       background-position-x: ${props => props.locale === "ar" ? "right" : "0"};
