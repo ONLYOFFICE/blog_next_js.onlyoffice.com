@@ -20,7 +20,7 @@
   "View all posts For developers": "阅读更多有关开发领域的文章",
   "View all posts For business": "阅读更多有关企业领域的文章",
   "View all posts For education": "阅读更多有关教育领域的文章",
-  "Newsletter": "新闻通讯",
+  "Newsletter": "时事通讯",
   "Your e-mail": "您的邮箱",
   "NewsletterSubscribeText": "通过点击 \"订阅\"，您同意",
   "NewsletterSubscribeLink": "使用服务和处理个人数据的规则。",
@@ -59,5 +59,8 @@
   "First name": "名",
   "First name is empty": "名为空",
   "Your email": "您的电子邮箱",
-  "We sent an email message with confirmation to your email address.": "我们向您的邮箱发送了一封确认邮件。"
+  "We sent an email message with confirmation to your email address.": "我们向您的邮箱发送了一封确认邮件。",
+  "Search blog": "搜索博客",
+  "Search results for": "搜索结果",
+  "ByAuthor": "作者：{{authorName}}"
 }

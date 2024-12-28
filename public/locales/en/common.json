@@ -5,5 +5,6 @@
   "XSocialLink": "https://x.com/ONLY_OFFICE",
   "TikTokSocialLink": "https://www.tiktok.com/@only_office",
   "LinkedInSocialLink": "https://www.linkedin.com/company/ascensio-system-sia/",
-  "TelegramSocialLink": "https://t.me/onlyofficeofficial"
+  "TelegramSocialLink": "https://t.me/onlyofficeofficial",
+  "ByAuthor": "By {{authorName}}"
 }

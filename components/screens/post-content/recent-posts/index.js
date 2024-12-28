@@ -9,7 +9,7 @@ const RecentPosts = ({ t, data, locale, ...rest }) => {
 
       <div className="posts">
         {data?.edges?.map(({node}) => (
-          <Card data={node} key={node.id} locale={locale} />
+          <Card t={t} data={node} key={node.id} locale={locale} />
         ))}
       </div>
     </StyledRecentPosts>

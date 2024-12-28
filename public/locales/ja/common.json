@@ -19,7 +19,7 @@
   "View all posts For developers": "開発者向けの投稿をすべて見る",
   "View all posts For business": "企業向けの投稿をすべて見る",
   "View all posts For education": "教育機関向けの投稿をすべて見る",
-  "Newsletter": "メールマガジン",
+  "Newsletter": "ニュースレター",
   "Your e-mail": "メールアドレス",
   "NewsletterSubscribeText": "「登録する」をクリックすると、",
   "NewsletterSubscribeLink": "サービスの利用および個人情報の取り扱いに関する規定に同意したものとみなされます。",
@@ -54,5 +54,8 @@
   "First name": "氏名",
   "First name is empty": "名前が入力されていません",
   "Your email": "メールアドレス",
-  "We sent an email message with confirmation to your email address.": "お客様のメールアドレスに確認メールを送信しました。"
+  "We sent an email message with confirmation to your email address.": "お客様のメールアドレスに確認メールを送信しました。",
+  "Search blog": "ブログを検索",
+  "Search results for": "検索結果",
+  "ByAuthor": "著者：{{authorName}}"
 }

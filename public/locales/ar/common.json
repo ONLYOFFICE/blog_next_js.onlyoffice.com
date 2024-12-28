@@ -54,5 +54,6 @@
   "First name is empty": "الاسم فارغ",
   "Your email": "بريدك الإلكتروني",
   "We sent an email message with confirmation to your email address.": "لقد أرسلنا رسالة عبر البريد الإلكتروني تحتوي على تأكيد عنوان بريدك الإلكتروني.",
-  "OK": "نعم"
+  "OK": "نعم",
+  "ByAuthor": "بواسطة {{authorName}}"
 }
