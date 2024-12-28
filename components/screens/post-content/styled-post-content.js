@@ -221,6 +221,36 @@ const StyledPostContent = styled(Section)`
       line-height: 26px;
       color: #333;
 
+      .button {
+        &:not(:last-child) {
+          @media screen and ${device.mobile} {
+            margin-bottom: 24px !important;
+          }
+        }
+
+        @media screen and ${device.mobile} {
+          display: block;
+          width: initial !important;
+          margin: 0 !important;
+        }
+      }
+
+      &[style*="text-align: center"] {
+        u {
+          .button {
+            &:not(:last-child) {
+              @media screen and ${device.mobile} {
+                margin-bottom: 0 !important;
+              }
+            }
+          }
+
+          @media screen and ${device.mobile} {
+            text-decoration: none;
+          }
+        }
+      }
+
       @media screen and ${device.mobile} {
         font-size: 14px;
         line-height: 26px;
@@ -386,6 +416,7 @@ const StyledPostContent = styled(Section)`
       background-color: #FF6F3D;
       border-radius: 3px;
       padding: 18px 20px;
+      transition: border-color 0.3s, color 0.3s, background-color 0.3s;
 
       &.black {
         background-color: #444444;

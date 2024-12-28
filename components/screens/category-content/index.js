@@ -16,20 +16,20 @@ const CategoryContent = ({ t, locale, posts, isCategoryPage, categoryName, categ
 
       <div className="category-posts">
         {firstPosts?.map(({node}) => (
-          <Card data={node} key={node.id} locale={locale} />
+          <Card t={t} data={node} key={node.id} locale={locale} />
         ))}
 
         <DownloadBlock className="download-block" t={t} locale={locale} />
 
         {posts?.edges.length > 6 && posts?.edges.slice(6, 12).map(({node}) => (
-          <Card data={node} key={node.id} locale={locale} />
+          <Card t={t} data={node} key={node.id} locale={locale} />
         ))}
 
         <Newsletter t={t} locale={locale} />
 
         {posts?.edges.length > 12 && (
           posts?.edges.slice(12, 15).map(({node}) => (
-            <Card data={node} key={node.id} locale={locale} />
+            <Card t={t} data={node} key={node.id} locale={locale} />
           ))
         )}
 

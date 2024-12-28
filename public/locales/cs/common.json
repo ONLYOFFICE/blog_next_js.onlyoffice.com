@@ -27,5 +27,6 @@
   "First name is empty": "Pole pro jméno je prázdné",
   "Your email": "Váš e-mail",
   "Subscribe": "Odebírejte",
-  "We sent an email message with confirmation to your email address.": "Na vaši e-mailovou adresu jsme odeslali zprávu s potvrzením."
+  "We sent an email message with confirmation to your email address.": "Na vaši e-mailovou adresu jsme odeslali zprávu s potvrzením.",
+  "ByAuthor": "By {{authorName}}"
 }
