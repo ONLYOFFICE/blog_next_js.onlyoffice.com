@@ -289,6 +289,15 @@ const StyledHeader = styled.div`
     }
   }
 
+  .oo-hm {
+    .oo-hm-item.oo-hm-item--download,
+    .oo-hm-item.oo-hm-item--login-signup {
+      .oo-hm-item-heading {
+        position: relative;
+      }
+    }
+  }
+
   .oo-hm.el {
     .oo-hm-item--products,
     .oo-hm-item--enterprise,
