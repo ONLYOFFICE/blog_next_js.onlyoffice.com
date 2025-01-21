@@ -144,12 +144,12 @@ const StyledPopupDocSpace = styled.div`
             text-align: center;
             border: none;
             text-transform: uppercase;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
 
             &:hover {
-              cursor: pointer;
               background-color: #ff865c;
               color: #ffffff;
-              opacity: 1;
             }
 
             @media screen and ${device.laptopM} {
