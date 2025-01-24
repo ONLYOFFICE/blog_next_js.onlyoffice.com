@@ -54,5 +54,5 @@
   "We sent an email message with confirmation to your email address.": "Wir haben eine E-Mail-Nachricht mit einer Bestätigung an Ihre E-Mail-Adresse gesendet.",
   "Search blog": "Blog durchsuchen",
   "Search results for": "Suchergebnisse für",
-  "ByAuthor": "Nach {{authorName}}"
+  "ByAuthor": "Von {{authorName}}"
 }
