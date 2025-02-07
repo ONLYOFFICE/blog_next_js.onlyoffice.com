@@ -130,46 +130,6 @@ const StyledHeader = styled.div`
         position: ${props => props.locale === "pt-br" && "initial"};
       }
     }
-
-    .oo-hm-item.oo-hm-item--login-signup {
-      .oo-hm-items-wrapper {
-        @media screen and (max-width: 1368px) {
-          top: ${props => props.locale === "zh-hans" && "99%"};
-          left: ${props => props.locale === "zh-hans" && "initial"};
-          right: ${props => props.locale === "zh-hans" && "0"};
-        }
-
-        @media screen and (max-width: 1298px) {
-          top: ${props => props.locale === "ar" && "99%"};
-          left: ${props => props.locale === "ar" && "0"};
-          right: ${props => props.locale === "ar" && "initial"};
-        }
-
-        @media screen and (max-width: 1298px) {
-          top: ${props => (props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy") && "99%"};
-          left: ${props => (props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy") && "initial"};
-          right: ${props => (props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy") && "0"};
-        }
-
-        @media screen and ${device.laptop} {
-          top: ${props => (props.locale === "zh-hans" || props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy" || props.locale === "ar") && "0"};
-          right: ${props => (props.locale === "zh-hans" || props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy") && "initial"};
-          left: ${props => props.locale === "ar" && "initial"};
-        }
-      }
-
-      @media screen and (max-width: 1368px) {
-        position: ${props => props.locale === "zh-hans" && "initial"};
-      }
-
-      @media screen and (max-width: 1298px) {
-        position: ${props => props.locale === "ar" && "initial"};
-      }
-
-      @media screen and (max-width: 1298px) {
-        position: ${props => (props.locale === "en" || props.locale === "cs" || props.locale === "el" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy") && "initial"};
-      }
-    }
   }
 
   &:not(.is-main) {
@@ -207,26 +167,6 @@ const StyledHeader = styled.div`
 
       @media screen and (max-width: 1250px) {
         position: ${props => (props.locale === "en" || props.locale === "cs" || props.locale === "hi" || props.locale === "sr" || props.locale === "hy" || props.locale === "el") && "initial"};
-      }
-    }
-
-    .oo-hm-item.oo-hm-item--login-signup {
-      .oo-hm-items-wrapper {
-        @media screen and (max-width: 1290px) {
-          top: ${props => props.locale === "zh-hans" && "99%"};
-          left: ${props => props.locale === "zh-hans" && "initial"};
-          right: ${props => props.locale === "zh-hans" && "0"};
-        }
-
-        @media screen and ${device.laptop} {
-          top: ${props => props.locale === "zh-hans" && "0"};
-          right: ${props => props.locale === "zh-hans" && "initial"};
-          left: ${props => props.locale === "zh-hans" && "initial"};
-        }
-      }
-
-      @media screen and (max-width: 1290px) {
-        position: ${props => props.locale === "zh-hans" && "initial"};
       }
     }
   }
