@@ -42,7 +42,9 @@ const LanguageSelector = ({ locale, postUri, isPostPage }) => {
     >
       <button className="language-button">
         <span className={`flag-image ${locale}`}></span>
-        <div className="arrow-image"></div>
+        <svg className="arrow-image" width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 5L0.535899 0.499999L7.4641 0.5L4 5Z" fill="#444444"/>
+          </svg>
       </button>
 
       {isOpen && (
@@ -52,10 +54,11 @@ const LanguageSelector = ({ locale, postUri, isPostPage }) => {
               <li className="language-item" key={language.shortKey}>
                 <InternalLink 
                   onClick={() => setIsOpen(false)} 
-                  className={`language-link ${language.shortKey}`} 
+                  className={`language-link ${language.shortKey} ${router.locale === language.shortKey ? "active" : ""}`} 
                   href={postUri[language.locale] && `${postUri[language.locale].split("/").slice(3).join("/")}` || "/"} 
                   locale={language.shortKey}
                 >
+                  <b>{language.shortKey === 'zh-hanz' ? 'zh' : language.shortKey === 'pt-br' ? 'pt' : language.shortKey} </b> {language.longKey}
                 </InternalLink>
               </li>
             ))
@@ -64,10 +67,11 @@ const LanguageSelector = ({ locale, postUri, isPostPage }) => {
               <li className="language-item" key={language.shortKey}>
                 <InternalLink 
                   onClick={() => setIsOpen(false)} 
-                  className={`language-link ${language.shortKey}`} 
+                  className={`language-link ${language.shortKey} ${router.locale === language.shortKey ? "active" : ""}`} 
                   href={asPath} 
                   locale={language.shortKey}
                 >
+                  <b>{language.shortKey === 'zh-hans' ? 'zh' : language.shortKey === 'pt-br' ? 'pt' : language.shortKey} </b> {language.longKey}
                 </InternalLink>
               </li>
             ))
