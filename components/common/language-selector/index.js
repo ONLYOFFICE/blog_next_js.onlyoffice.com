@@ -50,7 +50,7 @@ const LanguageSelector = ({ locale, postUri, isPostPage }) => {
       {isOpen && (
         <ul className="language-list">
           {isPostPage ? (
-            languageItems.map((language, index) => (
+            languages.map((language, index) => (
               <li className="language-item" key={language.shortKey}>
                 <InternalLink 
                   onClick={() => setIsOpen(false)} 
@@ -58,7 +58,7 @@ const LanguageSelector = ({ locale, postUri, isPostPage }) => {
                   href={postUri[language.locale] && `${postUri[language.locale].split("/").slice(3).join("/")}` || "/"} 
                   locale={language.shortKey}
                 >
-                  <b>{language.shortKey === 'zh-hanz' ? 'zh' : language.shortKey === 'pt-br' ? 'pt' : language.shortKey} </b> {language.longKey}
+                  <b>{language.shortKey === 'zh-hans' ? 'zh' : language.shortKey === 'pt-br' ? 'pt' : language.shortKey} </b> {language.longKey}
                 </InternalLink>
               </li>
             ))

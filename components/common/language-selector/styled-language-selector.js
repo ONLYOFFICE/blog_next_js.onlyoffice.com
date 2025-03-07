@@ -168,9 +168,11 @@ const StyledLanguageSelector = styled.div`
       font-size: 14px;
       display: flex;
       gap: 8px;
+      color: #666666;
 
       &:hover {
         background-color: #F5F5F5;
+        
       }
 
       b {
