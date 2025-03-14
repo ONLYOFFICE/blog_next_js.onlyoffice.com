@@ -10,35 +10,28 @@ import Header from "@components/screens/header";
 import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
 import Footer from "@components/screens/footer";
 import PostContent from "@components/screens/post-content";
+import languages from "@config/languages.json";
 
 const PostPage = ({ locale, post, posts }) => {
   const { t } = useTranslation("common");
   const [stateMobile, setStateMobile] = useState(false);
   const isPostPage = true;
 
-  const [postUri, setPostUri] = useState({
-    en_US: "",
-    fr_FR: "",
-    de_DE: "",
-    es_ES: "",
-    pt_BR: "",
-    it_IT: "",
-    cs_CZ: "",
-    ja: "",
-    zh_CN: "",
-    el: "",
-    hi: "",
-    ar: "",
-    sr_RS: "",
-    hy: ""
-  });
+  const [postUri, setPostUri] = useState(
+    Object.fromEntries(languages.map(({ locale }) => [locale, ""]))
+  );
 
   useEffect(() => {
     const translations = post?.translations || [];
     const uri = {};
 
-    translations.forEach(translation => {
-      uri[translation.locale] = translation.href;
+    translations.forEach(({ locale, href }) => {
+      const [, query] = href.split("?");
+      const hasPParam = query?.split("&").some(param => param.startsWith("p="));
+
+      if (!hasPParam) {
+        uri[locale] = href;
+      }
     });
 
     setPostUri(uri);
@@ -56,11 +49,11 @@ const PostPage = ({ locale, post, posts }) => {
       </Layout.PageHead>
       <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
       <Layout.PageHeader>
-        <Header 
+        <Header
           t={t}
-          locale={locale} 
-          stateMobile={stateMobile} 
-          setStateMobile={setStateMobile} 
+          locale={locale}
+          stateMobile={stateMobile}
+          setStateMobile={setStateMobile}
           postUri={postUri}
           isPostPage={isPostPage}
         />
@@ -86,47 +79,47 @@ export const getStaticPaths = async () => {
   const jaPostsSlug = await getPostsUri("ja");
   const zhPostsSlug = await getPostsUri("zh-hans");
 
-  const enPosts = enPostsSlug?.edges?.map(({node}) => ({
+  const enPosts = enPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(1, 3) },
     locale: "en"
   }));
 
-  const frPosts = frPostsSlug?.edges?.map(({node}) => ({
+  const frPosts = frPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "fr"
   }));
 
-  const dePosts = dePostsSlug?.edges?.map(({node}) => ({
+  const dePosts = dePostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "de"
   }));
 
-  const esPosts = esPostsSlug?.edges?.map(({node}) => ({
+  const esPosts = esPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "es"
   }));
 
-  const ptPosts = ptPostsSlug?.edges?.map(({node}) => ({
+  const ptPosts = ptPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "pt-br"
   }));
 
-  const itPosts = itPostsSlug?.edges?.map(({node}) => ({
+  const itPosts = itPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "it"
   }));
 
-  const csPosts = csPostsSlug?.edges?.map(({node}) => ({
+  const csPosts = csPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "cs"
   }));
 
-  const jaPosts = jaPostsSlug?.edges?.map(({node}) => ({
+  const jaPosts = jaPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "ja"
   }));
 
-  const zhPosts = zhPostsSlug?.edges?.map(({node}) => ({
+  const zhPosts = zhPostsSlug?.edges?.map(({ node }) => ({
     params: { post: node.uri.split(/[/]/).splice(2, 3) },
     locale: "zh-hans"
   }));
@@ -153,7 +146,7 @@ export const getStaticProps = async ({ locale, params }) => {
       post: data?.post,
       posts: data?.posts
     },
-    revalidate:false,
+    revalidate: false,
   }
 }
 
