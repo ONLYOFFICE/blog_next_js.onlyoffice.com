@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import HTMLReactParser from "html-react-parser";
+import languages from "@config/languages.json";
 
 const PostHead = ({ t, locale, post, postUri }) => {
   const router = useRouter();
@@ -8,15 +9,7 @@ const PostHead = ({ t, locale, post, postUri }) => {
   const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
   const title = post.aioseoTitle ? post.aioseoTitle : locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : HTMLReactParser(post?.excerpt)[0]?.props?.children;
-
-  const languagesKey =
-    locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
-    locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" :
-    locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
-    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" :
-    locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" :
-    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" :
-    locale === "hy" ? "hy_AM" : "en_US";
+  const language = languages.find(lang => lang.shortKey === locale);
 
   return (
     <Head>
@@ -27,7 +20,7 @@ const PostHead = ({ t, locale, post, postUri }) => {
       <meta name="description" content={metaDescription} />
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={`${baseUrl}${post?.uri.replace(/\/$/, "")}`} />
-      <meta property="og:locale" content={languagesKey} />
+      <meta property="og:locale" content={language?.locale} />
       <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
@@ -52,15 +45,16 @@ const PostHead = ({ t, locale, post, postUri }) => {
         <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
       )}
 
-      {postUri.en_US && <link rel="alternate" hrefLang="en-US" href={`${baseUrl}/${postUri.en_US.split("/").slice(3).join("/")}`} />}
-      {postUri.cs_CZ && <link rel="alternate" hrefLang="cs-CZ" href={`${baseUrl}/${postUri.cs_CZ.split("/").slice(3).join("/")}`} />}
-      {postUri.de_DE && <link rel="alternate" hrefLang="de-DE" href={`${baseUrl}/${postUri.de_DE.split("/").slice(3).join("/")}`} />}
-      {postUri.es_ES && <link rel="alternate" hrefLang="es-ES" href={`${baseUrl}/${postUri.es_ES.split("/").slice(3).join("/")}`} />}
-      {postUri.fr_FR && <link rel="alternate" hrefLang="fr-FR" href={`${baseUrl}/${postUri.fr_FR.split("/").slice(3).join("/")}`} />}
-      {postUri.it_IT && <link rel="alternate" hrefLang="it-IT" href={`${baseUrl}/${postUri.it_IT.split("/").slice(3).join("/")}`} />}
-      {postUri.ja && <link rel="alternate" hrefLang="ja-JP" href={`${baseUrl}/${postUri.ja.split("/").slice(3).join("/")}`} />}
-      {postUri.pt_BR && <link rel="alternate" hrefLang="pt-BR" href={`${baseUrl}/${postUri.pt_BR.split("/").slice(3).join("/")}`} />}
-      {postUri.zh_CN && <link rel="alternate" hrefLang="zh-CN" href={`${baseUrl}/${postUri.zh_CN.split("/").slice(3).join("/")}`} />}
+      {languages.map(({ key, locale }) =>
+        postUri[locale] ? (
+          <link
+            key={key}
+            rel="alternate"
+            hrefLang={key}
+            href={`${baseUrl}/${postUri[locale].split("/").slice(3).join("/")}`}
+          />
+        ) : null
+      )}
 
       {locale === "en" ? (
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />

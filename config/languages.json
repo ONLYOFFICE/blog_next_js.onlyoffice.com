@@ -2,71 +2,85 @@
   {
     "key": "en-US",
     "shortKey": "en",
-    "longKey": "English"
+    "longKey": "English",
+    "locale": "en_US"
   },
   {
     "key": "fr-FR",
     "shortKey": "fr",
-    "longKey": "Français"
+    "longKey": "Français",
+    "locale": "fr_FR"
   },
   {
     "key": "de-DE",
     "shortKey": "de",
-    "longKey": "German"
+    "longKey": "German",
+    "locale": "de_DE"
   },
   {
     "key": "es-ES",
     "shortKey": "es",
-    "longKey": "Español"
+    "longKey": "Español",
+    "locale": "es_ES"
   },
   {
     "key": "pt-BR",
     "shortKey": "pt-br",
-    "longKey": "Português"
+    "longKey": "Português",
+    "locale": "pt_BR"
   },
   {
     "key": "it-IT",
     "shortKey": "it",
-    "longKey": "Italiano"
+    "longKey": "Italiano",
+    "locale": "it_IT"
   },
   {
     "key": "cs-CZ",
     "shortKey": "cs",
-    "longKey": "Čeština"
+    "longKey": "Čeština",
+    "locale": "cs_CZ"
   },
   {
     "key": "ja-JP",
     "shortKey": "ja",
-    "longKey": "日本語"
+    "longKey": "日本語",
+    "locale": "ja"
   },
   {
     "key": "zh-CN",
     "shortKey": "zh-hans",
-    "longKey": "中文"
+    "longKey": "中文",
+    "locale": "zh_CN"
   },
   {
     "key": "el-GR",
     "shortKey": "el",
-    "longKey": "Ελληνικά"
+    "longKey": "Ελληνικά",
+    "locale": "el"
   },
   {
     "key": "hi-IN",
     "shortKey": "hi",
-    "longKey": "हिन्दी"
+    "longKey": "हिन्दी",
+    "locale": "hi"
   },
   {
     "key": "ar-AR",
     "shortKey": "ar",
-    "longKey": "عربي"
+    "longKey": "عربي",
+    "locale": "ar"
   },
   {
     "key": "sr-RS",
     "shortKey": "sr",
-    "longKey": "Srpski"
+    "longKey": "Srpski",
+    "locale": "sr_RS"
   },
   {
     "key": "hy-AM",
     "shortKey": "hy",
-    "longKey": "Հայերեն"
+    "longKey": "Հայերեն",
+    "locale": "hy"
   }
 ]
