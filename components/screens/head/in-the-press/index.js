@@ -4,14 +4,7 @@ import languages from "@config/languages.json";
 const InThePressHead = ({ title, locale, articlePublishedTime, articleModifiedTime }) => {
   const baseUrl = "https://www.onlyoffice.com/blog/";
   const inThePressUrl = `${baseUrl}${locale === "en" ? "" : `${locale}/`}onlyoffice-in-the-press`;
-  const languagesKey = 
-    locale === "fr" ? "fr_FR" : locale === "de" ? "de_DE" :
-    locale === "es" ? "es_ES" : locale === "pt-br" ? "pt_BR" : 
-    locale === "it" ? "it_IT" : locale === "cs" ? "cs_CZ" :
-    locale === "ja" ? "ja_JP" : locale === "zh-hans" ? "zh_CN" : 
-    locale === "el" ? "el_GR" : locale === "hi" ? "hi_IN" : 
-    locale === "ar" ? "ar_AR" : locale === "sr" ? "sr_RS" : 
-    locale === "hy" ? "hy_AM" : "en_US";
+  const language = languages.find(lang => lang.shortKey === locale);
 
   return (
     <Head>
@@ -21,7 +14,7 @@ const InThePressHead = ({ title, locale, articlePublishedTime, articleModifiedTi
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="robots" content="max-image-preview:large" />
       <link rel="canonical" href={inThePressUrl} />
-      <meta property="og:locale" content={languagesKey} />
+      <meta property="og:locale" content={language?.locale} />
       <meta property="og:site_name" content="ONLYOFFICE Blog" />
       <meta property="og:type" content="article" />
       <meta property="og:title" content={title} />
