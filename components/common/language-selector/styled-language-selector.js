@@ -158,10 +158,6 @@ const StyledLanguageSelector = styled.div`
     outline: none;
     -webkit-tap-highlight-color: transparent;
 
-    .active {
-      color: #FF6F3D;
-    }
-
     .language-link {
       min-width: max-content;
       padding: 8px 24px;
@@ -172,7 +168,10 @@ const StyledLanguageSelector = styled.div`
 
       &:hover {
         background-color: #F5F5F5;
-        
+      }
+
+      &.active {
+        color: #FF6F3D;
       }
 
       b {
