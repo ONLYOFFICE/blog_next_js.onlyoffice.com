@@ -8,13 +8,12 @@ import getMainPostExcerpt from "@lib/requests/getMainPostExcerpt";
 import Layout from "@components/layout";
 import MainHead from "@components/screens/head/main";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import MainContent from "@components/screens/main-content";
 
 const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isMainPage = true;
 
   return (
@@ -28,9 +27,9 @@ const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRele
           articleModifiedTime={mainPageDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} isMainPage={isMainPage} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <MainContent

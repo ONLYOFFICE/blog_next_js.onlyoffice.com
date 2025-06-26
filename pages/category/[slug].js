@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getCategorySlug from "@lib/requests/getCategorySlug";
@@ -7,13 +6,12 @@ import getCategoryPosts from "@lib/requests/getCategoryPosts";
 import Layout from "@components/layout";
 import CategoryHead from "@components/screens/head/category";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import CategoryContent from "@components/screens/category-content";
 
 const CategoryPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isCategoryPage = true;
   const categoryName = posts?.edges[0]?.node.categories?.nodes[0]?.name;
   const categorySlug = posts?.edges[0]?.node.categories?.nodes[0]?.slug;
@@ -27,9 +25,9 @@ const CategoryPage = ({ locale, posts }) => {
           categorySlug={categorySlug}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <CategoryContent t={t} locale={locale} posts={posts} isCategoryPage={isCategoryPage} categoryName={categoryName} categorySlug={categorySlug} />

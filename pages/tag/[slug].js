@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTagSlug from "@lib/requests/getTagSlug";
@@ -7,13 +6,12 @@ import getTagPosts from "@lib/requests/getTagPosts";
 import Layout from "@components/layout";
 import TagHead from "@components/screens/head/tag";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import TagContent from "@components/screens/tag-content";
 
 const TagPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isTagPage = true;
   const tagName = posts?.edges[0]?.node.tags?.nodes[0]?.name;
   const tagSlug = posts?.edges[0]?.node.tags?.nodes[0]?.slug;
@@ -27,9 +25,9 @@ const TagPage = ({ locale, posts }) => {
           tagSlug={tagSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <TagContent t={t} locale={locale} posts={posts} isTagPage={isTagPage} tagName={tagName} tagSlug={tagSlug} />
