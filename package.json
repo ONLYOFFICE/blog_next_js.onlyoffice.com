@@ -19,7 +19,7 @@
     "moment": "^2.29.4",
     "next": "13.1.6",
     "next-i18next": "^13.0.3",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#88f17b364977f5c9ee2621257250279a9bd9454a",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#41b406238dcc65d896e6d43142b1e65794a6100d",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.2",
