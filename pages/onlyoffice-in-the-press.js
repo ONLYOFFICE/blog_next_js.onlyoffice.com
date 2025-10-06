@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getInThePressPosts from "@lib/requests/getInThePressPosts";
@@ -8,13 +7,12 @@ import getRecentPosts from "@lib/requests/getRecentPosts";
 import Layout from "@components/layout";
 import InThePressHead from "@components/screens/head/in-the-press";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import InThePressContent from "@components/screens/in-the-press-content";
 
 const InThePressPage = ({ locale, inThePressPosts, inThePressDate, recentPosts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isInThePressPage = true;
 
   return (
@@ -27,9 +25,9 @@ const InThePressPage = ({ locale, inThePressPosts, inThePressDate, recentPosts }
           articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <InThePressContent t={t} locale={locale} inThePressPosts={inThePressPosts} recentPosts={recentPosts} isInThePressPage={isInThePressPage} />

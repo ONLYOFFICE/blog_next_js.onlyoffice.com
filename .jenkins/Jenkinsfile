@@ -3,6 +3,9 @@ println("Branch name: ${BRANCH_NAME}")
 switch(BRANCH_NAME) {
   case "origin/test":
     aws_region="us-east-1"
+    awslogs_region = "us-east-1"
+    awslogs_group = "/site/www"
+    awslogs_stream = "blog.teamlab.info"
     region="info"
     src_domain="wpblog.teamlab.info"
     public_static_url="https://static-blog.teamlab.info"
@@ -39,6 +42,9 @@ pipeline {
         region = "${region}"
         src_domain="${src_domain}"
         public_static_url = "${public_static_url}"
+        awslogs_region = "${awslogs_region}"
+        awslogs_group = "${awslogs_group}"
+        awslogs_stream = "${awslogs_stream}"
       }
       steps {
         withCredentials([string(credentialsId: 'blog_revalidate_token', variable: 'revalidate_token')]) {
@@ -47,6 +53,11 @@ pipeline {
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
           sed -i "s^var_next_public_static_url^$public_static_url^" .env.local
+
+          sed -i "s^var_notification_app_name^$src_domain^" .jenkins/build.sh
+          sed -i "s^var_awslogs_region^$awslogs_region^" .jenkins/build.sh
+          sed -i "s^var_awslogs_group^$awslogs_group^" .jenkins/build.sh
+          sed -i "s^var_awslogs_stream^$awslogs_stream^" .jenkins/build.sh         
           cp .jenkins/build.sh .jenkins/blog_build.sh
           
           if [ "${region}" = "no_robots" ]; then
