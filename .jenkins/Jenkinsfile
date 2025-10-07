@@ -12,6 +12,9 @@ switch(BRANCH_NAME) {
     break
   case "origin/production_deploy":
     aws_region="us-east-1"
+    awslogs_region = "us-west-2"
+    awslogs_group = "/site/www"
+    awslogs_stream = "wpblog.onlyoffice.com"
     region="com"
     MONITOR_ID = '8888888888888'
     src_domain="wpblog.onlyoffice.com"
