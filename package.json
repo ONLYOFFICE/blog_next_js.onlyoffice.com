@@ -10,6 +10,7 @@
     "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
+    "cookie": "^1.0.2",
     "decode-html": "^2.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",

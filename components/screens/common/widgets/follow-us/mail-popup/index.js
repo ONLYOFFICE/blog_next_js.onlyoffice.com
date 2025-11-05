@@ -50,7 +50,7 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
       setIsLoading(true);
 
       try {
-        const response = await fetch("/blog/api/subscribe", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`, {
           method: "POST",
           body: JSON.stringify({
             firstname: firstName,
