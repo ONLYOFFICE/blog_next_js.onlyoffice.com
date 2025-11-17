@@ -46,6 +46,24 @@ const Newsletter = ({ t, locale }) => {
 
             <div className="newsletter-body">
               <form onSubmit={handleSubmit(onSubmit)}>
+              <Controller name="name" control={control} 
+                  rules={{
+                    required: { value: true, message: `${t("First name is empty")}` },
+                  }}
+                  render={({ field: { onChange, onBlur } }) => (
+                    <Input 
+                      className={errors.name && "error"}
+                      onChange={(e) => {
+                        onChange(e);
+                      }}
+                      onBlur={onBlur}
+                      name="name"
+                      placeholder={`${t("First name")}*`}
+                      errorText={errors.name && errors.name.message} 
+                    />
+                  )}
+                />
+                <div className="email-button-field">
                 <Controller name="email" control={control} 
                   rules={{
                     required: { value: true, message: `${t("Email is empty")}` },
@@ -69,6 +87,7 @@ const Newsletter = ({ t, locale }) => {
                   )}
                 />
                 <Button className={`${isLoading ? "loading" : ""}`} label={t("Subscribe")} type="submit" />
+                </div>
               </form>
               <ExternalLink className="newsletter-text" href="https://help.onlyoffice.com/products/files/doceditor.aspx?fileid=5048502&doc=SXhWMEVzSEYxNlVVaXJJeUVtS0kyYk14YWdXTEFUQmRWL250NllHNUFGbz0_IjUwNDg1MDIi0&_ga=2.205081872.1209754540.1675664554-2135282031.1669802332">{t("NewsletterSubscribeText")} <u>{t("NewsletterSubscribeLink")}</u></ExternalLink>
             </div>
