@@ -19,9 +19,10 @@ const Newsletter = ({ t, locale }) => {
       setIsLoading(true);
     }
 
-    const response = await fetch("/blog/api/newsletter", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`, {
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      mailApiType: "Common"
     });
 
     if (response.status === 200) {
