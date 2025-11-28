@@ -32,6 +32,7 @@ const Newsletter = ({ t, locale }) => {
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
         {
           firstName: data.name,
