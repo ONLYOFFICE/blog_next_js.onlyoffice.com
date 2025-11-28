@@ -55,7 +55,7 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
           body: JSON.stringify({
             firstname: firstName,
             email: email,
-            mailApiType: "Common"
+            type: "Common"
           })
         });
         

@@ -22,7 +22,7 @@ const Newsletter = ({ t, locale }) => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`, {
       method: "POST",
       body: JSON.stringify(data),
-      mailApiType: "Common"
+      type: "Common"
     });
 
     if (response.status === 200) {
