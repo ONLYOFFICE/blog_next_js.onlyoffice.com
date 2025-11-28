@@ -12,6 +12,17 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
   const [emailErrorText, setEmailErrorText] = useState(t("Email is empty"));
   const [isLoading, setIsLoading] = useState(false);
 
+  const localeNormalizeMap = {
+    "el": "",
+    "hi": "",
+    "ar": "",
+    "hy": "",
+    "zh-hans": "zh",
+    "pt-br": "pt",
+  };
+
+  const normalizeLocale = (loc) => localeNormalizeMap[loc] || loc;
+
   const emailIsValid = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
@@ -53,9 +64,10 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
         const response = await fetch(`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`, {
           method: "POST",
           body: JSON.stringify({
-            firstname: firstName,
+            firstName: firstName,
             email: email,
-            type: "Common"
+            type: "Common",
+            locale: normalizeLocale(locale)
           })
         });
         
@@ -115,7 +127,7 @@ const MailPopup = ({ t, locale, popupIsOpen, setPopupIsOpen }) => {
                       <div className="mail-popup-error-text">{emailErrorText}</div>
                     )}
                   </div>
-                  <button className={`mail-popup-btn ${isLoading ? "loading" : ""}`} disabled={isLoading && true}>{t("Subscribe")}</button>
+                  <button className={`mail-popup-btn ${isLoading ? "loading" : ""}`} disabled={isLoading}>{t("Subscribe")}</button>
                 </form>
               </div>
             )}
