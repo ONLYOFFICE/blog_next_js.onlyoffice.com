@@ -31,8 +31,8 @@ const Footer = ({ locale, postUri }) => {
           "pt-br": "pt",
         }
       }}
-      mailApiUrl="/blog/api/subscribe"
-      mailApiType={0}
+      mailApiUrl={`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`}
+      mailApiType="Common"
     />
   );
 };

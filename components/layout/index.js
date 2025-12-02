@@ -6,6 +6,7 @@ import Header from "./header";
 import Main from "./main";
 import Footer from "./footer";
 import Head from "./head";
+import CookieBanner from "./cookies/banner";
 
 function PageHead() {
   return null;
@@ -71,6 +72,7 @@ class Layout extends React.Component {
         {footerContent && (
           <Footer>{footerContent.props.children}</Footer>
         )}
+        <CookieBanner />
       </StyledLayout>
     );
   }

@@ -10,6 +10,7 @@
     "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
+    "cookie": "^1.0.2",
     "decode-html": "^2.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
@@ -18,7 +19,7 @@
     "moment": "^2.30.1",
     "next": "15.5.3",
     "next-i18next": "^15.4.2",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#v1.18.0",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#59250fb833c1cef9b39c111a251b510bf0ec3f8c",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
