@@ -12,7 +12,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
         locale === "zh-hans" ? "/zh" :
         locale === "pt-br" ? "/pt" : 
         `/${locale}`
-      }/docspace-registration.aspx?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
+      }/docspace-registration?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
   const [inputEmailUsed, setInputEmailUsed] = useState(false);
   const { handleSubmit, formState: { errors }, control, getValues, trigger } = useForm();
 

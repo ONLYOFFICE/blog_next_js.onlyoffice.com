@@ -14,7 +14,7 @@ const PopupDocSpace = ({ t, locale, onClose, ...rest }) => {
         locale === "zh-hans" ? "/zh" :
         locale === "pt-br" ? "/pt" : 
         `/${locale}`
-      }/docspace-registration.aspx?utm_source=blog&utm_medium=popup&utm_campaign=docspace_registration_popup`
+      }/docspace-registration?utm_source=blog&utm_medium=popup&utm_campaign=docspace_registration_popup`
 
     const [inputEmailUsed, setInputEmailUsed] = useState(false);
     const { handleSubmit, formState: { errors }, control, getValues, trigger } = useForm();
