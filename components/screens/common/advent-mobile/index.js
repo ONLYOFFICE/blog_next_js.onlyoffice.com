@@ -50,7 +50,7 @@ const AdventMobileOnly = ({ t, locale }) => {
   if (!isMobile) return null;
 
   return (
-    <StyledAdventMobileOnly locale={locale}>
+    <StyledAdventMobileOnly $locale={locale}>
       <div className="mobile_mess">
         <div className="container">
           <p className="mobile_mess_text">{t("Get free mobile app")}</p>

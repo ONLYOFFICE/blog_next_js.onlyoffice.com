@@ -61,10 +61,10 @@ const StyledInThePressContent = styled(Section)`
     }
 
     .newsletter-title {
-      ${props => props.locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
+      ${props => props.$locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
 
       @media screen and ${device.laptop} {
-        ${props => props.locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
+        ${props => props.$locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
       }
     }
 

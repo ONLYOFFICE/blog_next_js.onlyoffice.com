@@ -4,6 +4,7 @@ import Text from "@components/common/text";
 import Input from "@components/common/input";
 import { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
+import parse from "html-react-parser";
 
 const PopupDocSpace = ({ t, locale, onClose, ...rest }) => {
     const modalRef = useRef(null);  
@@ -46,14 +47,14 @@ const PopupDocSpace = ({ t, locale, onClose, ...rest }) => {
     }, [onClose]);
 
     return (
-        <StyledPopupDocSpace locale={locale}>            
+        <StyledPopupDocSpace $locale={locale}>            
             <div className="modal_wrapper" ref={modalRef}>
                 <div className="close_btn" onClick={onClose}></div>
                 <div className="modal_content">
                     <div className="modal_img"></div>
                     <div className="modal_text">
                         <Heading className="docspace_block_title" level={3}>
-                            <div dangerouslySetInnerHTML={{ __html: t("Create your")}}></div>
+                            {parse(t("Create your"))}
                         </Heading>
                         <Text className="docspace_block_subheader" as="p">
                             {t("View, edit and collaborate on docs, sheets, slides, forms, and PDF files online.")}

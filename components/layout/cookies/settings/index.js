@@ -52,7 +52,7 @@ const CookieSettings = ({
   return (
     <StyledCookieSettings id="cookie-settings">
       <StyledCookieSettingsHeader>
-        <Heading label={t("CookieSettings")} level={4} />
+        <Heading as="div" label={t("CookieSettings")} size={4} />
         <StyledCross
           id="cookie-settings-close"
           onClick={() => setShowSettings(false)}
@@ -62,7 +62,7 @@ const CookieSettings = ({
         <Checkbox
           label={
             <StyledCheckText>
-              <Heading level={4}>{t("Technical")}</Heading>
+              <Heading as="div" size={4}>{t("Technical")}</Heading>
               <Text fontSize="14px">{t("TechnicalDescription")}</Text>
             </StyledCheckText>
           }
@@ -73,7 +73,7 @@ const CookieSettings = ({
         <Checkbox
           label={
             <StyledCheckText>
-              <Heading level={4}>{t("Analytical")}</Heading>
+              <Heading as="div" size={4}>{t("Analytical")}</Heading>
               <Text fontSize="14px">{t("AnalyticalDescription")}</Text>
             </StyledCheckText>
           }
@@ -83,7 +83,7 @@ const CookieSettings = ({
         <Checkbox
           label={
             <StyledCheckText>
-              <Heading level={4}>{t("Marketing")}</Heading>
+              <Heading as="div" size={4}>{t("Marketing")}</Heading>
               <Text fontSize="14px">{t("MarketingDescription")}</Text>
             </StyledCheckText>
           }

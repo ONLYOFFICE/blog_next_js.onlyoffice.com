@@ -61,12 +61,13 @@ const SearchContent = ({ t, locale, isSearchPage, recentPosts }) => {
   }, [searchQueryString, locale]);
 
   return (
-    <StyledSearchContent locale={locale} className="search-content">
+    <StyledSearchContent $locale={locale} className="search-content">
       <div className="wrapper">
         <div className="content">
           <Breadcrumbs className="breadcrumbs" t={t} isSearchPage={isSearchPage} searchQuery={router?.query.s} locale={locale} />
 
           <SearchArea
+            t={t}
             locale={locale}
             label={t("Search")}
             searchQuery={searchQuery}
@@ -88,7 +89,7 @@ const SearchContent = ({ t, locale, isSearchPage, recentPosts }) => {
               />
             ) : (
               <div className="no-results">
-                <Heading level={3}>{t("No results matching your query could be found")}</Heading>
+                <Heading level={2} size={3}>{t("No results matching your query could be found")}</Heading>
                 <div className="no-results-bg"></div>
               </div>
             )}

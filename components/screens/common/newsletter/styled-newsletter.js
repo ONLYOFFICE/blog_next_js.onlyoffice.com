@@ -52,9 +52,9 @@ const StyledNewsletter = styled.div`
 
   .newsletter-title {
     margin-top: 7px;
-    ${props => props.locale === "ar" ? "margin-left: 56px;" : "margin-right: 56px;"}
+    ${props => props.$locale === "ar" ? "margin-left: 56px;" : "margin-right: 56px;"}
     width: 100%;
-    max-width: ${props => props.locale === "ar" ? "204px" : "180px"};
+    max-width: ${props => props.$locale === "ar" ? "204px" : "180px"};
     //white-space: nowrap;
 
     @media screen and ${device.laptop} {
@@ -100,8 +100,8 @@ const StyledNewsletter = styled.div`
         box-sizing: border-box;
         height: 56px;
         border: 1px solid #aaaaaa;
-        border-radius: ${props => props.locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
-        ${props => props.locale === "ar" ? "border-left: none;" : "border-right: none;"}
+        border-radius: ${props => props.$locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
+        ${props => props.$locale === "ar" ? "border-left: none;" : "border-right: none;"}
         padding: 16px;
         font-size: 14px;
         line-height: 280%;
@@ -111,7 +111,7 @@ const StyledNewsletter = styled.div`
 
         &#name {
           border-radius: 3px;
-          ${props => props.locale === "ar" ? "border-left: 1px solid #aaaaaa;" : "border-right: 1px solid #aaaaaa;"}
+          ${props => props.$locale === "ar" ? "border-left: 1px solid #aaaaaa;" : "border-right: 1px solid #aaaaaa;"}
           max-width: 300px;
           @media screen and ${device.mobile} {
           max-width: 100%;
@@ -126,7 +126,7 @@ const StyledNewsletter = styled.div`
       button {
         position: relative;
         padding: 19px 12px;
-        border-radius: ${props => props.locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
+        border-radius: ${props => props.$locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
         min-width: 122px;
         font-family: "Open Sans", sans-serif;
         font-size: 13px;
@@ -160,7 +160,7 @@ const StyledNewsletter = styled.div`
         }
 
         @media screen and ${device.mobile} {
-          border-radius: ${props => props.locale === "ar" && "0 3px 3px 0"};
+          border-radius: ${props => props.$locale === "ar" && "0 3px 3px 0"};
           font-size: 0;
           min-width: 56px;
           height: 48px;
@@ -168,14 +168,14 @@ const StyledNewsletter = styled.div`
           background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
           background-position: 50% 50%;
           background-repeat: no-repeat;
-          transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+          transform: ${props => props.$locale === "ar" && "rotate(180deg)"};
         }
       }
 
       .error-text {
         position: absolute;
         top: 56px;
-        ${props => props.locale === "ar" ? "right: 0;" : "left: 0;"}
+        ${props => props.$locale === "ar" ? "right: 0;" : "left: 0;"}
         color: #ff0c3e;
         font-size: 12px;
         line-height: 19px;

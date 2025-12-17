@@ -8,7 +8,7 @@ const AuthorContent = ({ t, locale, posts, isAuthorPage, authorName, authorSlug 
     <StyledAuthorContent>
       <Breadcrumbs className="breadcrumbs" t={t} data={posts} isAuthorPage={isAuthorPage} />
 
-      <Heading className="author-title" level={2}>
+      <Heading className="author-title" level={1} size={2}>
         {`${t("Author Archives")}: `}
         <span className="author-name">{authorName}</span>
       </Heading>

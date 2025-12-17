@@ -124,8 +124,8 @@ const StyledDocSpaceBlock = styled.div`
         height: 56px;
         border: 1px solid #aaaaaa;
         border-image: initial;
-        border-radius: ${props => props.locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
-        ${props => props.locale === "ar" ? "border-left: none;" : "border-right: none;"}
+        border-radius: ${props => props.$locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
+        ${props => props.$locale === "ar" ? "border-left: none;" : "border-right: none;"}
         padding: 16px;
         font-size: 14px;
         line-height: 280%;
@@ -140,7 +140,7 @@ const StyledDocSpaceBlock = styled.div`
       .error-message {            
         position: absolute;
         top: 60px;
-        ${props => props.locale === "ar" ? "right: 0;" : "left: 0;"}
+        ${props => props.$locale === "ar" ? "right: 0;" : "left: 0;"}
         color: #ff0c3e;
         font-size: 12px;
         line-height: 19px;
@@ -155,7 +155,7 @@ const StyledDocSpaceBlock = styled.div`
         background: #FF6F3D;
         color: #FFFFFF;
         min-width: 140px;          
-        border-radius: ${props => props.locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
+        border-radius: ${props => props.$locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
         font-size: 13px;
         font-weight: 600;
         line-height: 17.29px;
@@ -172,8 +172,8 @@ const StyledDocSpaceBlock = styled.div`
         }
 
         @media screen and ${device.laptop} {
-          border-radius: ${props => props.locale === "ar" && "0 3px 3px 0"};
-          transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+          border-radius: ${props => props.$locale === "ar" && "0 3px 3px 0"};
+          transform: ${props => props.$locale === "ar" && "rotate(180deg)"};
         }
 
         @media screen and ${device.mobile} {

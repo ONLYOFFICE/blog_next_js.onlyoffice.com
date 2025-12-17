@@ -14,7 +14,7 @@ const StyledMailPopup = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(255 255 255 / 50%);
-  z-index: 1000;
+  z-index: 999999;
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
