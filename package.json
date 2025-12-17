@@ -6,7 +6,6 @@
     "dev": "npm run clean-cache && next dev -p 30007",
     "build": "npm run clean-cache && next build",
     "start": "next start -p 30007",
-    "lint": "next lint",
     "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
