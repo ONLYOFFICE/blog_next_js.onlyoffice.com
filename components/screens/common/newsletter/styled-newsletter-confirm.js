@@ -13,7 +13,7 @@ const StyledNewsletterConfirm = styled.div`
   border: 1px solid rgba(189,189,189,.6);
   box-shadow: 0px 7px 25px rgb(85 85 85 / 15%);
 
-  h4 {
+  h3 {
     margin-top: 72px;
     font-weight: 600;
     font-size: 24px;

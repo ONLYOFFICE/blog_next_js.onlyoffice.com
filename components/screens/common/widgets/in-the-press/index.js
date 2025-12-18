@@ -6,8 +6,8 @@ import InternalLink from "@components/common/internal-link";
 
 const InThePress = ({ t, locale, inThePressPosts }) => {
   return (
-    <StyledInThePress locale={locale}>
-      <Heading className="in-the-press-title" level={4}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
+    <StyledInThePress $locale={locale}>
+      <Heading className="in-the-press-title" level={3} size={4}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
 
       <ul className="in-the-press-list">
         {inThePressPosts?.edges.map(({node}) => (

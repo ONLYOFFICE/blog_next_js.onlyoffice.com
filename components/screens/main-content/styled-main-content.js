@@ -81,7 +81,7 @@ const StyledMainContent = styled(Section)`
   }
 
   .category-posts-title {
-    ${props => props.locale === "ar" ? " margin-left: 32px;" : "margin-right: 32px;"}
+    ${props => props.$locale === "ar" ? " margin-left: 32px;" : "margin-right: 32px;"}
     font-size: 32px;
     line-height: 43px;
     letter-spacing: -0.02em;
@@ -89,7 +89,7 @@ const StyledMainContent = styled(Section)`
     color: #333333;
 
     @media screen and ${device.laptop} {
-      ${props => props.locale === "ar" ? " margin-left: 0;" : "margin-right: 0;"}
+      ${props => props.$locale === "ar" ? " margin-left: 0;" : "margin-right: 0;"}
     }
 
     @media screen and ${device.mobile} {
@@ -110,10 +110,10 @@ const StyledMainContent = styled(Section)`
     
     &:after {
       content: "";
-      ${props => props.locale === "ar" ? "margin-right: 10px;" : "margin-left: 10px;"}
+      ${props => props.$locale === "ar" ? "margin-right: 10px;" : "margin-left: 10px;"}
       width: 4px;
       height: 8px;
-      transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+      transform: ${props => props.$locale === "ar" && "rotate(180deg)"};
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/arrow-right.svg");
       background-repeat: no-repeat;
       background-size: contain;

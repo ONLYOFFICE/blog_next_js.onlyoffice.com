@@ -16,7 +16,7 @@ const StyledSearchContent = styled(Section)`
     
     li {
       &:not(:first-child) {
-        direction: ${props => props.locale === "ar" && "initial"};
+        direction: ${props => props.$locale === "ar" && "initial"};
       }
     }
   }
@@ -62,7 +62,7 @@ const StyledSearchContent = styled(Section)`
   }
 
   .no-results {
-    h3 {
+    h2 {
       font-weight: 600;
       font-size: 18px;
       line-height: 133%;

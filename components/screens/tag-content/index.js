@@ -8,7 +8,7 @@ const TagContent = ({ t, locale, posts, isTagPage, tagName, tagSlug }) => {
     <StyledTagContent>
       <Breadcrumbs className="breadcrumbs" t={t} data={posts} isTagPage={isTagPage} />
 
-      <Heading className="tag-title" level={2}>
+      <Heading className="tag-title" level={1} size={2}>
         {`${t("Tag Archives")}: `}
         <span className="tag-name">{`#${tagName}`}</span>
       </Heading>

@@ -35,7 +35,7 @@ const StyledCategoryTopics = styled.div`
 
     .internal-link {
       display: flex;
-      ${props => props.locale === "ar" ? "padding-right: 36px;" : "padding-left: 36px;"}
+      ${props => props.$locale === "ar" ? "padding-right: 36px;" : "padding-left: 36px;"}
       font-weight: 700;
       font-size: 16px;
       line-height: 24px;
@@ -43,7 +43,7 @@ const StyledCategoryTopics = styled.div`
       text-decoration: none;
       background-repeat: no-repeat;
       background-size: 24px 24px;
-      background-position-x: ${props => props.locale === "ar" ? "right" : "0"};
+      background-position-x: ${props => props.$locale === "ar" ? "right" : "0"};
 
       &:hover {
         color: #FF6F3D;

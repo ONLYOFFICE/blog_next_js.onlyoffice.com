@@ -24,8 +24,9 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
   };
 
   return (
-    <StyledMainContent locale={locale}>
+    <StyledMainContent $locale={locale}>
       <SearchArea
+        t={t}
         label={t("Search")}
         locale={locale}
         searchQuery={searchQuery}

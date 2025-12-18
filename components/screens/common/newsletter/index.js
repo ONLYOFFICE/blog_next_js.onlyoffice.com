@@ -55,13 +55,13 @@ const Newsletter = ({ t, locale }) => {
     <>
       {isSuccess ? (
         <StyledNewsletterConfirm className="newsletter-confirm">
-          <Heading level={4}>{t("Confirm your subscription")}</Heading>
+          <Heading level={3} size={4}>{t("Confirm your subscription")}</Heading>
           <Text as="p">{t("We sent an email message with confirmation to your email address")}</Text>
         </StyledNewsletterConfirm>
       ) : (
-        <StyledNewsletter locale={locale} className={`newsletter ${locale}`}>
+        <StyledNewsletter $locale={locale} className={`newsletter ${locale}`}>
           <div className="newsletter-wrapper">
-            <Heading className="newsletter-title" level={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
+            <Heading className="newsletter-title" level={3} size={locale === "el" || locale === "ja" ? 3 : 2}>{t("Newsletter")}</Heading>
 
             <div className="newsletter-body">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -77,6 +77,7 @@ const Newsletter = ({ t, locale }) => {
                       }}
                       onBlur={onBlur}
                       name="name"
+                      autoComplete="name"
                       placeholder={`${t("First name")}*`}
                       errorText={errors.name && errors.name.message} 
                     />
@@ -100,6 +101,7 @@ const Newsletter = ({ t, locale }) => {
                       }}
                       onBlur={onBlur}
                       name="email"
+                      autoComplete="email"
                       placeholder={`${t("Your e-mail")}*`}
                       errorText={errors.email && errors.email.message || inputEmailUsed && t("Email is used")} 
                     />

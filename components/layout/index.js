@@ -64,7 +64,7 @@ class Layout extends React.Component {
     });
 
     return (
-      <StyledLayout locale={locale} id="page-layout" className="layout">
+      <StyledLayout $locale={locale} id="page-layout" className="layout">
         {children}
         {headContent && <Head>{headContent.props.children}</Head>}
         {headerContent && <Header>{headerContent.props.children}</Header>}

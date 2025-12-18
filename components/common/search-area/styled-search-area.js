@@ -7,7 +7,7 @@ const StyledSearchArea = styled.form`
     box-sizing: border-box;
     border: 1px solid #AAAAAA;
     border-radius: 3px;
-    padding: ${props => props.locale === "ar" ? "16px 16px 16px 48px" : "16px 48px 16px 16px"};
+    padding: ${props => props.$locale === "ar" ? "16px 16px 16px 48px" : "16px 48px 16px 16px"};
     width: 100%;
     height: 56px;
     font-size: 16px;
@@ -65,7 +65,7 @@ const StyledSearchArea = styled.form`
   .search-icon {
     position: absolute;
     top: 50%;
-    ${props => props.locale === "ar" ? "left: 16px;" : "right: 16px;"}
+    ${props => props.$locale === "ar" ? "left: 16px;" : "right: 16px;"}
     border: none;
     padding: 0;
     width: 20px;

@@ -186,8 +186,9 @@ const CookieBanner = () => {
         <StyledCookieBanner ref={bannerRef}>
           <StyledCookieBannerHeader>
             <StyledCookieBannerHeading
+              forwardedAs="div"
               label={t("HarmonyInYourCookies")}
-              level={4}
+              size={4}
             />
             {!isFullGDPR && (
               <StyledCross id="cookie-banner-close" onClick={handleCross} />

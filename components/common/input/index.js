@@ -2,13 +2,15 @@ import StyledInput from "./styled-input";
 import PropTypes from "prop-types";
 import Text from "@components/common/text";
 
-const Input = ({ className, label, type, name, value, onChange, onBlur, errorText, required, placeholder }) => {
+const Input = ({ className, label, type, name, value, onChange, onBlur, errorText, required, placeholder, autoComplete }) => {
   return (
     <StyledInput className={className}>
-      <label htmlFor={name} className="label">
-        {label} {required && <span>*</span>}
-      </label>
-      <input name={name} id={name} type={type} value={value} onChange={onChange} onBlur={onBlur} placeholder={placeholder} />
+      {label &&
+        <label htmlFor={name} className="label">
+          {label} {required && <span>*</span>}
+        </label>
+      }  
+      <input name={name} id={name} type={type} value={value} onChange={onChange} onBlur={onBlur} placeholder={placeholder} autoComplete={autoComplete} />
       {errorText &&
       <Text className="error-text">
         {errorText}
@@ -24,6 +26,7 @@ Input.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   placeholder: PropTypes.string,
+  autoComplete: PropTypes.string,
   errorText: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   required: PropTypes.bool,
   onChange: PropTypes.func,
