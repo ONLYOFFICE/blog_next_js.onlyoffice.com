@@ -5,7 +5,7 @@ import InternalLink from "@components/common/internal-link";
 const CategoryTopics = ({ t, locale }) => {
   return (
     <StyledCategoryTopics $locale={locale} className="category-topics">
-      <h4 className="category-topics-title">{t("Category Topics")}</h4>
+      <h3 className="category-topics-title">{t("Category Topics")}</h3>
       <ul className="category-topics-list">
         {locale !== "cs" && (
           <>
