@@ -6,6 +6,7 @@
 
 - Update dependencies and devDependencies
 - Update components, props
+- Update onlyoffice-react-ui-kit to v1.25.0
 - Add Cookie banner
 - Remove .aspx extension from links
 
