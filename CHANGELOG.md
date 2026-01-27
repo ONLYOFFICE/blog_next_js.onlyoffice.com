@@ -6,14 +6,13 @@
 
 - Update dependencies and devDependencies
 - Update components, props
-- Update onlyoffice-react-ui-kit to v1.25.0
+- Update onlyoffice-react-ui-kit to v1.26.0
 - Add Cookie banner
 - Remove .aspx extension from links
 
 ### Fixes
 
-- Fix the request in the Subscribe popup and  Newsletter
-
+- Fix the request in the Subscribe popup and Newsletter
 
 ## 1.3.0
 
