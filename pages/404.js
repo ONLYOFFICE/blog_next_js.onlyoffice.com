@@ -1,26 +1,24 @@
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Layout from "@components/layout";
 import ErrornHead from "@components/screens/head/error";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import ErrorContent from "@components/screens/404-content";
 
 const Error404Page = ({ locale }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
 
   return (
     <Layout locale={locale}>
       <Layout.PageHead>
         <ErrornHead title={locale === "ar" ? `${t("ONLYOFFICE Blog")} – ${t("Page not found")}` : `${t("Page not found")} – ${t("ONLYOFFICE Blog")}`} />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <ErrorContent t={t} />

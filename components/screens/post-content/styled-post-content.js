@@ -44,7 +44,7 @@ const StyledPostContent = styled(Section)`
       background-repeat: no-repeat;
 
       &:not(:last-child) {
-        ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
       }
 
       &.date {
@@ -80,16 +80,16 @@ const StyledPostContent = styled(Section)`
       background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/author.svg");
 
       &:not(:last-child) {
-        ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
       }
     }
 
     .share-buttons {
-      ${props => props.locale === "ar" ? "margin-right: auto;" : "margin-left: auto;"}
+      ${props => props.$locale === "ar" ? "margin-right: auto;" : "margin-left: auto;"}
 
       @media screen and ${device.tablet} {
         margin-top: 24px;
-        ${props => props.locale === "ar" ? "margin-right: initial;" : "margin-left: initial;"}
+        ${props => props.$locale === "ar" ? "margin-right: initial;" : "margin-left: initial;"}
         width: 100%;
       }
     }
@@ -98,7 +98,7 @@ const StyledPostContent = styled(Section)`
   .content {
     position: relative;
     margin: 50px auto 40px;
-    ${props => props.locale === "ar" ? "padding-right: 88px;" : "padding-left: 88px;"}
+    ${props => props.$locale === "ar" ? "padding-right: 88px;" : "padding-left: 88px;"}
     display: flex;
     justify-content: space-between;
     max-width: 824px;
@@ -109,13 +109,13 @@ const StyledPostContent = styled(Section)`
     }
 
     ul li:before {
-      padding-left: ${props => props.locale === "ar" && "15px"};
-      padding-right: ${props => props.locale === "ar" && "0"};
+      padding-left: ${props => props.$locale === "ar" && "15px"};
+      padding-right: ${props => props.$locale === "ar" && "0"};
     }
 
     @media screen and ${device.laptop} {
       margin: 70px auto 80px;
-      ${props => props.locale === "ar" ? "padding-right: 0;" : "padding-left: 0;"}
+      ${props => props.$locale === "ar" ? "padding-right: 0;" : "padding-left: 0;"}
     }
 
     @media screen and ${device.tablet} {
@@ -126,7 +126,7 @@ const StyledPostContent = styled(Section)`
   .btn-scroll-top {
     position: sticky;
     top: calc(100% - 76px);
-    ${props => props.locale === "ar" ? "left: 0;" : "right: 0;"}
+    ${props => props.$locale === "ar" ? "left: 0;" : "right: 0;"}
     padding: 0;
     width: 56px;
     height: 56px;
@@ -638,7 +638,7 @@ const StyledPostContent = styled(Section)`
 
   .tag-list {
     display: flex;
-    justify-content: ${props => props.locale === "ar" && "end"};
+    justify-content: ${props => props.$locale === "ar" && "end"};
     margin: 80px 0;
 
     @media screen and ${device.tablet} {
@@ -648,22 +648,22 @@ const StyledPostContent = styled(Section)`
   }
 
   .tag-items {
-    ${props => props.locale === "ar" ? "padding-left: 12px;" : "padding-right: 12px;"}
+    ${props => props.$locale === "ar" ? "padding-left: 12px;" : "padding-right: 12px;"}
     width: 70%;
 
     @media screen and ${device.tablet} {
-      ${props => props.locale === "ar" ? "padding-left: 0;" : "padding-right: 0;"}
+      ${props => props.$locale === "ar" ? "padding-left: 0;" : "padding-right: 0;"}
       margin-bottom: 27px;
       width: 100%;
     }
   }
 
   .tag-share {
-    margin: ${props => props.locale === "ar" ? "10px auto 10px 0" : "10px 0 10px auto"};
+    margin: ${props => props.$locale === "ar" ? "10px auto 10px 0" : "10px 0 10px auto"};
     width: 30%;
 
     .share-buttons {
-      justify-content: ${props => props.locale === "ar" ? "left" : "right"};
+      justify-content: ${props => props.$locale === "ar" ? "left" : "right"};
 
       @media screen and ${device.tablet} {
         justify-content: initial;
@@ -719,7 +719,7 @@ const StyledPostContent = styled(Section)`
     max-height: 80%;
     left: 50%;
     transform: translate(-50%, 0) scale(0,0);
-    z-index: 10001;
+    z-index: 999999;
     transition: transform .1s ease;
     opacity: 0;
 
@@ -742,7 +742,7 @@ const StyledPostContent = styled(Section)`
     .modal-close-btn {
       position: absolute;
       top: -30px;
-      ${props => props.locale === "ar" ? "left: -30px;" : "right: -30px;"}
+      ${props => props.$locale === "ar" ? "left: -30px;" : "right: -30px;"}
       width: 23px;
       height: 23px;
       cursor: pointer;
@@ -788,7 +788,7 @@ const StyledPostContent = styled(Section)`
     width: 100%;
     height: 100%;
     background-color: rgb(119 119 119 / 50%);
-    z-index: 10000;
+    z-index: 999999;
 
     &.active {
       display: block;

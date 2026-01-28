@@ -14,12 +14,12 @@ const Text = ({
   }) => {
   return (
     <StyledText
-      as={as ? as : "span"}
+      as={as ? as : "div"}
       className={className}
-      colorProps={color}
-      fontSizeProps={fontSize}
-      fontWeightProps={fontWeight}
-      lineHeightProps={lineHeight}
+      $color={color}
+      $fontSize={fontSize}
+      $fontWeight={fontWeight}
+      $lineHeight={lineHeight}
       onClick={onClick}
     >
       {label || children}

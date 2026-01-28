@@ -6,6 +6,7 @@ import Header from "./header";
 import Main from "./main";
 import Footer from "./footer";
 import Head from "./head";
+import CookieBanner from "./cookies/banner";
 
 function PageHead() {
   return null;
@@ -63,14 +64,15 @@ class Layout extends React.Component {
     });
 
     return (
-      <StyledLayout locale={locale} id="page-layout" className="layout">
+      <StyledLayout $locale={locale} id="page-layout" className="layout">
         {children}
         {headContent && <Head>{headContent.props.children}</Head>}
         {headerContent && <Header>{headerContent.props.children}</Header>}
         <Main>{mainContent ? mainContent.props.children : null}</Main>
         {footerContent && (
-          <Footer className="footer">{footerContent.props.children}</Footer>
+          <Footer>{footerContent.props.children}</Footer>
         )}
+        <CookieBanner />
       </StyledLayout>
     );
   }

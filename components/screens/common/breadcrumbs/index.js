@@ -6,8 +6,8 @@ const Breadcrumbs = ({ t, data, isPostPage, isAuthorPage, isInThePressPage, isCa
     <StyledBreadcrumbs {...rest}>
       <li>
         <InternalLink href="/">{t("Blog")}</InternalLink>
+         &ensp;/&ensp;
       </li>
-      &ensp;/&ensp;
       {isPostPage ? (
           data?.map(({ node }, index) => {
             return <li key={node.id}><InternalLink href={`/category/${node?.slug}`}>{node.name}</InternalLink>{index !== data.length - 1 && <>&ensp;/&ensp;</>}</li>

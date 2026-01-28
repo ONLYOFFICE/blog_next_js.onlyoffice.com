@@ -32,7 +32,7 @@ const StyledAdventMobileOnly = styled.div`
         letter-spacing: -0.02em;
         display: flex;
         align-items: center;
-        margin: ${props => props.locale === "ar" ? "0 0 0 24px" : "0 24px 0 0"};
+        margin: ${props => props.$locale === "ar" ? "0 0 0 24px" : "0 24px 0 0"};
 
         &:before {
           content: "";
@@ -44,14 +44,14 @@ const StyledAdventMobileOnly = styled.div`
           height: 40px;
           width: 40px;
           min-width: 40px;
-          ${props => props.locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
+          ${props => props.$locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
 
           @media screen and ${device.mobile} {
             width: 48px;
             height: 48px;
             position: absolute;
             top: -24px;
-            ${props => props.locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
+            ${props => props.$locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
           }
         }
 
@@ -76,7 +76,7 @@ const StyledAdventMobileOnly = styled.div`
           line-height: 100%;
           padding: 11px 16px;
           text-decoration: none;
-          ${props => props.locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
+          ${props => props.$locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
           border-radius: 3px;
           text-align: center;
 
@@ -87,7 +87,7 @@ const StyledAdventMobileOnly = styled.div`
 
           @media screen and ${device.mobile} {
             padding: 10px 12px;
-            ${props => props.locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
+            ${props => props.$locale === "ar" ? "margin-left: 0;" : "margin-right: 0;"}
             margin-bottom: 8px;
             line-height: 15px;
           }

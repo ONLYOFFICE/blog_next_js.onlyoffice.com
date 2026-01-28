@@ -8,7 +8,7 @@ const StyledRecentPosts = styled.div`
   padding: 23px;
   background-color: #f9f9f9;
 
-  h4 {
+  h3 {
     margin-bottom: 24px;
     font-size: 18px;
     line-height: 24px;
@@ -146,14 +146,14 @@ const StyledRecentPosts = styled.div`
 
   .post-date {
     margin-top: 8px;
-    ${props => props.locale === "ar" ? "padding-right: 20px;" : "padding-left: 20px;"}
+    ${props => props.$locale === "ar" ? "padding-right: 20px;" : "padding-left: 20px;"}
     font-size: 12px;
     line-height: 16px;
     color: #919192;
     background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/calendar.svg");
     background-repeat: no-repeat;
     background-size: 12px 12px;
-    background-position: ${props => props.locale === "ar" ? "right" : "0 3px"};
+    background-position: ${props => props.$locale === "ar" ? "right" : "0 3px"};
 
     @media screen and ${device.laptop} {
       margin-top: auto;

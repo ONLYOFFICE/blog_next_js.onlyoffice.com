@@ -14,42 +14,59 @@ const StyledNewsletter = styled.div`
 
   &.hy {
     .newsletter-body form button {
-      min-width: 162px;
-
-      @media screen and ${device.laptop} {
+      min-width: 164px;
+      @media screen and ${device.mobile} {
         min-width: 56px;
       }
     }
+
+    @media screen and ${device.laptop} {
+      .newsletter-body form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        input, input#name {
+          max-width: 100%;
+        }
+        }
+      }
   }
   
   .newsletter-wrapper {
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
-    padding: 54px 97px 37px;
+    justify-content: start;
+    padding: 54px 56px 37px;
     margin: 0 auto;
     width: 100%;
 
     @media screen and ${device.laptop} {
       flex-direction: column;
       align-items: center;
+      padding: 40px 56px;
+    }
+    @media screen and ${device.tablet} {
       padding: 32px 16px;
     }
   }
 
   .newsletter-title {
     margin-top: 7px;
-    ${props => props.locale === "ar" ? "margin-left: 56px;" : "margin-right: 56px;"}
+    ${props => props.$locale === "ar" ? "margin-left: 56px;" : "margin-right: 56px;"}
     width: 100%;
-    max-width: ${props => props.locale === "ar" ? "204px" : "180px"};
+    max-width: ${props => props.$locale === "ar" ? "204px" : "180px"};
+    //white-space: nowrap;
 
     @media screen and ${device.laptop} {
       margin: 0 0 32px;
-      font-size: 20px;
-      line-height: 27px;
       letter-spacing: -0.01em;
       text-align: center;
       max-width: 100%;
+    }
+    @media screen and ${device.mobile} {
+      font-size: 20px;
+      line-height: 27px;
+      margin: 0 0 24px;
     }
   }
 
@@ -57,32 +74,59 @@ const StyledNewsletter = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 586px;
+    max-width: 776px;
 
     form {
       position: relative;
-      display: flex;
+      display: grid;
+      grid-template-columns: 40% auto;
+      column-gap: 16px;
+        @media screen and ${device.mobile} {
+          display: flex;
+          gap: 16px;
+          flex-direction: column;
+        }
+      .email-button-field {
+        display: flex;
+        position: relative;
+        
+        @media screen and ${device.mobile} {
+          max-width: 100%;
+        }
+      }
 
       input {
+        background-color: #f9f9f9;
         box-sizing: border-box;
         height: 56px;
         border: 1px solid #aaaaaa;
-        border-radius: ${props => props.locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
-        ${props => props.locale === "ar" ? "border-left: none;" : "border-right: none;"}
+        border-radius: ${props => props.$locale === "ar" ? "0 3px 3px 0" : "3px 0 0 3px"};
+        ${props => props.$locale === "ar" ? "border-left: none;" : "border-right: none;"}
         padding: 16px;
         font-size: 14px;
         line-height: 280%;
         color: #333;
+        max-width: 328px;
+        width: 100%;
 
+        &#name {
+          border-radius: 3px;
+          ${props => props.$locale === "ar" ? "border-left: 1px solid #aaaaaa;" : "border-right: 1px solid #aaaaaa;"}
+          max-width: 300px;
+          @media screen and ${device.mobile} {
+          max-width: 100%;
+        }
+        }
         @media screen and ${device.mobile} {
           height: 48px;
+          max-width: 100%;
         }
       }
 
       button {
         position: relative;
         padding: 19px 12px;
-        border-radius: ${props => props.locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
+        border-radius: ${props => props.$locale === "ar" ? "3px 0 0 3px" : "0 3px 3px 0"};
         min-width: 122px;
         font-family: "Open Sans", sans-serif;
         font-size: 13px;
@@ -116,7 +160,7 @@ const StyledNewsletter = styled.div`
         }
 
         @media screen and ${device.mobile} {
-          border-radius: ${props => props.locale === "ar" && "0 3px 3px 0"};
+          border-radius: ${props => props.$locale === "ar" && "0 3px 3px 0"};
           font-size: 0;
           min-width: 56px;
           height: 48px;
@@ -124,14 +168,14 @@ const StyledNewsletter = styled.div`
           background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/icons/union.svg");
           background-position: 50% 50%;
           background-repeat: no-repeat;
-          transform: ${props => props.locale === "ar" && "rotate(180deg)"};
+          transform: ${props => props.$locale === "ar" && "rotate(180deg)"};
         }
       }
 
       .error-text {
         position: absolute;
         top: 56px;
-        ${props => props.locale === "ar" ? "right: 0;" : "left: 0;"}
+        ${props => props.$locale === "ar" ? "right: 0;" : "left: 0;"}
         color: #ff0c3e;
         font-size: 12px;
         line-height: 19px;
@@ -158,13 +202,10 @@ const StyledNewsletter = styled.div`
       pointer-events: initial;
     }
 
-    @media screen and ${device.laptop} {
-      text-align: center;
-    }
-
     @media screen and ${device.mobile} {
       font-size: 12px;
       line-height: 16px;
+      text-align: center;
     }
   }
 

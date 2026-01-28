@@ -7,7 +7,7 @@ const StyledRecentPosts = styled(Section)`
   padding: 64px 0 120px;
   background-color: #F5F5F5;
 
-  h3 {
+  h2 {
     margin-bottom: 56px;
     font-weight: 700;
     font-size: 32px;
@@ -21,7 +21,7 @@ const StyledRecentPosts = styled(Section)`
       margin-bottom: 24px;
       font-size: 24px;
       letter-spacing: -0.02em;
-      text-align: ${props => props.locale === "ar" ? "right" : "left"};
+      text-align: ${props => props.$locale === "ar" ? "right" : "left"};
     }
   }
 

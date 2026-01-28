@@ -187,10 +187,10 @@ const StyledCard = styled.div`
     }
 
     &:not(:last-child) {
-      ${props => props.locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
+      ${props => props.$locale === "ar" ? "margin-left: 20px;" : "margin-right: 20px;"}
 
       @media screen and ${device.mobile} {
-        ${props => props.locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 16px;" : "margin-right: 16px;"}
       }
     }
 

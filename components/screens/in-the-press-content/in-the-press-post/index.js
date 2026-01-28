@@ -1,11 +1,12 @@
 import StyledInThePressPost from "./styled-in-the-press-post";
+import parse from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import ExternalLink from "@components/common/external-link";
 
 const InThePressPost = ({ locale, data }) => {
   return (
-    <StyledInThePressPost locale={locale}>
+    <StyledInThePressPost $locale={locale}>
       <article>
         <div className="meta">
           <ExternalLink className="press-url" href={data?.url}>{data?.shortUrl}</ExternalLink>
@@ -19,7 +20,7 @@ const InThePressPost = ({ locale, data }) => {
         </Heading>
 
         {data?.excerpt && (
-          <p className="post-text" dangerouslySetInnerHTML={{__html: data?.excerpt}}></p>
+          <p className="post-text">{parse(data?.excerpt)}</p>
         )}
       </article>
     </StyledInThePressPost>

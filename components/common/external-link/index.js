@@ -5,9 +5,9 @@ const ExternalLink = ({
     children,
     label,
     className,
-    href,
-    target,
-    rel,
+    href = "/",
+    target = "_blank",
+    rel = "noopener noreferrer",
     tabIndex,
     title,
     onClick
@@ -37,12 +37,6 @@ ExternalLink.propTypes = {
   tabIndex: PropTypes.number,
   title: PropTypes.string,
   onClick: PropTypes.func
-};
-
-ExternalLink.defaultProps = {
-  href: "/",
-  rel: "noopener noreferrer",
-  target: "_blank"
 };
 
 export default ExternalLink;
