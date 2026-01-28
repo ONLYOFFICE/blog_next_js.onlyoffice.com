@@ -1,9 +1,38 @@
-import { FooterMenu } from "onlyoffice-react-ui-kit/footer-menu";
-import "onlyoffice-react-ui-kit/footer-menu/css";
+import { useRouter } from "next/router";
+import { OOFooter } from "onlyoffice-react-ui-kit/footer";
+import "onlyoffice-react-ui-kit/footer/css";
+import languages from "@config/languages.json";
 
-const Footer = ({ locale }) => {
+const Footer = ({ locale, postUri }) => {
+  const router = useRouter();
+
   return (
-    <FooterMenu locale={locale} mailApiUrl="/blog/api/subscribe" mailApiType={0} />
+    <OOFooter
+      locale={locale}
+      languages={languages.map((language) => ({
+        shortKey: language.shortKey,
+        name: language.longKey,
+        href:
+          router.pathname === "/[...post]"
+            ? postUri[language.locale] && postUri[language.locale].split("/").slice(3).join("/") || "/"
+            : router.pathname === "/onlyoffice-in-the-press" || router.pathname === "/search"
+            ? router.asPath
+            : "/"
+      }))}
+      base={{
+        url: "https://www.onlyoffice.com",
+        localePathMap: {
+          "el": "",
+          "hi": "",
+          "ar": "",
+          "hy": "",
+          "zh-hans": "zh",
+          "pt-br": "pt",
+        }
+      }}
+      mailApiUrl={`${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/api/sendsubscription`}
+      mailApiType="Common"
+    />
   );
 };
 

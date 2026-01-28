@@ -1,11 +1,11 @@
 import StyledHeading from "./styled-heading";
 import PropTypes from "prop-types";
 
-const Heading = ({ label, children, level, className, onClick }) => {
+const Heading = ({ as, label, children, level = 1, size, className, onClick }) => {
   return (
     <StyledHeading
-      as={`h${level}`}
-      level={level}
+      as={as || `h${level}`}
+      $size={size ? size : level}
       className={className}
       onClick={onClick}
     >
@@ -15,15 +15,13 @@ const Heading = ({ label, children, level, className, onClick }) => {
 };
 
 Heading.propTypes = {
+  as: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node,
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   className: PropTypes.string,
   onClick: PropTypes.func
-};
-
-Heading.defaultProps = {
-  level: 1
 };
 
 export default Heading;

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAuthorSlug from "@lib/requests/getAuthorSlug";
@@ -7,13 +6,12 @@ import getAuthorPosts from "@lib/requests/getAuthorPosts";
 import Layout from "@components/layout";
 import AuthorHead from "@components/screens/head/author";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import AuthorContent from "@components/screens/author-content";
 
 const AuthorPage = ({ locale, posts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isAuthorPage = true;
   const authorName = posts?.edges[0]?.node.author?.node?.name;
   const authorSlug = posts?.edges[0]?.node.author?.node?.slug;
@@ -27,9 +25,9 @@ const AuthorPage = ({ locale, posts }) => {
           authorSlug={authorSlug}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header t={t} locale={locale} stateMobile={stateMobile} setStateMobile={setStateMobile} />
+        <Header t={t} locale={locale} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <AuthorContent t={t} locale={locale} posts={posts} isAuthorPage={isAuthorPage} authorName={authorName} authorSlug={authorSlug} />

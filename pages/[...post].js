@@ -7,14 +7,13 @@ import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
 import Layout from "@components/layout";
 import PostHead from "@components/screens/head/post";
 import Header from "@components/screens/header";
-import AdventAnnounceBanner from "@components/screens/header/advent-announce-banner";
+import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import PostContent from "@components/screens/post-content";
 import languages from "@config/languages.json";
 
 const PostPage = ({ locale, post, posts }) => {
   const { t } = useTranslation("common");
-  const [stateMobile, setStateMobile] = useState(false);
   const isPostPage = true;
 
   const [postUri, setPostUri] = useState(
@@ -47,22 +46,15 @@ const PostPage = ({ locale, post, posts }) => {
           postUri={postUri}
         />
       </Layout.PageHead>
-      <AdventAnnounceBanner locale={locale} stateMobile={stateMobile} />
+      <AdventAnnounce locale={locale} />
       <Layout.PageHeader>
-        <Header
-          t={t}
-          locale={locale}
-          stateMobile={stateMobile}
-          setStateMobile={setStateMobile}
-          postUri={postUri}
-          isPostPage={isPostPage}
-        />
+        <Header t={t} locale={locale} postUri={postUri} />
       </Layout.PageHeader>
       <Layout.SectionMain>
         <PostContent t={t} locale={locale} post={post} posts={posts} isPostPage={isPostPage} />
       </Layout.SectionMain>
       <Layout.PageFooter>
-        <Footer locale={locale} />
+        <Footer locale={locale} postUri={postUri} />
       </Layout.PageFooter>
     </Layout>
   )

@@ -32,6 +32,26 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+           <Script
+            id="gtaginit"
+            strategy="beforeInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'necessary': 'granted',
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'security_storage': 'granted',
+                'functionality_storage': 'denied',
+                'personalization_storage': 'denied',
+            });
+            `,
+            }}
+          />
           {/* Google Tag Manager */}
           <Script id="googletagmanager1" strategy="beforeInteractive" dangerouslySetInnerHTML={{
             __html: `

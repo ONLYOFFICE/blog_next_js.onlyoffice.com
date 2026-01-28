@@ -11,7 +11,7 @@ const StyledInThePressPost = styled.div`
 
   .press-url {
     display: inline-block;
-    ${props => props.locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
+    ${props => props.$locale === "ar" ? "margin-left: 24px;" : "margin-right: 24px;"}
     border-radius: 3px;
     font-size: 12px;
     line-height: 16px;

@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { renderToString } from "react-dom/server";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import decodeHtml from "decode-html";
+import parse from "html-react-parser";
 import DateFormat from "@components/screens/common/date-format";
 import Heading from "@components/common/heading";
 import Tag from "@components/common/tag";
@@ -89,7 +90,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
 
   return (
     <>
-      <StyledPostContent locale={locale} className="post-content">
+      <StyledPostContent $locale={locale} className="post-content">
         <Breadcrumbs t={t} data={post?.categories?.edges} isPostPage={isPostPage} />
 
         <div ref={refContentWrapper} className="content">
@@ -101,7 +102,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                   <DateFormat locale={locale} data={post?.date} format="D MMMM y" />
                 </span>
                 <InternalLink className="author" href={`/author/${post?.author.node.slug}`}>
-                  <span dangerouslySetInnerHTML={{__html: t("ByAuthor", { authorName: post?.author.node.name })}} ></span>
+                  {parse(t("ByAuthor", { authorName: post?.author.node.name }))}
                 </InternalLink>
                 {post.outdated && (
                   <span className="outdated">{t("Outdated")}</span>
@@ -113,11 +114,9 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 onClick={onClickHandler}
                 className="entry-content"
                 suppressHydrationWarning
-                dangerouslySetInnerHTML={{
-                  __html: post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) =>
-                    renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>))
-                }}
-              />
+              >
+                {parse(post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)))}
+              </div>
             </article>
 
             <div className="tag-list">

@@ -9,12 +9,12 @@ import InThePressPost from "./in-the-press-post";
 
 const InThePressContent = ({ t, locale, inThePressPosts, recentPosts, isInThePressPage }) => {
   return (
-    <StyledInThePressContent locale={locale} className="in-the-press-content">
+    <StyledInThePressContent $locale={locale} className="in-the-press-content">
       <Breadcrumbs className="breadcrumbs" t={t} isInThePressPage={isInThePressPage} />
 
       <div className="wrapper">
         <div className="content">
-          <Heading className="main-title" level={2}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
+          <Heading className="main-title" level={1} size={2}>{t("ONLYOFFICE IN THE PRESS")}</Heading>
 
           <div className="posts">
             {inThePressPosts?.edges.slice(0, 3).map(({node}) => (
