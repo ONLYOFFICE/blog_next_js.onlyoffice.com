@@ -13,7 +13,7 @@ const FollowUs = ({ t, locale }) => {
 
   return (
     <StyledFollowUs>
-      <Heading level={4}>{t("Follow us")}</Heading>
+      <Heading level={3} size={4}>{t("Follow us")}</Heading>
       <SocialLinks t={t} locale={locale} handlerSetModal={handlerSetModal} />
       <MailPopup t={t} locale={locale} popupIsOpen={popupIsOpen} setPopupIsOpen={setPopupIsOpen} />
     </StyledFollowUs>

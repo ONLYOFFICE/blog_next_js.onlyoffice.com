@@ -7,8 +7,8 @@ const RecentPosts = ({ t, locale, data }) => {
   const isRecentPosts = true;
 
   return (
-    <StyledRecentPosts locale={locale}>
-      <Heading level={4}>{t("Recent posts")}</Heading>
+    <StyledRecentPosts $locale={locale}>
+      <Heading level={3} size={4}>{t("Recent posts")}</Heading>
 
       <ul>
         {data.edges.map(({node}) => (

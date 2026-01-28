@@ -71,7 +71,7 @@ cd "$BUILD_DIR"
 
 # Build application with error handling
 echo "Starting application build..."
-docker run --rm -v "$BUILD_DIR":"$APP_DIR" -w "$APP_DIR" "$DOCKER_CONTAINER_TAG" sh -c "yarn && yarn build"
+docker run --rm -v "$BUILD_DIR":"$APP_DIR" -w "$APP_DIR" "$DOCKER_CONTAINER_TAG" sh -c "npm i && npm run build"
 if [ $? -ne 0 ]; then
     echo "Error: Application build failed. Cleaning up build directory and exiting."
     send_telegram_notification "FAILED"
@@ -111,11 +111,11 @@ if docker ps -a | grep -wq "$APP_NAME"; then
     else
         # Build and run a new container if the image tag does not match
         docker rm "$APP_NAME"
-        docker run -d --log-driver=awslogs --log-opt awslogs-region=$AWSLOGS_REGION --log-opt awslogs-group=$AWSLOGS_GROUP --log-opt awslogs-stream=$AWSLOGS_STREAM --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
+        docker run -d --log-driver=awslogs --log-opt awslogs-region=$AWSLOGS_REGION --log-opt awslogs-group=$AWSLOGS_GROUP --log-opt awslogs-stream=$AWSLOGS_STREAM --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" npm run start
     fi
 else
     # Build and run a new container if it doesn't exist
-    docker run -d --log-driver=awslogs --log-opt awslogs-region=$AWSLOGS_REGION --log-opt awslogs-group=$AWSLOGS_GROUP --log-opt awslogs-stream=$AWSLOGS_STREAM --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" yarn start
+    docker run -d --log-driver=awslogs --log-opt awslogs-region=$AWSLOGS_REGION --log-opt awslogs-group=$AWSLOGS_GROUP --log-opt awslogs-stream=$AWSLOGS_STREAM --name "$APP_NAME" --publish "0.0.0.0:$EXPOSE_PORT:$EXPOSE_PORT" -v "$APP_DIR:$APP_DIR" -w "$APP_DIR" --restart always "$DOCKER_CONTAINER_TAG" npm run start
 fi
 
 # Send success notification

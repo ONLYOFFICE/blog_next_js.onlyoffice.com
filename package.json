@@ -1,41 +1,32 @@
 {
   "name": "new-blog.onlyoffice.com",
-  "version": "0.1.0",
+  "version": "1.4.0",
   "private": true,
   "scripts": {
     "dev": "npm run clean-cache && next dev -p 30007",
     "build": "npm run clean-cache && next build",
     "start": "next start -p 30007",
-    "lint": "next lint",
     "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
-    "cookie": "^1.0.2",
+    "cookie": "^1.1.1",
     "decode-html": "^2.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.3",
-    "html-react-parser": "^5.1.10",
-    "i18next": "^24.2.2",
+    "html-react-parser": "^5.2.10",
+    "i18next": "^25.7.2",
     "moment": "^2.30.1",
-    "next": "15.5.3",
-    "next-i18next": "^15.4.2",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#59250fb833c1cef9b39c111a251b510bf0ec3f8c",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.53.2",
-    "react-i18next": "^15.4.0",
-    "react-share": "^5.1.1",
-    "react-svg": "^16.1.34",
-    "react-syntax-highlighter": "^15.6.1",
-    "serverless-mysql": "^1.5.5",
-    "styled-components": "^6.1.15"
+    "next": "16.0.10",
+    "next-i18next": "^15.4.3",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#aeb3b55ebe87de8c3a8952f91e1d32cdca07e24d",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-hook-form": "^7.68.0",
+    "react-i18next": "^16.5.0",
+    "react-share": "^5.2.2",
+    "react-syntax-highlighter": "^16.1.0",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
-    "@types/node": "^20.17.47",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@types/styled-components": "^5.1.34",
-    "rimraf": "^6.0.1",
-    "typescript": "^5"
+    "rimraf": "^6.1.2"
   }
 }

@@ -1,7 +1,7 @@
 import StyledSearchArea from "./styled-search-area";
 import React, { forwardRef } from "react";
 
-const SearchArea = forwardRef(({ locale, valueSearch, label, placeholder, searchQuery, setSearchQuery, handleSearchFormSubmit, searchHeader, setSearchShow }, ref) => {
+const SearchArea = forwardRef(({ t, locale, label, placeholder, searchQuery, setSearchQuery, handleSearchFormSubmit, searchHeader, setSearchShow }, ref) => {
   const onSearch = (e) => {
     e.preventDefault();
     setSearchQuery(e.target.value);
@@ -17,26 +17,27 @@ const SearchArea = forwardRef(({ locale, valueSearch, label, placeholder, search
 
   return (
     <StyledSearchArea
-      locale={locale}
+      $locale={locale}
       onSubmit={handleSearchFormSubmit}
       className="search-area"
-      valueSearch={valueSearch}
     >
       <div>
         <input
           ref={ref}
           onChange={onSearch}
+          id="search-area"
           value={searchQuery}
           className={`search-input ${searchQuery ? "focus" : ""}`}
           placeholder={placeholder}
         />
-        <div className="input-label">
+        <label htmlFor="search-area" className="input-label">
           {label}
-        </div>
+        </label>
       </div>
       <button
         onClick={handleButtonClick}
         className={`search-icon ${searchQuery || searchHeader ? "has-query" : ""}`}
+        aria-label={t("Search")}
         type="button"
       >
       </button>

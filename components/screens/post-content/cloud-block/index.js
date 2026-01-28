@@ -7,7 +7,7 @@ const CloudBlock = ({ t, locale, ...rest }) => {
     locale === "zh-hans" ? "/zh" :
     locale === "pt-br" ? "/pt" : 
     `/${locale}`
-  }/docspace-registration.aspx?utm_source=blog&utm_medium=post_page&utm_campaign=registration_docspace&utm_content=try-onlyoffice-in-the-cloud`
+  }/docspace-registration?utm_source=blog&utm_medium=post_page&utm_campaign=registration_docspace&utm_content=try-onlyoffice-in-the-cloud`
 
   return (
     <StyledCloudBlock {...rest}>

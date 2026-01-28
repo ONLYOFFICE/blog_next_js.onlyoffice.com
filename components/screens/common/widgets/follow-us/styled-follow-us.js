@@ -7,7 +7,7 @@ const StyledFollowUs = styled.div`
   padding: 23px;
   background-color: #f9f9f9;
 
-  h4 {
+  h3 {
     margin-bottom: 24px;
     font-size: 18px;
     line-height: 24px;

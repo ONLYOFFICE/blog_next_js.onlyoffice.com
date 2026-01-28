@@ -1,10 +1,10 @@
 import StyledDocSpaceBlock from "./styled-docspace-registration-block.js";
 import { useState } from "react";
 import Heading from "@components/common/heading";
-import InternalLink from "@components/common/internal-link";
 import Text from "@components/common/text";
 import Input from "@components/common/input/index.js";
 import { useForm, Controller } from "react-hook-form";
+import parse from "html-react-parser";
 
 const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
     const href = `https://www.onlyoffice.com${
@@ -12,7 +12,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
         locale === "zh-hans" ? "/zh" :
         locale === "pt-br" ? "/pt" : 
         `/${locale}`
-      }/docspace-registration.aspx?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
+      }/docspace-registration?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
   const [inputEmailUsed, setInputEmailUsed] = useState(false);
   const { handleSubmit, formState: { errors }, control, getValues, trigger } = useForm();
 
@@ -32,7 +32,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
   };
 
   return (
-    <StyledDocSpaceBlock className={locale} locale={locale} {...rest}>
+    <StyledDocSpaceBlock className={locale} $locale={locale} {...rest}>
       <div className="docspace_block_icons">
         <div className="docspace_block_icon doc"></div>
         <div className="docspace_block_icon spreadsheet"></div>
@@ -41,7 +41,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
         <div className="docspace_block_icon pdf"></div>
       </div>
       <Heading className="docspace_block_title" level={3}>
-        <div dangerouslySetInnerHTML={{ __html: t("Create your")}}></div>
+        {parse(t("Create your"))}
       </Heading>
       <Text className="docspace_block_subheader" as="p">
         {t("View, edit and collaborate on docs, sheets, slides, forms, and PDF files online.")}
@@ -68,6 +68,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
                   }}
                   onBlur={onBlur}
                   name="email"
+                  autoComplete="email"
                   placeholder={`${t("Enter your email*")}`}
                   value={value}
                 />

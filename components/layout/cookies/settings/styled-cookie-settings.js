@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@components/utils/devices";
+import Heading from "@components/common/heading";
 
 const StyledCookieSettingsHeader = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const StyledCross = styled.div`
 `;
 
 const StyledCookieSettings = styled.div`
+  box-sizing: border-box;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   border-radius: 5px;
@@ -52,15 +54,16 @@ const StyledCheckboxes = styled.div`
   }
 `;
 
+const StyledCheckHeading = styled(Heading)`
+  font-size: 16px;
+`;
+
 const StyledCheckText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 8px;
   text-align: left;
-  > h4 {
-    font-size: 16px;
-  }
 `;
 
 export {
@@ -68,5 +71,6 @@ export {
   StyledCookieSettings,
   StyledCross,
   StyledCheckboxes,
+  StyledCheckHeading,
   StyledCheckText,
 };

@@ -5,15 +5,15 @@ const Button = ({
   label,
   children,
   className,
-  typeButton,
-  type,
+  typeButton = "primary",
+  type = "button",
   isDisabled,
   onClick
 }) => {
   return (
     <StyledButton
       className={className}
-      typeButton={typeButton}
+      $typeButton={typeButton}
       type={type}
       disabled={isDisabled}
       onClick={onClick}
@@ -31,11 +31,6 @@ Button.propTypes = {
   isDisabled: PropTypes.bool,
   className: PropTypes.string,
   onClick: PropTypes.func
-};
-
-Button.defaultProps = {
-  typeButton: "primary",
-  type: "button"
 };
 
 export default Button;

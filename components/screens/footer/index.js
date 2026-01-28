@@ -21,7 +21,6 @@ const Footer = ({ locale, postUri }) => {
       }))}
       base={{
         url: "https://www.onlyoffice.com",
-        withAspx: true,
         localePathMap: {
           "el": "",
           "hi": "",

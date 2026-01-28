@@ -86,13 +86,13 @@ const StyledDownLoadBlock = styled.div`
 
     &.windows {
       &:before {
-        ${props => props.locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
         width: 32px;
         min-width: 32px;
         background-position: -8px 0;
 
         @media screen and ${device.tablet} {
-          ${props => props.locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
+          ${props => props.$locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
           width: 23px;
           min-width: 23px;
           height: 23px;
@@ -104,13 +104,13 @@ const StyledDownLoadBlock = styled.div`
 
     &.linux {
       &:before {
-        ${props => props.locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
         width: 32px;
         min-width: 32px;
         background-position: -39px 0;
 
         @media screen and ${device.tablet} {
-          ${props => props.locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
+          ${props => props.$locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
           width: 23px;
           min-width: 23px;
           height: 23px;
@@ -122,13 +122,13 @@ const StyledDownLoadBlock = styled.div`
 
     &.mac-os {
       &:before {
-        ${props => props.locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
+        ${props => props.$locale === "ar" ? "margin-left: 8px;" : "margin-right: 8px;"}
         width: 32px;
         min-width: 32px;
         background-position: -71px 0;
 
         @media screen and ${device.tablet} {
-          ${props => props.locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
+          ${props => props.$locale === "ar" ? "margin-left: 6px;" : "margin-right: 6px;"}
           width: 23px;
           min-width: 23px;
           height: 23px;
