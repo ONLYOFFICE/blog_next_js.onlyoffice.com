@@ -105,6 +105,7 @@ const CookieBanner = () => {
           location.hostname === new URL(document.referrer).hostname;
 
         if (sameOrigin) {
+          setConsent(ALL_GRANTED);
           setConsentCookie(ALL_GRANTED);
           setShowBanner(false);
           setShowFab(true);
@@ -128,13 +129,32 @@ const CookieBanner = () => {
 
         if (scrollPercent >= 0.2) {
           scrolledRef.current = true;
+          setConsent(ALL_GRANTED);
           setConsentCookie(ALL_GRANTED);
         }
       }
     };
+    
+    let timeoutId;
+    if (!isFullGDPR && !getConsentCookie()) {
+      timeoutId = setTimeout(() => {
+        if (!getConsentCookie()) {
+          setConsent(ALL_GRANTED);
+          setConsentCookie(ALL_GRANTED);
+        }
+      }, 15000);
+    }
+
+    if (isFullGDPR === false && !getConsentCookie()) {
+      setConsentCookie(ALL_GRANTED);
+      setConsent(ALL_GRANTED);
+    }
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [isFullGDPR]);
 
   const handleAcceptAll = () => {
