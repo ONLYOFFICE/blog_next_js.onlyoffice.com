@@ -1,6 +1,6 @@
 {
   "name": "new-blog.onlyoffice.com",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "private": true,
   "scripts": {
     "dev": "npm run clean-cache && next dev -p 30007",
@@ -16,7 +16,7 @@
     "moment": "^2.30.1",
     "next": "16.0.10",
     "next-i18next": "^15.4.3",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#aeb3b55ebe87de8c3a8952f91e1d32cdca07e24d",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#4a45758194e5b127b64cdf3db956a3fbcfe1f774",
     "prop-types": "^15.8.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
