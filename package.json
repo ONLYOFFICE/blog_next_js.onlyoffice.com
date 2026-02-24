@@ -16,7 +16,7 @@
     "moment": "2.30.1",
     "next": "16.1.6",
     "next-i18next": "15.4.3",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#d821566f3266b42b921bfd5045177b3c9bf044b2",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#207599cf2fade281d076354221abea45be95e828",
     "prop-types": "15.8.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
