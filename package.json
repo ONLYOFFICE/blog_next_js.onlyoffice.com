@@ -9,6 +9,7 @@
     "clean-cache": "rimraf .next/cache"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
     "cookie": "1.1.1",
     "decode-html": "2.0.0",
     "html-react-parser": "5.2.17",
