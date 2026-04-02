@@ -13,6 +13,7 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import DocSpaceRegistrationBlock from "../common/docspace-registration-blog";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
+import AudioPlayer from "./audio-player";
 
 const PostContent = ({ t, locale, post, posts, isPostPage }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
@@ -109,6 +110,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 )}
                 <ShareButtons locale={locale} />
               </div>
+              {post?.audioUrl && <AudioPlayer audioUrl={post.audioUrl} />}
               <div
                 ref={refContent}
                 onClick={onClickHandler}
