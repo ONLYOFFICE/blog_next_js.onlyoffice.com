@@ -24,6 +24,8 @@ const PauseIcon = () => (
 
 const AudioPlayer = ({ audioUrl }) => {
   const audioRef = useRef(null);
+  const progressRef = useRef(null);
+  const isDraggingRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -40,15 +42,41 @@ const AudioPlayer = ({ audioUrl }) => {
     }
   }, [isPlaying]);
 
-  const handleSeek = useCallback((e) => {
+  const seekFromClientX = useCallback((clientX) => {
     const audio = audioRef.current;
-    if (!audio || !duration) return;
+    const bar = progressRef.current;
+    if (!audio || !duration || !bar) return;
 
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
+    const rect = bar.getBoundingClientRect();
+    const x = clientX - rect.left;
     const ratio = Math.max(0, Math.min(1, x / rect.width));
     audio.currentTime = ratio * duration;
   }, [duration]);
+
+  const handlePointerDown = useCallback((e) => {
+    isDraggingRef.current = true;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    seekFromClientX(clientX);
+
+    const handlePointerMove = (ev) => {
+      if (!isDraggingRef.current) return;
+      const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
+      seekFromClientX(cx);
+    };
+
+    const handlePointerUp = () => {
+      isDraggingRef.current = false;
+      document.removeEventListener("mousemove", handlePointerMove);
+      document.removeEventListener("mouseup", handlePointerUp);
+      document.removeEventListener("touchmove", handlePointerMove);
+      document.removeEventListener("touchend", handlePointerUp);
+    };
+
+    document.addEventListener("mousemove", handlePointerMove);
+    document.addEventListener("mouseup", handlePointerUp);
+    document.addEventListener("touchmove", handlePointerMove);
+    document.addEventListener("touchend", handlePointerUp);
+  }, [seekFromClientX]);
 
   const cycleSpeed = useCallback(() => {
     const nextIndex = (speedIndex + 1) % SPEEDS.length;
@@ -62,10 +90,21 @@ const AudioPlayer = ({ audioUrl }) => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    let durationSet = false;
+    const trySetDuration = () => {
+      const d = audio.duration;
+      if (d && isFinite(d) && d > 0) {
+        durationSet = true;
+        setDuration(d);
+      }
+    };
+
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
-    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const onLoadedMetadata = () => setDuration(audio.duration);
+    const onTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+      if (!durationSet) trySetDuration();
+    };
     const onEnded = () => {
       setIsPlaying(false);
       setCurrentTime(0);
@@ -74,14 +113,18 @@ const AudioPlayer = ({ audioUrl }) => {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("timeupdate", onTimeUpdate);
-    audio.addEventListener("loadedmetadata", onLoadedMetadata);
+    audio.addEventListener("loadedmetadata", trySetDuration);
+    audio.addEventListener("durationchange", trySetDuration);
+    audio.addEventListener("loadeddata", trySetDuration);
     audio.addEventListener("ended", onEnded);
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("timeupdate", onTimeUpdate);
-      audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+      audio.removeEventListener("loadedmetadata", trySetDuration);
+      audio.removeEventListener("durationchange", trySetDuration);
+      audio.removeEventListener("loadeddata", trySetDuration);
       audio.removeEventListener("ended", onEnded);
     };
   }, []);
@@ -92,13 +135,13 @@ const AudioPlayer = ({ audioUrl }) => {
 
   return (
     <StyledAudioPlayer>
-      <audio ref={audioRef} src={audioUrl} preload="metadata" />
+      <audio ref={audioRef} src={audioUrl} preload="auto" />
       <button className="play-btn" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
       <div className="player-body">
         <span className="time">{formatTime(currentTime)} / {formatTime(duration)}</span>
-        <div className="progress-wrap" onClick={handleSeek}>
+        <div className="progress-wrap" ref={progressRef} onMouseDown={handlePointerDown} onTouchStart={handlePointerDown}>
           <div className="progress-bar" style={{ width: `${progress}%` }} />
         </div>
       </div>

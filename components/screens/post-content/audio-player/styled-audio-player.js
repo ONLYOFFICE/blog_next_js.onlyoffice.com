@@ -9,6 +9,7 @@ const StyledAudioPlayer = styled.div`
   margin: 24px 0;
   background: #F5F5F5;
   border-radius: 8px;
+  user-select: none;
 
   .play-btn {
     display: flex;
@@ -60,12 +61,31 @@ const StyledAudioPlayer = styled.div`
     cursor: pointer;
     position: relative;
     min-width: 60px;
+    touch-action: none;
 
     .progress-bar {
       height: 100%;
       background: #FF6F3D;
       border-radius: 3px;
-      transition: width 0.1s linear;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background: #FF6F3D;
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        transition: transform 0.15s;
+      }
+    }
+
+    &:hover .progress-bar::after {
+      transform: translateY(-50%) scale(1.25);
     }
   }
 
