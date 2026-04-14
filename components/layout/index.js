@@ -7,6 +7,7 @@ import Main from "./main";
 import Footer from "./footer";
 import Head from "./head";
 import CookieBanner from "./cookies/banner";
+import AiChatWidget from "../common/ai-chat-widget";
 
 function PageHead() {
   return null;
@@ -73,6 +74,7 @@ class Layout extends React.Component {
           <Footer>{footerContent.props.children}</Footer>
         )}
         <CookieBanner />
+        <AiChatWidget />
       </StyledLayout>
     );
   }
