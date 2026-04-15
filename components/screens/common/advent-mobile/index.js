@@ -45,26 +45,34 @@ const AdventMobileOnly = ({ t, locale }) => {
   }, [locale]);
 
   useEffect(() => {
-    const cookieBanner = document.getElementById("cookieBanner");
-    if (!cookieBanner) return;
+    const elements = [
+      document.getElementById("cookieBanner"),
+      document.getElementById("aiChatToggle"),
+    ].filter(Boolean);
 
-    cookieBanner.style.transition = "bottom 0.3s ease";
+    if (elements.length === 0) return;
+
+    elements.forEach((el) => {
+      el.style.transition = "bottom 0.3s ease";
+    });
 
     if (!isMobile || !adRef.current) {
-      cookieBanner.style.bottom = "";
-      return () => { cookieBanner.style.bottom = ""; };
+      elements.forEach((el) => { el.style.bottom = ""; });
+      return () => { elements.forEach((el) => { el.style.bottom = ""; }); };
     }
 
     const frameId = requestAnimationFrame(() => {
       if (adRef.current) {
         const adHeight = adRef.current.getBoundingClientRect().height;
-        cookieBanner.style.bottom = `${adHeight + 10}px`;
+        elements.forEach((el) => {
+          el.style.bottom = `${adHeight + 10}px`;
+        });
       }
     });
 
     return () => {
       cancelAnimationFrame(frameId);
-      cookieBanner.style.bottom = "";
+      elements.forEach((el) => { el.style.bottom = ""; });
     };
   }, [isMobile, locale]);
 

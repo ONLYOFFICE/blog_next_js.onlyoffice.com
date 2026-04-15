@@ -71,5 +71,15 @@
   "Analytical": "分析用",
   "AnalyticalDescription": "分析Cookieの目的は、ユーザーが当ウェブサイトをどのように使用しているかを発見し、訪問を追跡することです。これらの機能により、ウェブサイトの品質とコンテンツを改善することができます。",
   "Marketing": "マーケティング",
-  "MarketingDescription": "これらのCookieはマーケティング目的と、当ウェブサイトのユーザーの興味に合わせた広告をより適切に提供するための情報収集に使用されます。"
+  "MarketingDescription": "これらのCookieはマーケティング目的と、当ウェブサイトのユーザーの興味に合わせた広告をより適切に提供するための情報収集に使用されます。",
+
+  "AiChatTitle": "AI検索",
+  "AiChatWelcome": "こんにちは！質問してください。ONLYOFFICEブログの記事から回答を見つけます。",
+  "AiChatPlaceholder": "記事について質問する...",
+  "AiChatNoResults": "申し訳ありませんが、お探しの記事は見つかりませんでした。",
+  "AiChatError": "エラーが発生しました。もう一度お試しください。",
+  "AiChatSources": "出典：",
+  "AiChatExpand": "拡大",
+  "AiChatCollapse": "縮小",
+  "AiChatClose": "閉じる"
 }

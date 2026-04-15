@@ -68,5 +68,15 @@
   "Analytical": "Analitici",
   "AnalyticalDescription": "Lo scopo dei cookie analitici è comprendere come gli utenti utilizzano il nostro sito web e monitorarne le visite. Queste funzioni ci permettono di migliorare la qualità e i contenuti del sito.",
   "Marketing": "Marketing",
-  "MarketingDescription": "Questi cookie vengono utilizzati a fini di marketing e per raccogliere informazioni utili a personalizzare la pubblicità in base agli interessi degli utenti del nostro sito."
+  "MarketingDescription": "Questi cookie vengono utilizzati a fini di marketing e per raccogliere informazioni utili a personalizzare la pubblicità in base agli interessi degli utenti del nostro sito.",
+
+  "AiChatTitle": "Ricerca IA",
+  "AiChatWelcome": "Ciao! Fai una domanda e troverò la risposta negli articoli del blog ONLYOFFICE.",
+  "AiChatPlaceholder": "Chiedi dei nostri articoli...",
+  "AiChatNoResults": "Spiacenti, non ho trovato articoli corrispondenti alla tua richiesta.",
+  "AiChatError": "Si è verificato un errore. Per favore riprova.",
+  "AiChatSources": "Fonti:",
+  "AiChatExpand": "Espandi",
+  "AiChatCollapse": "Riduci",
+  "AiChatClose": "Chiudi"
 }

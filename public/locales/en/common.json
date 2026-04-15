@@ -20,5 +20,15 @@
   "Analytical": "Analytical",
   "AnalyticalDescription": "The purpose of analytical cookies is to discover how users use our website as well as to track their visits. These functions allow us to improve the quality and content of our website.",
   "Marketing": "Marketing",
-  "MarketingDescription": "These cookies are used for marketing purposes and the collection of information to better tailor advertising to the interests of the users of our website."
+  "MarketingDescription": "These cookies are used for marketing purposes and the collection of information to better tailor advertising to the interests of the users of our website.",
+
+  "AiChatTitle": "AI Search",
+  "AiChatWelcome": "Hi! Ask a question and I'll find the answer in the ONLYOFFICE blog articles.",
+  "AiChatPlaceholder": "Ask about our articles...",
+  "AiChatNoResults": "Sorry, I couldn't find any articles matching your query.",
+  "AiChatError": "An error occurred. Please try again.",
+  "AiChatSources": "Sources:",
+  "AiChatExpand": "Expand",
+  "AiChatCollapse": "Collapse",
+  "AiChatClose": "Close"
 }

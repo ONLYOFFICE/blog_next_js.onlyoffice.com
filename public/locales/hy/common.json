@@ -49,5 +49,15 @@
   "Enter your email*": "Մուտքագրեք ձեր էլ.հասցեն",
   "Create now": "Ստեղծել հիմա",
   "We sent an email message with confirmation to your email address.": "Մենք էլ․  հաղորդագրություն ենք ուղարկել ձեր էլ. հասցեին հաստատումով",
-  "ByAuthor": "{{authorName}}-ի կողմից"
+  "ByAuthor": "{{authorName}}-ի կողմից",
+
+  "AiChatTitle": "AI որոնում",
+  "AiChatWelcome": "Բարև Ձեզ։ Տվեք հարց, և ես կգտնեմ պատասխանը ONLYOFFICE բլոգի հոդվածներում։",
+  "AiChatPlaceholder": "Հարցրեք մեր հոդվածների մասին...",
+  "AiChatNoResults": "Ցավոք, ձեր հարցմանը համապատասխան հոդվածներ չեն գտնվել։",
+  "AiChatError": "Տեղի ունեցավ սխալ։ Խնդրում ենք փորձել կրկին։",
+  "AiChatSources": "Աղբյուրներ՝",
+  "AiChatExpand": "Ընդարձակել",
+  "AiChatCollapse": "Ծալել",
+  "AiChatClose": "Փակել"
 }

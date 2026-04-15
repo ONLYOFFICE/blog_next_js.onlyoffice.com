@@ -55,5 +55,15 @@
   "Your email": "بريدك الإلكتروني",
   "We sent an email message with confirmation to your email address.": "لقد أرسلنا رسالة عبر البريد الإلكتروني تحتوي على تأكيد عنوان بريدك الإلكتروني.",
   "OK": "نعم",
-  "ByAuthor": "بواسطة {{authorName}}"
+  "ByAuthor": "بواسطة {{authorName}}",
+
+  "AiChatTitle": "البحث بالذكاء الاصطناعي",
+  "AiChatWelcome": "مرحباً! اطرح سؤالاً وسأجد الإجابة في مقالات مدونة ONLYOFFICE.",
+  "AiChatPlaceholder": "اسأل عن مقالاتنا...",
+  "AiChatNoResults": "عذراً، لم أتمكن من العثور على مقالات تطابق استفسارك.",
+  "AiChatError": "حدث خطأ. الرجاء المحاولة مرة أخرى.",
+  "AiChatSources": "المصادر:",
+  "AiChatExpand": "توسيع",
+  "AiChatCollapse": "طي",
+  "AiChatClose": "إغلاق"
 }

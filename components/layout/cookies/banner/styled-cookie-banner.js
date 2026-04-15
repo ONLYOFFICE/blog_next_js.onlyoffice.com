@@ -36,7 +36,7 @@ const StyledCookieFab = styled.div`
   cursor: pointer;
   height: 48px;
   position: fixed;
-  right: 16px;
+  right: 78px;
   width: 48px;
   z-index: 1000;
 `;

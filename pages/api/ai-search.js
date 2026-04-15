@@ -13,7 +13,14 @@ const openai = new OpenAI({
 const SYSTEM_PROMPT = `You are a helpful assistant for the ONLYOFFICE blog.
 Answer user questions using ONLY the information from the provided blog articles.
 If the information is insufficient to answer the question, say so honestly.
-When referencing articles, use EXACTLY the URLs provided — do not modify, complete, or add a domain to them.
+
+When referencing an article, ALWAYS format it as a markdown link: [Article Title](url)
+NEVER write the URL as plain text. NEVER write "URL:" followed by a URL.
+Use EXACTLY the URLs provided — do not modify, complete, or add a domain to them.
+
+Example format for listing articles:
+1. [Article Title](/blog/2020/08/article-slug) — Date: August 13, 2020
+
 Respond in the same language as the user's question.`;
 
 const MAX_HITS = 8;
@@ -88,9 +95,8 @@ export default async function handler(req, res) {
 
     if (hits.length === 0) {
       return res.status(200).json({
-        answer: locale === "ru"
-          ? "К сожалению, я не нашёл статей по вашему запросу."
-          : "Sorry, I couldn't find any articles matching your query.",
+        answer: null,
+        empty: true,
         sources: [],
       });
     }

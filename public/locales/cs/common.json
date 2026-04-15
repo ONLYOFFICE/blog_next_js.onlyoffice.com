@@ -28,5 +28,15 @@
   "Your e-mail": "Váš e-mail",
   "Subscribe": "Odebírejte",
   "We sent an email message with confirmation to your email address.": "Na vaši e-mailovou adresu jsme odeslali zprávu s potvrzením.",
-  "ByAuthor": "By {{authorName}}"
+  "ByAuthor": "By {{authorName}}",
+
+  "AiChatTitle": "Vyhledávání s AI",
+  "AiChatWelcome": "Ahoj! Zeptejte se a já najdu odpověď v článcích blogu ONLYOFFICE.",
+  "AiChatPlaceholder": "Zeptejte se na naše články...",
+  "AiChatNoResults": "Omlouvám se, nenašel jsem žádné články odpovídající vašemu dotazu.",
+  "AiChatError": "Došlo k chybě. Zkuste to prosím znovu.",
+  "AiChatSources": "Zdroje:",
+  "AiChatExpand": "Rozbalit",
+  "AiChatCollapse": "Sbalit",
+  "AiChatClose": "Zavřít"
 }

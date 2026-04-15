@@ -49,5 +49,15 @@
   "Enter your email*": "Εισάγετε το email σας*",
   "Create now": "Δημιουργία τώρα",
   "We sent an email message with confirmation to your email address.": "Στείλαμε ένα email επιβεβαίωσης στη διεύθυνση email σας.",
-  "ByAuthor": "Από τον {{authorName}}"
+  "ByAuthor": "Από τον {{authorName}}",
+
+  "AiChatTitle": "Αναζήτηση με AI",
+  "AiChatWelcome": "Γεια σας! Κάντε μια ερώτηση και θα βρω την απάντηση στα άρθρα του ιστολογίου ONLYOFFICE.",
+  "AiChatPlaceholder": "Ρωτήστε για τα άρθρα μας...",
+  "AiChatNoResults": "Λυπάμαι, δεν βρήκα άρθρα που να ταιριάζουν με το ερώτημά σας.",
+  "AiChatError": "Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά.",
+  "AiChatSources": "Πηγές:",
+  "AiChatExpand": "Επέκταση",
+  "AiChatCollapse": "Σύμπτυξη",
+  "AiChatClose": "Κλείσιμο"
 }

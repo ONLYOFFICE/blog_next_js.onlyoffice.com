@@ -76,5 +76,15 @@
   "Analytical": "分析类 Cookie",
   "AnalyticalDescription": "分析类 Cookie 的目的是了解用户如何使用我们的网站，并追踪访问情况。这些功能能够帮助我们提升网站的内容与质量。",
   "Marketing": "营销类 Cookie",
-  "MarketingDescription": "这些 Cookie 用于营销目的，能够收集信息以更精准地投放符合用户兴趣的广告内容。"
+  "MarketingDescription": "这些 Cookie 用于营销目的，能够收集信息以更精准地投放符合用户兴趣的广告内容。",
+
+  "AiChatTitle": "AI 搜索",
+  "AiChatWelcome": "你好！请提问，我将从 ONLYOFFICE 博客文章中为您找到答案。",
+  "AiChatPlaceholder": "询问我们的文章...",
+  "AiChatNoResults": "抱歉，未找到与您的查询匹配的文章。",
+  "AiChatError": "发生错误。请重试。",
+  "AiChatSources": "来源：",
+  "AiChatExpand": "展开",
+  "AiChatCollapse": "折叠",
+  "AiChatClose": "关闭"
 }
