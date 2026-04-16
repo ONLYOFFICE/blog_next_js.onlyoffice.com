@@ -62,6 +62,7 @@ const CollapseIcon = () => (
 
 function formatAnswer(text) {
   return text
+    .replace(/https?:\/\/(?:www\.)?onlyoffice\.com(\/blog\/[^\s)>\]"]+)/g, "$1")
     .replace(/\n\n/g, "</p><p>")
     .replace(/\n/g, "<br/>")
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
