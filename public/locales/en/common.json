@@ -30,5 +30,8 @@
   "AiChatSources": "Sources:",
   "AiChatExpand": "Expand",
   "AiChatCollapse": "Collapse",
-  "AiChatClose": "Close"
+  "AiChatClose": "Close",
+  "AiChatRateLimit": "Too many requests. Please try again in {{seconds}} seconds.",
+  "AiChatTooShort": "Your question is too short. Please use at least {{min}} characters.",
+  "AiChatTooLong": "Your question is too long. Please keep it under {{max}} characters."
 }

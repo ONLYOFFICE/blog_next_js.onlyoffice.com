@@ -77,5 +77,8 @@
   "AiChatSources": "Quellen:",
   "AiChatExpand": "Erweitern",
   "AiChatCollapse": "Verkleinern",
-  "AiChatClose": "Schließen"
+  "AiChatClose": "Schließen",
+  "AiChatRateLimit": "Zu viele Anfragen. Bitte versuchen Sie es in {{seconds}} Sekunden erneut.",
+  "AiChatTooShort": "Ihre Frage ist zu kurz. Bitte verwenden Sie mindestens {{min}} Zeichen.",
+  "AiChatTooLong": "Ihre Frage ist zu lang. Bitte halten Sie sie unter {{max}} Zeichen."
 }

@@ -81,5 +81,8 @@
   "AiChatSources": "出典：",
   "AiChatExpand": "拡大",
   "AiChatCollapse": "縮小",
-  "AiChatClose": "閉じる"
+  "AiChatClose": "閉じる",
+  "AiChatRateLimit": "リクエストが多すぎます。{{seconds}}秒後にもう一度お試しください。",
+  "AiChatTooShort": "質問が短すぎます。{{min}}文字以上で入力してください。",
+  "AiChatTooLong": "質問が長すぎます。{{max}}文字以内で入力してください。"
 }

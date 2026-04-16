@@ -92,6 +92,37 @@ const AiChatWidget = () => {
   const expandLabel = isExpanded ? t("AiChatCollapse") : t("AiChatExpand");
   const closeLabel = t("AiChatClose");
 
+  const buildErrorMessage = async (response) => {
+    if (response.status === 429) {
+      let retryAfter = parseInt(response.headers.get("Retry-After"), 10);
+      if (!retryAfter || Number.isNaN(retryAfter)) {
+        try {
+          const data = await response.json();
+          retryAfter = data?.retryAfter || 60;
+        } catch {
+          retryAfter = 60;
+        }
+      }
+      return t("AiChatRateLimit", { seconds: retryAfter });
+    }
+
+    if (response.status === 400) {
+      try {
+        const data = await response.json();
+        if (data?.reason === "tooShort") {
+          return t("AiChatTooShort", { min: data.minLength });
+        }
+        if (data?.reason === "tooLong") {
+          return t("AiChatTooLong", { max: data.maxLength });
+        }
+      } catch {
+        // fall through
+      }
+    }
+
+    return errorMsg;
+  };
+
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
@@ -130,7 +161,13 @@ const AiChatWidget = () => {
       });
 
       if (!res.ok) {
-        throw new Error("Request failed");
+        const message = await buildErrorMessage(res);
+        setMessages((prev) => [
+          ...prev,
+          { role: "ai", content: message, sources: [] },
+        ]);
+        setIsLoading(false);
+        return;
       }
 
       const contentType = res.headers.get("content-type") || "";

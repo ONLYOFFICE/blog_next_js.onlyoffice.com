@@ -59,5 +59,8 @@
   "AiChatSources": "Աղբյուրներ՝",
   "AiChatExpand": "Ընդարձակել",
   "AiChatCollapse": "Ծալել",
-  "AiChatClose": "Փակել"
+  "AiChatClose": "Փակել",
+  "AiChatRateLimit": "Չափազանց շատ հարցումներ։ Փորձեք կրկին {{seconds}} վայրկյանից։",
+  "AiChatTooShort": "Ձեր հարցը չափազանց կարճ է։ Օգտագործեք առնվազն {{min}} նիշ։",
+  "AiChatTooLong": "Ձեր հարցը չափազանց երկար է։ Պահպանեք այն {{max}} նիշից պակաս։"
 }

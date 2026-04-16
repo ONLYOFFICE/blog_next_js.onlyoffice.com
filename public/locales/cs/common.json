@@ -38,5 +38,8 @@
   "AiChatSources": "Zdroje:",
   "AiChatExpand": "Rozbalit",
   "AiChatCollapse": "Sbalit",
-  "AiChatClose": "Zavřít"
+  "AiChatClose": "Zavřít",
+  "AiChatRateLimit": "Příliš mnoho požadavků. Zkuste to prosím znovu za {{seconds}} sekund.",
+  "AiChatTooShort": "Vaše otázka je příliš krátká. Použijte prosím alespoň {{min}} znaků.",
+  "AiChatTooLong": "Vaše otázka je příliš dlouhá. Udržte ji prosím pod {{max}} znaky."
 }

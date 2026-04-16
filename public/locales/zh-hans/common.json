@@ -86,5 +86,8 @@
   "AiChatSources": "来源：",
   "AiChatExpand": "展开",
   "AiChatCollapse": "折叠",
-  "AiChatClose": "关闭"
+  "AiChatClose": "关闭",
+  "AiChatRateLimit": "请求过多。请在 {{seconds}} 秒后重试。",
+  "AiChatTooShort": "您的问题太短。请至少使用 {{min}} 个字符。",
+  "AiChatTooLong": "您的问题太长。请保持在 {{max}} 个字符以内。"
 }
