@@ -22,7 +22,7 @@
   "Marketing": "Marketing",
   "MarketingDescription": "These cookies are used for marketing purposes and the collection of information to better tailor advertising to the interests of the users of our website.",
 
-  "AiChatTitle": "AI Search",
+  "AiChatTitle": "Ask AI",
   "AiChatWelcome": "Hi! Ask a question and I'll find the answer in the ONLYOFFICE blog articles.",
   "AiChatPlaceholder": "Ask about our articles...",
   "AiChatNoResults": "Sorry, I couldn't find any articles matching your query.",
@@ -33,5 +33,11 @@
   "AiChatClose": "Close",
   "AiChatRateLimit": "Too many requests. Please try again in {{seconds}} seconds.",
   "AiChatTooShort": "Your question is too short. Please use at least {{min}} characters.",
-  "AiChatTooLong": "Your question is too long. Please keep it under {{max}} characters."
+  "AiChatTooLong": "Your question is too long. Please keep it under {{max}} characters.",
+  "AiChatHeroHeading": "How can I help?",
+  "AiChatHeroSubtitle": "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you.",
+  "AiChatDisclaimer": "Answers are generated with AI which can make mistakes.",
+  "AiChatCategoryBlog": "Blog",
+  "AiChatCategoryDocs": "Docs",
+  "AiChatCategoryNews": "News"
 }

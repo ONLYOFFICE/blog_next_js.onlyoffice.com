@@ -57,7 +57,7 @@
   "OK": "نعم",
   "ByAuthor": "بواسطة {{authorName}}",
 
-  "AiChatTitle": "البحث بالذكاء الاصطناعي",
+  "AiChatTitle": "Ask AI",
   "AiChatWelcome": "مرحباً! اطرح سؤالاً وسأجد الإجابة في مقالات مدونة ONLYOFFICE.",
   "AiChatPlaceholder": "اسأل عن مقالاتنا...",
   "AiChatNoResults": "عذراً، لم أتمكن من العثور على مقالات تطابق استفسارك.",

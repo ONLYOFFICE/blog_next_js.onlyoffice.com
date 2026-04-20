@@ -16,28 +16,44 @@ export const StyledChatToggle = styled.button`
   right: 16px;
   width: 52px;
   height: 52px;
-  padding: 8px;
-  border-radius: 8px;
-  background-color: #FF6F3D;
-  color: #fff;
+  padding: 0;
   border: none;
+  background: transparent;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease-in-out;
+  overflow: visible;
   z-index: 1000;
 
-  &:hover {
-    opacity: 0.9;
+  /* FAB SVG viewBox is 74x74 with the visible 56x56 rect at x=9,y=1; the rest is shadow
+     padding. Render the SVG oversized (52 * 74/56 ≈ 68.71px) and offset so its visible
+     rect aligns with the 52x52 button — keeps button dimensions constant across states. */
+  > svg {
+    position: absolute;
+    display: block;
+    overflow: visible;
+    width: 68.71px;
+    height: 68.71px;
+    top: -0.93px;
+    right: -8.36px;
   }
 
-  svg {
-    width: 100%;
-    height: 100%;
-    color: inherit;
+  &.is-open {
+    border-radius: 8px;
+    background-color: #FF6F3D;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    > svg {
+      width: 70%;
+      height: 70%;
+      top: 15%;
+      right: auto;
+      left: 15%;
+    }
   }
 
   @media (max-width: 768px) {
@@ -47,11 +63,11 @@ export const StyledChatToggle = styled.button`
 
 export const StyledChatWindow = styled.div`
   position: fixed;
-  bottom: 75px;
+  bottom: 95px;
   right: 16px;
   width: ${(props) => (props.$expanded ? "640px" : "400px")};
-  height: calc(100dvh - 200px);
-  max-height: calc(100dvh - 200px);
+  height: calc(100dvh - 260px);
+  max-height: calc(100dvh - 260px);
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
@@ -59,7 +75,8 @@ export const StyledChatWindow = styled.div`
   flex-direction: column;
   z-index: 1000;
   animation: ${fadeIn} 0.2s ease-out;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Sora", "Open Sans", sans-serif;
+  color: #17223B;
   transition: width 0.2s ease-in-out;
   overscroll-behavior: contain;
 
@@ -80,15 +97,24 @@ export const StyledChatHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid #E2E2E2;
+  padding: 14px 18px;
+  border-bottom: 1px solid #E4E7EE;
   border-radius: 12px 12px 0 0;
-  background: #F9F9F9;
+  background: #fff;
 
   .chat-header-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 14px;
     font-weight: 600;
-    color: #333;
+    color: #17223B;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
   }
 
   .chat-header-actions {
@@ -104,11 +130,11 @@ export const StyledChatHeader = styled.div`
     padding: 4px;
     display: flex;
     align-items: center;
-    color: #808080;
+    color: #5A6B8C;
     transition: color 0.2s;
 
     &:hover {
-      color: #333;
+      color: #17223B;
     }
 
     svg {
@@ -136,10 +162,97 @@ export const StyledChatMessages = styled.div`
   min-height: 0;
 `;
 
+export const StyledHero = styled.div`
+  padding: 26px 22px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  .hero-heading {
+    margin: 0;
+    font-family: "Sora", "Open Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #17223B;
+    line-height: 1.25;
+  }
+
+  .hero-subtitle {
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: #5A6B8C;
+    line-height: 1.5;
+  }
+`;
+
+export const StyledCategoryTabs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+
+  button {
+    background: #fff;
+    color: #5A6B8C;
+    border: 1px solid #DDE1E8;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+
+    &:hover {
+      border-color: #B7C0D0;
+      color: #17223B;
+    }
+
+    &.active {
+      background: #FFE7DC;
+      color: #E85A28;
+      border-color: #FFE7DC;
+    }
+  }
+`;
+
+export const StyledSuggestedList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+
+  button {
+    text-align: left;
+    background: #fff;
+    border: 1px solid #DDE1E8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #17223B;
+    line-height: 1.35;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+
+    &:hover {
+      border-color: #B7C0D0;
+      background: #FDFDFD;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+`;
+
 export const StyledMessage = styled.div`
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
-  color: #333;
+  color: #17223B;
 
   &.user-message {
     align-self: flex-end;
@@ -153,7 +266,7 @@ export const StyledMessage = styled.div`
 
   &.ai-message {
     align-self: flex-start;
-    background: #F5F5F5;
+    background: #F4F5F7;
     padding: 10px 14px;
     border-radius: 12px 12px 12px 2px;
     max-width: 90%;
@@ -190,12 +303,12 @@ export const StyledMessage = styled.div`
 export const StyledSources = styled.div`
   margin-top: 8px;
   padding-top: 8px;
-  border-top: 1px solid #E2E2E2;
+  border-top: 1px solid #E4E7EE;
   font-size: 12px;
 
   .sources-title {
     font-weight: 600;
-    color: #808080;
+    color: #5A6B8C;
     margin-bottom: 4px;
   }
 
@@ -224,7 +337,7 @@ export const StyledTypingIndicator = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #808080;
+    background: #5A6B8C;
     animation: ${pulse} 1.2s infinite;
 
     &:nth-child(2) {
@@ -240,25 +353,27 @@ export const StyledTypingIndicator = styled.div`
 export const StyledChatInput = styled.form`
   display: flex;
   gap: 8px;
-  padding: 12px 20px;
-  border-top: 1px solid #E2E2E2;
+  padding: 12px 20px 4px;
 
   input {
     flex: 1;
-    border: 1px solid #D9D9D9;
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 13px;
-    font-family: "Open Sans", sans-serif;
+    border: 1.5px solid #FF6F3D;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-family: "Sora", "Open Sans", sans-serif;
+    color: #17223B;
     outline: none;
-    transition: border-color 0.2s;
+    box-shadow: 0 0 0 3px rgba(255, 111, 61, 0.08);
+    transition: border-color 0.2s, box-shadow 0.2s;
 
     &:focus {
-      border-color: #FF6F3D;
+      border-color: #E85A28;
+      box-shadow: 0 0 0 3px rgba(255, 111, 61, 0.16);
     }
 
     &::placeholder {
-      color: #AAAAAA;
+      color: #8391A8;
     }
   }
 
@@ -266,10 +381,12 @@ export const StyledChatInput = styled.form`
     background: #FF6F3D;
     border: none;
     border-radius: 8px;
-    padding: 8px 14px;
+    width: 40px;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: background-color 0.2s;
 
     &:hover:not(:disabled) {
@@ -277,14 +394,23 @@ export const StyledChatInput = styled.form`
     }
 
     &:disabled {
-      opacity: 0.5;
+      background: #E8EEF9;
       cursor: not-allowed;
     }
 
     svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       fill: #fff;
     }
   }
+`;
+
+export const StyledDisclaimer = styled.p`
+  margin: 8px 20px 12px;
+  font-size: 11.5px;
+  font-weight: 400;
+  color: #3B6FE0;
+  text-align: center;
+  line-height: 1.3;
 `;

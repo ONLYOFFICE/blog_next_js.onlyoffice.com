@@ -6,27 +6,66 @@ import {
   StyledChatWindow,
   StyledChatHeader,
   StyledChatMessages,
+  StyledHero,
+  StyledCategoryTabs,
+  StyledSuggestedList,
   StyledMessage,
   StyledSources,
   StyledTypingIndicator,
   StyledChatInput,
+  StyledDisclaimer,
 } from "./styled-ai-chat-widget";
 
-const ChatIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.3"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
-    <path d="M20 3v4" />
-    <path d="M22 5h-4" />
-    <path d="M4 17v2" />
-    <path d="M5 18H3" />
+const AskAiFabIcon = () => (
+  <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#fab_shadow)">
+      <rect x="9" y="1" width="56" height="56" rx="6" fill="url(#fab_gradient)" />
+      <g clipPath="url(#fab_clip)">
+        <path d="M36.7646 18.4102c.079-.2214.3918-.2214.4708 0l2.2998 6.4902c.1762.4971.5673.8882 1.0644 1.0644l6.4902 2.2998c.2214.079.2214.3918 0 .4708l-6.4902 2.2998c-.4971.1762-.8882.5673-1.0644 1.0644l-2.2998 6.4902c-.079.2214-.3918.2214-.4708 0l-2.2998-6.4902c-.1762-.4971-.5673-.8882-1.0644-1.0644l-6.4902-2.2998c-.2214-.079-.2214-.3918 0-.4708l6.4902-2.2998c.4971-.1762.8882-.5673 1.0644-1.0644l2.2998-6.4902Z" stroke="#fff" strokeWidth="1.5" />
+        <path d="m48 12.5 1.3081 3.6919L53 17.5l-3.6919 1.3081L48 22.5l-1.3081-3.6919L43 17.5l3.6919-1.3081L48 12.5ZM26 34.5l1.3081 3.6919L31 39.5l-3.6919 1.3081L26 44.5l-1.3081-3.6919L21 39.5l3.6919-1.3081L26 34.5Z" fill="#fff" />
+      </g>
+    </g>
+    <defs>
+      <linearGradient id="fab_gradient" x1="63" y1="55.5" x2="11.5" y2="3.5" gradientUnits="userSpaceOnUse">
+        <stop offset=".2448" stopColor="#FF6F3D" />
+        <stop offset="1" stopColor="#FFB340" />
+      </linearGradient>
+      <clipPath id="fab_clip">
+        <path fill="#fff" d="M21 12.5h32v32H21z" />
+      </clipPath>
+      <filter id="fab_shadow" x="0" y="0" width="74" height="74" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+        <feMorphology radius="4" in="SourceAlpha" result="effect1_dropShadow" />
+        <feOffset dy="3" />
+        <feGaussianBlur stdDeviation="3" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix values="0 0 0 0 1 0 0 0 0 0.435294 0 0 0 0 0.239216 0 0 0 0.6 0" />
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+        <feMorphology radius="3" in="SourceAlpha" result="effect2_dropShadow" />
+        <feOffset dy="8" />
+        <feGaussianBlur stdDeviation="6" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix values="0 0 0 0 1 0 0 0 0 0.435294 0 0 0 0 0.239216 0 0 0 0.3 0" />
+        <feBlend in2="effect1_dropShadow" result="effect2_dropShadow" />
+        <feBlend in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
+      </filter>
+    </defs>
+  </svg>
+);
+
+const AskAiInlineIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g clipPath="url(#inline_clip)">
+      <path d="M15.7646 5.91016c.079-.22132.3918-.22133.4708 0l2.2998 6.49024c.1762.4971.5673.8882 1.0644 1.0644l6.4902 2.2998c.2214.079.2214.3918 0 .4708l-6.4902 2.2998c-.4971.1762-.8882.5673-1.0644 1.0644l-2.2998 6.4902c-.079.2214-.3918.2214-.4708 0l-2.2998-6.4902c-.1762-.4971-.5673-.8882-1.0644-1.0644l-6.49024-2.2998c-.22132-.079-.22133-.3918 0-.4708l6.49024-2.2998c.4971-.1762.8882-.5673 1.0644-1.0644l2.2998-6.49024Z" stroke="#585A6D" strokeWidth="1.5" />
+      <path d="m27 0 1.3081 3.69185L32 5l-3.6919 1.30815L27 10l-1.3081-3.69185L22 5l3.6919-1.30815L27 0ZM5 22l1.30815 3.6919L10 27l-3.69185 1.3081L5 32l-1.30815-3.6919L0 27l3.69185-1.3081L5 22Z" fill="#585A6D" />
+    </g>
+    <defs>
+      <clipPath id="inline_clip">
+        <path fill="#fff" d="M0 0h32v32H0z" />
+      </clipPath>
+    </defs>
   </svg>
 );
 
@@ -60,6 +99,42 @@ const CollapseIcon = () => (
   </svg>
 );
 
+const SUGGESTED_CATEGORIES = [
+  {
+    id: "blog",
+    labelKey: "AiChatCategoryBlog",
+    labelFallback: "Blog",
+    prompts: [
+      "How to create a pivot table in ONLYOFFICE?",
+      "What's new in the latest version 9.4?",
+      "How to connect ONLYOFFICE to Moodle?",
+      "How to write a macro for the editor?",
+    ],
+  },
+  {
+    id: "docs",
+    labelKey: "AiChatCategoryDocs",
+    labelFallback: "Docs",
+    prompts: [
+      "How to find who is editing a document?",
+      "How to configure JWT for ONLYOFFICE Docs?",
+      "What are the white-labeling options?",
+      "How do I set up the Document Server on Linux?",
+    ],
+  },
+  {
+    id: "news",
+    labelKey: "AiChatCategoryNews",
+    labelFallback: "News",
+    prompts: [
+      "Summarize ONLYOFFICE 9.4 in one paragraph",
+      "What's new for spreadsheet users in 2026?",
+      "Any breaking changes in the Docs API?",
+      "When is the next DocSpace release?",
+    ],
+  },
+];
+
 function formatAnswer(text) {
   return text
     .replace(/https?:\/\/(?:www\.)?onlyoffice\.com(\/blog\/[^\s)>\]"]+)/g, "$1")
@@ -77,6 +152,7 @@ const AiChatWidget = () => {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(SUGGESTED_CATEGORIES[0].id);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const router = useRouter();
@@ -86,12 +162,23 @@ const AiChatWidget = () => {
 
   const placeholder = t("AiChatPlaceholder");
   const title = t("AiChatTitle");
-  const welcome = t("AiChatWelcome");
   const noResults = t("AiChatNoResults");
   const errorMsg = t("AiChatError");
   const sourcesLabel = t("AiChatSources");
   const expandLabel = isExpanded ? t("AiChatCollapse") : t("AiChatExpand");
   const closeLabel = t("AiChatClose");
+  const heroHeading = t("AiChatHeroHeading", "How can I help?");
+  const heroSubtitle = t(
+    "AiChatHeroSubtitle",
+    "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you."
+  );
+  const disclaimer = t(
+    "AiChatDisclaimer",
+    "Answers are generated with AI which can make mistakes."
+  );
+
+  const activeCategoryPrompts =
+    SUGGESTED_CATEGORIES.find((c) => c.id === activeCategory)?.prompts || [];
 
   const buildErrorMessage = async (response) => {
     if (response.status === 429) {
@@ -145,12 +232,7 @@ const AiChatWidget = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const query = input.trim();
-    if (!query || isLoading) return;
-
-    setInput("");
+  const sendQuery = async (query) => {
     setMessages((prev) => [...prev, { role: "user", content: query }]);
     setIsLoading(true);
 
@@ -252,12 +334,28 @@ const AiChatWidget = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const query = input.trim();
+    if (!query || isLoading) return;
+    setInput("");
+    sendQuery(query);
+  };
+
+  const handleSuggestedClick = (query) => {
+    if (isLoading) return;
+    sendQuery(query);
+  };
+
   return (
     <>
       {isOpen && (
         <StyledChatWindow $expanded={isExpanded}>
           <StyledChatHeader>
-            <span className="chat-header-title">{title}</span>
+            <span className="chat-header-title">
+              <AskAiInlineIcon />
+              {title}
+            </span>
             <div className="chat-header-actions">
               <button
                 className="chat-header-button chat-header-expand"
@@ -278,52 +376,80 @@ const AiChatWidget = () => {
             </div>
           </StyledChatHeader>
 
-          <StyledChatMessages>
-            {messages.length === 0 && (
-              <StyledMessage className="ai-message">
-                {welcome}
-              </StyledMessage>
-            )}
+          {messages.length === 0 ? (
+            <StyledChatMessages as="div">
+              <StyledHero>
+                <h3 className="hero-heading">{heroHeading}</h3>
+                <p className="hero-subtitle">{heroSubtitle}</p>
+                <StyledCategoryTabs>
+                  {SUGGESTED_CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      className={cat.id === activeCategory ? "active" : ""}
+                      onClick={() => setActiveCategory(cat.id)}
+                      type="button"
+                    >
+                      {t(cat.labelKey, cat.labelFallback)}
+                    </button>
+                  ))}
+                </StyledCategoryTabs>
+                <StyledSuggestedList>
+                  {activeCategoryPrompts.map((prompt) => (
+                    <button
+                      key={prompt}
+                      type="button"
+                      disabled={isLoading}
+                      onClick={() => handleSuggestedClick(prompt)}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </StyledSuggestedList>
+              </StyledHero>
+              <div ref={messagesEndRef} />
+            </StyledChatMessages>
+          ) : (
+            <StyledChatMessages>
+              {messages.map((msg, i) => (
+                <React.Fragment key={i}>
+                  <StyledMessage className={msg.role === "user" ? "user-message" : "ai-message"}>
+                    {msg.role === "ai" ? (
+                      <p dangerouslySetInnerHTML={{ __html: formatAnswer(msg.content) }} />
+                    ) : (
+                      msg.content
+                    )}
+                  </StyledMessage>
 
-            {messages.map((msg, i) => (
-              <React.Fragment key={i}>
-                <StyledMessage className={msg.role === "user" ? "user-message" : "ai-message"}>
-                  {msg.role === "ai" ? (
-                    <p dangerouslySetInnerHTML={{ __html: formatAnswer(msg.content) }} />
-                  ) : (
-                    msg.content
+                  {msg.role === "ai" && msg.sources?.length > 0 && (
+                    <StyledSources>
+                      <div className="sources-title">
+                        {sourcesLabel}
+                      </div>
+                      {msg.sources.map((src, j) => (
+                        <a
+                          key={j}
+                          className="source-link"
+                          href={src.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {src.title}
+                        </a>
+                      ))}
+                    </StyledSources>
                   )}
-                </StyledMessage>
+                </React.Fragment>
+              ))}
 
-                {msg.role === "ai" && msg.sources?.length > 0 && (
-                  <StyledSources>
-                    <div className="sources-title">
-                      {sourcesLabel}
-                    </div>
-                    {msg.sources.map((src, j) => (
-                      <a
-                        key={j}
-                        className="source-link"
-                        href={src.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {src.title}
-                      </a>
-                    ))}
-                  </StyledSources>
-                )}
-              </React.Fragment>
-            ))}
+              {isLoading && messages[messages.length - 1]?.role !== "ai" && (
+                <StyledTypingIndicator>
+                  <span /><span /><span />
+                </StyledTypingIndicator>
+              )}
 
-            {isLoading && messages[messages.length - 1]?.role !== "ai" && (
-              <StyledTypingIndicator>
-                <span /><span /><span />
-              </StyledTypingIndicator>
-            )}
-
-            <div ref={messagesEndRef} />
-          </StyledChatMessages>
+              <div ref={messagesEndRef} />
+            </StyledChatMessages>
+          )}
 
           <StyledChatInput onSubmit={handleSubmit}>
             <input
@@ -337,16 +463,19 @@ const AiChatWidget = () => {
               <SendIcon />
             </button>
           </StyledChatInput>
+
+          <StyledDisclaimer>{disclaimer}</StyledDisclaimer>
         </StyledChatWindow>
       )}
 
       <StyledChatToggle
         id="aiChatToggle"
+        className={isOpen ? "is-open" : ""}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Ask AI (Control+i)"
         aria-keyshortcuts="Control+i"
       >
-        {isOpen ? <CloseIcon /> : <ChatIcon />}
+        {isOpen ? <CloseIcon /> : <AskAiFabIcon />}
       </StyledChatToggle>
     </>
   );
