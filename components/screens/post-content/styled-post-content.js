@@ -484,6 +484,60 @@ const StyledPostContent = styled(Section)`
       }
     }
 
+    .leafio-aspc-section {
+      background: #fafbfb;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+      box-sizing: border-box;
+
+      ul, ol {
+        margin: 0;
+      }
+
+      .summary-header {
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: normal;
+        color: #333;
+      }
+
+      &.template-clean .summary-header {
+        border-bottom: 1px solid #e6e4e4;
+        padding: 5px 5px 9px 12px;
+        margin: 10px -10px;
+      }
+
+      &.template-light,
+      &.template-dark {
+        padding: 0 15px 15px;
+        border: 1px solid #e1e1e1;
+        border-top: none;
+      }
+
+      &.template-dark {
+        border-width: 3px;
+      }
+
+      &.template-light .summary-header,
+      &.template-dark .summary-header {
+        color: #fff;
+        margin: 0 -15px 10px;
+        padding: 11px 15px;
+      }
+
+      &.template-light .summary-header {
+        background: #2596a4;
+      }
+
+      &.template-dark .summary-header {
+        background: #000;
+      }
+    }
+
     .fluentform {
       font-family: inherit;
 
