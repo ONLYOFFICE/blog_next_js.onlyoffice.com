@@ -6,7 +6,8 @@ import languages from "@config/languages.json";
 const PostHead = ({ t, locale, post, postUri }) => {
   const router = useRouter();
   const baseUrl = "https://www.onlyoffice.com/blog";
-  const image = post?.featuredImage?.node.mediaItemUrl === null ? "" : post?.featuredImage?.node.mediaItemUrl;
+  const fallbackImage = `https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg`;
+  const image = post?.featuredImage?.node?.mediaItemUrl || fallbackImage;
   const title = post.aioseoTitle ? post.aioseoTitle : locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
   const metaDescription = post?.aioseoDescription ? post?.aioseoDescription : HTMLReactParser(post?.excerpt)[0]?.props?.children;
   const language = languages.find(lang => lang.shortKey === locale);

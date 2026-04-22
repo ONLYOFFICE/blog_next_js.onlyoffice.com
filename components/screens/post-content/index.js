@@ -107,7 +107,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 {post.outdated && (
                   <span className="outdated">{t("Outdated")}</span>
                 )}
-                <ShareButtons locale={locale} postTitle={post?.title} />
+                <ShareButtons locale={locale} />
               </div>
               <div
                 ref={refContent}
@@ -128,7 +128,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 </div>
               )}
               <div className="tag-share">
-                <ShareButtons locale={locale} postTitle={post?.title} />
+                <ShareButtons locale={locale} />
               </div>
             </div>
             <DocSpaceRegistrationBlock t={t} locale={locale}></DocSpaceRegistrationBlock>
