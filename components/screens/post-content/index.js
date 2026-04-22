@@ -121,8 +121,8 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)),
                 {
                   replace: (domNode) => {
-                    if (domNode.name === "p" && domNode.attribs?.class?.includes("summary-header")) {
-                      return <h2 className="summary-header">{t("WhatToKnow")}</h2>;
+                    if ((domNode.name === "p" || domNode.name === "h2") && domNode.attribs?.class?.includes("summary-header")) {
+                      return <h2 className="summary-header">{t("Summary")}</h2>;
                     }
                   }
                 }
