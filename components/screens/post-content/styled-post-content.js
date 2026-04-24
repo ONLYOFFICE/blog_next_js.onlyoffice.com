@@ -491,8 +491,17 @@ const StyledPostContent = styled(Section)`
       border-radius: 5px;
       box-sizing: border-box;
 
+      p {
+        margin: 0;
+      }
+
       ul, ol {
         margin: 0;
+      }
+
+      p + ul,
+      p + ol {
+        margin-top: 10px;
       }
 
       .summary-header {
