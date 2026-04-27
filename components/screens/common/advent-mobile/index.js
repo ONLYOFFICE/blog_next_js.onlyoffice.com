@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StyledAdventMobileOnly from "./styled-advent-mobile-only";
 
 const AdventMobileOnly = ({ t, locale }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const adRef = useRef(null);
   const [os, setOs] = useState(null);
   const [downloadLink, setDownloadLink] = useState("#");
 
@@ -43,6 +44,30 @@ const AdventMobileOnly = ({ t, locale }) => {
     }
   }, [locale]);
 
+  useEffect(() => {
+    const cookieBanner = document.getElementById("cookieBanner");
+    if (!cookieBanner) return;
+
+    cookieBanner.style.transition = "bottom 0.3s ease";
+
+    if (!isMobile || !adRef.current) {
+      cookieBanner.style.bottom = "";
+      return () => { cookieBanner.style.bottom = ""; };
+    }
+
+    const frameId = requestAnimationFrame(() => {
+      if (adRef.current) {
+        const adHeight = adRef.current.getBoundingClientRect().height;
+        cookieBanner.style.bottom = `${adHeight + 10}px`;
+      }
+    });
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      cookieBanner.style.bottom = "";
+    };
+  }, [isMobile, locale]);
+
   const handleClose = () => {
     setIsMobile(false);
   };
@@ -50,7 +75,7 @@ const AdventMobileOnly = ({ t, locale }) => {
   if (!isMobile) return null;
 
   return (
-    <StyledAdventMobileOnly $locale={locale}>
+    <StyledAdventMobileOnly ref={adRef} $locale={locale}>
       <div className="mobile_mess">
         <div className="container">
           <p className="mobile_mess_text">{t("Get free mobile app")}</p>
