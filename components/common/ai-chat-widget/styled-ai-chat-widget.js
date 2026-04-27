@@ -210,9 +210,9 @@ export const StyledCategoryTabs = styled.div`
     }
 
     &.active {
-      background: #FFE7DC;
-      color: #E85A28;
-      border-color: #FFE7DC;
+      background: #17223B;
+      color: #fff;
+      border-color: #17223B;
     }
   }
 `;
@@ -256,19 +256,21 @@ export const StyledMessage = styled.div`
 
   &.user-message {
     align-self: flex-end;
-    background: #FF6F3D;
-    color: #fff;
+    background: #fff;
+    border: 1px solid #E4E7EE;
+    color: #17223B;
     padding: 8px 14px;
-    border-radius: 12px 12px 2px 12px;
+    border-radius: 12px 12px 4px 12px;
     max-width: 85%;
     word-break: break-word;
   }
 
   &.ai-message {
     align-self: flex-start;
-    background: #F4F5F7;
+    background: #fff;
+    border: 1px solid #E4E7EE;
     padding: 10px 14px;
-    border-radius: 12px 12px 12px 2px;
+    border-radius: 4px 12px 12px 12px;
     max-width: 90%;
     word-break: break-word;
 
@@ -281,7 +283,7 @@ export const StyledMessage = styled.div`
     }
 
     a {
-      color: #FF6F3D;
+      color: #3B6FE0;
       text-decoration: none;
 
       &:hover {
@@ -314,7 +316,7 @@ export const StyledSources = styled.div`
 
   .source-link {
     display: block;
-    color: #FF6F3D;
+    color: #17223B;
     text-decoration: none;
     padding: 2px 0;
     overflow: hidden;
@@ -337,7 +339,7 @@ export const StyledTypingIndicator = styled.div`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #5A6B8C;
+    background: #7A8AA8;
     animation: ${pulse} 1.2s infinite;
 
     &:nth-child(2) {
@@ -390,7 +392,7 @@ export const StyledChatInput = styled.form`
     transition: background-color 0.2s;
 
     &:hover:not(:disabled) {
-      background: #E5633A;
+      background: #E85A28;
     }
 
     &:disabled {
