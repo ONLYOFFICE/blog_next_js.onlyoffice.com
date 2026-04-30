@@ -26,6 +26,7 @@ const AudioPlayer = ({ audioUrl }) => {
   const audioRef = useRef(null);
   const progressRef = useRef(null);
   const isDraggingRef = useRef(false);
+  const seekingForDurationRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -90,20 +91,32 @@ const AudioPlayer = ({ audioUrl }) => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    let durationSet = false;
-    const trySetDuration = () => {
+    const onDurationChange = () => {
       const d = audio.duration;
-      if (d && isFinite(d) && d > 0) {
-        durationSet = true;
-        setDuration(d);
+      if (isFinite(d) && d > 0) setDuration(d);
+    };
+
+    const onLoadedMetadata = () => {
+      onDurationChange();
+      // VBR MP3s (e.g. ElevenLabs) report wrong duration based on first-frame bitrate.
+      // Seeking past the end forces the browser to scan the full file and fire
+      // durationchange with the real value.
+      seekingForDurationRef.current = true;
+      audio.currentTime = 1e101;
+    };
+
+    const onSeeked = () => {
+      if (seekingForDurationRef.current) {
+        seekingForDurationRef.current = false;
+        onDurationChange();
+        audio.currentTime = 0;
       }
     };
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
-      if (!durationSet) trySetDuration();
+      if (!seekingForDurationRef.current) setCurrentTime(audio.currentTime);
     };
     const onEnded = () => {
       setIsPlaying(false);
@@ -113,18 +126,18 @@ const AudioPlayer = ({ audioUrl }) => {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("timeupdate", onTimeUpdate);
-    audio.addEventListener("loadedmetadata", trySetDuration);
-    audio.addEventListener("durationchange", trySetDuration);
-    audio.addEventListener("loadeddata", trySetDuration);
+    audio.addEventListener("loadedmetadata", onLoadedMetadata);
+    audio.addEventListener("durationchange", onDurationChange);
+    audio.addEventListener("seeked", onSeeked);
     audio.addEventListener("ended", onEnded);
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("timeupdate", onTimeUpdate);
-      audio.removeEventListener("loadedmetadata", trySetDuration);
-      audio.removeEventListener("durationchange", trySetDuration);
-      audio.removeEventListener("loadeddata", trySetDuration);
+      audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+      audio.removeEventListener("durationchange", onDurationChange);
+      audio.removeEventListener("seeked", onSeeked);
       audio.removeEventListener("ended", onEnded);
     };
   }, []);
