@@ -34,10 +34,14 @@
   "AiChatRateLimit": "Too many requests. Please try again in {{seconds}} seconds.",
   "AiChatTooShort": "Your question is too short. Please use at least {{min}} characters.",
   "AiChatTooLong": "Your question is too long. Please keep it under {{max}} characters.",
-  "AiChatHeroHeading": "How can I help?",
-  "AiChatHeroSubtitle": "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you.",
   "AiChatDisclaimer": "Answers are generated with AI which can make mistakes.",
   "AiChatCategoryBlog": "Blog",
   "AiChatCategoryDocs": "Docs",
-  "AiChatCategoryNews": "News"
+  "AiChatCategoryNews": "News",
+  "AiChatBlogTitle": "How can I help?",
+  "AiChatBlogSubtitle": "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you.",
+  "AiChatDocsTitle": "Search the docs",
+  "AiChatDocsSubtitle": "I can search every page of the ONLYOFFICE documentation and bring you step-by-step answers in seconds.",
+  "AiChatNewsTitle": "What's new?",
+  "AiChatNewsSubtitle": "I follow every release, changelog and roadmap update, ask me what shipped, what's next."
 }

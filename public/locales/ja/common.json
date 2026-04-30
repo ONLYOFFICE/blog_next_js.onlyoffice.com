@@ -84,5 +84,11 @@
   "AiChatClose": "閉じる",
   "AiChatRateLimit": "リクエストが多すぎます。{{seconds}}秒後にもう一度お試しください。",
   "AiChatTooShort": "質問が短すぎます。{{min}}文字以上で入力してください。",
-  "AiChatTooLong": "質問が長すぎます。{{max}}文字以内で入力してください。"
+  "AiChatTooLong": "質問が長すぎます。{{max}}文字以内で入力してください。",
+  "AiChatBlogTitle": "どのようにお手伝いできますか？",
+  "AiChatBlogSubtitle": "ブログ上の何百もの記事を精査し、操作手順、生産性のヒント、最新情報を素早くお探しします。",
+  "AiChatDocsTitle": "ドキュメントを検索",
+  "AiChatDocsSubtitle": "ONLYOFFICE ドキュメントのすべてのページを検索し、数秒でステップバイステップの回答をお届けします。",
+  "AiChatNewsTitle": "新着情報",
+  "AiChatNewsSubtitle": "リリース、変更履歴、ロードマップ更新をすべて追跡しています。何がリリースされたか、次に何が来るのかをお尋ねください。"
 }

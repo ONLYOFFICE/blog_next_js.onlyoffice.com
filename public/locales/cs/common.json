@@ -41,5 +41,11 @@
   "AiChatClose": "Zavřít",
   "AiChatRateLimit": "Příliš mnoho požadavků. Zkuste to prosím znovu za {{seconds}} sekund.",
   "AiChatTooShort": "Vaše otázka je příliš krátká. Použijte prosím alespoň {{min}} znaků.",
-  "AiChatTooLong": "Vaše otázka je příliš dlouhá. Udržte ji prosím pod {{max}} znaky."
+  "AiChatTooLong": "Vaše otázka je příliš dlouhá. Udržte ji prosím pod {{max}} znaky.",
+  "AiChatBlogTitle": "Jak mohu pomoci?",
+  "AiChatBlogSubtitle": "Prošel jsem stovky článků na našem blogu a dokážu pro vás rychle najít návody, tipy pro produktivitu a novinky o aktualizacích.",
+  "AiChatDocsTitle": "Hledat v dokumentaci",
+  "AiChatDocsSubtitle": "Mohu prohledat každou stránku dokumentace ONLYOFFICE a poskytnout vám podrobné odpovědi během několika sekund.",
+  "AiChatNewsTitle": "Co je nového?",
+  "AiChatNewsSubtitle": "Sleduji každé vydání, seznam změn a aktualizaci plánu, zeptejte se mě, co bylo vydáno, co bude dál."
 }

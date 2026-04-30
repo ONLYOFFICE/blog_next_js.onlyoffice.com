@@ -89,5 +89,11 @@
   "AiChatClose": "关闭",
   "AiChatRateLimit": "请求过多。请在 {{seconds}} 秒后重试。",
   "AiChatTooShort": "您的问题太短。请至少使用 {{min}} 个字符。",
-  "AiChatTooLong": "您的问题太长。请保持在 {{max}} 个字符以内。"
+  "AiChatTooLong": "您的问题太长。请保持在 {{max}} 个字符以内。",
+  "AiChatBlogTitle": "我能帮您什么？",
+  "AiChatBlogSubtitle": "我已仔细阅读了我们博客上的数百篇文章，可以快速为您查找说明、生产力提示和更新资讯。",
+  "AiChatDocsTitle": "搜索文档",
+  "AiChatDocsSubtitle": "我可以搜索 ONLYOFFICE 文档的每一页，并在几秒钟内为您提供分步答案。",
+  "AiChatNewsTitle": "有什么新内容？",
+  "AiChatNewsSubtitle": "我关注每次发布、更新日志和路线图更新，您可以问我已经发布了什么以及接下来会有什么。"
 }

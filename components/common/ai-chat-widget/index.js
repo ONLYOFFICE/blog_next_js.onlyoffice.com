@@ -104,6 +104,11 @@ const SUGGESTED_CATEGORIES = [
     id: "blog",
     labelKey: "AiChatCategoryBlog",
     labelFallback: "Blog",
+    titleKey: "AiChatBlogTitle",
+    titleFallback: "How can I help?",
+    subtitleKey: "AiChatBlogSubtitle",
+    subtitleFallback:
+      "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you.",
     prompts: [
       "How to create a pivot table in ONLYOFFICE?",
       "What's new in the latest version 9.4?",
@@ -115,6 +120,11 @@ const SUGGESTED_CATEGORIES = [
     id: "docs",
     labelKey: "AiChatCategoryDocs",
     labelFallback: "Docs",
+    titleKey: "AiChatDocsTitle",
+    titleFallback: "Search the docs",
+    subtitleKey: "AiChatDocsSubtitle",
+    subtitleFallback:
+      "I can search every page of the ONLYOFFICE documentation and bring you step-by-step answers in seconds.",
     prompts: [
       "How to find who is editing a document?",
       "How to configure JWT for ONLYOFFICE Docs?",
@@ -126,6 +136,11 @@ const SUGGESTED_CATEGORIES = [
     id: "news",
     labelKey: "AiChatCategoryNews",
     labelFallback: "News",
+    titleKey: "AiChatNewsTitle",
+    titleFallback: "What's new?",
+    subtitleKey: "AiChatNewsSubtitle",
+    subtitleFallback:
+      "I follow every release, changelog and roadmap update, ask me what shipped, what's next.",
     prompts: [
       "Summarize ONLYOFFICE 9.4 in one paragraph",
       "What's new for spreadsheet users in 2026?",
@@ -167,18 +182,15 @@ const AiChatWidget = () => {
   const sourcesLabel = t("AiChatSources");
   const expandLabel = isExpanded ? t("AiChatCollapse") : t("AiChatExpand");
   const closeLabel = t("AiChatClose");
-  const heroHeading = t("AiChatHeroHeading", "How can I help?");
-  const heroSubtitle = t(
-    "AiChatHeroSubtitle",
-    "I've pored over hundreds of articles on our blog and can quickly find instructions, productivity tips, and update news for you."
-  );
   const disclaimer = t(
     "AiChatDisclaimer",
     "Answers are generated with AI which can make mistakes."
   );
 
-  const activeCategoryPrompts =
-    SUGGESTED_CATEGORIES.find((c) => c.id === activeCategory)?.prompts || [];
+  const activeCategoryData =
+    SUGGESTED_CATEGORIES.find((c) => c.id === activeCategory) ||
+    SUGGESTED_CATEGORIES[0];
+  const activeCategoryPrompts = activeCategoryData.prompts;
 
   const buildErrorMessage = async (response) => {
     if (response.status === 429) {
@@ -379,8 +391,12 @@ const AiChatWidget = () => {
           {messages.length === 0 ? (
             <StyledChatMessages as="div">
               <StyledHero>
-                <h3 className="hero-heading">{heroHeading}</h3>
-                <p className="hero-subtitle">{heroSubtitle}</p>
+                <h3 className="hero-heading">
+                  {t(activeCategoryData.titleKey, activeCategoryData.titleFallback)}
+                </h3>
+                <p className="hero-subtitle">
+                  {t(activeCategoryData.subtitleKey, activeCategoryData.subtitleFallback)}
+                </p>
                 <StyledCategoryTabs>
                   {SUGGESTED_CATEGORIES.map((cat) => (
                     <button

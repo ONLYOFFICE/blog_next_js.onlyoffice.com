@@ -85,5 +85,11 @@
   "AiChatClose": "Cerrar",
   "AiChatRateLimit": "Demasiadas solicitudes. Por favor, inténtalo de nuevo en {{seconds}} segundos.",
   "AiChatTooShort": "Tu pregunta es demasiado corta. Por favor, usa al menos {{min}} caracteres.",
-  "AiChatTooLong": "Tu pregunta es demasiado larga. Por favor, mantenla bajo {{max}} caracteres."
+  "AiChatTooLong": "Tu pregunta es demasiado larga. Por favor, mantenla bajo {{max}} caracteres.",
+  "AiChatBlogTitle": "¿Cómo puedo ayudar?",
+  "AiChatBlogSubtitle": "He revisado cientos de artículos de nuestro blog y puedo encontrarte rápidamente instrucciones, consejos de productividad y novedades sobre actualizaciones.",
+  "AiChatDocsTitle": "Buscar en la documentación",
+  "AiChatDocsSubtitle": "Puedo buscar en cada página de la documentación de ONLYOFFICE y darte respuestas paso a paso en segundos.",
+  "AiChatNewsTitle": "¿Qué hay de nuevo?",
+  "AiChatNewsSubtitle": "Sigo cada lanzamiento, registro de cambios y actualización de la hoja de ruta, pregúntame qué se ha lanzado y qué viene a continuación."
 }
