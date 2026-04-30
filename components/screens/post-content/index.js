@@ -29,7 +29,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
 
     if (el && e.currentTarget.contains(el)) {
       setOpenModal(true);
-      setImgUrl(e.target.currentSrc);
+      setImgUrl(e.target.currentSrc.replace(/-\d+x\d+(\.[^.]+)$/, "$1"));
       setImgAlt(e.target.alt);
     }
   };
