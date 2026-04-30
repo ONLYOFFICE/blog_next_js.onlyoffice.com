@@ -10,16 +10,16 @@ const ShareButtons = ({ locale }) => {
 
   return (
     <StyledRecentPosts $locale={locale} className="share-buttons">
-      <FacebookShareButton className="share-button facebook" url={routerUrl} title="Facebook" aria-label="Facebook"></FacebookShareButton>
-      <TwitterShareButton className="share-button x" url={routerUrl} title="Twitter" aria-label="Twitter"></TwitterShareButton>
-      <LinkedinShareButton className="share-button linkedin" url={routerUrl} title="LinkedIn" aria-label="LinkedIn"></LinkedinShareButton>
-      <RedditShareButton className="share-button reddit" url={routerUrl} title="Reddit" aria-label="Reddit"></RedditShareButton>
-      <TelegramShareButton className="share-button telegram" url={routerUrl} title="Telegram" aria-label="Telegram"></TelegramShareButton>
-      <ExternalLink className="share-button mastodon" href={`https://www.shareaholic.com/share/mastodon/?link=${routerUrl}`} title="Mastodon" aria-label="Mastodon"></ExternalLink>
+      <FacebookShareButton className="share-button facebook" url={routerUrl} aria-label="Facebook"></FacebookShareButton>
+      <TwitterShareButton className="share-button x" url={routerUrl} aria-label="Twitter"></TwitterShareButton>
+      <LinkedinShareButton className="share-button linkedin" url={routerUrl} aria-label="LinkedIn"></LinkedinShareButton>
+      <RedditShareButton className="share-button reddit" url={routerUrl} aria-label="Reddit"></RedditShareButton>
+      <TelegramShareButton className="share-button telegram" url={routerUrl} aria-label="Telegram"></TelegramShareButton>
+      <ExternalLink className="share-button mastodon" href={`https://www.shareaholic.com/share/mastodon/?link=${routerUrl}`} aria-label="Mastodon"></ExternalLink>
       {locale === "zh-hans" && (
         <>
-          <ExternalLink className="share-button wechat" href={`https://www.shareaholic.com/share/wechat/?link=${routerUrl}`} title="WeChat" aria-label="WeChat"></ExternalLink>
-          <WeiboShareButton className="share-button weibo" url={routerUrl} title="Weibo" aria-label="Weibo"></WeiboShareButton>
+          <ExternalLink className="share-button wechat" href={`https://www.shareaholic.com/share/wechat/?link=${routerUrl}`} aria-label="WeChat"></ExternalLink>
+          <WeiboShareButton className="share-button weibo" url={routerUrl} aria-label="Weibo"></WeiboShareButton>
         </>
       )}
     </StyledRecentPosts>
