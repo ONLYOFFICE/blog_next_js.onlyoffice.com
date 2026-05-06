@@ -22,15 +22,31 @@ const PauseIcon = () => (
   </svg>
 );
 
-const AudioPlayer = ({ audioUrl }) => {
+const AudioPlayer = ({ audioUrl, audioDuration }) => {
   const audioRef = useRef(null);
   const progressRef = useRef(null);
   const isDraggingRef = useRef(false);
-  const seekingForDurationRef = useRef(false);
+  const dragRatioRef = useRef(null);
+  const wasPlayingBeforeDragRef = useRef(false);
+  const durationRef = useRef(0);
+  // If the server told us the duration, lock it immediately and ignore
+  // anything the browser comes up with — its VBR-MP3 estimates drift.
+  const durationLockedRef = useRef(Boolean(audioDuration));
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(audioDuration || 0);
   const [speedIndex, setSpeedIndex] = useState(0);
+
+  useEffect(() => {
+    durationRef.current = duration;
+  }, [duration]);
+
+  useEffect(() => {
+    if (audioDuration && audioDuration > 0) {
+      setDuration(audioDuration);
+      durationLockedRef.current = true;
+    }
+  }, [audioDuration]);
 
   const togglePlay = useCallback(() => {
     const audio = audioRef.current;
@@ -43,30 +59,44 @@ const AudioPlayer = ({ audioUrl }) => {
     }
   }, [isPlaying]);
 
-  const seekFromClientX = useCallback((clientX) => {
+  const handlePointerDown = useCallback((e) => {
     const audio = audioRef.current;
     const bar = progressRef.current;
-    if (!audio || !duration || !bar) return;
+    if (!audio || !bar || !durationRef.current) return;
 
-    const rect = bar.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const ratio = Math.max(0, Math.min(1, x / rect.width));
-    audio.currentTime = ratio * duration;
-  }, [duration]);
-
-  const handlePointerDown = useCallback((e) => {
     isDraggingRef.current = true;
+    wasPlayingBeforeDragRef.current = !audio.paused;
+    if (wasPlayingBeforeDragRef.current) audio.pause();
+
+    const updateRatio = (clientX) => {
+      const rect = bar.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const ratio = Math.max(0, Math.min(1, x / rect.width));
+      dragRatioRef.current = ratio;
+      setCurrentTime(ratio * durationRef.current);
+    };
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    seekFromClientX(clientX);
+    updateRatio(clientX);
 
     const handlePointerMove = (ev) => {
       if (!isDraggingRef.current) return;
       const cx = ev.touches ? ev.touches[0].clientX : ev.clientX;
-      seekFromClientX(cx);
+      updateRatio(cx);
     };
 
     const handlePointerUp = () => {
+      const ratio = dragRatioRef.current;
       isDraggingRef.current = false;
+      dragRatioRef.current = null;
+
+      if (ratio !== null && audio && durationRef.current > 0) {
+        audio.currentTime = ratio * durationRef.current;
+      }
+      if (wasPlayingBeforeDragRef.current) {
+        audio.play().catch(() => {});
+      }
+
       document.removeEventListener("mousemove", handlePointerMove);
       document.removeEventListener("mouseup", handlePointerUp);
       document.removeEventListener("touchmove", handlePointerMove);
@@ -77,7 +107,7 @@ const AudioPlayer = ({ audioUrl }) => {
     document.addEventListener("mouseup", handlePointerUp);
     document.addEventListener("touchmove", handlePointerMove);
     document.addEventListener("touchend", handlePointerUp);
-  }, [seekFromClientX]);
+  }, []);
 
   const cycleSpeed = useCallback(() => {
     const nextIndex = (speedIndex + 1) % SPEEDS.length;
@@ -91,32 +121,31 @@ const AudioPlayer = ({ audioUrl }) => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Lock the first finite duration we get and ignore further updates.
+    // Browsers continuously refine audio.duration for VBR MP3s during playback,
+    // which would make the displayed total grow if we kept reacting to it.
     const onDurationChange = () => {
+      if (durationLockedRef.current) return;
       const d = audio.duration;
-      if (isFinite(d) && d > 0) setDuration(d);
-    };
-
-    const onLoadedMetadata = () => {
-      onDurationChange();
-      // VBR MP3s (e.g. ElevenLabs) report wrong duration based on first-frame bitrate.
-      // Seeking past the end forces the browser to scan the full file and fire
-      // durationchange with the real value.
-      seekingForDurationRef.current = true;
-      audio.currentTime = 1e101;
-    };
-
-    const onSeeked = () => {
-      if (seekingForDurationRef.current) {
-        seekingForDurationRef.current = false;
-        onDurationChange();
-        audio.currentTime = 0;
+      if (isFinite(d) && d > 0) {
+        setDuration(d);
+        durationLockedRef.current = true;
       }
     };
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onTimeUpdate = () => {
-      if (!seekingForDurationRef.current) setCurrentTime(audio.currentTime);
+      if (isDraggingRef.current) return;
+      const d = durationRef.current;
+      if (d > 0 && audio.currentTime >= d) {
+        audio.pause();
+        audio.currentTime = 0;
+        setCurrentTime(0);
+        setIsPlaying(false);
+        return;
+      }
+      setCurrentTime(audio.currentTime);
     };
     const onEnded = () => {
       setIsPlaying(false);
@@ -126,18 +155,21 @@ const AudioPlayer = ({ audioUrl }) => {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("timeupdate", onTimeUpdate);
-    audio.addEventListener("loadedmetadata", onLoadedMetadata);
     audio.addEventListener("durationchange", onDurationChange);
-    audio.addEventListener("seeked", onSeeked);
     audio.addEventListener("ended", onEnded);
+
+    // When audio is served from cache, durationchange/loadedmetadata can fire
+    // before this effect attaches listeners. Run the handler manually so we
+    // don't miss the initial duration.
+    if (audio.readyState >= 1 /* HAVE_METADATA */) {
+      onDurationChange();
+    }
 
     return () => {
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("timeupdate", onTimeUpdate);
-      audio.removeEventListener("loadedmetadata", onLoadedMetadata);
       audio.removeEventListener("durationchange", onDurationChange);
-      audio.removeEventListener("seeked", onSeeked);
       audio.removeEventListener("ended", onEnded);
     };
   }, []);
@@ -148,13 +180,24 @@ const AudioPlayer = ({ audioUrl }) => {
 
   return (
     <StyledAudioPlayer>
-      <audio ref={audioRef} src={audioUrl} preload="auto" />
-      <button className="play-btn" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
+      <audio ref={audioRef} src={audioUrl} preload="auto" controls />
+      <button
+        className="play-btn"
+        onClick={togglePlay}
+        aria-label={isPlaying ? "Pause" : "Play"}
+      >
         {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </button>
       <div className="player-body">
-        <span className="time">{formatTime(currentTime)} / {formatTime(duration)}</span>
-        <div className="progress-wrap" ref={progressRef} onMouseDown={handlePointerDown} onTouchStart={handlePointerDown}>
+        <span className="time">
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
+        <div
+          className="progress-wrap"
+          ref={progressRef}
+          onMouseDown={handlePointerDown}
+          onTouchStart={handlePointerDown}
+        >
           <div className="progress-bar" style={{ width: `${progress}%` }} />
         </div>
       </div>
