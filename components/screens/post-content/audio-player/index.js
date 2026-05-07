@@ -180,7 +180,7 @@ const AudioPlayer = ({ audioUrl, audioDuration }) => {
 
   return (
     <StyledAudioPlayer>
-      <audio ref={audioRef} src={audioUrl} preload="auto" controls />
+      <audio ref={audioRef} src={audioUrl} preload="auto" />
       <button
         className="play-btn"
         onClick={togglePlay}
