@@ -15,6 +15,8 @@ import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
 import AudioPlayer from "./audio-player";
 
+const BOOKMARK_SPAN_RE = /<span[^>]*?data-mce-type=["']bookmark["'][^>]*?>[\s\S]*?<\/span>/gi;
+
 const PostContent = ({ t, locale, post, posts, isPostPage }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
   const [openModal, setOpenModal] = useState(false);
@@ -117,7 +119,16 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 className="entry-content"
                 suppressHydrationWarning
               >
-                {parse(post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)))}
+                {parse(
+                post?.content?.replace(BOOKMARK_SPAN_RE, "").replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)),
+                {
+                  replace: (domNode) => {
+                    if ((domNode.name === "p" || domNode.name === "h2") && domNode.attribs?.class?.includes("summary-header")) {
+                      return <h2 className="summary-header">{t("Summary")}</h2>;
+                    }
+                  }
+                }
+              )}
               </div>
             </article>
 
