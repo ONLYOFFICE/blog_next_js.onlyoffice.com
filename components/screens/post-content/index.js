@@ -112,7 +112,12 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 )}
                 <ShareButtons locale={locale} />
               </div>
-              {post?.audioUrl && <AudioPlayer audioUrl={post.audioUrl} />}
+              {post?.audioUrl && (
+                <AudioPlayer
+                  audioUrl={post.audioUrl}
+                  audioDuration={post.audioDuration}
+                />
+              )}
               <div
                 ref={refContent}
                 onClick={onClickHandler}
