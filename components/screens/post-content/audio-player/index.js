@@ -135,17 +135,15 @@ const AudioPlayer = ({ audioUrl, audioDuration }) => {
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
+    // The browser may report audio.currentTime past our authoritative
+    // duration (encoder padding inflates the file's playable length by
+    // a few hundred ms). Clamp the displayed value so the counter and
+    // progress bar never overshoot the total.
     const onTimeUpdate = () => {
       if (isDraggingRef.current) return;
       const d = durationRef.current;
-      if (d > 0 && audio.currentTime >= d) {
-        audio.pause();
-        audio.currentTime = 0;
-        setCurrentTime(0);
-        setIsPlaying(false);
-        return;
-      }
-      setCurrentTime(audio.currentTime);
+      const t = d > 0 ? Math.min(audio.currentTime, d) : audio.currentTime;
+      setCurrentTime(t);
     };
     const onEnded = () => {
       setIsPlaying(false);
