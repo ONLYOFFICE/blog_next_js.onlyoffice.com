@@ -55,7 +55,24 @@
   "Your email": "بريدك الإلكتروني",
   "We sent an email message with confirmation to your email address.": "لقد أرسلنا رسالة عبر البريد الإلكتروني تحتوي على تأكيد عنوان بريدك الإلكتروني.",
   "OK": "نعم",
-  "WhatToKnow": "ما يجب معرفته",
-  "Summary": "ملخص",
-  "ByAuthor": "بواسطة {{authorName}}"
+  "ByAuthor": "بواسطة {{authorName}}",
+
+  "AiChatTitle": "Ask AI",
+  "AiChatWelcome": "مرحباً! اطرح سؤالاً وسأجد الإجابة في مقالات مدونة ONLYOFFICE.",
+  "AiChatPlaceholder": "اسأل عن مقالاتنا...",
+  "AiChatNoResults": "عذراً، لم أتمكن من العثور على مقالات تطابق استفسارك.",
+  "AiChatError": "حدث خطأ. الرجاء المحاولة مرة أخرى.",
+  "AiChatSources": "المصادر:",
+  "AiChatExpand": "توسيع",
+  "AiChatCollapse": "طي",
+  "AiChatClose": "إغلاق",
+  "AiChatRateLimit": "طلبات كثيرة جداً. الرجاء المحاولة مرة أخرى خلال {{seconds}} ثانية.",
+  "AiChatTooShort": "سؤالك قصير جداً. الرجاء استخدام {{min}} حرفاً على الأقل.",
+  "AiChatTooLong": "سؤالك طويل جداً. الرجاء إبقائه أقل من {{max}} حرفاً.",
+  "AiChatBlogTitle": "كيف يمكنني المساعدة؟",
+  "AiChatBlogSubtitle": "لقد راجعت مئات المقالات على مدونتنا ويمكنني العثور لك بسرعة على التعليمات ونصائح الإنتاجية وأخبار التحديثات.",
+  "AiChatDocsTitle": "البحث في الوثائق",
+  "AiChatDocsSubtitle": "يمكنني البحث في كل صفحة من وثائق ONLYOFFICE وتزويدك بإجابات خطوة بخطوة في ثوانٍ.",
+  "AiChatNewsTitle": "ما الجديد؟",
+  "AiChatNewsSubtitle": "أتابع كل إصدار وسجل التغييرات وتحديث خارطة الطريق، اسألني عما تم إصداره وما هو التالي."
 }
