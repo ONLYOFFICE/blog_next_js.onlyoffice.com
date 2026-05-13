@@ -287,11 +287,18 @@ export default async function handler(req, res) {
 
     // Set up SSE streaming
     res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
+    res.setHeader("X-Accel-Buffering", "no");
+    res.flushHeaders();
+
+    const writeEvent = (payload) => {
+      res.write(`data: ${JSON.stringify(payload)}\n\n`);
+      if (typeof res.flush === "function") res.flush();
+    };
 
     // Send sources first
-    res.write(`data: ${JSON.stringify({ type: "sources", sources })}\n\n`);
+    writeEvent({ type: "sources", sources });
 
     const stream = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -310,11 +317,11 @@ export default async function handler(req, res) {
     for await (const chunk of stream) {
       const text = chunk.choices[0]?.delta?.content;
       if (text) {
-        res.write(`data: ${JSON.stringify({ type: "text", text })}\n\n`);
+        writeEvent({ type: "text", text });
       }
     }
 
-    res.write(`data: ${JSON.stringify({ type: "done" })}\n\n`);
+    writeEvent({ type: "done" });
     res.end();
   } catch (error) {
     console.error("AI search error:", error);

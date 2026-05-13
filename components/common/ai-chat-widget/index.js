@@ -288,8 +288,7 @@ const AiChatWidget = () => {
       let aiText = "";
       let sources = [];
       let buffer = "";
-
-      setMessages((prev) => [...prev, { role: "ai", content: "", sources: [] }]);
+      let aiMessageCreated = false;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -310,15 +309,23 @@ const AiChatWidget = () => {
               sources = event.sources;
             } else if (event.type === "text") {
               aiText += event.text;
-              setMessages((prev) => {
-                const updated = [...prev];
-                updated[updated.length - 1] = {
-                  role: "ai",
-                  content: aiText,
-                  sources,
-                };
-                return updated;
-              });
+              if (!aiMessageCreated) {
+                aiMessageCreated = true;
+                setMessages((prev) => [
+                  ...prev,
+                  { role: "ai", content: aiText, sources },
+                ]);
+              } else {
+                setMessages((prev) => {
+                  const updated = [...prev];
+                  updated[updated.length - 1] = {
+                    role: "ai",
+                    content: aiText,
+                    sources,
+                  };
+                  return updated;
+                });
+              }
             }
           } catch {
             // skip malformed JSON
@@ -326,12 +333,18 @@ const AiChatWidget = () => {
         }
       }
 
-      // Final update with sources
-      setMessages((prev) => {
-        const updated = [...prev];
-        updated[updated.length - 1] = { role: "ai", content: aiText, sources };
-        return updated;
-      });
+      if (aiMessageCreated) {
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = { role: "ai", content: aiText, sources };
+          return updated;
+        });
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          { role: "ai", content: errorMsg, sources: [] },
+        ]);
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
