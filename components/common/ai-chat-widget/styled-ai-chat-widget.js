@@ -25,6 +25,8 @@ export const StyledChatToggle = styled.button`
   overflow: visible;
   z-index: 1000;
 
+  display: none !important; /* remove 'display: none !important;' on ai-chat release */
+
   /* FAB SVG viewBox is 74x74 with the visible 56x56 rect at x=9,y=1; the rest is shadow
      padding. Render the SVG oversized (52 * 74/56 ≈ 68.71px) and offset so its visible
      rect aligns with the 52x52 button — keeps button dimensions constant across states. */

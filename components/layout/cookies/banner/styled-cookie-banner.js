@@ -39,6 +39,8 @@ const StyledCookieFab = styled.div`
   right: 88px;
   width: 48px;
   z-index: 1000;
+
+  right: 16px; /* remove 'right: 16px;' on ai-chat release */
 `;
 
 const StyledCookieBanner = styled.div`
