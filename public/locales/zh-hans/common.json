@@ -78,5 +78,24 @@
   "Analytical": "分析类 Cookie",
   "AnalyticalDescription": "分析类 Cookie 的目的是了解用户如何使用我们的网站，并追踪访问情况。这些功能能够帮助我们提升网站的内容与质量。",
   "Marketing": "营销类 Cookie",
-  "MarketingDescription": "这些 Cookie 用于营销目的，能够收集信息以更精准地投放符合用户兴趣的广告内容。"
+  "MarketingDescription": "这些 Cookie 用于营销目的，能够收集信息以更精准地投放符合用户兴趣的广告内容。",
+
+  "AiChatTitle": "Ask AI",
+  "AiChatWelcome": "你好！请提问，我将从 ONLYOFFICE 博客文章中为您找到答案。",
+  "AiChatPlaceholder": "询问我们的文章...",
+  "AiChatNoResults": "抱歉，未找到与您的查询匹配的文章。",
+  "AiChatError": "发生错误。请重试。",
+  "AiChatSources": "来源：",
+  "AiChatExpand": "展开",
+  "AiChatCollapse": "折叠",
+  "AiChatClose": "关闭",
+  "AiChatRateLimit": "请求过多。请在 {{seconds}} 秒后重试。",
+  "AiChatTooShort": "您的问题太短。请至少使用 {{min}} 个字符。",
+  "AiChatTooLong": "您的问题太长。请保持在 {{max}} 个字符以内。",
+  "AiChatBlogTitle": "我能帮您什么？",
+  "AiChatBlogSubtitle": "我已仔细阅读了我们博客上的数百篇文章，可以快速为您查找说明、生产力提示和更新资讯。",
+  "AiChatDocsTitle": "搜索文档",
+  "AiChatDocsSubtitle": "我可以搜索 ONLYOFFICE 文档的每一页，并在几秒钟内为您提供分步答案。",
+  "AiChatNewsTitle": "有什么新内容？",
+  "AiChatNewsSubtitle": "我关注每次发布、更新日志和路线图更新，您可以问我已经发布了什么以及接下来会有什么。"
 }

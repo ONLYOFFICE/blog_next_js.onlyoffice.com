@@ -53,13 +53,22 @@ pipeline {
         awslogs_stream = "${awslogs_stream}"
       }
       steps {
-        withCredentials([string(credentialsId: 'blog_revalidate_token', variable: 'revalidate_token')]) {
+        withCredentials([string(credentialsId: 'blog_revalidate_token', variable: 'revalidate_token'),
+                         string(credentialsId: 'blog_algolia_app_id', variable: 'blog_algolia_app_id'),
+                         string(credentialsId: 'blog_algolia_search_api_key', variable: 'blog_algolia_search_api_key'),
+                         string(credentialsId: 'blog_algolia_index_name', variable: 'blog_algolia_index_name'),
+                         string(credentialsId: 'blog_openai_api_key', variable: 'blog_openai_api_key'),]) {
         sh '''
           echo "source domain ${src_domain}"
           sed -i "s^var_src_domain^${src_domain}^" lib/api.js
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
           sed -i "s^var_next_public_static_url^$public_static_url^" .env.local
           sed -i "s^var_next_public_main_site_base_domain^$next_public_main_site_base_domain^" .env.local
+
+          sed -i "s^var_algolia_app_id^$blog_algolia_app_id^" .env.local
+          sed -i "s^var_algolia_search_api_key^$blog_algolia_search_api_key^" .env.local
+          sed -i "s^var_algolia_index_name^$blog_algolia_index_name^" .env.local
+          sed -i "s^var_openai_api_key^$blog_openai_api_key^" .env.local
 
           sed -i "s^var_notification_app_name^$src_domain^" .jenkins/build.sh
           sed -i "s^var_awslogs_region^$awslogs_region^" .jenkins/build.sh

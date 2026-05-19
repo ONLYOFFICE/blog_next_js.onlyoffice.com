@@ -74,5 +74,24 @@
   "Analytical": "Analítica",
   "AnalyticalDescription": "La finalidad de las cookies analíticas es descubrir cómo utilizan los usuarios nuestro sitio web, así como hacer un seguimiento de sus visitas. Estas funciones nos permiten mejorar la calidad y el contenido de nuestro sitio web.",
   "Marketing": "Marketing",
-  "MarketingDescription": "Estas cookies se utilizan con fines de marketing y recopilación de información para adaptar mejor la publicidad a los intereses de los usuarios de nuestro sitio web."
+  "MarketingDescription": "Estas cookies se utilizan con fines de marketing y recopilación de información para adaptar mejor la publicidad a los intereses de los usuarios de nuestro sitio web.",
+
+  "AiChatTitle": "Ask AI",
+  "AiChatWelcome": "¡Hola! Haz una pregunta y encontraré la respuesta en los artículos del blog de ONLYOFFICE.",
+  "AiChatPlaceholder": "Pregunta sobre nuestros artículos...",
+  "AiChatNoResults": "Lo sentimos, no se encontraron artículos que coincidan con tu consulta.",
+  "AiChatError": "Se produjo un error. Por favor, inténtalo de nuevo.",
+  "AiChatSources": "Fuentes:",
+  "AiChatExpand": "Expandir",
+  "AiChatCollapse": "Contraer",
+  "AiChatClose": "Cerrar",
+  "AiChatRateLimit": "Demasiadas solicitudes. Por favor, inténtalo de nuevo en {{seconds}} segundos.",
+  "AiChatTooShort": "Tu pregunta es demasiado corta. Por favor, usa al menos {{min}} caracteres.",
+  "AiChatTooLong": "Tu pregunta es demasiado larga. Por favor, mantenla bajo {{max}} caracteres.",
+  "AiChatBlogTitle": "¿Cómo puedo ayudar?",
+  "AiChatBlogSubtitle": "He revisado cientos de artículos de nuestro blog y puedo encontrarte rápidamente instrucciones, consejos de productividad y novedades sobre actualizaciones.",
+  "AiChatDocsTitle": "Buscar en la documentación",
+  "AiChatDocsSubtitle": "Puedo buscar en cada página de la documentación de ONLYOFFICE y darte respuestas paso a paso en segundos.",
+  "AiChatNewsTitle": "¿Qué hay de nuevo?",
+  "AiChatNewsSubtitle": "Sigo cada lanzamiento, registro de cambios y actualización de la hoja de ruta, pregúntame qué se ha lanzado y qué viene a continuación."
 }
