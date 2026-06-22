@@ -49,6 +49,10 @@ const StyledCategoryTopics = styled.div`
         color: #FF6F3D;
       }
 
+      &.oo-16th-anniversary {
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/16.svg");
+      }
+
       &.product-releases {
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/product-releases.svg");
       }

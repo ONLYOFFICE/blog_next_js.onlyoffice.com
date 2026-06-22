@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0
+
+### New Features
+
+- Add audio player to post page
+- Add "ONLYOFFICE 16th Anniversary" category
+- Update onlyoffice-react-ui-kit to v1.31.1
+
 ## 1.6.0
 
 ### New Features
