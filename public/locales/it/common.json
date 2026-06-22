@@ -10,6 +10,7 @@
   "Get it now": "Ottienilo ora",
   "Search": "Ricerca",
   "Category Topics": "Categorie e argomenti",
+  "ONLYOFFICE 16th Anniversary": "ONLYOFFICE compie 16 anni",
   "Product releases": "Rilascio dei prodotti",
   "For education": "Per l'istruzione",
   "View all posts": "Guarda tutte le voci",
@@ -54,6 +55,8 @@
   "We sent an email message with confirmation to your email address.": "Abbiamo mandato una email con la conferma al tuo indirizzo email.",
   "Search blog": "Cerca blog",
   "Search results for": "Risultati della ricerca per",
+  "WhatToKnow": "Cosa sapere",
+  "Summary": "Sommario",
   "ByAuthor": "Da {{authorName}}",
 
   "HarmonyInYourCookies": "Armonia nei tuoi cookie",
@@ -68,5 +71,24 @@
   "Analytical": "Analitici",
   "AnalyticalDescription": "Lo scopo dei cookie analitici è comprendere come gli utenti utilizzano il nostro sito web e monitorarne le visite. Queste funzioni ci permettono di migliorare la qualità e i contenuti del sito.",
   "Marketing": "Marketing",
-  "MarketingDescription": "Questi cookie vengono utilizzati a fini di marketing e per raccogliere informazioni utili a personalizzare la pubblicità in base agli interessi degli utenti del nostro sito."
+  "MarketingDescription": "Questi cookie vengono utilizzati a fini di marketing e per raccogliere informazioni utili a personalizzare la pubblicità in base agli interessi degli utenti del nostro sito.",
+
+  "AiChatTitle": "Ask AI",
+  "AiChatWelcome": "Ciao! Fai una domanda e troverò la risposta negli articoli del blog ONLYOFFICE.",
+  "AiChatPlaceholder": "Chiedi dei nostri articoli...",
+  "AiChatNoResults": "Spiacenti, non ho trovato articoli corrispondenti alla tua richiesta.",
+  "AiChatError": "Si è verificato un errore. Per favore riprova.",
+  "AiChatSources": "Fonti:",
+  "AiChatExpand": "Espandi",
+  "AiChatCollapse": "Riduci",
+  "AiChatClose": "Chiudi",
+  "AiChatRateLimit": "Troppe richieste. Riprova tra {{seconds}} secondi.",
+  "AiChatTooShort": "La tua domanda è troppo corta. Usa almeno {{min}} caratteri.",
+  "AiChatTooLong": "La tua domanda è troppo lunga. Mantienila sotto i {{max}} caratteri.",
+  "AiChatBlogTitle": "Come posso aiutarti?",
+  "AiChatBlogSubtitle": "Ho esaminato centinaia di articoli del nostro blog e posso trovare rapidamente per te istruzioni, consigli sulla produttività e novità sugli aggiornamenti.",
+  "AiChatDocsTitle": "Cerca nella documentazione",
+  "AiChatDocsSubtitle": "Posso cercare in ogni pagina della documentazione di ONLYOFFICE e fornirti risposte passo dopo passo in pochi secondi.",
+  "AiChatNewsTitle": "Cosa c'è di nuovo?",
+  "AiChatNewsSubtitle": "Seguo ogni rilascio, changelog e aggiornamento della roadmap, chiedimi cosa è stato pubblicato e cosa verrà dopo."
 }

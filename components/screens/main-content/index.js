@@ -12,7 +12,7 @@ import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
 import LoadMorePosts from "../common/load-more-posts";
 
-const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainPage }) => {
+const MainContent = ({ t, locale, mainPostExcerpt, allPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts, isMainPage }) => {
   const mainPost = true;
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -46,7 +46,24 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
       </div>
 
       <div className="wrapper-posts">
-        {productReleasesPosts.edges.length > 0 && (
+        {OO16thAnniversaryPosts?.edges?.length > 0 && (
+          <div className="category-wrapper">
+            <div className="category-posts-top">
+              <Heading className="category-posts-title" level={2}>{t("ONLYOFFICE 16th Anniversary")}</Heading>
+              <InternalLink className="view-all" href={`/category/${categoryTopics[locale].OO16thAnniversary}`}>{t("View all posts")}</InternalLink>
+            </div>
+            <div className="category-posts">
+              {OO16thAnniversaryPosts.edges.map(({ node }) => (
+                <Card key={node.id} t={t} locale={locale} data={node} />
+              ))}
+            </div>
+            <div className="category-more-posts">
+              <InternalLink className="more-posts-btn" href={`/category/${categoryTopics[locale].OO16thAnniversary}`}>{t("View all posts Product releases")}</InternalLink>
+            </div>
+          </div>
+        )}
+
+        {productReleasesPosts?.edges?.length > 0 && (
           <div className="category-wrapper">
             <div className="category-posts-top">
               <Heading className="category-posts-title" level={2}>{t("Product releases")}</Heading>
@@ -63,7 +80,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
           </div>
         )}
 
-        {forDevelopersPosts.edges.length > 0 && (
+        {forDevelopersPosts?.edges?.length > 0 && (
           <div className="category-wrapper">
             <div className="category-posts-top">
               <Heading className="category-posts-title" level={2}>{t("For developers")}</Heading>
@@ -82,7 +99,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
 
         <DocSpaceRegistrayionBlock t={t} locale={locale} />
 
-        {forBusinessPosts.edges.length > 0 && (
+        {forBusinessPosts?.edges?.length > 0 && (
           <div className="category-wrapper">
             <div className="category-posts-top">
               <Heading className="category-posts-title" level={2}>{t("For business")}</Heading>
@@ -99,7 +116,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, productReleasesPost
           </div>
         )}
 
-        {forEducationPosts.edges.length > 0 && (
+        {forEducationPosts?.edges?.length > 0 && (
           <div className="category-wrapper">
             <div className="category-posts-top">
               <Heading className="category-posts-title" level={2}>{t("For education")}</Heading>

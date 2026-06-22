@@ -13,6 +13,9 @@ import Breadcrumbs from "@components/screens/common/breadcrumbs";
 import DocSpaceRegistrationBlock from "../common/docspace-registration-blog";
 import RecentPosts from "./recent-posts";
 import ShareButtons from "./share-buttons";
+import AudioPlayer from "./audio-player";
+
+const BOOKMARK_SPAN_RE = /<span[^>]*?data-mce-type=["']bookmark["'][^>]*?>[\s\S]*?<\/span>/gi;
 
 const PostContent = ({ t, locale, post, posts, isPostPage }) => {
   const [recentPosts, setRecentPosts] = useState(posts);
@@ -28,7 +31,7 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
 
     if (el && e.currentTarget.contains(el)) {
       setOpenModal(true);
-      setImgUrl(e.target.currentSrc);
+      setImgUrl(e.target.currentSrc.replace(/-\d+x\d+(\.[^.]+)$/, "$1"));
       setImgAlt(e.target.alt);
     }
   };
@@ -109,13 +112,28 @@ const PostContent = ({ t, locale, post, posts, isPostPage }) => {
                 )}
                 <ShareButtons locale={locale} />
               </div>
+              {post?.audioUrl && (
+                <AudioPlayer
+                  audioUrl={post.audioUrl}
+                  audioDuration={post.audioDuration}
+                />
+              )}
               <div
                 ref={refContent}
                 onClick={onClickHandler}
                 className="entry-content"
                 suppressHydrationWarning
               >
-                {parse(post?.content?.replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)))}
+                {parse(
+                post?.content?.replace(BOOKMARK_SPAN_RE, "").replace(/<pre.*?>([\s\S]*?)<\/pre>/g, (match, p1) => renderToString(<SyntaxHighlighter language="javascript">{decodeHtml(p1)}</SyntaxHighlighter>)),
+                {
+                  replace: (domNode) => {
+                    if ((domNode.name === "p" || domNode.name === "h2") && domNode.attribs?.class?.includes("summary-header")) {
+                      return <h2 className="summary-header">{t("Summary")}</h2>;
+                    }
+                  }
+                }
+              )}
               </div>
             </article>
 

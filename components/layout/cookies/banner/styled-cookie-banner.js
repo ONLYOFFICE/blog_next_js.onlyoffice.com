@@ -36,9 +36,11 @@ const StyledCookieFab = styled.div`
   cursor: pointer;
   height: 48px;
   position: fixed;
-  right: 16px;
+  right: 88px;
   width: 48px;
   z-index: 1000;
+
+  right: 16px; /* remove 'right: 16px;' on ai-chat release */
 `;
 
 const StyledCookieBanner = styled.div`
