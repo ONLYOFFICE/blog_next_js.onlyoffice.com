@@ -1,35 +1,41 @@
 const categoryTopics = {
   "en": {
+    OO16thAnniversary: "onlyoffice-16th-anniversary",
     productReleases: "product-releases",
     forDevelopers: "for-developers",
     forBusiness: "for-business",
     forEducation: "for-education",
   },
   "fr": {
+    OO16thAnniversary: "16e-anniversaire-donlyoffice",
     productReleases: "mises-a-jour-des-produits-fr",
     forDevelopers: "pour-les-developpeurs-fr",
     forBusiness: "pour-les-entreprises-fr",
     forEducation: "pour-education-fr",
   },
   "de": {
+    OO16thAnniversary: "onlyoffice-16-geburtstag",
     productReleases: "veroeffentlichungen",
     forDevelopers: "entwicklung",
     forBusiness: "business",
     forEducation: "bildung",
   },
   "es": {
+    OO16thAnniversary: "16o-aniversario-de-onlyoffice",
     productReleases: "lanzamientos-de-productos",
     forDevelopers: "para-desarrolladores",
     forBusiness: "para-empresas",
     forEducation: "para-la-educacion",
   },
   "pt-br": {
+    OO16thAnniversary: "16o-aniversario-do-onlyoffice",
     productReleases: "lancamentos-de-produtos",
     forDevelopers: "para-desenvolvedores",
     forBusiness: "para-negocios",
     forEducation: "para-educacao",
   },
   "it": {
+    OO16thAnniversary: "onlyoffice-compie-16-anni",
     productReleases: "rilascio-dei-prodotti",
     forDevelopers: "per-gli-sviluppatori",
     forBusiness: "per-affari",
@@ -45,12 +51,14 @@ const categoryTopics = {
     forEducation: "for-education-ja",
   },
   "zh-hans": {
+    OO16thAnniversary: "onlyoffice-16-zhounian-qing",
     productReleases: "product-releases-zh-hans",
     forDevelopers: "for-developers-zh-hans",
     forBusiness: "for-business-zh-hans",
     forEducation: "for-education-zh-hans",
   },
   "el": {
+    OO16thAnniversary: "16i-epeteios-onlyoffice",
     productReleases: "product-releases-el",
     forDevelopers: "for-developers-el",
     forBusiness: "for-business-el",
@@ -63,12 +71,14 @@ const categoryTopics = {
     forEducation: "for-education-hi",
   },
   "ar": {
+    OO16thAnniversary: "16-aldhikra-alsanawiya-onlyoffice",
     productReleases: "product-releases",
     forDevelopers: "for-developers",
     forBusiness: "for-business",
     forEducation: "for-education",
   },
   "sr": {
+    OO16thAnniversary: "16-godisnjica-onlyoffice-a",
     productReleases: "product-releases-sr",
     forDevelopers: "for-developers-sr",
     forBusiness: "for-business-sr",

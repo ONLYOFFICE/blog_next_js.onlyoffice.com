@@ -11,8 +11,9 @@ import Header from "@components/screens/header";
 import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import MainContent from "@components/screens/main-content";
+import categoryTopics from "@components/utils/data/category-topics";
 
-const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
+const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
   const isMainPage = true;
 
@@ -37,6 +38,7 @@ const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRele
           locale={locale} 
           mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
+          OO16thAnniversaryPosts={OO16thAnniversaryPosts}
           productReleasesPosts={productReleasesPosts} 
           forDevelopersPosts={forDevelopersPosts} 
           forBusinessPosts={forBusinessPosts} 
@@ -53,11 +55,23 @@ const MainPage = ({ locale, mainPageDate, mainPostExcerpt, allPosts, productRele
 }
 
 export const getStaticProps = async ({ locale }) => {
+  const topics = categoryTopics[locale] || categoryTopics["en"];
   const allPosts = await getAllPosts(locale, 60, null, "");
-  const productReleasesPosts = await getAllPosts(locale, 3, null, "product-releases, veroeffentlichungen, mises-a-jour-des-produits-fr, lanzamientos-de-productos, lancamentos-de-produtos, rilascio-dei-prodotti, product-releases-ja, product-releases-zh-hans, product-releases-el, product-releases-hi, product-releases, product-releases-sr, product-releases-hy");
-  const forDevelopersPosts = await getAllPosts(locale, 3, null, "for-developers, entwicklung, pour-les-developpeurs-fr, para-desarrolladores, para-desenvolvedores, per-gli-sviluppatori, for-developers-ja, for-developers-zh-hans, for-developers-el, for-developers-hi, for-developers, for-developers-sr, for-developers-hy");
-  const forBusinessPosts = await getAllPosts(locale, 3, null, "for-business, business, pour-les-entreprises-fr, para-empresas, para-negocios, per-affari, pro-firmy, for-business-ja, for-business-zh-hans, for-business-el, for-business-hi, for-business, for-business-sr, for-business-hy");
-  const forEducationPosts = await getAllPosts(locale, 3, null, "for-education, bildung, pour-education-fr, para-la-educacion, para-educacao, per-l-istruzione, for-education-ja, for-education-zh-hans, for-education-el, for-education-hi, for-education, for-education-sr, for-education-hy");
+  const OO16thAnniversaryPosts = topics.OO16thAnniversary
+    ? await getAllPosts(locale, 3, null, topics.OO16thAnniversary)
+    : null;
+  const productReleasesPosts = topics.productReleases
+    ? await getAllPosts(locale, 3, null, topics.productReleases)
+    : null;
+  const forDevelopersPosts = topics.forDevelopers
+    ? await getAllPosts(locale, 3, null, topics.forDevelopers)
+    : null;
+  const forBusinessPosts = topics.forBusiness
+    ? await getAllPosts(locale, 3, null, topics.forBusiness)
+    : null;
+  const forEducationPosts = topics.forEducation
+    ? await getAllPosts(locale, 3, null, topics.forEducation)
+    : null;
   const inThePressPosts = await getInThePressPosts(locale, 2, null);
   const mainPageDate = await getMainPageDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "en" : locale);
   const mainPostExcerpt = await getMainPostExcerpt(locale);
@@ -67,6 +81,7 @@ export const getStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       allPosts,
+      OO16thAnniversaryPosts,
       productReleasesPosts,
       forDevelopersPosts,
       forBusinessPosts,
