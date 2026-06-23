@@ -58,7 +58,7 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, OO16thAnniversaryPo
               ))}
             </div>
             <div className="category-more-posts">
-              <InternalLink className="more-posts-btn" href={`/category/${categoryTopics[locale].OO16thAnniversary}`}>{t("View all posts Product releases")}</InternalLink>
+              <InternalLink className="more-posts-btn" href={`/category/${categoryTopics[locale].OO16thAnniversary}`}>{t("View all posts ONLYOFFICE 16th Anniversary")}</InternalLink>
             </div>
           </div>
         )}
