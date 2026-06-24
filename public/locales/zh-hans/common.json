@@ -17,6 +17,7 @@
   "For education": "教育领域",
   "View all posts": "所有的博文",
   "Load more": "载入更多",
+  "View all posts ONLYOFFICE 16th Anniversary": "查看ONLYOFFICE 16周年全部文章",
   "View all posts Product releases": "阅读更多有关产品发布的新闻",
   "View all posts For developers": "阅读更多有关开发领域的文章",
   "View all posts For business": "阅读更多有关企业领域的文章",
@@ -66,7 +67,7 @@
   "WhatToKnow": "须知",
   "Summary": "概述",
   "ByAuthor": "作者：{{authorName}}",
-  
+
   "HarmonyInYourCookies": "Cookie 和谐选择",
   "CookieText": "我们的网站使用 Cookie 以提供个性化体验。Cookie 帮助我们运营网站、提升用户浏览体验，并实现精准的营销与广告推广。您可以接受所有 Cookie 或自定义您的偏好设置。<0>了解详情</0>",
   "Deny": "全部拒绝",

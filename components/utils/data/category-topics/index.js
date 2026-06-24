@@ -45,6 +45,7 @@ const categoryTopics = {
     forBusiness: "pro-firmy",
   },
   "ja": {
+    OO16thAnniversary: "onlyoffice-16th-anniversary-ja",
     productReleases: "product-releases-ja",
     forDevelopers: "for-developers-ja",
     forBusiness: "for-business-ja",
