@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getPostsUri from "@lib/requests/getPostsUri";
 import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
+import isGarbagePath from "@lib/isGarbagePath";
 
 import Layout from "@components/layout";
 import PostHead from "@components/screens/head/post";
@@ -123,7 +124,17 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const data = await getPostAndMorePosts(locale, params?.post.join("/"));
+  const uri = params?.post.join("/");
+
+  // Short-circuit bot/garbage paths (.php probes, traversal, backslashes) to a
+  // 404 before they reach WP GraphQL — see lib/isGarbagePath.js.
+  if (isGarbagePath(uri)) {
+    return {
+      notFound: true
+    };
+  };
+
+  const data = await getPostAndMorePosts(locale, uri);
 
   if (!data?.post) {
     return {
