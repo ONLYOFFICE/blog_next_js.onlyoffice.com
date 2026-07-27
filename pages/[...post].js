@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getPostsUri from "@lib/requests/getPostsUri";
@@ -13,29 +12,9 @@ import Footer from "@components/screens/footer";
 import PostContent from "@components/screens/post-content";
 import languages from "@config/languages.json";
 
-const PostPage = ({ locale, post, posts }) => {
+const PostPage = ({ locale, post, posts, postUri }) => {
   const { t } = useTranslation("common");
   const isPostPage = true;
-
-  const [postUri, setPostUri] = useState(
-    Object.fromEntries(languages.map(({ locale }) => [locale, ""]))
-  );
-
-  useEffect(() => {
-    const translations = post?.translations || [];
-    const uri = {};
-
-    translations.forEach(({ locale, href }) => {
-      const [, query] = href.split("?");
-      const hasPParam = query?.split("&").some(param => param.startsWith("p="));
-
-      if (!hasPParam) {
-        uri[locale] = href;
-      }
-    });
-
-    setPostUri(uri);
-  }, [post]);
 
   return (
     <Layout locale={locale}>
@@ -142,12 +121,25 @@ export const getStaticProps = async ({ locale, params }) => {
     };
   };
 
+  const translations = data?.post?.translations || [];
+  const postUri = Object.fromEntries(languages.map(({ locale }) => [locale, ""]));
+
+  translations.forEach(({ locale, href }) => {
+    const [, query] = href.split("?");
+    const hasPParam = query?.split("&").some(param => param.startsWith("p="));
+
+    if (!hasPParam) {
+      postUri[locale] = href;
+    }
+  });
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       post: data?.post,
-      posts: data?.posts
+      posts: data?.posts,
+      postUri
     },
     revalidate: false,
   }
