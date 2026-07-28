@@ -114,6 +114,15 @@ export const getStaticProps = async ({ locale, params }) => {
   };
 
   const data = await getPostAndMorePosts(locale, uri);
+  // Distinguish transport failure from a genuinely missing post:
+  // fetchAPI returns undefined after exhausting retries. Silently returning
+  // notFound here would publish a permanent 404 (revalidate: false) for a
+  // post that exists. Throw instead: during build Next.js fails the page
+  // loudly; at runtime (fallback: blocking) the request gets a 500 and the
+  // page is retried on the next visit.
+  if (data === undefined) {
+    throw new Error(`GraphQL fetch failed for post "${locale}/${uri}"`);
+  };
 
   if (!data?.post) {
     return {
