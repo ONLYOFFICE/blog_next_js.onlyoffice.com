@@ -138,9 +138,15 @@ export const getStaticProps = async ({ locale, params }) => {
     const hasPParam = query?.split("&").some(param => param.startsWith("p="));
 
     if (!hasPParam) {
-      postUri[locale] = href;
+      postUri[locale] = href.split("/").slice(3).join("/").replace(/^\/+/, "").replace(/\/+$/, "");
     }
   });
+
+  const currentLanguage = languages.find(lang => lang.shortKey === locale);
+
+  if (currentLanguage && !postUri[currentLanguage.locale] && data?.post?.uri) {
+    postUri[currentLanguage.locale] = data.post.uri.replace(/^\/+/, "").replace(/\/+$/, "");
+  }
 
   return {
     props: {
