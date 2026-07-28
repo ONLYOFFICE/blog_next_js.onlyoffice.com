@@ -1,11 +1,9 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import HTMLReactParser from "html-react-parser";
 import languages from "@config/languages.json";
 
 const PostHead = ({ t, locale, post, postUri }) => {
-  const router = useRouter();
-  const baseUrl = "https://www.onlyoffice.com/blog";
+  const baseUrl = `${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/blog`;
   const fallbackImage = `https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg`;
   const image = post?.featuredImage?.node?.mediaItemUrl || fallbackImage;
   const title = post.aioseoTitle ? post.aioseoTitle : locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;
@@ -43,27 +41,17 @@ const PostHead = ({ t, locale, post, postUri }) => {
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
 
-      {locale === "en" && (
-        <link rel="alternate" hrefLang="en-US" href={`${baseUrl}${router.asPath}`} />
-      )}
-
       {languages.map(({ key, locale }) =>
         postUri[locale] ? (
           <link
             key={key}
             rel="alternate"
             hrefLang={key}
-            href={`${baseUrl}/${postUri[locale].split("/").slice(3).join("/")}`}
+            href={`${baseUrl}/${postUri[locale]}`}
           />
         ) : null
       )}
-
-      {locale === "en" ? (
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}${router.asPath}`} />
-      ) : postUri.en_US && (
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/${postUri.en_US.split("/").slice(3).join("/")}`} />
-      )}
-
+      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/${postUri.en_US}`} />
       <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />
       <link rel="apple-touch-icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} />
     </Head>
