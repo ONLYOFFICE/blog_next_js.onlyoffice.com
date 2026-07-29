@@ -2,7 +2,7 @@ import Head from "next/head";
 import languages from "@config/languages.json";
 
 const MainHead = ({ title, metaDescription, locale }) => {
-  const baseUrl = `${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/blog`;
+  const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
   const baseLocaleUrl = `${baseUrl}${locale === "en" ? "" : `/${locale}`}`;
   const image = "https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg";
   const language = languages.find(lang => lang.shortKey === locale);
