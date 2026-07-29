@@ -3,7 +3,7 @@ import HTMLReactParser from "html-react-parser";
 import languages from "@config/languages.json";
 
 const PostHead = ({ t, locale, post, postUri }) => {
-  const baseUrl = `${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/blog`;
+  const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
   const fallbackImage = `https://download.onlyoffice.com/assets/fb/fb_icon_325x325.jpg`;
   const image = post?.featuredImage?.node?.mediaItemUrl || fallbackImage;
   const title = post.aioseoTitle ? post.aioseoTitle : locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${post?.title}` : `${post?.title} | ${t("ONLYOFFICE Blog")}`;

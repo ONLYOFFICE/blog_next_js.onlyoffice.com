@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 const AuthorHead = ({ title, locale, authorSlug }) => {
-  const baseUrl = `${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/blog`;
+  const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
 
   return (
     <Head>

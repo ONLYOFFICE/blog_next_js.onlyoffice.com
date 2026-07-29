@@ -2,7 +2,7 @@ import Head from "next/head";
 import languages from "@config/languages.json";
 
 const InThePressHead = ({ title, locale }) => {
-  const baseUrl = `${process.env.NEXT_PUBLIC_MAIN_SITE_BASE_DOMAIN}/blog`;
+  const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog`;
   const inThePressUrl = `${baseUrl}${locale === "en" ? "" : `/${locale}`}/onlyoffice-in-the-press`;
   const language = languages.find(lang => lang.shortKey === locale);
 
