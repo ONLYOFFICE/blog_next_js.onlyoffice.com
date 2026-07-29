@@ -10,6 +10,7 @@ switch(BRANCH_NAME) {
     src_domain="wpblog.teamlab.info"
     public_static_url="https://static-blog.teamlab.info"
     next_public_main_site_base_domain="https://test-new.teamlab.info"
+    next_public_site_url="https://test-new.teamlab.info"
     break
   case "origin/production_deploy":
     aws_region="us-east-1"
@@ -21,6 +22,7 @@ switch(BRANCH_NAME) {
     src_domain="wpblog.onlyoffice.com"
     public_static_url="https://static-blog.onlyoffice.com"
     next_public_main_site_base_domain="https://onlyoffice.com"
+    next_public_site_url="https://www.onlyoffice.com"
     break
   default:
     println("Branch: ${BRANCH_NAME} do not for deploy.")
@@ -48,6 +50,7 @@ pipeline {
         src_domain="${src_domain}"
         public_static_url = "${public_static_url}"
         next_public_main_site_base_domain = "${next_public_main_site_base_domain}"
+        next_public_site_url = "${next_public_site_url}"
         awslogs_region = "${awslogs_region}"
         awslogs_group = "${awslogs_group}"
         awslogs_stream = "${awslogs_stream}"
@@ -64,6 +67,7 @@ pipeline {
           sed -i "s^var_revalidate_token^${revalidate_token}^" .env.local
           sed -i "s^var_next_public_static_url^$public_static_url^" .env.local
           sed -i "s^var_next_public_main_site_base_domain^$next_public_main_site_base_domain^" .env.local
+          sed -i "s^var_next_public_site_url^$next_public_site_url^" .env.local
 
           sed -i "s^var_algolia_app_id^$blog_algolia_app_id^" .env.local
           sed -i "s^var_algolia_search_api_key^$blog_algolia_search_api_key^" .env.local
