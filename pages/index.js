@@ -11,7 +11,7 @@ import Footer from "@components/screens/footer";
 import MainContent from "@components/screens/main-content";
 import categoryTopics from "@components/utils/data/category-topics";
 
-const MainPage = ({ locale, mainPostExcerpt, allPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, forEducationPosts, inThePressPosts }) => {
+const MainPage = ({ locale, mainPostExcerpt, allPosts, backToSchoolPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
   const isMainPage = true;
 
@@ -34,11 +34,11 @@ const MainPage = ({ locale, mainPostExcerpt, allPosts, OO16thAnniversaryPosts, p
           locale={locale} 
           mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
+          backToSchoolPosts={backToSchoolPosts}
           OO16thAnniversaryPosts={OO16thAnniversaryPosts}
           productReleasesPosts={productReleasesPosts} 
           forDevelopersPosts={forDevelopersPosts} 
           forBusinessPosts={forBusinessPosts} 
-          forEducationPosts={forEducationPosts}
           inThePressPosts={inThePressPosts}
           isMainPage={isMainPage}
         />
@@ -53,6 +53,9 @@ const MainPage = ({ locale, mainPostExcerpt, allPosts, OO16thAnniversaryPosts, p
 export const getStaticProps = async ({ locale }) => {
   const topics = categoryTopics[locale] || categoryTopics["en"];
   const allPosts = await getAllPosts(locale, 60, null, "");
+  const backToSchoolPosts = topics.backToSchool
+    ? await getAllPosts(locale, 3, null, topics.backToSchool)
+    : null;
   const OO16thAnniversaryPosts = topics.OO16thAnniversary
     ? await getAllPosts(locale, 3, null, topics.OO16thAnniversary)
     : null;
@@ -65,9 +68,6 @@ export const getStaticProps = async ({ locale }) => {
   const forBusinessPosts = topics.forBusiness
     ? await getAllPosts(locale, 3, null, topics.forBusiness)
     : null;
-  const forEducationPosts = topics.forEducation
-    ? await getAllPosts(locale, 3, null, topics.forEducation)
-    : null;
   const inThePressPosts = await getInThePressPosts(locale, 2, null);
   const mainPostExcerpt = await getMainPostExcerpt(locale);
 
@@ -76,11 +76,11 @@ export const getStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       allPosts,
+      backToSchoolPosts,
       OO16thAnniversaryPosts,
       productReleasesPosts,
       forDevelopersPosts,
       forBusinessPosts,
-      forEducationPosts,
       inThePressPosts: inThePressPosts ? inThePressPosts : null,
       mainPostExcerpt
     },

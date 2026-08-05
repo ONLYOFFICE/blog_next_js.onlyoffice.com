@@ -65,8 +65,8 @@ const StyledCategoryTopics = styled.div`
         background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-business.svg");
       }
 
-      &.for-education {
-        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/for-education.svg");
+      &.back-to-school {
+        background-image: url("${process.env.NEXT_PUBLIC_STATIC_URL}/images/category-topics/back-to-school.svg");
       }
 
       @media screen and ${device.tablet} {
