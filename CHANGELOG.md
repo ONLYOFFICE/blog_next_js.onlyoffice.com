@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0
+
+### New Features
+
+- Banner: "Back to school with ONLYOFFICE!"
+- Main page:
+  - Remove "For education" category
+  - Add "Back to school" category
+
+### Fixes
+
+- Fix meta tags in head
+
 ## 1.7.0
 
 ### New Features

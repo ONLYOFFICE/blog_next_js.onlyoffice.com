@@ -6,7 +6,6 @@ const ErrornHead = ({ title }) => {
       <title>{title}</title>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta content="text/html; charset=UTF-8" />
       <meta name="robots" content="noindex" />
       <meta name="google" content="nositelinkssearchbox" />
       <link rel="icon" href={`${process.env.NEXT_PUBLIC_STATIC_URL}/images/favicon.ico`} sizes="192x192" />

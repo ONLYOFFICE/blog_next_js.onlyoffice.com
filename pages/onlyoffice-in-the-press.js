@@ -1,7 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getInThePressPosts from "@lib/requests/getInThePressPosts";
-import getInThePressDate from "@lib/requests/getInThePressDate";
 import getRecentPosts from "@lib/requests/getRecentPosts";
 
 import Layout from "@components/layout";
@@ -11,7 +10,7 @@ import AdventAnnounce from "@components/screens/advent-announce";
 import Footer from "@components/screens/footer";
 import InThePressContent from "@components/screens/in-the-press-content";
 
-const InThePressPage = ({ locale, inThePressPosts, inThePressDate, recentPosts }) => {
+const InThePressPage = ({ locale, inThePressPosts, recentPosts }) => {
   const { t } = useTranslation("common");
   const isInThePressPage = true;
 
@@ -21,8 +20,6 @@ const InThePressPage = ({ locale, inThePressPosts, inThePressDate, recentPosts }
         <InThePressHead 
           locale={locale}
           title={locale === "ar" ? `${t("ONLYOFFICE Blog")} | ${t("ONLYOFFICE IN THE PRESS")}` : `${t("ONLYOFFICE IN THE PRESS")} | ${t("ONLYOFFICE Blog")}`}
-          articlePublishedTime={inThePressDate?.edges[0]?.node?.dateGmt}
-          articleModifiedTime={inThePressDate?.edges[0]?.node?.modifiedGmt}
         />
       </Layout.PageHead>
       <AdventAnnounce locale={locale} />
@@ -41,7 +38,6 @@ const InThePressPage = ({ locale, inThePressPosts, inThePressDate, recentPosts }
 
 export const getStaticProps = async ({ locale }) => {
   const inThePressPosts = await getInThePressPosts(locale, 60, null);
-  const inThePressDate = await getInThePressDate(locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "en" : locale);
   const recentPosts = await getRecentPosts(locale);
 
 	return {
@@ -49,7 +45,6 @@ export const getStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       inThePressPosts: inThePressPosts ? inThePressPosts : null,
-      inThePressDate,
       recentPosts
     },
 		revalidate:false,

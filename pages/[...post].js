@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getPostsUri from "@lib/requests/getPostsUri";
 import getPostAndMorePosts from "@lib/requests/getPostAndMorePosts";
+import isGarbagePath from "@lib/isGarbagePath";
 
 import Layout from "@components/layout";
 import PostHead from "@components/screens/head/post";
@@ -12,29 +12,9 @@ import Footer from "@components/screens/footer";
 import PostContent from "@components/screens/post-content";
 import languages from "@config/languages.json";
 
-const PostPage = ({ locale, post, posts }) => {
+const PostPage = ({ locale, post, posts, postUri }) => {
   const { t } = useTranslation("common");
   const isPostPage = true;
-
-  const [postUri, setPostUri] = useState(
-    Object.fromEntries(languages.map(({ locale }) => [locale, ""]))
-  );
-
-  useEffect(() => {
-    const translations = post?.translations || [];
-    const uri = {};
-
-    translations.forEach(({ locale, href }) => {
-      const [, query] = href.split("?");
-      const hasPParam = query?.split("&").some(param => param.startsWith("p="));
-
-      if (!hasPParam) {
-        uri[locale] = href;
-      }
-    });
-
-    setPostUri(uri);
-  }, [post]);
 
   return (
     <Layout locale={locale}>
@@ -123,7 +103,26 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
-  const data = await getPostAndMorePosts(locale, params?.post.join("/"));
+  const uri = params?.post.join("/");
+
+  // Short-circuit bot/garbage paths (.php probes, traversal, backslashes) to a
+  // 404 before they reach WP GraphQL — see lib/isGarbagePath.js.
+  if (isGarbagePath(uri)) {
+    return {
+      notFound: true
+    };
+  };
+
+  const data = await getPostAndMorePosts(locale, uri);
+  // Distinguish transport failure from a genuinely missing post:
+  // fetchAPI returns undefined after exhausting retries. Silently returning
+  // notFound here would publish a permanent 404 (revalidate: false) for a
+  // post that exists. Throw instead: during build Next.js fails the page
+  // loudly; at runtime (fallback: blocking) the request gets a 500 and the
+  // page is retried on the next visit.
+  if (data === undefined) {
+    throw new Error(`GraphQL fetch failed for post "${locale}/${uri}"`);
+  };
 
   if (!data?.post) {
     return {
@@ -131,12 +130,31 @@ export const getStaticProps = async ({ locale, params }) => {
     };
   };
 
+  const translations = data?.post?.translations || [];
+  const postUri = Object.fromEntries(languages.map(({ locale }) => [locale, ""]));
+
+  translations.forEach(({ locale, href }) => {
+    const [, query] = href.split("?");
+    const hasPParam = query?.split("&").some(param => param.startsWith("p="));
+
+    if (!hasPParam) {
+      postUri[locale] = href.split("/").slice(3).join("/").replace(/^\/+/, "").replace(/\/+$/, "");
+    }
+  });
+
+  const currentLanguage = languages.find(lang => lang.shortKey === locale);
+
+  if (currentLanguage && !postUri[currentLanguage.locale] && data?.post?.uri) {
+    postUri[currentLanguage.locale] = data.post.uri.replace(/^\/+/, "").replace(/\/+$/, "");
+  }
+
   return {
     props: {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       post: data?.post,
-      posts: data?.posts
+      posts: data?.posts,
+      postUri
     },
     revalidate: false,
   }
