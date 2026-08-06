@@ -54,7 +54,7 @@ const Header = ({ t, locale, postUri }) => {
           name: language.longKey,
           href:
             router.pathname === "/[...post]"
-              ? postUri[language.locale] && postUri[language.locale].split("/").slice(3).join("/") || "/"
+              ? postUri[language.locale] && postUri[language.locale] || "/"
               : router.pathname === "/onlyoffice-in-the-press" || router.pathname === "/search"
               ? router.asPath
               : "/"
