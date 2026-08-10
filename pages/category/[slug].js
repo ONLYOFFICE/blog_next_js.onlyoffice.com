@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getCategorySlug from "@lib/requests/getCategorySlug";
 import getCategoryPosts from "@lib/requests/getCategoryPosts";
+import isGarbagePath from "@lib/isGarbagePath";
 
 import Layout from "@components/layout";
 import CategoryHead from "@components/screens/head/category";
@@ -50,47 +51,47 @@ export const getStaticPaths = async () => {
   const jaCategorySlug = await getCategorySlug("ja");
   const zhCategorySlug = await getCategorySlug("zh-hans");
 
-  const enPosts = enCategorySlug?.edges?.map(({node}) => ({
+  const enPosts = enCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "en"
   }));
 
-  const frPosts = frCategorySlug?.edges?.map(({node}) => ({
+  const frPosts = frCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "fr"
   }));
 
-  const dePosts = deCategorySlug?.edges?.map(({node}) => ({
+  const dePosts = deCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "de"
   }));
 
-  const esPosts = esCategorySlug?.edges?.map(({node}) => ({
+  const esPosts = esCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "es"
   }));
 
-  const ptPosts = ptCategorySlug?.edges?.map(({node}) => ({
+  const ptPosts = ptCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "pt-br"
   }));
 
-  const itPosts = itCategorySlug?.edges?.map(({node}) => ({
+  const itPosts = itCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "it"
   }));
 
-  const csPosts = csCategorySlug?.edges?.map(({node}) => ({
+  const csPosts = csCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "cs"
   }));
 
-  const jaPosts = jaCategorySlug?.edges?.map(({node}) => ({
+  const jaPosts = jaCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "ja"
   }));
 
-  const zhPosts = zhCategorySlug?.edges?.map(({node}) => ({
+  const zhPosts = zhCategorySlug?.edges?.map(({ node }) => ({
     params: { slug: node.slug },
     locale: "zh-hans"
   }));
@@ -102,6 +103,13 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
+  // Short-circuit bot/garbage slugs before they reach WP GraphQL.
+  if (isGarbagePath(params?.slug)) {
+    return {
+      notFound: true
+    };
+  };
+
   const posts = await getCategoryPosts(locale, 60, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
@@ -116,7 +124,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate:false,
+    revalidate: false,
   }
 }
 

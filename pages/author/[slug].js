@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getAuthorSlug from "@lib/requests/getAuthorSlug";
 import getAuthorPosts from "@lib/requests/getAuthorPosts";
+import isGarbagePath from "@lib/isGarbagePath";
 
 import Layout from "@components/layout";
 import AuthorHead from "@components/screens/head/author";
@@ -50,47 +51,47 @@ export const getStaticPaths = async () => {
   const jaAuthorSlug = await getAuthorSlug("ja");
   const zhAuthorSlug = await getAuthorSlug("zh-hans");
 
-  const enPosts = enAuthorSlug?.edges?.map(({node}) => ({
+  const enPosts = enAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "en"
   }));
 
-  const frPosts = frAuthorSlug?.edges?.map(({node}) => ({
+  const frPosts = frAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "fr"
   }));
 
-  const dePosts = deAuthorSlug?.edges?.map(({node}) => ({
+  const dePosts = deAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "de"
   }));
 
-  const esPosts = esAuthorSlug?.edges?.map(({node}) => ({
+  const esPosts = esAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "es"
   }));
 
-  const ptPosts = ptAuthorSlug?.edges?.map(({node}) => ({
+  const ptPosts = ptAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "pt-br"
   }));
 
-  const itPosts = itAuthorSlug?.edges?.map(({node}) => ({
+  const itPosts = itAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "it"
   }));
 
-  const csPosts = csAuthorSlug?.edges?.map(({node}) => ({
+  const csPosts = csAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "cs"
   }));
 
-  const jaPosts = jaAuthorSlug?.edges?.map(({node}) => ({
+  const jaPosts = jaAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "ja"
   }));
 
-  const zhPosts = zhAuthorSlug?.edges?.map(({node}) => ({
+  const zhPosts = zhAuthorSlug?.edges?.map(({ node }) => ({
     params: { slug: node.author.node.slug },
     locale: "zh-hans"
   }));
@@ -102,6 +103,13 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
+  // Short-circuit bot/garbage slugs before they reach WP GraphQL.
+  if (isGarbagePath(params?.slug)) {
+    return {
+      notFound: true
+    };
+  };
+
   const posts = await getAuthorPosts(locale, 60, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
@@ -116,7 +124,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate:false,
+    revalidate: false,
   }
 }
 
