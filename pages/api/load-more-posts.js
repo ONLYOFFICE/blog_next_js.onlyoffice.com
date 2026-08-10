@@ -11,17 +11,17 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     const response = isInThePressPage ? (
-      await getInThePressPosts(locale, 5, `"${endCursor}"`)
+      await getInThePressPosts(locale, 5, endCursor)
     ) : isSearchPage ? (
-      await getSearchResults(locale, 5, `"${endCursor}"`, data)
+      await getSearchResults(locale, 5, endCursor, data)
     ) : isAuthorPage ? (
-      await getAuthorPosts(locale, 6, `"${endCursor}"`, data)
+      await getAuthorPosts(locale, 6, endCursor, data)
     ) : isTagPage ? (
-      await getTagPosts(locale, 6, `"${endCursor}"`, data)
+      await getTagPosts(locale, 6, endCursor, data)
     ) : isCategoryPage ? (
-      await getCategoryPosts(locale, 6, `"${endCursor}"`, data)
+      await getCategoryPosts(locale, 6, endCursor, data)
     ) : (
-      await getAllPosts(locale, 6, `"${endCursor}"`, "")
+      await getAllPosts(locale, 6, endCursor, "")
     );
 
     return res.json({ data: response });

@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTagSlug from "@lib/requests/getTagSlug";
 import getTagPosts from "@lib/requests/getTagPosts";
+import isGarbagePath from "@lib/isGarbagePath";
 
 import Layout from "@components/layout";
 import TagHead from "@components/screens/head/tag";
@@ -43,10 +44,10 @@ export const getStaticPaths = async ({ locales }) => {
   const tags = await getTagSlug();
 
   const paths = locales.map((locale) => (
-    tags?.edges?.map(({node}) => ({
+    tags?.edges?.map(({ node }) => ({
       params: {
         slug: node.slug
-      }, 
+      },
       locale
     }))
   )).flat();
@@ -58,6 +59,13 @@ export const getStaticPaths = async ({ locales }) => {
 }
 
 export const getStaticProps = async ({ locale, params }) => {
+  // Short-circuit bot/garbage slugs before they reach WP GraphQL.
+  if (isGarbagePath(params?.slug)) {
+    return {
+      notFound: true
+    };
+  };
+
   const posts = await getTagPosts(locale, 60, null, params?.slug);
 
   if (posts?.edges?.length === 0) {
@@ -72,7 +80,7 @@ export const getStaticProps = async ({ locale, params }) => {
       locale,
       posts: posts ? posts : null
     },
-    revalidate:false,
+    revalidate: false,
   }
 }
 
