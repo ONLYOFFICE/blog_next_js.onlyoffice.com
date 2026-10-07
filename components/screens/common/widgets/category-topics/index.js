@@ -9,8 +9,8 @@ const CategoryTopics = ({ t, locale }) => {
     <StyledCategoryTopics $locale={locale} className="category-topics">
       <h3 className="category-topics-title">{t("Category Topics")}</h3>
       <ul className="category-topics-list">
-        {topics.backToSchool && (
-          <li><InternalLink className="back-to-school" href={`/category/${topics.backToSchool}`}>{t("Back to school")}</InternalLink></li>
+        {topics.OO10 && (
+          <li><InternalLink className="oo-10" href={`/category/${topics.OO10}`}>ONLYOFFICE 10.0</InternalLink></li>
         )}
         {topics.OO16thAnniversary && (
           <li><InternalLink className="oo-16th-anniversary" href={`/category/${topics.OO16thAnniversary}`}>{t("ONLYOFFICE 16th Anniversary")}</InternalLink></li>

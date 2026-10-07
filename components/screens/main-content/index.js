@@ -12,7 +12,7 @@ import CategoryTopics from "@components/screens/common/widgets/category-topics";
 import InThePress from "@components/screens/common/widgets/in-the-press";
 import LoadMorePosts from "../common/load-more-posts";
 
-const MainContent = ({ t, locale, mainPostExcerpt, allPosts, backToSchoolPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, inThePressPosts, isMainPage }) => {
+const MainContent = ({ t, locale, mainPostExcerpt, allPosts, OO10Posts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, inThePressPosts, isMainPage }) => {
   const mainPost = true;
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -46,19 +46,19 @@ const MainContent = ({ t, locale, mainPostExcerpt, allPosts, backToSchoolPosts, 
       </div>
 
       <div className="wrapper-posts">
-        {backToSchoolPosts?.edges?.length > 0 && (
+        {OO10Posts?.edges?.length > 0 && (
           <div className="category-wrapper">
             <div className="category-posts-top">
-              <Heading className="category-posts-title" level={2}>{t("Back to school")}</Heading>
-              <InternalLink className="view-all" href={`/category/${categoryTopics[locale].backToSchool}`}>{t("View all posts")}</InternalLink>
+              <Heading className="category-posts-title" level={2}>ONLYOFFICE 10.0</Heading>
+              <InternalLink className="view-all" href={`/category/${categoryTopics[locale].OO10}`}>{t("View all posts")}</InternalLink>
             </div>
             <div className="category-posts">
-              {backToSchoolPosts.edges.map(({ node }) => (
+              {OO10Posts.edges.map(({ node }) => (
                 <Card key={node.id} t={t} locale={locale} data={node} />
               ))}
             </div>
             <div className="category-more-posts">
-              <InternalLink className="more-posts-btn" href={`/category/${categoryTopics[locale].backToSchool}`}>{t("View all posts Back to school")}</InternalLink>
+              <InternalLink className="more-posts-btn" href={`/category/${categoryTopics[locale].OO10}`}>{t("View all posts ONLYOFFICE 10.0")}</InternalLink>
             </div>
           </div>
         )}

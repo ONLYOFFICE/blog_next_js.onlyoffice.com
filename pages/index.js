@@ -11,7 +11,7 @@ import Footer from "@components/screens/footer";
 import MainContent from "@components/screens/main-content";
 import categoryTopics from "@components/utils/data/category-topics";
 
-const MainPage = ({ locale, mainPostExcerpt, allPosts, backToSchoolPosts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, inThePressPosts }) => {
+const MainPage = ({ locale, mainPostExcerpt, allPosts, OO10Posts, OO16thAnniversaryPosts, productReleasesPosts, forDevelopersPosts, forBusinessPosts, inThePressPosts }) => {
   const { t } = useTranslation("common");
   const isMainPage = true;
 
@@ -34,7 +34,7 @@ const MainPage = ({ locale, mainPostExcerpt, allPosts, backToSchoolPosts, OO16th
           locale={locale} 
           mainPostExcerpt={mainPostExcerpt}
           allPosts={allPosts} 
-          backToSchoolPosts={backToSchoolPosts}
+          OO10Posts={OO10Posts}
           OO16thAnniversaryPosts={OO16thAnniversaryPosts}
           productReleasesPosts={productReleasesPosts} 
           forDevelopersPosts={forDevelopersPosts} 
@@ -53,8 +53,8 @@ const MainPage = ({ locale, mainPostExcerpt, allPosts, backToSchoolPosts, OO16th
 export const getStaticProps = async ({ locale }) => {
   const topics = categoryTopics[locale] || categoryTopics["en"];
   const allPosts = await getAllPosts(locale, 60, null, "");
-  const backToSchoolPosts = topics.backToSchool
-    ? await getAllPosts(locale, 3, null, topics.backToSchool)
+  const OO10Posts = topics.OO10
+    ? await getAllPosts(locale, 3, null, topics.OO10)
     : null;
   const OO16thAnniversaryPosts = topics.OO16thAnniversary
     ? await getAllPosts(locale, 3, null, topics.OO16thAnniversary)
@@ -76,7 +76,7 @@ export const getStaticProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale, "common")),
       locale,
       allPosts,
-      backToSchoolPosts,
+      OO10Posts,
       OO16thAnniversaryPosts,
       productReleasesPosts,
       forDevelopersPosts,
