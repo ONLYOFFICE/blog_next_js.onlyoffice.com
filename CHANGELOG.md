@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0
+
+### New Features
+
+- Main page:
+  - Remove "Back to school" category
+  - Add "ONLYOFFICE 10.0" category
+
 ## 1.8.0
 
 ### New Features
