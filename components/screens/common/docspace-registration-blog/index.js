@@ -1,34 +1,38 @@
 import StyledDocSpaceBlock from "./styled-docspace-registration-block.js";
-import { useState } from "react";
+import { useRef } from "react";
 import Heading from "@components/common/heading";
 import Text from "@components/common/text";
 import Input from "@components/common/input/index.js";
 import { useForm, Controller } from "react-hook-form";
 import parse from "html-react-parser";
 
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
 const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
-    const href = `https://www.onlyoffice.com${
+    const href = `${process.env.NEXT_PUBLIC_SITE_URL}${
         locale === "en" || locale === "el" || locale === "hi" || locale === "ar" || locale === "sr" || locale === "hy" ? "" :
         locale === "zh-hans" ? "/zh" :
-        locale === "pt-br" ? "/pt" : 
+        locale === "pt-br" ? "/pt" :
         `/${locale}`
-      }/docspace-registration?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
-  const [inputEmailUsed, setInputEmailUsed] = useState(false);
-  const { handleSubmit, formState: { errors }, control, getValues, trigger } = useForm();
+      }/signup?utm_source=blog&utm_medium=banner&utm_campaign=docspace_registration_banner`
+  const linkRef = useRef(null);
+  const { formState: { errors }, control, getValues, trigger } = useForm();
 
-  const handleButtonClick = async () => {
-    const isValid = await trigger("email");
+  const handleLinkClick = (e) => {
+    const email = getValues("email") || "";
 
-    if (isValid) {
-      const email = getValues("email");
-      localStorage.setItem("email", email);
-      window.location.href = `${href}`;
+    if (!emailPattern.test(email)) {
+      e.preventDefault();
+      trigger("email");
+      return;
     }
+
+    localStorage.setItem("email", email);
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleButtonClick();
+    linkRef.current?.click();
   };
 
   return (
@@ -54,7 +58,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
             rules={{
               required: { value: true, message: `${t("Email is empty")}` },
               pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
+                value: emailPattern,
                 message: `${t("Email is incorrect")}`,
               },
             }}
@@ -62,10 +66,7 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
               <>
                 <Input
                   className={errors.email ? "error" : ""}
-                  onChange={(e) => {
-                    onChange(e);
-                    setInputEmailUsed(false);
-                  }}
+                  onChange={onChange}
                   onBlur={onBlur}
                   name="email"
                   autoComplete="email"
@@ -80,13 +81,15 @@ const DocSpaceRegistrationBlock = ({ t, locale, ...rest }) => {
               </>
             )}
           />
-          <button
-            type="submit"
+          <a
+            ref={linkRef}
+            href={href}
+            onClick={handleLinkClick}
             className="docspace_block_btn arrow"
             id="blog_docspace_registration"
           >
             {t("Create now")}
-          </button>          
+          </a>
         </form>
       </div>
     </StyledDocSpaceBlock>

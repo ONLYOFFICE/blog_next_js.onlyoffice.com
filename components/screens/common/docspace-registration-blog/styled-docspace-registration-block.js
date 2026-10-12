@@ -152,6 +152,9 @@ const StyledDocSpaceBlock = styled.div`
       }
 
       .docspace_block_btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         background: #FF6F3D;
         color: #FFFFFF;
         min-width: 140px;          
@@ -163,6 +166,7 @@ const StyledDocSpaceBlock = styled.div`
         text-align: center;
         border: none;
         text-transform: uppercase;
+        text-decoration: none;
         transition: color 0.3s, background-color 0.3s;
         cursor: pointer;
 
