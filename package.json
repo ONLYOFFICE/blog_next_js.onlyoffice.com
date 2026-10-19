@@ -17,7 +17,7 @@
     "moment": "2.30.1",
     "next": "16.1.6",
     "next-i18next": "15.4.3",
-    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#e6c1890547877d4fa3ac8c17ba32adac0c69efff",
+    "onlyoffice-react-ui-kit": "ONLYOFFICE/onlyoffice-react-ui-kit#649b1e018f22d2cc6e35b47c75d80de8936dfcbe",
     "openai": "^6.34.0",
     "prop-types": "15.8.1",
     "react": "19.2.4",
@@ -31,4 +31,4 @@
   "devDependencies": {
     "rimraf": "6.1.3"
   }
-}
+}      
